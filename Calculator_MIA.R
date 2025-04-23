@@ -1,5 +1,4 @@
 # /usr/bin/env/Rscript
-setwd("~/rscripts/code")
 
 # Packages that need to be loaded
 pacman::p_load(caret, iml, citation, dplyr, earth, lime)
