@@ -1,11 +1,10 @@
 # /usr/bin/env/Rscript
-setwd("~/rscripts/code")
 
 # Packages that need to be loaded
 pacman::p_load(dplyr, data.table)
 
 # Load files
-datasets <- readRDS("files/datasets.rds")
+datasets <- readRDS("../files/datasets.rds")
 
 # Merge all dataset's mia dataframes in one .rds file
 print("Merging all MIA datframes")
@@ -16,8 +15,8 @@ colnames(miaUnique_df) = c("dataset_name", "technique", "most_important_attribut
   
 for(dataset in datasets) {
   # Load dataset
-  filename1 = paste0("results/mia_results/", dataset, "_mia.rds")
-  filename2 = paste0("results/mia_results/", dataset, "_miaUnique.rds")
+  filename1 = paste0("../results/most_important_attr/by_dataset/", dataset, "_mia.rds")
+  filename2 = paste0("../results/most_important_attr/by_dataset/", dataset, "_miaUnique.rds")
   df1 <- readRDS(filename1)
   df2 <- readRDS(filename2)
   mia_df <- rbind(mia_df, df1)
@@ -25,8 +24,8 @@ for(dataset in datasets) {
   print(paste0("Added dataset: ", dataset))
 }
   
-saveRDS(mia_df, file = "results/mia_df.rds")
-saveRDS(miaUnique_df, file = "results/miaUnique_df.rds")
+saveRDS(mia_df, file = "../results/most_important_attr/mia_df.rds")
+saveRDS(miaUnique_df, file = "../results/most_important_attr/miaUnique_df.rds")
 print("Results recorded")
 print("-----")
 

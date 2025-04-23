@@ -1,5 +1,4 @@
 # /usr/bin/env/Rscript
-setwd("~/rscripts/code")
 
 # Packages that need to be loaded
 pacman::p_load(dplyr, data.table)
@@ -8,7 +7,7 @@ pacman::p_load(dplyr, data.table)
 set.seed(1)
 
 # Load files
-datasets <- readRDS("files/datasets.rds")
+datasets <- readRDS("../files/datasets.rds")
 
 # Merge all dataset's instances lists in one .rds file
 print("Unifying all matrices lists")
@@ -18,7 +17,8 @@ c = 1
   
 for(dataset in datasets) {
   # Load dataset
-  filename1 = paste0("results/matrices_results/", dataset, "_confusion_matrix.rds")
+  #filename1 = paste0("../results/conf_matrices/by_dataset/", dataset, "_cm.rds")
+  filename1 = paste0("../results/conf_matrices/by_dataset/", dataset, "_cm_popular.rds")
   df1 <- readRDS(filename1)
   matrices_list[[c]] <- df1
   c = c + 1
@@ -26,7 +26,8 @@ for(dataset in datasets) {
 }
   
 names(matrices_list) <- datasets
-saveRDS(matrices_list, file = "results/confusion_matrices.rds")
+#saveRDS(matrices_list, file = "../results/conf_matrices/confusion_matrices.rds")
+saveRDS(matrices_list, file = "../results/conf_matrices/confusion_matrices_popular.rds")
 print("Results recorded")
 print("-----")
 

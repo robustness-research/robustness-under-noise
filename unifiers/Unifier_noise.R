@@ -1,5 +1,4 @@
 # /usr/bin/env/Rscript
-setwd("~/rscripts/code")
 
 # Packages that need to be loaded
 pacman::p_load(dplyr, data.table)
@@ -8,7 +7,7 @@ pacman::p_load(dplyr, data.table)
 set.seed(1)
 
 # Load files
-datasets <- readRDS("files/datasets.rds")
+datasets <- readRDS("../files/datasets.rds")
 
 # Merge all dataset's noise lists in one .rds file
 print("Unifying all noise lists")
@@ -18,7 +17,7 @@ c = 1
   
 for(dataset in datasets) {
   # Load dataset
-  filename = paste0("results/noise_results/", dataset, "_noiseMIA.rds")
+  filename = paste0("../results/noise/by_dataset/", dataset, "_noiseMIA.rds")
   df <- readRDS(filename)
   noiseMIA_list[[c]] <- df
   c = c + 1
@@ -26,7 +25,7 @@ for(dataset in datasets) {
 }
   
 names(noiseMIA_list) <- datasets
-saveRDS(noiseMIA_list, file = "results/noise_list.rds")
+saveRDS(noiseMIA_list, file = "../results/noise/noise_list.rds")
 print("Results recorded")
 print("-----")
 
