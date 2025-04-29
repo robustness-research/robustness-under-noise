@@ -260,7 +260,7 @@ p <- ggplot(deciles_df, aes(x = percentage, y = kappa_loss, color = factor(noise
 
 # Print plot
 print(p)
-ggsave("../results/plots/KLC_plot_deciles.png", p, width = 40, height = 40, dpi = 1000)
+ggsave("../results/plots/KLC_plot_deciles.png", p, width = 40, height = 40, dpi = 600)
 ```
 
 ```{r include=FALSE}
@@ -293,7 +293,7 @@ p <- ggplot(quartiles_df, aes(x = percentage, y = kappa_loss, color = factor(noi
 
 # Print plot
 print(p)
-ggsave("../results/plots/KLC_plot_quartiles.png", p, width = 40, height = 40, dpi = 1000)
+ggsave("../results/plots/KLC_plot_quartiles.png", p, width = 40, height = 40, dpi = 600)
 ```
 
 ```{r include=FALSE}

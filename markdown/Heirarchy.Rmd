@@ -16,7 +16,9 @@ Load libraries
 
 ```{r include=FALSE}
 # Packages that need to be loaded
-pacman::p_load(caret, citation, data.table, dplyr, earth, farff, ggpubr, ggplot2, iml, knitr, rpart, tidyverse , tidyr, xtable)
+library(dplyr)
+library(tidyr)
+library(ggplot2)
 library(GGally) # extensión de ggplot2
 library(factoextra) # visualizacion de los clusters
 library(NbClust) # determinar el mejor numero de grupos
@@ -34,14 +36,8 @@ noise_names <- readRDS("../files/noise_names.rds")
 instances_names = readRDS("../files/instances_names.rds")
 quartiles_names = c("25", "50", "75", "100")
 
-#characteristics_df = readRDS("files/clustering/characteristics.rds")
-
 # Load results
-deciles_df <- readRDS("../results/KLC_plot_deciles.rds")
-
-quartiles_df <- readRDS("../results/KLC_plot_quartiles.rds")
-
-meanKLC <- readRDS("../results/meanKLC.rds") # This is df2 from Classification
+meanKLC <- readRDS("../results/meanKLC_d.rds") # This is df2 from Classification
 meanKLC_q <- readRDS("../results/meanKLC_q.rds") # This is df2_q from Classification
 ```
 
@@ -51,7 +47,7 @@ meanKLC_q <- readRDS("../results/meanKLC_q.rds") # This is df2_q from Classifica
 
 Transform the data to generate a dataframe of 40 variables for each technique
 
-```{r echo=FALSE}
+```{r echo=TRUE}
 # Transform the data
 wide_data <- meanKLC_q %>%
   unite("noise_percentage", noise, percentage, sep = "_") %>%
@@ -65,35 +61,39 @@ print(wide_data)
 
 Compute the distance matrix
 
-```{r echo=FALSE}
+```{r include=FALSE}
 distance_matrix <- dist(wide_data, method = "euclidean")
 ```
 
-```{r eval=FALSE, include=FALSE}
 Calculate elbow and silhouette to find the optimal number of clusters
+
+```{r eval=FALSE, include=FALSE}
 # method parameters: "silhouette", "wss", "gap_stat"
 print(fviz_nbclust(data_renamed, kmeans, method = "wss") + geom_vline(xintercept = 3, linetype = 2) + labs(subtitle = "Elbow method") + theme_minimal())
 ```
 
 Perform Heriarchical Clustering
 
-```{r}
+```{r include=FALSE}
+# Create a vector of pastel colors based on the number of clusters
+colors <- c("#4FB28F","#8F4FB2", "#3681F7", "#F65215")
+# Extra color: "#F7AC36"
+```
+
+```{r echo=TRUE}
 k_list = c(4)
 for(i in k_list) {
   # Perform hierarchical clustering
   hclusters <- hclust(distance_matrix, method = "ward")
 
-  # Create a vector of pastel colors based on the number of clusters
-  pastel_colors <- c("#6EB5FF", "#B28DDF", "#E7EFAC", "#FFABAB", "#FFCCF9")
-
   # Plot dendrogram with labels
   p <- plot(hclusters, hang = -1, labels = wide_data$technique, main = paste("Hierarchical Grouping (k =", i, ")"), xlab = "Observations", sub = NULL)
-  rect.hclust(hclusters, k = i, border = pastel_colors[1:i])
+  rect.hclust(hclusters, k = i, border = colors[1:i])
 
   # Plot dendrogram without labels
   plot(hclusters, hang = -1, main = paste("Hierarchical Grouping (k =", i, ")"), 
        xlab = "Observations", sub = NULL)
-  rect.hclust(hclusters, k = i, border = pastel_colors[1:i])
+  rect.hclust(hclusters, k = i, border = colors[1:i])
 
   # Divide dendrogram into groups
   groups <- cutree(hclusters, k = i)
@@ -102,13 +102,13 @@ for(i in k_list) {
   sil <- silhouette(groups, dist = distance_matrix)
 
   # Create silhouette plot
-  plot(sil, col = pastel_colors[1:i], main = paste("Silhouette Plot (k =", i, ")"))
+  plot(sil, col = colors[1:i], main = paste("Silhouette Plot (k =", i, ")"))
 
-  ggsave("../results/plots/dendogram.png", p, width = 12, height = 10, dpi = 300)
+  ggsave("../results/plots/dendogram.png", p, width = 40, height = 40, dpi = 600)
 }
 ```
 
-```{r}
+```{r include=FALSE}
 clusters <- cutree(hclusters, k = 4)
 
 print(clusters)
@@ -122,7 +122,7 @@ meanKLC_results <- meanKLC_q[meanKLC_q$noise == 100, c("technique", "percentage"
 print(meanKLC_results)
 ```
 
-```{r}
+```{r echo=TRUE}
 # First get unique techniques in the same order as used for clustering
 techniques <- wide_data$technique  # assuming technique is a column in wide_data
 
@@ -141,7 +141,7 @@ cluster_results <- meanKLC_q_with_clusters[c("cluster", "noise", "percentage", "
 print(cluster_results)
 ```
 
-```{r}
+```{r echo=TRUE}
 # Calculate mean kappa loss for each cluster, noise level, and percentage
 cluster_means <- cluster_results %>%
   group_by(cluster, noise, percentage) %>%
@@ -154,10 +154,10 @@ print(cluster_means)
 ```{r echo=TRUE}
 for(instance in quartiles_names) {
   # Filter data for the current instance percentage
-  filtered_data <- subset(meanKLC_q, percentage == instance & noise != 5)
+  filtered_data <- subset(meanKLC_q, percentage == instance)
   
   # Create plot
-  p2 <- ggplot(filtered_data, aes(x = noise, y = kappa_loss, color = factor(technique))) +
+  p1 <- ggplot(filtered_data, aes(x = noise, y = kappa_loss, color = factor(technique))) +
   geom_point() +
   geom_line(aes(noise)) +
   labs(x = "Noise", y = "Kappa Loss", color = "Technique") +
@@ -166,17 +166,17 @@ for(instance in quartiles_names) {
   scale_y_continuous(limits = c(0.0, 0.5), breaks = seq(0, 1, by = 0.1))
   
   # Print plot
-  print(p2)
+  print(p1)
 }
 ```
 
 ```{r echo=TRUE}
 for(instance in quartiles_names) {
   # Filter data for the current instance percentage
-  filtered_data <- subset(cluster_means, percentage == instance & noise != 5)
+  filtered_data <- subset(cluster_means, percentage == instance)
   
   # Create plot
-  p3 <- ggplot(filtered_data, aes(x = noise, y = kappa_loss, color = factor(cluster))) +
+  p2 <- ggplot(filtered_data, aes(x = noise, y = kappa_loss, color = factor(cluster))) +
   geom_point() +
   geom_line(aes(noise)) +
   labs(x = "Noise", y = "Kappa Loss", color = "Cluster") +
@@ -185,19 +185,21 @@ for(instance in quartiles_names) {
   scale_y_continuous(limits = c(0.0, 0.5), breaks = seq(0, 1, by = 0.1))
   
   # Print plot
-  print(p3)
+  print(p2)
 }
 ```
 
-```{r}
+```{r include=FALSE}
 # Create a named vector to map clusters to specific colors
 cluster_colors <- c(
-  "1" = "#FFABAB",  # Cluster 1: Light red/pink
-  "2" = "#B28DDF",  # Cluster 2: Lavender
-  "3" = "#6EB5FF",  # Cluster 3: Light blue
-  "4" = "#E7EFAC"   # Cluster 4: Light green/yellow
+  "1" = "#4FB28F",
+  "2" = "#8F4FB2",
+  "3" = "#3681F7",
+  "4" = "#F65215"
 )
+```
 
+```{r echo=TRUE}
 # Create an empty list to store plots
 plot_list <- list()
 
@@ -206,13 +208,13 @@ for(i in seq_along(quartiles_names)) {
   instance <- quartiles_names[i]
   
   # Filter data for both techniques and clusters
-  filtered_tech_data <- subset(meanKLC_q, percentage == instance & noise != 5)
+  filtered_tech_data <- subset(meanKLC_q, percentage == instance)
   
   # Join cluster information to the technique data
   filtered_tech_data <- filtered_tech_data %>%
     left_join(technique_clusters, by = "technique")
     
-  filtered_cluster_data <- subset(cluster_means, percentage == instance & noise != 5)
+  filtered_cluster_data <- subset(cluster_means, percentage == instance)
   
   # Create combined plot
   combined_plot <- ggplot() +
@@ -269,5 +271,5 @@ if (requireNamespace("patchwork", quietly = TRUE)) {
 }
 
 # Save the grid plot
-ggsave("../results/plots/cluster_curves_grid.png", combined_grid, width = 30, height = 20, dpi = 600)
+ggsave("../results/plots/cluster_curves_grid.png", combined_grid, width = 40, height = 40, dpi = 600)
 ```

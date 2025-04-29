@@ -110,7 +110,7 @@ p1 <- ggplot(df1, aes(x = noise, y = kappa_loss, color = factor(technique))) +
 
 # Print plot
 print(p1)
-ggsave("KLC_means.png", p1, width = 20, height = 16, dpi = 600)
+ggsave("../results/plots/KLC_means.png", p1, width = 40, height = 40, dpi = 600)
 ```
 
 ### Mean KLC curves for each level of noise and quartile of instances
@@ -178,7 +178,7 @@ for(instance in quartiles_names) {
   print(p2)
 }
 
-ggsave("../results/plots/KLC_techniques_q.png", p2, width = 20, height = 16, dpi = 600)
+ggsave("../results/plots/KLC_techniques_q.png", p2, width = 40, height = 40, dpi = 600)
 ```
 
 Plot as grid for deciles
@@ -196,7 +196,7 @@ p2 <- ggplot(df2, aes(x = percentage, y = kappa_loss, color = factor(noise))) +
 
 # Print plot
 print(p2)
-ggsave("../results/plots/KLC_means_deciles.png", p2, width = 20, height = 16, dpi = 600)
+ggsave("../results/plots/KLC_means_deciles.png", p2, width = 40, height = 40, dpi = 600)
 
 ```
 
@@ -215,5 +215,5 @@ p3 <- ggplot(df2_q, aes(x = percentage, y = kappa_loss, color = factor(noise))) 
 
 # Print plot
 print(p3)
-ggsave("../results/plots/KLC_means_quartiles.png", p3, width = 20, height = 16, dpi = 600)
+ggsave("../results/plots/KLC_means_quartiles.png", p3, width = 40, height = 40, dpi = 600)
 ```
