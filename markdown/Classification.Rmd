@@ -35,11 +35,11 @@ quartiles_names = c("25", "50", "75", "100")
 
 # Load results
 deciles_df <- readRDS("../results/KLC_plot_deciles.rds")
-deciles_df <- deciles_df %>% select(-accuracy, -kappa, -dataset_order, -method_order)
+#deciles_df <- deciles_df %>% select(-accuracy, -kappa, -dataset_order, -method_order)
 saveRDS(deciles_df, file = "../results/KLC_plot_deciles.rds")
 
 quartiles_df <- readRDS("../results/KLC_plot_quartiles.rds")
-quartiles_df <- quartiles_df %>% select(-accuracy, -kappa, -dataset_order, -method_order)
+#quartiles_df <- quartiles_df %>% select(-accuracy, -kappa, -dataset_order, -method_order)
 saveRDS(quartiles_df, file = "../results/KLC_plot_quartiles.rds")
 ```
 
