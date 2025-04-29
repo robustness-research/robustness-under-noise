@@ -21,32 +21,28 @@ library(GGally) # extensión de ggplot2
 library(factoextra) # visualizacion de los clusters
 library(NbClust) # determinar el mejor numero de grupos
 library(cluster) # medidas de evaluacion como silhouette
-
 ```
 
 Load files
 
 ```{r include=FALSE}
 # Load files
-datasets <- readRDS("files/datasets.rds")
-method_names = readRDS("files/method_names.rds")
-noise_level <- readRDS("files/noise.rds")
-noise_names <- readRDS("files/noise_names.rds")
-instances_names = readRDS("files/instances_names.rds")
+datasets <- readRDS("../files/datasets.rds")
+method_names = readRDS("../files/method_names.rds")
+noise_level <- readRDS("../files/noise.rds")
+noise_names <- readRDS("../files/noise_names.rds")
+instances_names = readRDS("../files/instances_names.rds")
 quartiles_names = c("25", "50", "75", "100")
 
 #characteristics_df = readRDS("files/clustering/characteristics.rds")
 
 # Load results
-results_df <- readRDS("results/results_plot_d.rds")
-results_df <- results_df %>% select(-accuracy, -kappa, -dataset_order, -method_order)
+deciles_df <- readRDS("../results/KLC_plot_deciles.rds")
 
-quartiles_df <- readRDS("results/results_plot_q.rds")
-quartiles_df <- quartiles_df %>% select(-accuracy, -kappa, -dataset_order, -method_order)
+quartiles_df <- readRDS("../results/KLC_plot_quartiles.rds")
 
-meanKLC <- readRDS("results/meanKLC.rds") # This is df2 from Classification
-meanKLC_q <- readRDS("results/meanKLC_q.rds") # This is df2_q from Classification
-
+meanKLC <- readRDS("../results/meanKLC.rds") # This is df2 from Classification
+meanKLC_q <- readRDS("../results/meanKLC_q.rds") # This is df2_q from Classification
 ```
 
 ## Obtain the heirarchy
@@ -63,7 +59,6 @@ wide_data <- meanKLC_q %>%
 
 # View the transformed data
 print(wide_data)
-
 ```
 
 ### Obtain distance matrix
@@ -72,14 +67,12 @@ Compute the distance matrix
 
 ```{r echo=FALSE}
 distance_matrix <- dist(wide_data, method = "euclidean")
-
 ```
 
 ```{r eval=FALSE, include=FALSE}
 Calculate elbow and silhouette to find the optimal number of clusters
 # method parameters: "silhouette", "wss", "gap_stat"
 print(fviz_nbclust(data_renamed, kmeans, method = "wss") + geom_vline(xintercept = 3, linetype = 2) + labs(subtitle = "Elbow method") + theme_minimal())
-
 ```
 
 Perform Heriarchical Clustering
@@ -111,7 +104,7 @@ for(i in k_list) {
   # Create silhouette plot
   plot(sil, col = pastel_colors[1:i], main = paste("Silhouette Plot (k =", i, ")"))
 
-  ggsave("results/plots/dendogram.png", p, width = 12, height = 10, dpi = 300)
+  ggsave("../results/plots/dendogram.png", p, width = 12, height = 10, dpi = 300)
 }
 ```
 
@@ -119,7 +112,6 @@ for(i in k_list) {
 clusters <- cutree(hclusters, k = 4)
 
 print(clusters)
-
 ```
 
 ## Plots
@@ -128,7 +120,6 @@ print(clusters)
 # Get the highest kappa loss for each technique in each quartile
 meanKLC_results <- meanKLC_q[meanKLC_q$noise == 100, c("technique", "percentage", "kappa_loss")]
 print(meanKLC_results)
-
 ```
 
 ```{r}
@@ -148,7 +139,6 @@ meanKLC_q_with_clusters <- meanKLC_q %>%
 # Get the highest kappa loss for each cluster in each quartile
 cluster_results <- meanKLC_q_with_clusters[c("cluster", "noise", "percentage", "kappa_loss")]
 print(cluster_results)
-
 ```
 
 ```{r}
@@ -178,7 +168,6 @@ for(instance in quartiles_names) {
   # Print plot
   print(p2)
 }
-
 ```
 
 ```{r echo=TRUE}
@@ -198,7 +187,6 @@ for(instance in quartiles_names) {
   # Print plot
   print(p3)
 }
-
 ```
 
 ```{r}
@@ -281,5 +269,5 @@ if (requireNamespace("patchwork", quietly = TRUE)) {
 }
 
 # Save the grid plot
-ggsave("results/plots/cluster_curves_grid.png", combined_grid, width = 30, height = 20, dpi = 600)
+ggsave("../results/plots/cluster_curves_grid.png", combined_grid, width = 30, height = 20, dpi = 600)
 ```
