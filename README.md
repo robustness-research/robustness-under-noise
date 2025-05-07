@@ -48,9 +48,7 @@ To obtain the resulting plots and all other results, please run the files found 
 1.  `KLC_Plots.Rmd`
 2.  `Aggregate_Curves.Rmd`
 3.  `Model_Heirarchy.Rmd`
-4.  `Dataset_Clustering.Rmd`
-...
-
+4.  `Dataset_Clustering.Rmd` 
 Additionally, the data generated to be plotted as an example for the introduction can be found in:
 
 1.  `Example_Data.Rmd`
