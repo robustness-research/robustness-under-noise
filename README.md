@@ -45,9 +45,10 @@ Running these scripts in sequence will generate all required data files for the 
 
 To obtain the resulting plots and all other results, please run the files found in the `markdown/` directory in the following order:
 
-1.  `KLC_plots.Rmd`
-2.  `Classification.Rmd`
-3.  `Heirarchy.Rmd`
+1.  `KLC_Plots.Rmd`
+2.  `Aggregate_Curves.Rmd`
+3.  `Model_Heirarchy.Rmd`
+4.  `Dataset_Clustering.Rmd`
 ...
 
 Additionally, the data generated to be plotted as an example for the introduction can be found in:
