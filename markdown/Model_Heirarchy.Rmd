@@ -1,5 +1,5 @@
 ---
-title: "Clustering of Techniques"
+title: "Clustering of Techniques with Consistent Colors"
 output:
   html_document: default
   pdf_document: default
@@ -76,56 +76,28 @@ print(fviz_nbclust(data_renamed, kmeans, method = "wss") + geom_vline(xintercept
 Perform Heriarchical Clustering
 
 ```{r include=FALSE}
-# Create a vector of colors based on the number of clusters
-colors <- c("#4FB28F","#8F4FB2", "#3681F7", "#F65215")
-# Extra color: "#F7AC36"
+# Define consistent color palette for clusters
+cluster_colors <- c(
+  "1" = "#4FB28F",  # Green
+  "2" = "#8F4FB2",  # Purple
+  "3" = "#3681F7",  # Blue
+  "4" = "#F65215"   # Orange
+)
 ```
 
 ```{r echo=TRUE}
-k_list = c(4)
-for(i in k_list) {
-  # Perform hierarchical clustering
-  hclusters <- hclust(distance_matrix, method = "ward")
+# Perform hierarchical clustering
+hclusters <- hclust(distance_matrix, method = "ward.D")
 
-  # Plot dendrogram with labels
-  p <- plot(hclusters, hang = -1, labels = wide_data$technique, main = paste("Hierarchical Grouping (k =", i, ")"), xlab = "Observations", sub = NULL)
-  rect.hclust(hclusters, k = i, border = colors[1:i])
+# Cut the tree to get k=4 clusters
+k <- 4
+clusters <- cutree(hclusters, k = k)
 
-  # Plot dendrogram without labels
-  plot(hclusters, hang = -1, main = paste("Hierarchical Grouping (k =", i, ")"), 
-       xlab = "Observations", sub = NULL)
-  rect.hclust(hclusters, k = i, border = colors[1:i])
-
-  # Divide dendrogram into groups
-  groups <- cutree(hclusters, k = i)
-
-  # Compute silhouette coefficient for hierarchical clustering
-  sil <- silhouette(groups, dist = distance_matrix)
-
-  # Create silhouette plot
-  plot(sil, col = colors[1:i], main = paste("Silhouette Plot (k =", i, ")"))
-
-  ggsave("../results/plots/dendogram.png", p, width = 40, height = 40, dpi = 600)
-}
-```
-
-```{r include=FALSE}
-clusters <- cutree(hclusters, k = 4)
-
+# Print cluster assignments
 print(clusters)
-```
 
-## Plots
-
-```{r eval=FALSE, include=FALSE}
-# Get the highest kappa loss for each technique in each quartile
-meanKLC_results <- meanKLC_q[meanKLC_q$noise == 100, c("technique", "percentage", "kappa_loss")]
-print(meanKLC_results)
-```
-
-```{r echo=TRUE}
 # First get unique techniques in the same order as used for clustering
-techniques <- wide_data$technique  # assuming technique is a column in wide_data
+techniques <- wide_data$technique
 
 # Create the mapping dataframe
 technique_clusters <- data.frame(
@@ -133,38 +105,66 @@ technique_clusters <- data.frame(
   cluster = clusters
 )
 
-# Now join with original data and filter
+# Create a named vector to map colors to specific clusters
+# This ensures consistent color usage across all plots
+cluster_colors <- c(
+  "1" = "#4FB28F",  # Green
+  "2" = "#8F4FB2",  # Purple
+  "3" = "#3681F7",  # Blue
+  "4" = "#F65215"   # Orange
+)
+
+# Save the dendrogram with colored rectangles by cluster
+png("../results/plots/dendogram.png", width = 4000, height = 3000, res = 600)
+plot(hclusters, hang = -1, labels = wide_data$technique, 
+     main = paste("Hierarchical Grouping (k =", k, ")"), 
+     xlab = "Observations", sub = NULL)
+
+# Create colored rectangles with consistent colors per cluster
+rect.hclust(hclusters, k = k, border = cluster_colors[as.character(1:k)])
+dev.off()
+
+# Generate silhouette plot with consistent colors
+png("../results/plots/silhouette_t.png", width = 4000, height = 3000, res = 600)
+sil <- silhouette(clusters, dist = distance_matrix)
+
+# Use the same colors for silhouette plot as for dendrogram
+plot(sil, col = cluster_colors[as.character(sort(unique(clusters)))], 
+     main = paste("Silhouette Plot (k =", k, ")"))
+dev.off()
+```
+
+## Plots
+
+```{r echo=TRUE}
+# Join cluster assignments with original data
 meanKLC_q_with_clusters <- meanKLC_q %>%
   left_join(technique_clusters, by = "technique")
 
-# Get the highest kappa loss for each cluster in each quartile
-cluster_results <- meanKLC_q_with_clusters[c("cluster", "noise", "percentage", "kappa_loss")]
-print(cluster_results)
-```
-
-```{r echo=TRUE}
 # Calculate mean kappa loss for each cluster, noise level, and percentage
-cluster_means <- cluster_results %>%
+cluster_means <- meanKLC_q_with_clusters %>%
   group_by(cluster, noise, percentage) %>%
-  summarize(kappa_loss = round(mean(kappa_loss, na.rm = TRUE), 2)) %>%
-  ungroup()
+  summarize(kappa_loss = round(mean(kappa_loss, na.rm = TRUE), 2), .groups = 'drop')
 
 print(cluster_means)
 ```
 
 ```{r echo=TRUE}
+# Create plots for individual techniques (optional)
 for(instance in quartiles_names) {
   # Filter data for the current instance percentage
-  filtered_data <- subset(meanKLC_q, percentage == instance)
+  filtered_data <- subset(meanKLC_q_with_clusters, percentage == instance)
   
-  # Create plot
-  p1 <- ggplot(filtered_data, aes(x = noise, y = kappa_loss, color = factor(technique))) +
-  geom_point() +
-  geom_line(aes(noise)) +
-  labs(x = "Noise", y = "Kappa Loss", color = "Technique") +
-  ggtitle(paste0("Kappa Loss Curves by technique, noise and ", instance, " % of instances altered")) +
-  theme_bw() +
-  scale_y_continuous(limits = c(0.0, 0.5), breaks = seq(0, 1, by = 0.1))
+  # Create plot with consistent colors
+  p1 <- ggplot(filtered_data, aes(x = noise, y = kappa_loss, color = factor(cluster))) +
+    geom_point() +
+    geom_line(aes(group = technique)) +
+    # Use consistent colors based on cluster assignment
+    scale_color_manual(values = cluster_colors) +
+    labs(x = "Noise", y = "Kappa Loss", color = "Cluster") +
+    ggtitle(paste0("Kappa Loss Curves by technique, noise and ", instance, " % of instances altered")) +
+    theme_bw() +
+    scale_y_continuous(limits = c(0.0, 0.5), breaks = seq(0, 1, by = 0.1))
   
   # Print plot
   print(p1)
@@ -172,32 +172,25 @@ for(instance in quartiles_names) {
 ```
 
 ```{r echo=TRUE}
+# Create plots for cluster means
 for(instance in quartiles_names) {
   # Filter data for the current instance percentage
   filtered_data <- subset(cluster_means, percentage == instance)
   
-  # Create plot
+  # Create plot with consistent colors
   p2 <- ggplot(filtered_data, aes(x = noise, y = kappa_loss, color = factor(cluster))) +
-  geom_point() +
-  geom_line(aes(noise)) +
-  labs(x = "Noise", y = "Kappa Loss", color = "Cluster") +
-  ggtitle(paste0("Kappa Loss Curves by cluster, noise and ", instance, " % of instances altered")) +
-  theme_bw() +
-  scale_y_continuous(limits = c(0.0, 0.5), breaks = seq(0, 1, by = 0.1))
+    geom_point() +
+    geom_line(aes(group = cluster)) +
+    # Use consistent colors based on cluster assignment
+    scale_color_manual(values = cluster_colors) +
+    labs(x = "Noise", y = "Kappa Loss", color = "Cluster") +
+    ggtitle(paste0("Kappa Loss Curves by cluster, noise and ", instance, " % of instances altered")) +
+    theme_bw() +
+    scale_y_continuous(limits = c(0.0, 0.5), breaks = seq(0, 1, by = 0.1))
   
   # Print plot
   print(p2)
 }
-```
-
-```{r include=FALSE}
-# Create a named vector to map clusters to specific colors
-cluster_colors <- c(
-  "1" = "#4FB28F",
-  "2" = "#8F4FB2",
-  "3" = "#3681F7",
-  "4" = "#F65215"
-)
 ```
 
 ```{r echo=TRUE}
@@ -209,15 +202,10 @@ for(i in seq_along(quartiles_names)) {
   instance <- quartiles_names[i]
   
   # Filter data for both techniques and clusters
-  filtered_tech_data <- subset(meanKLC_q, percentage == instance)
-  
-  # Join cluster information to the technique data
-  filtered_tech_data <- filtered_tech_data %>%
-    left_join(technique_clusters, by = "technique")
-    
+  filtered_tech_data <- subset(meanKLC_q_with_clusters, percentage == instance)
   filtered_cluster_data <- subset(cluster_means, percentage == instance)
   
-  # Create combined plot
+  # Create combined plot with consistent colors
   combined_plot <- ggplot() +
     # Add technique lines with colors based on their cluster
     geom_line(data = filtered_tech_data, 
@@ -235,7 +223,7 @@ for(i in seq_along(quartiles_names)) {
                aes(x = noise, y = kappa_loss, group = cluster, color = factor(cluster)),
                size = 3) +
     
-    # Set the specific color mapping
+    # Set the specific color mapping - consistent with other plots
     scale_color_manual(name = "Cluster", values = cluster_colors) +
     
     # Customize the plot
@@ -250,27 +238,23 @@ for(i in seq_along(quartiles_names)) {
   plot_list[[i]] <- combined_plot
 }
 
-# Arrange all plots in a grid using patchwork or gridExtra
+# Arrange all plots in a grid using patchwork
 if (requireNamespace("patchwork", quietly = TRUE)) {
-  # Using patchwork (preferred if available)
+  # Using patchwork
   library(patchwork)
-  combined_grid <- wrap_plots(plot_list, ncol = 2) + 
+  combined_grid <- wrap_plots(plot_list, ncol = 1) + 
     plot_annotation(title = "Kappa Loss Curves by Technique and Cluster")
   print(combined_grid)
-} else if (requireNamespace("gridExtra", quietly = TRUE)) {
-  # Using gridExtra as an alternative
-  library(gridExtra)
-  grid_title <- textGrob("Kappa Loss Curves by Technique and Cluster", gp = gpar(fontsize = 14))
-  grid_arranged <- grid.arrange(grobs = plot_list, ncol = 2, top = grid_title)
-  print(grid_arranged)
+  
+  # Save the grid plot
+  png(filename = "../results/plots/cluster_curves_grid.png", 
+      width = 4000, height = 12000, res = 600)
+  print(combined_grid)
+  dev.off()
 } else {
-  # If neither package is available, print a message and show plots individually
-  message("Please install either 'patchwork' or 'gridExtra' package for grid layout.")
+  # Print plots individually if patchwork is not available
   for (p in plot_list) {
     print(p)
   }
 }
-
-# Save the grid plot
-ggsave("../results/plots/cluster_curves_grid.png", combined_grid, width = 40, height = 40, dpi = 600)
 ```

@@ -287,6 +287,7 @@ for(i in k_list) {
 
 ```{r echo=TRUE}
 # Divide dendogram into groups
+# k_list <- c(3, 4, 5, 6)
 k_list <- c(3, 4, 5, 6)
 for(i in k_list) {
   # Set seed for reproducibility

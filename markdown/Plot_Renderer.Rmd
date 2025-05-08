@@ -1,56 +1,90 @@
 ---
-title: "Img_renderer"
-output: html_document
+title: "Img_renderer_compact"
+output:
+  html_document: default
+  pdf_document: default
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-```{r, fig.width=40, fig.height=40, out.width="100%"}
+```{r echo=FALSE}
 library(ggplot2)
 library(gridExtra)
 library(png)  # For reading PNG images
 library(grid)  # For rasterGrob
 
-# Assuming all images are PNG files. If they are in another format, adjust accordingly.
 # Read all images
-img_original <- rasterGrob(readPNG("original_data.png"), interpolate=TRUE)
-img_knn <- rasterGrob(readPNG("knn.png"), interpolate=TRUE)
-img_multi <- rasterGrob(readPNG("multi.png"), interpolate=TRUE)
-img_rf <- rasterGrob(readPNG("rf.png"), interpolate=TRUE)
-img_svm <- rasterGrob(readPNG("svm.png"), interpolate=TRUE)
+img_original <- rasterGrob(readPNG("../results/plots/original_data.png"), interpolate=TRUE)
+img_knn <- rasterGrob(readPNG("../results/plots/knn.png"), interpolate=TRUE)
+img_multi <- rasterGrob(readPNG("../results/plots/multi.png"), interpolate=TRUE)
+img_rf <- rasterGrob(readPNG("../results/plots/rf.png"), interpolate=TRUE)
+img_svm <- rasterGrob(readPNG("../results/plots/svm.png"), interpolate=TRUE)
+img_knn_x1 <- rasterGrob(readPNG("../results/plots/knn_x1.png"), interpolate=TRUE)
+img_multi_x1 <- rasterGrob(readPNG("../results/plots/multi_x1.png"), interpolate=TRUE)
+img_rf_x1 <- rasterGrob(readPNG("../results/plots/rf_x1.png"), interpolate=TRUE)
+img_svm_x1 <- rasterGrob(readPNG("../results/plots/svm_x1.png"), interpolate=TRUE)
+img_knn_x2 <- rasterGrob(readPNG("../results/plots/knn_x2.png"), interpolate=TRUE)
+img_multi_x2 <- rasterGrob(readPNG("../results/plots/multi_x2.png"), interpolate=TRUE)
+img_rf_x2 <- rasterGrob(readPNG("../results/plots/rf_x2.png"), interpolate=TRUE)
+img_svm_x2 <- rasterGrob(readPNG("../results/plots/svm_x2.png"), interpolate=TRUE)
 
-img_knn_x1 <- rasterGrob(readPNG("knn_x1.png"), interpolate=TRUE)
-img_multi_x1 <- rasterGrob(readPNG("multi_x1.png"), interpolate=TRUE)
-img_rf_x1 <- rasterGrob(readPNG("rf_x1.png"), interpolate=TRUE)
-img_svm_x1 <- rasterGrob(readPNG("svm_x1.png"), interpolate=TRUE)
+# Create a blank placeholder
+blank <- rectGrob(gp=gpar(col="white", fill="white"))
 
-img_knn_x2 <- rasterGrob(readPNG("knn_x2.png"), interpolate=TRUE)
-img_multi_x2 <- rasterGrob(readPNG("multi_x2.png"), interpolate=TRUE)
-img_rf_x2 <- rasterGrob(readPNG("rf_x2.png"), interpolate=TRUE)
-img_svm_x2 <- rasterGrob(readPNG("svm_x2.png"), interpolate=TRUE)
+# Create row labels as grobs
+row1_label <- textGrob("Original", gp=gpar(fontface="bold"))
+row2_label <- textGrob("Noise in x1", gp=gpar(fontface="bold"))
+row3_label <- textGrob("Noise in x2", gp=gpar(fontface="bold"))
 
-# Create a blank placeholder for empty cells (if needed)
-blank <- grid.rect(gp=gpar(col="white"))
+# Create column labels as grobs
+col1_label <- textGrob("Dataset", gp=gpar(fontface="bold"))
+col2_label <- textGrob("KNN", gp=gpar(fontface="bold"))
+col3_label <- textGrob("Multinomial", gp=gpar(fontface="bold"))
+col4_label <- textGrob("Random Forest", gp=gpar(fontface="bold"))
+col5_label <- textGrob("SVM", gp=gpar(fontface="bold"))
+```
 
-# Arrange the images in a 3x5 grid
+```{r echo=FALSE}
+
+# Main title
+title <- textGrob("Dataset Visualization and Model Decision Boundaries", 
+                 gp=gpar(fontface="bold", fontsize=12))
+
+# Arrange the grid with minimal spacing
 grid_plot <- grid.arrange(
-  # Row 1: Original data (none)
-  img_original, img_knn, img_multi, img_rf, img_svm,
-  
-  # Row 2: Altered x1
-   blank, img_knn_x1, img_multi_x1, img_rf_x1, img_svm_x1,
-  
-  # Row 3: Altered x2
-   blank, img_knn_x2, img_multi_x2, img_rf_x2, img_svm_x2,
-  
-  nrow = 3,
-  ncol = 5
+  title,
+  arrangeGrob(
+    # Column headers
+    col1_label, col2_label, col3_label, col4_label, col5_label,
+    
+    # Row 1: Original data with row label
+    row1_label, img_original, img_knn, img_multi, img_rf, img_svm,
+    
+    # Row 2: Altered x1 with row label
+    row2_label, blank, img_knn_x1, img_multi_x1, img_rf_x1, img_svm_x1,
+    
+    # Row 3: Altered x2 with row label
+    row3_label, blank, img_knn_x2, img_multi_x2, img_rf_x2, img_svm_x2,
+    
+    # Layout with 6 columns (label + 5 plots) and 4 rows (header + 3 rows of data)
+    layout_matrix = rbind(
+      c(NA, 1, 2, 3, 4, 5),      # Column headers
+      c(6, 7, 8, 9, 10, 11),     # Row 1
+      c(12, 13, 14, 15, 16, 17), # Row 2
+      c(18, 19, 20, 21, 22, 23)  # Row 3
+    ),
+    widths = c(0.3, 0.3, 0.3, 0.3, 0.3, 0.3),
+    heights = c (0.05, 0.1, 0.1, 0.1)
+  ),
+  heights = c(0.1, 10),
+  top = textGrob("", gp=gpar(fontsize=12, fontface="bold"))
 )
 
-# To save as a PDF or image, use ggsave() after creating the grid
-# You may need to capture the grid.arrange output
-# grid_plot <- arrangeGrob(...)
-ggsave("layout.pdf", grid_plot, dpi=900)
+# Print the grid
+grid.draw(grid_plot)
+
+# Save as image with compact dimensions
+ggsave("../results/plots/layout.png", grid_plot, width=10, height=5, dpi=600)
 ```

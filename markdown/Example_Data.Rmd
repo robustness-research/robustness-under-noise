@@ -1,7 +1,8 @@
 ---
-title: "Example_Data"
-output: html_document
-date: "2025-04-01"
+title: "Example Data"
+output:
+  html_document: default
+  pdf_document: default
 ---
 
 ```{r setup, include=FALSE}
@@ -23,11 +24,12 @@ Colors for the data
 
 ```{r include=FALSE}
 # Set colors
-c_a = "#f95d9b"
-c_b = "#39a0ca"
-c_c = "#478559"
-c_d = "#161748"
+c_a = "#39a0ca"
+c_b = "#478559"
+c_c = "#161748"
+c_d = "#f95d9b" 
 line = "#1d1e22"
+colors <- c("A" = "#39a0ca", "B" = "#478559", "C" = "#161748", "D" = "#f95d9b")
 ```
 
 Dataset creation
@@ -83,19 +85,26 @@ df <- data.frame(
   division = c(a_labels, b_labels, c_labels, d_labels)
 )
 
-# Plot the data to visualize the divisions
-p <- ggplot(df, aes(x = x1, y = x2, color = division)) +
-  geom_point(alpha = 0.8, show.legend = FALSE) +
-  scale_color_manual(values = c("A" = c_a, "B" = c_b, "C" = c_c, "D" = c_d)) +
-  labs(title = "Dataset with Four Divisions",
-       x = "x1", y = "x2") +
-  theme_minimal() +
-  theme(,
-    axis.title.y = element_text(angle = 0, vjust = 0.5, hjust = 0.5)
-  )
-print(p)
+# Start PNG device
+png("../results/plots/original_data.png", width = 4000, height = 3000, res = 600)
 
-ggsave("original_data.png", plot = p, width = 40, height = 30, dpi = 600)
+# Create the plot with Base R
+# Set up an empty plot area
+plot(NULL, xlim = c(0, 1), ylim = c(0, 1), 
+     xlab = "x1", ylab = "x2", 
+     main = "Dataset with Four Divisions",
+     type = "n")
+
+# Add points for each division
+for(div in c("A", "B", "C", "D")) {
+  subset_df <- df[df$division == div, ]
+  points(subset_df$x1, subset_df$x2, 
+         col = adjustcolor(colors[div], alpha.f = 0.8),
+         pch = 16) # filled circle
+}
+
+# Close the device to save the plot
+dev.off()
 ```
 
 ## Create data partitions
@@ -300,10 +309,10 @@ print(multinom_plot)
 print(rf_plot)
 print(svm_plot)
 
-ggsave("knn.png", plot = knn_plot, width = 20, height = 20, dpi = 600)
-ggsave("multi.png", plot = knn_plot, width = 20, height = 20, dpi = 600)
-ggsave("rf.png", plot = rf_plot, width = 20, height = 20, dpi = 600)
-ggsave("svm.png", plot = svm_plot, width = 20, height = 20, dpi = 600)
+ggsave("../results/plots/knn.png", plot = knn_plot, width = 6.67, height = 5, dpi = 600)
+ggsave("../results/plots/multi.png", plot = knn_plot, width = 6.67, height = 5, dpi = 600)
+ggsave("../results/plots/rf.png", plot = rf_plot, width = 6.67, height = 5, dpi = 600)
+ggsave("../results/plots/svm.png", plot = svm_plot, width = 6.67, height = 5, dpi = 600)
 ```
 
 ## Add noise to data
@@ -497,18 +506,18 @@ print(multinom_plot1)
 print(rf_plot1)
 print(svm_plot1)
 
-ggsave("knn_x1.png", plot = knn_plot1, width = 20, height = 20, dpi = 600)
-ggsave("multi_x1.png", plot = multinom_plot1, width = 20, height = 20, dpi = 600)
-ggsave("rf_x1.png", plot = rf_plot1, width = 20, height = 20, dpi = 600)
-ggsave("svm_x1.png", plot = svm_plot1, width = 20, height = 20, dpi = 600)
+ggsave("../results/plots/knn_x1.png", plot = knn_plot1, width = 6.67, height = 5, dpi = 600)
+ggsave("../results/plots/multi_x1.png", plot = multinom_plot1, width = 6.67, height = 5, dpi = 600)
+ggsave("../results/plots/rf_x1.png", plot = rf_plot1,width = 6.67, height = 5, dpi = 600)
+ggsave("../results/plots/svm_x1.png", plot = svm_plot1, width = 6.67, height = 5, dpi = 600)
 
 print(knn_plot2)
 print(multinom_plot2)
 print(rf_plot2)
 print(svm_plot2)
 
-ggsave("knn_x2.png", plot = knn_plot2, width = 20, height = 20, dpi = 600)
-ggsave("multi_x2.png", plot = multinom_plot2, width = 20, height = 20, dpi = 600)
-ggsave("rf_x2.png", plot = rf_plot2, width = 20, height = 20, dpi = 600)
-ggsave("svm_x2.png", plot = svm_plot2, width = 20, height = 20, dpi = 600)
+ggsave("../results/plots/knn_x2.png", plot = knn_plot2, width = 6.67, height = 5, dpi = 600)
+ggsave("../results/plots/multi_x2.png", plot = multinom_plot2, width = 6.67, height = 5, dpi = 600)
+ggsave("../results/plots/rf_x2.png", plot = rf_plot2, width = 6.67, height = 5, dpi = 600)
+ggsave("../results/plots/svm_x2.png", plot = svm_plot2, width = 6.67, height = 5, dpi = 600)
 ```
