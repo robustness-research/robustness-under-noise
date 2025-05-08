@@ -1,7 +1,7 @@
 # /usr/bin/env/Rscript
 
 # Create data lists
-datasets <- c("analcatdata_authorship", "badges2", "banknote", "blood-transfusion-service-center", "breast-w", "cardiotocography", "climate-model-simulation-crashes", "cmc", "credit-g", "diabetes", "eucalyptus", "iris", "kc1", "liver-disorders", "mfeat-factors", "mfeat-karhunen", "mfeat-zernike", "ozone-level-8hr", "pc4", "phoneme", "qsar-biodeg", "tic-tac-toe", "vowel", "waveform-5000", "wdbc", "wilt") # Dataset names
+datasets <- c("analcatdata_authorship", "badges2", "banknote", "blood-transfusion-service-center", "breast-w", "cardiotocography", "climate-model-simulation-crashes", "cmc", "credit-g", "diabetes", "eucalyptus", "iris", "kc1", "liver-disorders", "mfeat-karhunen", "mfeat-zernike", "ozone-level-8hr", "pc4", "phoneme", "qsar-biodeg", "tic-tac-toe", "vowel", "waveform-5000", "wdbc", "wilt") # Dataset names
 folds <- c("Fold_1", "Fold_2", "Fold_3", "Fold_4", "Fold_5") # Set names to each fold
 methods = c("C5.0", "ctree", "fda", "gbm", "gcvEarth", "JRip", "lvq", "mlpML", "multinom", "naive_bayes", "PART", "rbfDDA", "rda", "rf", "rpart", "simpls", "svmLinear", "svmRadial", "rfRules") #ML techniques in alphabetical order and excluding knn and glmBayes (memory issues if executed in the same for loop)
 method_names = c("C5.0", "ctree", "fda", "gbm", "gcvEarth", "JRip", "lvq", "mlpML", "multinom", "naive_bayes", "PART", "rbfDDA", "rda", "rf", "rpart", "simpls", "svmLinear", "svmRadial", "rfRules", "knn", "bayesglm") # ML techniques with knn and glmBayes

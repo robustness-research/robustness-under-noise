@@ -1,9 +1,8 @@
 ---
-title: "Kappa Loss Curves"
+title: "Kappa Loss Curves for all datasets and methods"
 output:
   html_document: default
   pdf_document: default
-date: "2024-03-25"
 ---
 
 ```{r setup, include=FALSE}

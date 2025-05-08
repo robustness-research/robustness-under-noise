@@ -1,0 +1,218 @@
+---
+title: "Aggregate KLC Curves"
+output:
+  html_document: default
+  pdf_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Kappa results from altered datasets
+
+## Preliminary steps
+
+Load libraries
+
+```{r, include=FALSE}
+# Packages that need to be loaded
+library(dplyr)
+library(ggplot2)
+```
+
+Load files
+
+```{r include=FALSE}
+# Load files
+datasets <- readRDS("../files/datasets.rds")
+method_names = readRDS("../files/method_names.rds")
+noise_level <- readRDS("../files/noise.rds")
+noise_names <- readRDS("../files/noise_names.rds")
+instances_names = readRDS("../files/instances_names.rds")
+quartiles_names = c("25", "50", "75", "100")
+
+# Load results
+deciles_df <- readRDS("../results/KLC_plot_deciles.rds")
+#deciles_df <- deciles_df %>% select(-accuracy, -kappa, -dataset_order, -method_order)
+saveRDS(deciles_df, file = "../results/KLC_plot_deciles.rds")
+
+quartiles_df <- readRDS("../results/KLC_plot_quartiles.rds")
+#quartiles_df <- quartiles_df %>% select(-accuracy, -kappa, -dataset_order, -method_order)
+saveRDS(quartiles_df, file = "../results/KLC_plot_quartiles.rds")
+```
+
+## Obtain the aggregated curves from data
+
+### Mean KLC curves for each level of noise
+
+`df1` contains the mean kappa loss value of all datasets for each level of noise only.
+
+```{r include=FALSE}
+df1 <- deciles_df %>%
+    group_by(technique, noise) %>%
+    summarize(kappa_loss = round(mean(kappa_loss, na.rm = TRUE), 2)) %>%
+    ungroup()
+```
+
+#### Plot the results
+
+Plot each technique separately
+
+```{r eval=FALSE, include=FALSE}
+for(method in method_names){
+  # Filter data for the current technique
+  filtered_data <- subset(df1, technique == method)
+  
+  # Create plot
+  p1 <- ggplot(filtered_data, aes(x = noise, y = kappa_loss)) +
+  geom_point() +
+  geom_line(aes(noise)) +
+  labs(x = "Noise", y = "Kappa Loss") +
+  ggtitle(paste0("Technique ", method)) +
+  theme_bw() +
+  scale_y_continuous(limits = c(0.0, 1), breaks = seq(0, 1, by = 0.1))
+
+  # Print plot
+  print(p1)
+}
+```
+
+Plot all techniques overlapping
+
+```{r eval=FALSE, include=FALSE}
+# Create plot
+p1 <- ggplot(df1, aes(x = noise, y = kappa_loss, color = factor(technique))) +
+geom_point() +
+geom_line(aes(noise)) +
+labs(x = "Noise", y = "Kappa Loss", color = "Technique") +
+ggtitle("Kappa Loss Curves by technique and noise") +
+theme_bw() +
+scale_y_continuous(limits = c(0.0, 1), breaks = seq(0, 1, by = 0.1))
+
+# Print plot
+print(p1)
+```
+
+Plot as a grid
+
+```{r eval=FALSE, include=FALSE}
+# Create plot
+p1 <- ggplot(df1, aes(x = noise, y = kappa_loss, color = factor(technique))) +
+  geom_point() +
+  geom_line(aes(noise)) +
+  labs(x = "Noise", y = "Kappa Loss") +
+  ggtitle("Kappa Loss Curves by technique and noise") +
+  theme_bw() +
+  scale_y_continuous(limits = c(0.0, 1), breaks = seq(0, 1, by = 0.1)) +
+  facet_wrap(~ technique)
+
+# Print plot
+print(p1)
+ggsave("../results/plots/KLC_means.png", p1, width = 40, height = 40, dpi = 600)
+```
+
+### Mean KLC curves for each level of noise and quartile of instances
+
+`df2` contains the mean kappa loss value of all datasets for each decile and level of noise.
+
+```{r include=FALSE}
+df2 <- deciles_df %>%
+    group_by(technique, noise, percentage) %>%
+    summarize(kappa_loss = round(mean(kappa_loss, na.rm = TRUE), 2)) %>%
+    ungroup()
+
+df2_q <- quartiles_df %>%
+    group_by(technique, noise, percentage) %>%
+    summarize(kappa_loss = round(mean(kappa_loss, na.rm = TRUE), 2)) %>%
+    ungroup()
+
+saveRDS(df2, file = "../results/meanKLC_d.rds")
+saveRDS(df2_q, file = "../results/meanKLC_q.rds")
+```
+
+#### Plot the results
+
+Plot each technique separately
+
+```{r eval=FALSE, include=FALSE}
+# Create plot
+for(method in method_names){
+  for(instance in instances_names) {
+      # Filter data for the current technique and instance percentage
+      filtered_data <- subset(df2, technique == method & percentage == instance)
+      
+      # Create plot
+      p2 <- ggplot(filtered_data, aes(x = noise, y = kappa_loss)) +
+      geom_point() +
+      geom_line(aes(noise)) +
+      labs(x = "Noise", y = "Kappa Loss") +
+      ggtitle(paste0("Technique ", method, " for altered percentage ", instance)) +
+      theme_bw() +
+      scale_y_continuous(limits = c(0.0, 0.5), breaks = seq(0, 1, by = 0.1))
+  
+    # Print plot
+    print(p2)
+  }
+}
+```
+
+Plot all techniques overlapping
+
+```{r echo=TRUE}
+for(instance in quartiles_names) {
+  # Filter data for the current instance percentage
+  filtered_data <- subset(df2_q, percentage == instance & noise != 5)
+  
+  # Create plot
+  p2 <- ggplot(filtered_data, aes(x = noise, y = kappa_loss, color = factor(technique))) +
+  geom_point() +
+  geom_line(aes(noise)) +
+  labs(x = "Noise", y = "Kappa Loss", color = "Technique") +
+  ggtitle(paste0("Kappa Loss Curves by technique, noise and ", instance, " % of instances altered")) +
+  theme_bw() +
+  scale_y_continuous(limits = c(0.0, 0.5), breaks = seq(0, 1, by = 0.1))
+  
+  # Print plot
+  print(p2)
+}
+
+ggsave("../results/plots/KLC_techniques_q.png", p2, width = 40, height = 40, dpi = 600)
+```
+
+Plot as grid for deciles
+
+```{r echo=TRUE}
+# Create plot
+p2 <- ggplot(df2, aes(x = percentage, y = kappa_loss, color = factor(noise))) +
+  geom_point() +
+  geom_line(aes(percentage)) +
+  labs(x = "Noise", y = "Kappa Loss") +
+  ggtitle("Kappa Loss Curves by technique, noise and percentage of instances altered") +
+  theme_bw() +
+  scale_y_continuous(limits = c(0.0, 0.5), breaks = seq(0, 1, by = 0.1)) +
+  facet_wrap(~ technique)
+
+# Print plot
+print(p2)
+ggsave("../results/plots/KLC_means_deciles.png", p2, width = 40, height = 40, dpi = 600)
+
+```
+
+Plot as grid for quartiles
+
+```{r echo=TRUE}
+# Create plot
+p3 <- ggplot(df2_q, aes(x = percentage, y = kappa_loss, color = factor(noise))) +
+  geom_point() +
+  geom_line(aes(percentage)) +
+  labs(x = "Noise", y = "Kappa Loss") +
+  ggtitle("Kappa Loss Curves by technique, noise and percentage of instances altered") +
+  theme_bw() +
+  scale_y_continuous(limits = c(0.0, 0.5), breaks = seq(0, 1, by = 0.1)) +
+  facet_wrap(~ technique)
+
+# Print plot
+print(p3)
+ggsave("../results/plots/KLC_means_quartiles.png", p3, width = 40, height = 40, dpi = 600)
+```
