@@ -1,7 +1,7 @@
 # /usr/bin/env/Rscript
 
 # Packages that need to be loaded
-pacman::p_load(caret, iml, citation, dplyr, earth, lime, data.table)
+pacman::p_load(caret, iml, citation, dplyr, earth, lime, data.table, C50)
 
 # Set the seed to make the experiment reproducible
 set.seed(1)
