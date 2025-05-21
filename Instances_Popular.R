@@ -11,7 +11,7 @@ args <- commandArgs(trailingOnly = TRUE)
 datasets <- args
 fold_names <- readRDS("files/folds.rds")
 methods <- readRDS("files/methods.rds")
-techniques_names = readRDS("files/techniques.rds")
+method_names = readRDS("files/method_names.rds")
 control <- readRDS("files/control.rds")
 noise_level <- readRDS("files/noise.rds")
 noise_names <- readRDS("files/noise_names.rds")
