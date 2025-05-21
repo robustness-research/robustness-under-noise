@@ -16,7 +16,7 @@ control <- readRDS("files/control.rds")
 noise_level <- readRDS("files/noise.rds")
 noise_names <- readRDS("files/noise_names.rds")
 instances <- append(readRDS("files/instances.rds"), c(0.25, 0.75))
-instances_names <- readRDS("files/percentages.rds")
+instances_names <- append(readRDS("files/instances_names.rds"), c("25", "75"))
 
 # Load previous results
 mia_df <- readRDS("results/mia_df.rds")
