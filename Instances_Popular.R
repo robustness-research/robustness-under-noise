@@ -19,8 +19,8 @@ instances <- append(readRDS("files/instances.rds"), c(0.25, 0.75))
 instances_names <- append(readRDS("files/instances_names.rds"), c("25", "75"))
 
 # Load previous results
-mia_df <- readRDS("results/mia_df.rds")
-noiseMIA_list <- readRDS("results/noise_list.rds")
+mia_df <- readRDS("results/most_important_attr/mia_df.rds")
+noiseMIA_list <- readRDS("results/noise/noise_list.rds")
 
 # Create a list to store the attribute lists per dataframe
 dataset_list <- list()
