@@ -15,7 +15,7 @@ techniques_names = readRDS("files/techniques.rds")
 control <- readRDS("files/control.rds")
 noise_level <- readRDS("files/noise.rds")
 noise_names <- readRDS("files/noise_names.rds")
-instances <- readRDS("files/instances.rds")
+instances <- append(readRDS("files/instances.rds"), c(0.25, 0.75))
 instances_names <- readRDS("files/percentages.rds")
 
 # Load previous results
@@ -124,6 +124,8 @@ for(dataset in datasets) {
         fit = caret::train(class ~ ., data = train_df, method = "rpart")
       }else if(method == "simpls"){
         fit = caret::train(class ~ ., data = train_df, method = "simpls")
+      }else if(method == "svmLinear"){
+        fit = caret::train(class ~ ., data = train_df, method = "svmLinear")
       }else if(method == "svmRadial"){
         fit = caret::train(class ~ ., data = train_df, method = "svmRadial")
       }else if(method == "rfRules"){
