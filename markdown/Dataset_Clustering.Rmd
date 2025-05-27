@@ -25,6 +25,7 @@ library(cluster) # medidas de evaluacion como silhouette
 library(flexclust) 
 library(smacof) 
 library(MASS) 
+library(ggrepel) # for non-overlapping text labels
 ```
 
 Load files
@@ -41,125 +42,46 @@ quartiles_names = c("25", "50", "75", "100")
 # Load results
 deciles_df <- readRDS("../results/KLC_plot_deciles.rds")
 #deciles_df <- deciles_df %>% select(-accuracy, -kappa, -dataset_order, -method_order)
-saveRDS(deciles_df, file = "../results/KLC_plot_deciles.rds")
+#saveRDS(deciles_df, file = "../results/KLC_plot_deciles.rds")
 
 quartiles_df <- readRDS("../results/KLC_plot_quartiles.rds")
 #quartiles_df <- quartiles_df %>% select(-accuracy, -kappa, -dataset_order, -method_order)
-saveRDS(quartiles_df, file = "../results/KLC_plot_quartiles.rds")
+#saveRDS(quartiles_df, file = "../results/KLC_plot_quartiles.rds")
 ```
 
 ------------------------------------------------------------------------
 
-# Select datasets
+# Clustering
 
-### Auxiliary functions to obtain information about the datasets
+## Obtain the clustering
 
-Create a function to get the number of instances from a dataset
+### Preprocess the data
 
-```{r, include=FALSE}
-# Function to get the number of instances from a dataset
-get_num_instances <- function(dataset) {
-  num_instances <- nrow(dataset)
-  return(num_instances)
-}
+Transform the data to generate a dataframe to have datasets as rows
+
+```{r echo=TRUE}
+# Transform the data
+wide_data <- quartiles_df %>%
+  # First aggregate across techniques to get average kappa loss per dataset
+  group_by(dataset_name, noise, percentage) %>%
+  summarize(avg_kappa_loss = mean(kappa_loss, na.rm = TRUE), .groups = 'drop') %>%
+  # Then transform to wide format
+  unite("noise_percentage", noise, percentage, sep = "_") %>%
+  spread(key = noise_percentage, value = avg_kappa_loss)
+
+# View the transformed data
+print(wide_data)
 ```
 
-Create a function to determine the type of each attribute
+### Obtain distance matrix
 
-```{r, include=FALSE}
-# Function to determine the type of each attribute
-get_attribute_type <- function(dataset) {
-  # Exclude the "class" column
-  dataset_subset <- dataset[, !names(dataset) %in% "class"]
-  
-  # Initialize counts
-  numerical_count <- 0
-  nominal_count <- 0
-  
-  # Loop through columns
-  for (col in names(dataset_subset)) {
-    if (is.numeric(dataset_subset[[col]])) {
-      numerical_count <- numerical_count + 1
-    } else {
-      nominal_count <- nominal_count + 1
-    }
-  }
-  
-  # Return counts
-  return(list(numerical = numerical_count, nominal = nominal_count))
-}
-```
-
-Create a function to determine if dataset is binary or multiclass
-
-```{r, include=FALSE}
-# Function to determine if dataset is binary or multiclass
-is_binary <- function(dataset) {
-  unique_classes <- unique(dataset$class)
-  num_unique_classes <- length(unique_classes)
-  
-  if (num_unique_classes == 2) {
-    return("binary")
-  } else if (num_unique_classes > 2) {
-    return("multiclass")
-  } else {
-    stop("Invalid number of unique classes")
-  }
-}
-```
-
-### Information about the datasets
-
-Create a table that shows all datasets and a summary of their data: **`characteristics_df`**
+Compute the distance matrix
 
 ```{r include=FALSE}
-# Create a dataframe to store the summary
-  characteristics_df <- data.frame(
-  dataset_name = character(0),
-  instances_n = numeric(0),
-  attributes_num = numeric(0),
-  attributes_nom = numeric(0),
-  dataset_type = character(0),
-  stringsAsFactors = FALSE
-)
-
-# Iterate through datasets
-for (dataset_name in datasets) {
-  # Load dataset
-  filename = paste0("../datasets/", dataset_name, ".rds")
-  dataset <- readRDS(filename)
-  # Calculate summary metrics
-  num_instances <- get_num_instances(dataset)
-  attribute_types <- get_attribute_type(dataset)
-  dataset_type <- is_binary(dataset)
-  # Add to summary dataframe
-    characteristics_df <- bind_rows(characteristics_df, data.frame(
-    dataset_name = dataset_name,
-    instances_n = num_instances,
-    attributes_num = attribute_types$numerical,
-    attributes_nom = attribute_types$nominal,
-    dataset_type = dataset_type
-  ))
-}
-  
-characteristics_df$dataset_type = ifelse(characteristics_df$dataset_type == "binary", 0, 1)
-
-# Convert all data to numeric
-characteristics_df$instances_n <- as.numeric(characteristics_df$instances_n)
-characteristics_df$attributes_num <- as.numeric(characteristics_df$attributes_num)
-characteristics_df$attributes_nom <- as.numeric(characteristics_df$attributes_nom)
-characteristics_df$dataset_type <- as.numeric(characteristics_df$dataset_type)
-
-# Combine attribute columns
-#characteristics_df$attributes <- characteristics_df$attributes_num + characteristics_df$attributes_nom
-
-# Print the summary dataframe
-print(characteristics_df)
-
-saveRDS(characteristics_df, "../files/clustering/characteristics.rds")
+distance_matrix <- dist(wide_data[, -1], method = "euclidean")
 ```
 
-# Clustering
+### Perform Heriarchical Clustering
 
 Colors for clustering
 
@@ -179,361 +101,82 @@ cluster_colors <- c(
 ) #F7AC36, #BF1F5A
 ```
 
-## Clustering on the original data
-
-#### Scale the data
-
-In **`clusters_scaled`** we have the scaled data of the characteristics
-
-```{r include=FALSE}
-# Euclidean distances between the rows
-clusters_scaled <- scale(characteristics_df[,-1])
-
-# Add dataset names back
-clusters_scaled <- cbind(dataset_name = characteristics_df$dataset_name, clusters_scaled)
-
-# Turn into dataframe
-clusters_scaled <- as.data.frame(clusters_scaled)
-
-# Print the scaled dataframe
-print(clusters_scaled)
-
-saveRDS(clusters_scaled, "../files/clustering/cl_scaled.rds")
-```
-
-#### Obtain euclidean distances matrix
-
-Make sure all necessary data is numeric
-
-```{r include=FALSE}
-clusters_scaled$instances_n <- as.numeric(clusters_scaled$instances_n)
-clusters_scaled$attributes_num <- as.numeric(clusters_scaled$attributes_num)
-clusters_scaled$attributes_nom <- as.numeric(clusters_scaled$attributes_nom)
-clusters_scaled$dataset_type <- as.numeric(clusters_scaled$dataset_type)
-
-saveRDS(clusters_scaled, "../files/clustering/cl_scaled.rds")
-```
-
-In **`dmatrix`** we have the distance matrix for the scaled data
-
-```{r include=FALSE}
-set.seed(1)
-# Euclidean distances between the rows
-dmatrix <- dist(clusters_scaled[,-1])
-
-# Print the distance matrix
-print(dmatrix)
-
-saveRDS(dmatrix, "../files/clustering/dmatrix.rds")
-```
-
-### Calculate elbow and silhouette to find optimal number of clusters
-
-#### Elbow for **`clusters_scaled`**
-
-```{r echo=TRUE}
-# "silhouette", "wss", "gap_stat"
-print(fviz_nbclust(clusters_scaled[,-1], kmeans, method = "wss") + geom_vline(xintercept = 4, linetype = 2) + labs(subtitle = "Elbow method") + theme_minimal())
-```
-
-#### Get a dataframe with the dataset's names and row ID's
-
-Stored in **`group_list`**
-
-```{r include=FALSE}
-# Create a new table with dataset names and rownames
-groups_df <- cbind(ID = rownames(clusters_scaled), dataset_name = clusters_scaled$dataset_name)
-
-# Turn into dataframe
-groups_df <- as.data.frame(groups_df)
-
-# Make sure all necessary data is numeric
-groups_df$ID <- as.numeric(groups_df$ID)
-```
-
-#### Silhouette with each dataframe in **`clusters_scaled`**
-
 ```{r echo=TRUE}
 # Perform hierarchical clustering
-hclusters <- hclust(dmatrix, method = "ward.D")
+hclusters <- hclust(distance_matrix, method = "ward.D")
 
-# Plot dendrogram
-plot(hclusters, labels = rownames(clusters_scaled), main = "Heirarchal Grouping", xlab = "Observations", sub = NULL, ylim=c(0,1))
+# Cut the tree to get k=4 clusters (tested to be best K)
+k <- 4
+clusters <- cutree(hclusters, k = k)
 
-# Divide dendogram into groups
-k_list <- c(3, 4, 5, 6)
-for(i in k_list) {
-  groups <- cutree(hclusters, k = i)
-  rect.hclust(hclusters, k = i, border = colors[1:i])
-  
-  # Add dendogram groups to the data
-  # Create column name dynamically using paste0
-  column_name <- paste0("hclust", i)
-  groups_df[[column_name]] <- groups
-  
-  # Compute silhouette coefficient for hierarchical clustering
-  sil <- silhouette(groups, dmatrix)
-  
-  # Create silhouette plot
-  plot(sil, col = colors[1:i], main = paste0("HClust Silhouette with K = ", i))
-}
-```
+# Print cluster assignments
+#print(clusters)
 
-> K = 5 seems to be optimal in this case.
+# First get unique datasets in the same order as used for clustering
+datasets <- wide_data$dataset_name
 
-### K-Means with the original characteristics
-
-#### K-Means with each dataframe in **`clusters_scaled`**
-
-```{r echo=TRUE}
-# Divide dendogram into groups
-# k_list <- c(3, 4, 5, 6)
-k_list <- c(3, 4, 5, 6)
-for(i in k_list) {
-  # Set seed for reproducibility
-  set.seed(1)
-  
-  # Run kmeans clustering with dynamic number of centers
-  kmeans <- kmeans(clusters_scaled[,-1], centers = i, nstart = 25)
-  
-  # Extract the centroids
-  centroids <- kmeans$centers
-  
-  # Convert result of kmeans to kcca from flexclust
-  kcca <- as.kcca(kmeans, clusters_scaled[,-1])
-  
-  # Add cluster labels to the groups dataframe with dynamic name
-  column_name <- paste0("kmeans_", i)
-  groups_df[[column_name]] <- kmeans$cluster
-  
-  # Visualize the clusters with custom colors
-  cluster_plot <- fviz_cluster(kmeans, data = clusters_scaled[,-1], 
-                          geom = "point", ellipse.type = "convex", 
-                          ggtheme = theme_minimal())
-  
-  # Apply the custom color palette
-  cluster_plot <- cluster_plot + 
-                  scale_color_manual(values = colors[1:i]) + 
-                  scale_fill_manual(values = colors[1:i]) +
-                  coord_fixed(ratio = 1)
-  
-  # Display the plot
-  print(cluster_plot)
-  
-  # Compute silhouette coefficient for kmeans clustering
-  sil_result <- silhouette(kmeans$cluster, dmatrix, clusters_scaled$dataset_name)
-  
-  # Create silhouette plot
-  plot(sil_result, col = colors[1:i], main = paste0("K = ", i, " Silhouette"))
-}
-```
-
-> K = 5 is optimal.
-
-##### Store the Centroids and the K-Centroids Cluster Analysis
-
-```{r include=FALSE}
-# Save the kmeans for k = 4
-saveRDS(kmeans, file = "../files/clustering/kmeans.rds")
-
-# Save the centroids
-saveRDS(centroids, file = "../files/clustering/centroids.rds")
-
-# Save the KCCA
-saveRDS(kcca, file = "../files/clustering/kcca.rds")
-```
-
-### Multi-dimensional scaling plot (MDS) with the original characteristics
-
-#### MDS Shepard plot for each dataframe in **`clusters_scaled`**
-
-```{r echo=FALSE}
-# Compute Shepard for the distance matrix
-fit_mds <- mds(dmatrix)
-plot(fit_mds, plot.type = "Shepard")
-```
-
-#### MDS Kruskal's Non-metric Multidimensional Scaling for each dataframe in **`clusters_scaled`**
-
-```{r echo=TRUE}
-# Nonmetric MDS
-# N rows (objects) x p columns (variables)
-# each row identified by a unique row name
-fit <- isoMDS(dmatrix, k=2) # k is the number of dim
-
-# Plot solution without labels
-x <- fit$points[,1]
-y <- fit$points[,2]
-plot(x, y, xlab="Coordinate 1", ylab="Coordinate 2",
-  main="Kruskal's Non-metric MDS", type="n")
-points(x, y)
-```
-
-#### Show as table of coordinates
-
-```{r include=FALSE}
-# Create a table with the results
-coord_df <- data.frame(
-  ID = clusters_scaled$dataset_name,
-  Coordinate1 = x,
-  Coordinate2 = y
+# Create the mapping dataframe
+datasets_clusters <- data.frame(
+  dataset = datasets,
+  cluster = clusters
 )
 
-names(coord_df)[names(coord_df) == 'ID'] <- 'dataset_name'
-names(coord_df)[names(coord_df) == 'Coordinate1'] <- 'coordinate_1'
-names(coord_df)[names(coord_df) == 'Coordinate2'] <- 'coordinate_2'
+# Save the dendrogram with colored rectangles by cluster
+png("../results/plots/dendogram_d.png", width = 4000, height = 3000, res = 600)
+plot(hclusters, hang = -1, labels = wide_data$dataset_name, 
+     main = paste("Hierarchical Grouping (k =", k, ")"), 
+     xlab = "Observations", sub = NULL)
 
-# Print the results table
-print(coord_df)
+# Create colored rectangles with consistent colors per cluster
+rect.hclust(hclusters, k = k, border = cluster_colors[as.character(1:k)])
+invisible(dev.off())
+
+# Generate silhouette plot with consistent colors
+png("../results/plots/silhouette_d.png", width = 4000, height = 3000, res = 600)
+sil <- silhouette(clusters, dist = distance_matrix)
+
+# Use the same colors for silhouette plot as for dendrogram
+plot(sil, col = cluster_colors[as.character(sort(unique(clusters)))], 
+     main = paste("Silhouette Plot (k =", k, ")"))
+invisible(dev.off())
 ```
 
-## Plot original data with coordinates clusters
+## Plots
 
 ```{r include=FALSE}
-# Merge the dataframes
-groups_df <- left_join(groups_df, coord_df, by = "dataset_name")
-```
+# Join cluster assignments with original datas
+quartiles_df_with_clusters <- quartiles_df %>%
+  left_join(datasets_clusters, by = c("dataset_name" = "dataset"))
 
-### MDS for K = 4 clusters
-
-```{r echo=FALSE}
-# Plot solution
-x <- groups_df$coordinate_1
-y <- groups_df$coordinate_2
-
-# K = 4
-# Create the plot
-plot(x, y, xlab="Coordinate 1", ylab="Coordinate 2",
-     main="Kruskal's Non-metric MDS", type="n")
-
-# Define colors for each cluster
-point_colors <- colors[groups_df$kmeans_4]
-
-# Add points colored by cluster
-points(x, y, col=point_colors, pch=16)
-
-# Add text labels
-#text(x, y, labels=plot_df[,1], cex=0.7, col=point_colors)
-```
-
-### MDS for K = 5 clusters
-
-```{r echo=FALSE}
-# Plot solution
-x <- groups_df$coordinate_1
-y <- groups_df$coordinate_2
-
-# K = 5
-# Create the plot
-plot(x, y, xlab="Coordinate 1", ylab="Coordinate 2",
-     main="Kruskal's Non-metric MDS", type="n")
-
-# Define colors for each cluster
-point_colors <- colors[groups_df$kmeans_5]
-
-# Add points colored by cluster
-points(x, y, col=point_colors, pch=16)
-
-# Add text labels
-#text(x, y, labels=plot_df[,1], cex=0.7, col=point_colors)
-```
-
-### MDS for K = 6 clusters
-
-```{r echo=FALSE}
-# Plot solution
-x <- groups_df$coordinate_1
-y <- groups_df$coordinate_2
-
-# K = 5
-# Create the plot
-plot(x, y, xlab="Coordinate 1", ylab="Coordinate 2",
-     main="Kruskal's Non-metric MDS", type="n")
- 
-point_colors <- colors[groups_df$kmeans_5]
-
-# Add points colored by cluster
-points(x, y, col=point_colors, pch=16)
-
-# Add text labels
-#text(x, y, labels=plot_df[,1], cex=0.7, col=point_colors)
-```
-
-#### Store the data for the plots
-
-```{r include=FALSE}
-# Save the groups
-saveRDS(groups_df, "../files/clustering/groups.rds")
-```
-
-## Aggregate plots by dataset and cluster
-
-### Mean KLC curves for each level of noise and quartile of instances
-
-`df3` contains the mean kappa loss value of all techniques for each decile and level of noise.
-
-```{r include=FALSE}
-df3 <- deciles_df %>%
-    group_by(dataset_name, noise, percentage) %>%
-    summarize(kappa_loss = round(mean(kappa_loss, na.rm = TRUE), 2)) %>%
-    ungroup()
-
-df3_q <- quartiles_df %>%
-    group_by(dataset_name, noise, percentage) %>%
-    summarize(kappa_loss = round(mean(kappa_loss, na.rm = TRUE), 2)) %>%
-    ungroup()
-
-#saveRDS(df3, file = "../results/meanKLC_d2.rds")
-#saveRDS(df3_q, file = "../results/meanKLC_q2.rds")
-```
-
-### Join the cluster information with the KLC data
-
-```{r include=FALSE}
-# K = 5 is optimal
-df3_q_with_clusters <- df3_q %>%
-  left_join(groups_df[, c("dataset_name", "kmeans_5")], by = "dataset_name") %>%
-  rename(cluster = kmeans_5)
-
-# Get the dataset KLC results with cluster information
-cluster_results <- df3_q_with_clusters[c("cluster", "dataset_name", "noise", "percentage", "kappa_loss")]
-print(cluster_results)
-```
-
-### Calculate mean kappa loss for each dataset cluster, noise level, and percentage
-
-```{r include=FALSE}
-cluster_means <- cluster_results %>%
+# Calculate mean kappa loss for each cluster, noise level, and percentage
+cluster_means <- quartiles_df_with_clusters %>%
   group_by(cluster, noise, percentage) %>%
-  summarize(kappa_loss = round(mean(kappa_loss, na.rm = TRUE), 2)) %>%
-  ungroup()
+  summarize(kappa_loss = round(mean(kappa_loss, na.rm = TRUE), 2), .groups = 'drop')
 
 print(cluster_means)
-
-# Save the results
-#saveRDS(cluster_means, file = "../results/cluster_means.rds")
 ```
 
+Create plots for individual dataset
+
 ```{r echo=TRUE}
+# Aggregate the techniques as well
 for(instance in quartiles_names) {
   # Filter data for the current instance percentage
-  filtered_data <- subset(df3_q, percentage == instance)
+  filtered_data <- subset(quartiles_df_with_clusters, percentage == instance)
+
+  # Aggregate by dataset, noise, and cluster (average across techniques)
+  aggregated_data <- filtered_data %>%
+    group_by(dataset_name, noise, cluster) %>%
+    summarize(kappa_loss = mean(kappa_loss, na.rm = TRUE), .groups = "drop")
   
-  # Join with cluster information
-  filtered_data_with_clusters <- filtered_data %>%
-    left_join(groups_df[, c("dataset_name", "kmeans_5")], by = "dataset_name") %>%
-    rename(cluster = kmeans_5)
-  
-  # Create plot with colors based on clusters
-  p1 <- ggplot(filtered_data_with_clusters, aes(x = noise, y = kappa_loss, 
-                                               color = factor(cluster), 
-                                               group = dataset_name)) +
+  # Create plot with consistent colors
+  p1 <- ggplot(aggregated_data, aes(x = noise, y = kappa_loss, color = factor(cluster))) +
     geom_point() +
-    geom_line() +
-    scale_color_manual(values = cluster_colors, name = "Cluster") +
-    labs(x = "Noise", y = "Kappa Loss") +
-    ggtitle(paste0("Kappa Loss Curves by dataset (colored by cluster), noise and ", 
-                  instance, " % of instances altered")) +
+    geom_line(aes(group = dataset_name)) +
+    # Use consistent colors based on cluster assignment
+    scale_color_manual(values = cluster_colors) +
+    labs(x = "Noise", y = "Kappa Loss", color = "Cluster") +
+    ggtitle(paste0("Kappa Loss Curves by dataset, noise and ", instance, " % of instances altered")) +
     theme_bw() +
     scale_y_continuous(limits = c(0.0, 0.8), breaks = seq(0, 1, by = 0.1))
   
@@ -543,44 +186,53 @@ for(instance in quartiles_names) {
 ```
 
 ```{r echo=TRUE}
+# Create plots for cluster means
 for(instance in quartiles_names) {
   # Filter data for the current instance percentage
   filtered_data <- subset(cluster_means, percentage == instance)
   
-  # Create plot with consistent cluster colors
+  # Create plot with consistent colors
   p2 <- ggplot(filtered_data, aes(x = noise, y = kappa_loss, color = factor(cluster))) +
     geom_point() +
-    geom_line() +
-    scale_color_manual(values = cluster_colors, name = "Cluster") +
-    labs(x = "Noise", y = "Kappa Loss") +
-    ggtitle(paste0("Kappa Loss Curves by cluster, noise and ", 
-                  instance, " % of instances altered")) +
+    geom_line(aes(group = cluster)) +
+    # Use consistent colors based on cluster assignment
+    scale_color_manual(values = cluster_colors) +
+    labs(x = "Noise", y = "Kappa Loss", color = "Cluster") +
+    ggtitle(paste0("Kappa Loss Curves by cluster, noise and ", instance, " % of instances altered")) +
     theme_bw() +
-    scale_y_continuous(limits = c(0.0, 0.5), breaks = seq(0, 1, by = 0.1))
+    scale_y_continuous(limits = c(0.0, 0.8), breaks = seq(0, 1, by = 0.1))
   
   # Print plot
   print(p2)
 }
 ```
 
-```{r echo=FALSE}
+```{r echo=TRUE}
+# Create an empty list to store plots
 plot_list <- list()
 
 # Create all plots and store them in the list
 for(i in seq_along(quartiles_names)) {
   instance <- quartiles_names[i]
   
-  # Filter data for both individual datasets and clusters
-  filtered_dataset_data <- subset(df3_q_with_clusters, percentage == instance)
+  # Filter data for the current instance percentage
+  filtered_dataset_data <- subset(quartiles_df_with_clusters, percentage == instance)
+  
+  # Aggregate by dataset, noise, and cluster
+  aggregated_dataset_data <- filtered_dataset_data %>%
+    group_by(dataset_name, noise, cluster) %>%
+    summarize(kappa_loss = mean(kappa_loss, na.rm = TRUE), .groups = "drop")
+  
+  # Get cluster means (already aggregated)
   filtered_cluster_data <- subset(cluster_means, percentage == instance)
   
-  # Create combined plot
-  combined_dataset_plot <- ggplot() +
-    # Add individual dataset lines with colors based on their cluster
-    geom_line(data = filtered_dataset_data, 
+  # Create combined plot with consistent colors
+  combined_plot <- ggplot() +
+    # Add dataset_name lines with colors based on their cluster
+    geom_line(data = aggregated_dataset_data, 
               aes(x = noise, y = kappa_loss, group = dataset_name, color = factor(cluster)),
               linetype = "solid", alpha = 0.5) +
-    geom_point(data = filtered_dataset_data,
+    geom_point(data = aggregated_dataset_data,
                aes(x = noise, y = kappa_loss, group = dataset_name, color = factor(cluster)),
                alpha = 0.5) +
     
@@ -592,11 +244,11 @@ for(i in seq_along(quartiles_names)) {
                aes(x = noise, y = kappa_loss, group = cluster, color = factor(cluster)),
                size = 3) +
     
-    # Set the specific color mapping
+    # Set the specific color mapping - consistent with other plots
     scale_color_manual(name = "Cluster", values = cluster_colors) +
     
     # Customize the plot
-    scale_y_continuous(limits = c(0.0, 0.8), breaks = seq(0, 1, by = 0.1)) +
+    scale_y_continuous(limits = c(0.0, 1), breaks = seq(0, 1, by = 0.1)) +
     labs(x = "Noise",
          y = "Kappa Loss",
          title = paste0(instance, "% of instances altered")) +
@@ -604,31 +256,26 @@ for(i in seq_along(quartiles_names)) {
     theme(legend.position = "right")
   
   # Store plot in list
-  plot_list[[i]] <- combined_dataset_plot
+  plot_list[[i]] <- combined_plot
 }
 
-# Arrange all plots in a grid using patchwork or gridExtra
+# Arrange all plots in a grid using patchwork
 if (requireNamespace("patchwork", quietly = TRUE)) {
-  # Using patchwork (preferred if available)
+  # Using patchwork
   library(patchwork)
-  dataset_combined_grid <- wrap_plots(plot_list, ncol = 2) + 
-    plot_annotation(title = "Kappa Loss Curves by Dataset and Cluster")
-  print(dataset_combined_grid)
-} else if (requireNamespace("gridExtra", quietly = TRUE)) {
-  # Using gridExtra as an alternative
-  library(gridExtra)
-  dataset_grid_title <- textGrob("Kappa Loss Curves by Dataset and Cluster", gp = gpar(fontsize = 14))
-  dataset_grid_arranged <- grid.arrange(grobs = plot_list, ncol = 2, top = dataset_grid_title)
-  print(dataset_grid_arranged)
+  combined_grid <- wrap_plots(plot_list, ncol = 1) + 
+    plot_annotation(title = "Kappa Loss Curves by Technique and Cluster")
+  print(combined_grid)
+  
+  # Save the grid plot
+  png(filename = "../results/plots/cluster_curves_grid2.png", 
+      width = 4000, height = 12000, res = 600)
+  print(combined_grid)
+  dev.off()
 } else {
-  # If neither package is available, print a message and show plots individually
-  message("Please install either 'patchwork' or 'gridExtra' package for grid layout.")
+  # Print plots individually if patchwork is not available
   for (p in plot_list) {
     print(p)
   }
 }
-
-# Save the grid plot
-ggsave("../results/plots/cluster_curves_grid2.png", dataset_combined_grid, width = 40, height = 40, dpi = 600)
-
 ```

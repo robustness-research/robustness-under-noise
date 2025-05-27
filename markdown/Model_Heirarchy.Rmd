@@ -124,7 +124,7 @@ plot(hclusters, hang = -1, labels = wide_data$technique,
 
 # Create colored rectangles with consistent colors per cluster
 rect.hclust(hclusters, k = k, border = cluster_colors[as.character(1:k)])
-dev.off()
+invisible(dev.off())
 
 # Generate silhouette plot with consistent colors
 png("../results/plots/silhouette_t.png", width = 4000, height = 3000, res = 600)
@@ -133,7 +133,7 @@ sil <- silhouette(clusters, dist = distance_matrix)
 # Use the same colors for silhouette plot as for dendrogram
 plot(sil, col = cluster_colors[as.character(sort(unique(clusters)))], 
      main = paste("Silhouette Plot (k =", k, ")"))
-dev.off()
+invisible(dev.off())
 ```
 
 ## Plots

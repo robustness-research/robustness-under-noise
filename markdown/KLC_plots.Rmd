@@ -173,7 +173,7 @@ for(dataset in datasets) {
 }
 ```
 
-```{r include=FALSE}
+```{r eval=FALSE, include=FALSE}
 # Turn list into dataframe
 quartiles_df = data.frame(matrix(ncol = 6, nrow = 0))
 colnames(quartiles_df) = c("dataset_name", "technique", "noise", "percentage", "accuracy", "kappa")
@@ -201,16 +201,16 @@ for(dataset in datasets) {
 ```{r, include=FALSE}
 deciles_df$accuracy <- as.numeric(deciles_df$accuracy)
 deciles_df$kappa <- as.numeric(deciles_df$kappa)
-quartiles_df$accuracy <- as.numeric(quartiles_df$accuracy)
-quartiles_df$kappa <- as.numeric(quartiles_df$kappa)
+#quartiles_df$accuracy <- as.numeric(quartiles_df$accuracy)
+#quartiles_df$kappa <- as.numeric(quartiles_df$kappa)
 ```
 
 ```{r, include=FALSE}
 # Round the values of accuracy and kappa to two decimals
 deciles_df$accuracy <- round(deciles_df$accuracy, digits = 2)
 deciles_df$kappa <- round(deciles_df$kappa, digits = 2)
-quartiles_df$accuracy <- round(quartiles_df$accuracy, digits = 2)
-quartiles_df$kappa <- round(quartiles_df$kappa, digits = 2)
+#quartiles_df$accuracy <- round(quartiles_df$accuracy, digits = 2)
+#quartiles_df$kappa <- round(quartiles_df$kappa, digits = 2)
 ```
 
 #### Turn noise and instances into numbers
@@ -221,7 +221,7 @@ deciles_df <- deciles_df %>% mutate(noise = recode(noise, "noise_0" = "0", "nois
 deciles_df$noise <- as.numeric(deciles_df$noise)
 ```
 
-```{r, include=FALSE}
+```{r eval=FALSE, include=FALSE}
 quartiles_df$percentage <- as.numeric(quartiles_df$percentage)
 quartiles_df <- quartiles_df %>% mutate(noise = recode(noise, "noise_0" = "0", "noise_5" = "5", "noise_10" = "10", "noise_20" = "20", "noise_30" = "30", "noise_40" = "40", "noise_50" = "50", "noise_60" = "60", "noise_70" = "70", "noise_80" = "80", "noise_90" = "90", "noise_100" = "100"))
 quartiles_df$noise <- as.numeric(quartiles_df$noise)
@@ -234,7 +234,7 @@ quartiles_df$noise <- as.numeric(quartiles_df$noise)
 saveRDS(deciles_df, file = "../results/results_deciles_popular.rds")
 
 #saveRDS(quartiles_df, file = "../results/results_quartiles.rds")
-saveRDS(quartiles_df, file = "../results/results_quartiles_popular.rds")
+#saveRDS(quartiles_df, file = "../results/results_quartiles_popular.rds")
 ```
 
 ## Plotting the Kappa Loss Curves for each dataset and technique in a grid
