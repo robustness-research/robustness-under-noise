@@ -1,0 +1,186 @@
+---
+title: "Attribute Importance Histogram"
+output:
+  html_document: default
+  pdf_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Attribute Importance Histogram for mfeat-zernike using multinom
+
+## Preliminary steps
+
+Load required libraries:
+
+```{r, message=FALSE}
+# Packages that need to be loaded
+library(caret)
+library(iml)
+library(dplyr)
+library(ggplot2)
+library(gridExtra)
+```
+
+## Load the dataset and create the model
+
+```{r}
+# Set seed for reproducibility
+set.seed(1)
+
+# Load the dataset
+dataset <- "mfeat-zernike"
+ds_filename <- paste0("../datasets/", dataset, ".rds")
+df <- readRDS(ds_filename)
+
+# Load the control settings
+control <- readRDS("../files/control.rds")
+
+# Print dataset info
+cat("Dataset:", dataset, "\n")
+cat("Number of observations:", nrow(df), "\n")
+cat("Number of attributes:", ncol(df) - 1, "\n")
+cat("Class distribution:\n")
+print(table(df$class))
+```
+
+## Training the multinom model
+
+```{r}
+# Train the model
+method <- "multinom"
+cat("Training", method, "model...\n")
+
+# Training the multinom model as in Calculator_MIA.R
+fit <- caret::train(
+  class ~ ., 
+  data = df, 
+  method = "multinom", 
+  trControl = control, 
+  tuneGrid = expand.grid(decay = c(0)), 
+  MaxNWts = 10000
+)
+
+cat("Training complete.\n")
+```
+
+## Calculate Feature Importance in order
+
+```{r}
+# Create a predictor object from the trained model
+predictor <- Predictor$new(fit)
+
+# Calculate feature importance
+featImp <- FeatureImp$new(predictor, loss = "ce")
+
+# Display feature importance results
+print(featImp)
+
+# Extract the results dataframe
+importance_df <- featImp$results
+importance_df <- importance_df[order(-importance_df$importance), ]
+print(importance_df)
+```
+
+## Visualize Feature Importance
+
+```{r, fig.width=10, fig.height=6}
+# Create a bar plot of feature importance
+p1 <- ggplot(importance_df, aes(x = reorder(feature, importance), y = importance)) +
+  geom_bar(stat = "identity", fill = "steelblue") +
+  coord_flip() +
+  labs(title = paste("Attribute Importance for", dataset, "using", method),
+       x = "Attribute",
+       y = "Importance") +
+  theme_minimal() +
+  theme(axis.text.y = element_text(size = 8))
+
+# Create a histogram of importance values
+p2 <- ggplot(importance_df, aes(x = importance)) +
+  geom_histogram(bins = 10, fill = "steelblue", color = "black") +
+  labs(title = "Distribution of Importance Values",
+       x = "Importance",
+       y = "Count") +
+  theme_minimal()
+
+# Display the plots side by side
+grid.arrange(p1, p2, ncol = 2)
+```
+
+## Save Results
+
+```{r}
+# Save feature importance data
+results_dir <- "../results/attribute_importance/"
+
+# Create directory if it doesn't exist
+if (!dir.exists(results_dir)) {
+  dir.create(results_dir, recursive = TRUE)
+}
+
+# Save the feature importance dataframe
+result_file <- paste0(results_dir, dataset, "_", method, "_importance.rds")
+saveRDS(importance_df, file = result_file)
+cat("Saved feature importance to:", result_file, "\n")
+
+# Also save as a CSV for easier viewing
+csv_file <- paste0(results_dir, dataset, "_", method, "_importance.csv")
+write.csv(importance_df, file = csv_file, row.names = FALSE)
+cat("Saved feature importance to CSV:", csv_file, "\n")
+
+# Save the plot
+plot_file <- paste0(results_dir, dataset, "_", method, "_importance_plot.png")
+p <- grid.arrange(p1, p2, ncol = 2)
+ggsave(plot_file, p, width = 10, height = 6, dpi = 300)
+cat("Saved importance plot to:", plot_file, "\n")
+```
+
+## Comparison with Random Forest
+
+```{r}
+# Train a random forest model for comparison
+rf_method <- "rf"
+cat("Training", rf_method, "model for comparison...\n")
+
+rf_fit <- caret::train(class ~ ., data = df, method = rf_method)
+
+# Create a predictor object and calculate feature importance
+rf_predictor <- Predictor$new(rf_fit)
+rf_featImp <- FeatureImp$new(rf_predictor, loss = "ce")
+
+# Extract results and order by importance
+rf_importance_df <- rf_featImp$results
+rf_importance_df <- rf_importance_df[order(-rf_importance_df$importance), ]
+
+# Create a combined dataframe for comparison
+comparison_df <- importance_df %>%
+  select(feature, importance) %>%
+  rename(multinom_importance = importance) %>%
+  left_join(
+    rf_importance_df %>%
+      select(feature, importance) %>%
+      rename(rf_importance = importance),
+    by = "feature"
+  )
+
+# Calculate rank difference
+comparison_df$multinom_rank <- rank(-comparison_df$multinom_importance)
+comparison_df$rf_rank <- rank(-comparison_df$rf_importance)
+comparison_df$rank_diff <- comparison_df$multinom_rank - comparison_df$rf_rank
+
+# Display comparison
+comparison_df <- comparison_df[order(comparison_df$multinom_rank), ]
+print(comparison_df)
+
+# Create a grouped bar plot for comparison
+ggplot(comparison_plot_data, aes(x = reorder(feature, -importance), y = importance, fill = method)) +
+  geom_bar(stat = "identity", position = "dodge") +
+  labs(title = paste("Attribute Importance Comparison for", dataset),
+       x = "Attribute",
+       y = "Importance",
+       fill = "Method") +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+```
