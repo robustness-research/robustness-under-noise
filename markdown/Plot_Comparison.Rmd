@@ -44,8 +44,6 @@ KLC_p <- readRDS("../results/KLC_plot_deciles_popular.rds")
 
 ## Extract and Compare Plots for mfeat-zernike with multinom
 
-We'll extract the data for the 'mfeat-zernike' dataset with the 'multinom' technique from both datasets.
-
 ```{r}
 # Filter data for mfeat-zernike dataset and multinom technique from both datasets
 mfeat_multinom_top <- KLC_res %>%
@@ -58,8 +56,6 @@ mfeat_multinom_popular <- KLC_p %>%
 cat("Top attribute dataset rows:", nrow(mfeat_multinom_top), "\n")
 cat("Popular attribute dataset rows:", nrow(mfeat_multinom_popular), "\n")
 ```
-
-Now we'll create and display the plots side by side:
 
 ```{r fig.width=12, fig.height=6}
 # Create plot for top attribute
@@ -88,12 +84,10 @@ plot_popular <- ggplot(mfeat_multinom_popular, aes(x = percentage, y = kappa_los
 grid.arrange(plot_top, plot_popular, ncol = 2)
 ```
 
-Save the comparison plot:
-
 ```{r}
 # Save the comparison plot
 comparison_plot <- grid.arrange(plot_top, plot_popular, ncol = 2)
-ggsave("../results/plots/mfeat_zernike_multinom_comparison.png", comparison_plot, width = 40, height = 40, dpi = 600)
+ggsave("../results/plots/plot_comparison.png", comparison_plot, width = 40, height = 40, dpi = 600)
 ```
 
 ## Analyze Differences

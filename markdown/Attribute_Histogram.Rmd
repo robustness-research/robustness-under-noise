@@ -15,7 +15,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 Load required libraries:
 
-```{r, message=FALSE}
+```{r include=FALSE}
 # Packages that need to be loaded
 library(caret)
 library(iml)
@@ -26,7 +26,7 @@ library(gridExtra)
 
 ## Load the dataset and create the model
 
-```{r}
+```{r include=FALSE}
 # Set seed for reproducibility
 set.seed(1)
 
@@ -48,7 +48,7 @@ print(table(df$class))
 
 ## Training the multinom model
 
-```{r}
+```{r include=FALSE}
 # Train the model
 method <- "multinom"
 cat("Training", method, "model...\n")
@@ -68,7 +68,7 @@ cat("Training complete.\n")
 
 ## Calculate Feature Importance in order
 
-```{r}
+```{r include=FALSE}
 # Create a predictor object from the trained model
 predictor <- Predictor$new(fit)
 
@@ -86,7 +86,7 @@ print(importance_df)
 
 ## Visualize Feature Importance
 
-```{r, fig.width=10, fig.height=6}
+```{r echo=FALSE, fig.height=6, fig.width=10}
 # Create a bar plot of feature importance
 p1 <- ggplot(importance_df, aes(x = reorder(feature, importance), y = importance)) +
   geom_bar(stat = "identity", fill = "steelblue") +
@@ -111,35 +111,40 @@ grid.arrange(p1, p2, ncol = 2)
 
 ## Save Results
 
-```{r}
+```{r include=FALSE}
 # Save feature importance data
-results_dir <- "../results/attribute_importance/"
+data_dir <- "../results/attribute_importance/"
+plots_dir <- "../results/plots/"
 
-# Create directory if it doesn't exist
-if (!dir.exists(results_dir)) {
-  dir.create(results_dir, recursive = TRUE)
+# Create directories if they don't exist
+if (!dir.exists(data_dir)) {
+  dir.create(data_dir, recursive = TRUE)
+}
+if (!dir.exists(plots_dir)) {
+  dir.create(plots_dir, recursive = TRUE)
 }
 
 # Save the feature importance dataframe
-result_file <- paste0(results_dir, dataset, "_", method, "_importance.rds")
+result_file <- paste0(data_dir, dataset, "_", method, "_importance.rds")
 saveRDS(importance_df, file = result_file)
 cat("Saved feature importance to:", result_file, "\n")
 
 # Also save as a CSV for easier viewing
-csv_file <- paste0(results_dir, dataset, "_", method, "_importance.csv")
+csv_file <- paste0(data_dir, dataset, "_", method, "_importance.csv")
 write.csv(importance_df, file = csv_file, row.names = FALSE)
 cat("Saved feature importance to CSV:", csv_file, "\n")
 
-# Save the plot
-plot_file <- paste0(results_dir, dataset, "_", method, "_importance_plot.png")
-p <- grid.arrange(p1, p2, ncol = 2)
-ggsave(plot_file, p, width = 10, height = 6, dpi = 300)
-cat("Saved importance plot to:", plot_file, "\n")
+print(p1)
+
+# Save only the bar plot
+plot_file <- paste0(plots_dir, "importance_plot.png")
+ggsave(plot_file, p1, width = 40, height = 40, dpi = 600)
+cat("Saved importance bar plot to:", plot_file, "\n")
 ```
 
 ## Comparison with Random Forest
 
-```{r}
+```{r eval=FALSE, include=FALSE}
 # Train a random forest model for comparison
 rf_method <- "rf"
 cat("Training", rf_method, "model for comparison...\n")
