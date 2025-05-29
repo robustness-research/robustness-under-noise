@@ -4,8 +4,17 @@
 # Ignore all .log files
 *.log
 
-# Ignore all .png files
-*.png
-
 # Ignore DS_Store file from Mac
 .DS_Store
+
+# Ignore R data files
+.RData
+.Rhistory
+.Rapp.history
+
+# Ignore large output files
+markdown/.RData
+results/plots/KLC_plot_deciles.png
+
+# Ignore potential large directories
+.Rproj.user/
