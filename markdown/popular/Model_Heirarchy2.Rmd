@@ -1,0 +1,264 @@
+---
+title: "Clustering of Techniques with Consistent Colors"
+output:
+  html_document: default
+  pdf_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Heirarchy
+
+## Preliminary steps
+
+Load libraries
+
+```{r include=FALSE}
+# Packages that need to be loaded
+library(dplyr)
+library(tidyr)
+library(ggplot2)
+library(GGally) # extensión de ggplot2
+library(factoextra) # visualizacion de los clusters
+library(NbClust) # determinar el mejor numero de grupos
+library(cluster) # medidas de evaluacion como silhouette
+```
+
+Load files
+
+```{r include=FALSE}
+# Load files
+datasets <- readRDS("../../files/datasets.rds")
+method_names = readRDS("../../files/method_names.rds")
+# Remove svmLinear for testing on most popular key attribute
+method_names <- method_names[! method_names %in% c("svmLinear")]
+noise_level <- readRDS("../../files/noise.rds")
+noise_names <- readRDS("../../files/noise_names.rds")
+instances_names = readRDS("../../files/instances_names.rds")
+#quartiles_names = c("25", "50", "75", "100")
+
+# Load results
+meanKLC <- readRDS("../../results/meanKLC_d2.rds") # This is df2 from Aggregate_Curves
+#meanKLC_q <- readRDS("../../results/meanKLC_q2.rds") # This is df2_q from Aggregate_Curves
+```
+
+## Obtain the heirarchy
+
+### Preprocess the data
+
+Transform the data to generate a dataframe of 40 variables for each technique
+
+```{r echo=TRUE}
+# Transform the data
+wide_data <- meanKLC %>%
+  unite("noise_percentage", noise, percentage, sep = "_") %>%
+  spread(key = noise_percentage, value = kappa_loss)
+
+# View the transformed data
+print(wide_data)
+```
+
+### Obtain distance matrix
+
+Compute the distance matrix
+
+```{r include=FALSE}
+distance_matrix <- dist(wide_data, method = "euclidean")
+```
+
+Calculate elbow and silhouette to find the optimal number of clusters
+
+```{r eval=FALSE, include=FALSE}
+# method parameters: "silhouette", "wss", "gap_stat"
+print(fviz_nbclust(data_renamed, kmeans, method = "wss") + geom_vline(xintercept = 3, linetype = 2) + labs(subtitle = "Elbow method") + theme_minimal())
+```
+
+Perform Heriarchical Clustering
+
+```{r include=FALSE}
+# Define consistent color palette for clusters
+cluster_colors <- c(
+  "1" = "#4FB28F",  # Green
+  "2" = "#8F4FB2",  # Purple
+  "3" = "#3681F7",  # Blue
+  "4" = "#F65215"   # Orange
+)
+```
+
+```{r echo=TRUE}
+# Perform hierarchical clustering
+hclusters <- hclust(distance_matrix, method = "ward.D")
+
+# Cut the tree to get k=4 clusters
+k <- 4
+clusters <- cutree(hclusters, k = k)
+
+# Print cluster assignments
+print(clusters)
+
+# First get unique techniques in the same order as used for clustering
+techniques <- wide_data$technique
+
+# Create the mapping dataframe
+technique_clusters <- data.frame(
+  technique = techniques,
+  cluster = clusters
+)
+
+# Create a named vector to map colors to specific clusters
+# This ensures consistent color usage across all plots
+cluster_colors <- c(
+  "1" = "#4FB28F",  # Green
+  "2" = "#8F4FB2",  # Purple
+  "3" = "#3681F7",  # Blue
+  "4" = "#F65215"   # Orange
+)
+
+# Save the dendrogram with colored rectangles by cluster
+#png("../../results/plots/dendogram.png", width = 4000, height = 3000, res = 600)
+png("../../results/plots/dendogram2.png", width = 4000, height = 3000, res = 600)
+plot(hclusters, hang = -1, labels = wide_data$technique, 
+     main = paste("Hierarchical Grouping (k =", k, ")"), 
+     xlab = "Observations", sub = NULL)
+
+# Create colored rectangles with consistent colors per cluster
+rect.hclust(hclusters, k = k, border = cluster_colors[as.character(1:k)])
+invisible(dev.off())
+
+# Generate silhouette plot with consistent colors
+#png("../../results/plots/silhouette_t.png", width = 4000, height = 3000, res = 600)
+png("../../results/plots/silhouette_t2.png", width = 4000, height = 3000, res = 600)
+sil <- silhouette(clusters, dist = distance_matrix)
+
+# Use the same colors for silhouette plot as for dendrogram
+plot(sil, col = cluster_colors[as.character(sort(unique(clusters)))], 
+     main = paste("Silhouette Plot (k =", k, ")"))
+invisible(dev.off())
+```
+
+## Plots
+
+```{r echo=TRUE}
+# Join cluster assignments with original data
+meanKLC_with_clusters <- meanKLC %>%
+  left_join(technique_clusters, by = "technique")
+
+# Calculate mean kappa loss for each cluster, noise level, and percentage
+cluster_means <- meanKLC_with_clusters %>%
+  group_by(cluster, noise, percentage) %>%
+  summarize(kappa_loss = round(mean(kappa_loss, na.rm = TRUE), 2), .groups = 'drop')
+
+print(cluster_means)
+```
+
+```{r echo=TRUE}
+# Create plots for individual techniques (optional)
+for(instance in instances_names) {
+  # Filter data for the current instance percentage
+  filtered_data <- subset(meanKLC_with_clusters, percentage == instance)
+  
+  # Create plot with consistent colors
+  p1 <- ggplot(filtered_data, aes(x = noise, y = kappa_loss, color = factor(cluster))) +
+    geom_point() +
+    geom_line(aes(group = technique)) +
+    # Use consistent colors based on cluster assignment
+    scale_color_manual(values = cluster_colors) +
+    labs(x = "Noise", y = "Kappa Loss", color = "Cluster") +
+    ggtitle(paste0("Kappa Loss Curves by technique, noise and ", instance, " % of instances altered")) +
+    theme_bw() +
+    scale_y_continuous(limits = c(0.0, 0.5), breaks = seq(0, 1, by = 0.1))
+  
+  # Print plot
+  print(p1)
+}
+```
+
+```{r echo=TRUE}
+# Create plots for cluster means
+for(instance in instances_names) {
+  # Filter data for the current instance percentage
+  filtered_data <- subset(cluster_means, percentage == instance)
+  
+  # Create plot with consistent colors
+  p2 <- ggplot(filtered_data, aes(x = noise, y = kappa_loss, color = factor(cluster))) +
+    geom_point() +
+    geom_line(aes(group = cluster)) +
+    # Use consistent colors based on cluster assignment
+    scale_color_manual(values = cluster_colors) +
+    labs(x = "Noise", y = "Kappa Loss", color = "Cluster") +
+    ggtitle(paste0("Kappa Loss Curves by cluster, noise and ", instance, " % of instances altered")) +
+    theme_bw() +
+    scale_y_continuous(limits = c(0.0, 0.5), breaks = seq(0, 1, by = 0.1))
+  
+  # Print plot
+  print(p2)
+}
+```
+
+```{r echo=TRUE}
+# Create an empty list to store plots
+plot_list <- list()
+
+# Create all plots and store them in the list
+for(i in seq_along(instances_names)) {
+  instance <- instances_names[i]
+  
+  # Filter data for both techniques and clusters
+  filtered_tech_data <- subset(meanKLC_with_clusters, percentage == instance)
+  filtered_cluster_data <- subset(cluster_means, percentage == instance)
+  
+  # Create combined plot with consistent colors
+  combined_plot <- ggplot() +
+    # Add technique lines with colors based on their cluster
+    geom_line(data = filtered_tech_data, 
+              aes(x = noise, y = kappa_loss, group = technique, color = factor(cluster)),
+              linetype = "solid", alpha = 0.5) +
+    geom_point(data = filtered_tech_data,
+               aes(x = noise, y = kappa_loss, group = technique, color = factor(cluster)),
+               alpha = 0.5) +
+    
+    # Add thicker cluster lines to show the averages
+    geom_line(data = filtered_cluster_data,
+              aes(x = noise, y = kappa_loss, group = cluster, color = factor(cluster)),
+              linewidth = 1.5) +
+    geom_point(data = filtered_cluster_data,
+               aes(x = noise, y = kappa_loss, group = cluster, color = factor(cluster)),
+               size = 3) +
+    
+    # Set the specific color mapping - consistent with other plots
+    scale_color_manual(name = "Cluster", values = cluster_colors) +
+    
+    # Customize the plot
+    scale_y_continuous(limits = c(0.0, 0.5), breaks = seq(0, 1, by = 0.1)) +
+    labs(x = "Noise",
+         y = "Kappa Loss",
+         title = paste0(instance, "% of instances altered")) +
+    theme_bw() +
+    theme(legend.position = "right")
+  
+  # Store plot in list
+  plot_list[[i]] <- combined_plot
+}
+
+# Arrange all plots in a grid using patchwork
+if (requireNamespace("patchwork", quietly = TRUE)) {
+  # Using patchwork
+  library(patchwork)
+  combined_grid <- wrap_plots(plot_list, ncol = 1) + 
+    plot_annotation(title = "Kappa Loss Curves by Technique and Cluster")
+  print(combined_grid)
+  
+  # Save the grid plot
+  png(filename = "../../results/plots/cluster_curves_grid2.png", 
+      width = 4000, height = 12000, res = 600)
+  print(combined_grid)
+  dev.off()
+} else {
+  # Print plots individually if patchwork is not available
+  for (p in plot_list) {
+    print(p)
+  }
+}
+```

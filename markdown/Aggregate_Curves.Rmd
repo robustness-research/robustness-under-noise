@@ -35,15 +35,13 @@ instances_names = readRDS("../files/instances_names.rds")
 quartiles_names = c("25", "50", "75", "100")
 
 # Load results
-deciles_df <- readRDS("../results/KLC_plot_deciles_popular.rds")
+deciles_df <- readRDS("../results/KLC_plot_deciles.rds")
 #deciles_df <- deciles_df %>% select(-accuracy, -kappa, -dataset_order, -method_order)
 #saveRDS(deciles_df, file = "../results/KLC_plot_deciles.rds")
-#saveRDS(deciles_df, file = "../results/KLC_plot_deciles_popular.rds")
 
-quartiles_df <- readRDS("../results/KLC_plot_quartiles_popular.png")
+quartiles_df <- readRDS("../results/KLC_plot_quartiles.png")
 #quartiles_df <- quartiles_df %>% select(-accuracy, -kappa, -dataset_order, -method_order)
 #saveRDS(quartiles_df, file = "../results/KLC_plot_quartiles.rds")
-#saveRDS(quartiles_df, file = "../results/KLC_plot_quartiles_popular.png")
 ```
 
 ## Obtain the aggregated curves from data
