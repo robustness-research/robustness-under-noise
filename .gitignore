@@ -4,5 +4,8 @@
 # Ignore all .log files
 *.log
 
+# Ignore all .png files
+*.png
+
 # Ignore DS_Store file from Mac
 .DS_Store
