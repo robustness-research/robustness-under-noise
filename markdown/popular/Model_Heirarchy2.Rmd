@@ -62,28 +62,53 @@ print(wide_data)
 
 ### Obtain distance matrix
 
-Compute the distance matrix
+#### Compute the distance matrix
 
 ```{r include=FALSE}
 distance_matrix <- dist(wide_data, method = "euclidean")
 ```
 
-Calculate elbow and silhouette to find the optimal number of clusters
+#### Find the optimal number of clusters
 
-```{r eval=FALSE, include=FALSE}
-# method parameters: "silhouette", "wss", "gap_stat"
-print(fviz_nbclust(data_renamed, kmeans, method = "wss") + geom_vline(xintercept = 3, linetype = 2) + labs(subtitle = "Elbow method") + theme_minimal())
+```{r include=FALSE}
+clustering_data <- wide_data[,-1]  # Remove the technique column (need only numbers)
 ```
 
+##### Optimal clusters with Elbow
+
+```{r echo=FALSE}
+# method parameters: "silhouette", "wss", "gap_stat"
+print(fviz_nbclust(clustering_data, kmeans, method = "wss") + geom_vline(xintercept = 2, linetype = 2) + labs(subtitle = "Elbow method") + theme_minimal())
+```
+
+##### Optimal clusters with Silhouette
+
+```{r echo=FALSE}
+library(cluster)
+silhouette_scores <- sapply(2:10, function(k) {
+  clusters <- cutree(hclust(distance_matrix, method = "ward.D"), k = k)
+  mean(silhouette(clusters, distance_matrix)[,3])
+})
+
+plot(2:10, silhouette_scores, type = "b", xlab = "Number of clusters", 
+     ylab = "Average silhouette width", main = "Silhouette Method")
+optimal_k <- which.max(silhouette_scores) + 1
+abline(v = optimal_k, lty = 2, col = "#FF0000")
+```
+
+Omitted calculating PCA and NbClust given errors in `Model_Heirarchy.Rmd`
+
 Perform Heriarchical Clustering
+
+Optimal K determined as 2.
 
 ```{r include=FALSE}
 # Define consistent color palette for clusters
 cluster_colors <- c(
   "1" = "#4FB28F",  # Green
-  "2" = "#8F4FB2",  # Purple
+  "2" = "#F65215",   # Orange
   "3" = "#3681F7",  # Blue
-  "4" = "#F65215"   # Orange
+  "4" = "#8F4FB2"  # Purple
 )
 ```
 
@@ -92,7 +117,7 @@ cluster_colors <- c(
 hclusters <- hclust(distance_matrix, method = "ward.D")
 
 # Cut the tree to get k=4 clusters
-k <- 4
+k <- 2
 clusters <- cutree(hclusters, k = k)
 
 # Print cluster assignments
@@ -111,13 +136,10 @@ technique_clusters <- data.frame(
 # This ensures consistent color usage across all plots
 cluster_colors <- c(
   "1" = "#4FB28F",  # Green
-  "2" = "#8F4FB2",  # Purple
-  "3" = "#3681F7",  # Blue
-  "4" = "#F65215"   # Orange
+  "2" = "#F65215"   # Orange
 )
 
 # Save the dendrogram with colored rectangles by cluster
-#png("../../results/plots/dendogram.png", width = 4000, height = 3000, res = 600)
 png("../../results/plots/dendogram2.png", width = 4000, height = 3000, res = 600)
 plot(hclusters, hang = -1, labels = wide_data$technique, 
      main = paste("Hierarchical Grouping (k =", k, ")"), 
@@ -128,7 +150,6 @@ rect.hclust(hclusters, k = k, border = cluster_colors[as.character(1:k)])
 invisible(dev.off())
 
 # Generate silhouette plot with consistent colors
-#png("../../results/plots/silhouette_t.png", width = 4000, height = 3000, res = 600)
 png("../../results/plots/silhouette_t2.png", width = 4000, height = 3000, res = 600)
 sil <- silhouette(clusters, dist = distance_matrix)
 
@@ -136,6 +157,10 @@ sil <- silhouette(clusters, dist = distance_matrix)
 plot(sil, col = cluster_colors[as.character(sort(unique(clusters)))], 
      main = paste("Silhouette Plot (k =", k, ")"))
 invisible(dev.off())
+```
+
+```{r include=FALSE}
+saveRDS(technique_clusters, "../../results/popular_clusters.rds")
 ```
 
 ## Plots

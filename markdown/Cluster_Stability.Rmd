@@ -1,0 +1,323 @@
+---
+title: "Comparing Clustering Results Between Different Attribute Modifications"
+output:
+  html_document: default
+  pdf_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Clustering Stability Comparison
+
+This analysis compares the clustering results between two different approaches: - Clustering based on altering the most important attribute (Model_Hierarchy) - Clustering based on altering the most popular attribute (Model_Hierarchy2)
+
+## Preliminary steps
+
+Load Libraries
+
+```{r include=FALSE}
+# Packages that need to be loaded
+library(dplyr)
+library(tidyr)
+library(ggplot2)
+library(cluster)
+library(dendextend)
+library(patchwork)
+```
+
+Load files
+
+```{r include=FALSE}
+important_clusters <- readRDS("../results/important_clusters.rds")
+popular_clusters <- readRDS("../results/popular_clusters.rds")
+```
+
+# Co-Cluster Instability
+
+## Co-Cluster Instability Function
+
+We use the proportion of disrupted pairs (co-cluster instability) to evaluate the stability of clusters:
+
+```{r include=FALSE}
+# Disrupted Pairs: proportion of pairs that were together and now are not
+pairwise_disruption <- function(labels1, labels2) {
+    n <- length(labels1)
+    count_total <- 0
+    count_disrupted <- 0
+    for (i in 1:(n - 1)) {
+        for (j in (i + 1):n) {
+            same_cluster_1 <- labels1[i] == labels1[j]
+            same_cluster_2 <- labels2[i] == labels2[j]
+            if (same_cluster_1) {
+                count_total <- count_total + 1
+                if (!same_cluster_2) {
+                    count_disrupted <- count_disrupted + 1
+                }
+            }
+        }
+    }
+    if (count_total == 0) return(NA)
+    return(count_disrupted / count_total)
+}
+```
+
+## Calculate Disruption Measure
+
+Calculate the co-cluster instability between the two clustering approaches:
+
+```{r echo=TRUE}
+# We need to ensure both dataframes have the same techniques in the same order
+# Join the two cluster assignments
+common_techniques <- intersect(important_clusters$technique, popular_clusters$technique)
+
+# Filter both datasets to include only common techniques
+imp_clusters_filtered <- important_clusters %>%
+  filter(technique %in% common_techniques) %>%
+  arrange(technique)
+
+pop_clusters_filtered <- popular_clusters %>%
+  filter(technique %in% common_techniques) %>%
+  arrange(technique)
+
+# Extract cluster labels
+labels1 <- imp_clusters_filtered$cluster
+labels2 <- pop_clusters_filtered$cluster
+
+# Create a dataframe to compare both clustering assignments
+comparison_df <- data.frame(
+  technique = imp_clusters_filtered$technique,
+  important_cluster = labels1,
+  popular_cluster = labels2
+)
+
+# Print the comparison dataframe
+print(comparison_df)
+
+# Calculate the disruption measure
+disruption <- pairwise_disruption(labels1, labels2)
+cat("Co-cluster instability (proportion of disrupted pairs):", round(disruption, 4), "\n")
+
+# Create a stability metric (inverse of disruption)
+stability <- 1 - disruption
+cat("Cluster stability (1 - disruption):", round(stability, 4), "\n")
+```
+
+## Visualization of differences
+
+```{r echo=TRUE}
+# Create a heatmap-like visualization of cluster changes
+# We'll add colors to show how different the clusters are
+
+# Define a color palette for both clusterings
+important_colors <- c(
+  "1" = "#4FB28F",  # Green
+  "2" = "#F65215",   # Orange
+  "3" = "#3681F7",  # Blue
+  "4" = "#8F4FB2"  # Purple
+)
+
+popular_colors <- c(
+  "1" = "#4FB28F",  # Green
+  "2" = "#F65215",   # Orange
+  "3" = "#3681F7",  # Blue
+  "4" = "#8F4FB2"  # Purple
+)
+
+# Create a sankey or alluvial diagram to visualize transitions between clusters
+# First prepare the data for plotting
+# We need counts of techniques moving from one cluster to another
+
+transition_counts <- comparison_df %>%
+  group_by(important_cluster, popular_cluster) %>%
+  summarize(count = n(), .groups = 'drop') %>%
+  arrange(important_cluster, popular_cluster)
+
+print(transition_counts)
+
+# Create a stacked bar chart to visualize the transitions
+ggplot(comparison_df, aes(x = factor(important_cluster), fill = factor(popular_cluster))) +
+  geom_bar(position = "fill") +
+  scale_fill_manual(values = popular_colors) +
+  labs(x = "Important Attribute Clusters", 
+       y = "Proportion", 
+       fill = "Popular Attribute Clusters",
+       title = "Cluster Membership Transition") +
+  theme_minimal()
+
+# Create a second view showing the opposite direction
+ggplot(comparison_df, aes(x = factor(popular_cluster), fill = factor(important_cluster))) +
+  geom_bar(position = "fill") +
+  scale_fill_manual(values = important_colors) +
+  labs(x = "Popular Attribute Clusters", 
+       y = "Proportion", 
+       fill = "Important Attribute Clusters",
+       title = "Cluster Membership Transition") +
+  theme_minimal()
+```
+
+## Analysis of cluster changes
+
+Let's analyze which techniques are most likely to move between clusters and what this tells us about the stability of the clustering:
+
+```{r echo=TRUE}
+# Create a new column to flag techniques that changed clusters
+# This requires matching cluster identities between the two clusterings
+# Since cluster numbers are arbitrary, we'll use a simple approach:
+# We'll consider a technique as "changed" if it's not grouped with the same techniques
+
+comparison_df$changed <- FALSE
+
+# For each technique, check if it moved to a cluster with different members
+for(i in 1:nrow(comparison_df)) {
+  # Find techniques that were in the same cluster in important clustering
+  same_important <- comparison_df$technique[comparison_df$important_cluster == comparison_df$important_cluster[i]]
+  
+  # Find techniques that are in the same cluster in popular clustering
+  same_popular <- comparison_df$technique[comparison_df$popular_cluster == comparison_df$popular_cluster[i]]
+  
+  # If any technique that was in the same cluster is now in a different cluster,
+  # or if any technique that wasn't in the same cluster is now in the same cluster,
+  # count this as a change
+  if(!all(same_important %in% same_popular) || !all(same_popular %in% same_important)) {
+    comparison_df$changed[i] <- TRUE
+  }
+}
+
+# Count how many techniques changed clusters
+change_count <- sum(comparison_df$changed)
+change_percentage <- change_count / nrow(comparison_df) * 100
+
+cat("Number of techniques that changed cluster membership:", change_count, 
+    "(", round(change_percentage, 1), "% of all techniques)\n")
+
+# Show which techniques changed clusters
+changed_techniques <- comparison_df %>%
+  filter(changed) %>%
+  arrange(important_cluster, popular_cluster)
+
+print(changed_techniques)
+
+# Cross-tabulation to show the migration between clusters
+cluster_cross_tab <- table(
+  Important = comparison_df$important_cluster,
+  Popular = comparison_df$popular_cluster
+)
+
+print(cluster_cross_tab)
+```
+
+## Dendrogram comparison
+
+Let's visualize the dendrograms side by side to better understand the clustering differences:
+
+```{r echo=TRUE}
+# First we need to read the original hierarchical clustering objects
+# We'll recreate them since we don't have the original hclust objects saved
+
+# Load the original data used for clustering from the Model_Heirarchy files
+meanKLC_q <- readRDS("../results/meanKLC_q.rds")  # For important attribute
+meanKLC_d <- readRDS("../results/meanKLC_d2.rds")  # For popular attribute
+
+# Transform the data like in the original files
+wide_data_important <- meanKLC_q %>%
+  unite("noise_percentage", noise, percentage, sep = "_") %>%
+  spread(key = noise_percentage, value = kappa_loss)
+
+wide_data_popular <- meanKLC_d %>%
+  unite("noise_percentage", noise, percentage, sep = "_") %>%
+  spread(key = noise_percentage, value = kappa_loss)
+
+# Filter to include only techniques that are present in both datasets
+wide_data_important <- wide_data_important %>%
+  filter(technique %in% common_techniques)
+
+wide_data_popular <- wide_data_popular %>%
+  filter(technique %in% common_techniques)
+
+# Make sure both dataframes are in the same order
+wide_data_important <- wide_data_important %>%
+  arrange(technique)
+
+wide_data_popular <- wide_data_popular %>%
+  arrange(technique)
+
+# Compute distance matrices
+dist_important <- dist(wide_data_important[,-1], method = "euclidean")
+dist_popular <- dist(wide_data_popular[,-1], method = "euclidean")
+
+# Perform hierarchical clustering
+hc_important <- hclust(dist_important, method = "ward.D")
+hc_popular <- hclust(dist_popular, method = "ward.D")
+
+# Add technique names as labels
+hc_important$labels <- wide_data_important$technique
+hc_popular$labels <- wide_data_popular$technique
+
+# Convert to dendrograms
+dend_important <- as.dendrogram(hc_important)
+dend_popular <- as.dendrogram(hc_popular)
+
+# Color the branches by the original cluster assignment
+dend_important <- color_branches(dend_important, k=4, col=important_colors[1:4])
+dend_popular <- color_branches(dend_popular, k=2, col=popular_colors[1:2])
+
+# Make sure labels are visible and properly sized
+dend_important <- set(dend_important, "labels_cex", 0.8)
+dend_popular <- set(dend_popular, "labels_cex", 0.8)
+
+# Create a tanglegram to compare dendrograms
+dend_list <- dendextend::dendlist(dend_important, dend_popular)
+
+# Print the tanglegram with technique labels
+tanglegram_plot <- tanglegram(dend_list, 
+                             common_subtrees_color_branches = TRUE,
+                             highlight_distinct_edges = TRUE, 
+                             highlight_branches_lwd = 2,
+                             margin_inner = 7,  # Increased margin for labels
+                             main_left = "Important Attribute Clusters",
+                             main_right = "Popular Attribute Clusters",
+                             lwd = 1.5,
+                             lab.cex = 0.8)  # Control label text size
+
+# Set figure options for better rendering
+options(repr.plot.width = 12, repr.plot.height = 10)
+
+# Try to calculate and display entanglement metric (lower means better alignment)
+tryCatch({
+  entanglement <- dendextend::entanglement(dend_list)
+  cat("Entanglement measure:", round(entanglement, 4), 
+      "(0 = perfect alignment, 1 = maximum entanglement)\n")
+}, error = function(e) {
+  cat("Unable to calculate entanglement measure:", e$message, "\n")
+  cat("This is often due to label mismatches or entanglement calculation constraints.\n")
+})
+
+# Set knitr options to ensure plots are large enough for labels
+knitr::opts_chunk$set(fig.width = 12, fig.height = 10)
+```
+
+## Visualization options for better readability
+
+```{r echo=TRUE}
+# Plot the dendrograms individually with better label visibility
+par(mar = c(9, 4, 4, 2) + 0.1)  # Increase bottom margin for labels
+
+# Plot the important attribute dendrogram
+plot(dend_important, 
+     main = "Important Attribute Clusters",
+     nodePar = list(lab.cex = 0.8),
+     ylab = "Height",
+     horiz = FALSE)  # Vertical dendrogram for better label spacing
+
+# Plot popular attribute dendrogram 
+plot(dend_popular, 
+     main = "Popular Attribute Clusters",
+     nodePar = list(lab.cex = 0.8),
+     ylab = "Height",
+     horiz = FALSE)  # Vertical dendrogram for better label spacing
+
+# Reset graphical parameters
+par(mar = c(5, 4, 4, 2) + 0.1)
+```

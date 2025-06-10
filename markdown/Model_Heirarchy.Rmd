@@ -32,8 +32,6 @@ Load files
 # Load files
 datasets <- readRDS("../files/datasets.rds")
 method_names = readRDS("../files/method_names.rds")
-# Remove svmLinear for testing on most popular key attribute
-method_names <- method_names[! method_names %in% c("svmLinear")]
 noise_level <- readRDS("../files/noise.rds")
 noise_names <- readRDS("../files/noise_names.rds")
 instances_names = readRDS("../files/instances_names.rds")
@@ -62,28 +60,148 @@ print(wide_data)
 
 ### Obtain distance matrix
 
-Compute the distance matrix
+#### Compute the distance matrix
 
 ```{r include=FALSE}
 distance_matrix <- dist(wide_data, method = "euclidean")
 ```
 
-Calculate elbow and silhouette to find the optimal number of clusters
+#### Find the optimal number of clusters
 
-```{r eval=FALSE, include=FALSE}
-# method parameters: "silhouette", "wss", "gap_stat"
-print(fviz_nbclust(data_renamed, kmeans, method = "wss") + geom_vline(xintercept = 3, linetype = 2) + labs(subtitle = "Elbow method") + theme_minimal())
+```{r include=FALSE}
+clustering_data <- wide_data[,-1]  # Remove the technique column (need only numbers)
+
+zero_var_cols <- apply(clustering_data, 2, function(x) var(x) == 0)
+clustering_data_filtered <- clustering_data[, !zero_var_cols]
+#print(dim(clustering_data_filtered))
 ```
 
-Perform Heriarchical Clustering
+##### Optimal clusters with Elbow
+
+```{r echo=FALSE}
+# method parameters: "silhouette", "wss", "gap_stat"
+print(fviz_nbclust(clustering_data, kmeans, method = "wss") + geom_vline(xintercept = 4, linetype = 2) + labs(subtitle = "Elbow method") + theme_minimal())
+```
+
+##### Optimal clusters with Silhouette
+
+```{r echo=FALSE}
+library(cluster)
+silhouette_scores <- sapply(2:10, function(k) {
+  clusters <- cutree(hclust(distance_matrix, method = "ward.D"), k = k)
+  mean(silhouette(clusters, distance_matrix)[,3])
+})
+
+plot(2:10, silhouette_scores, type = "b", xlab = "Number of clusters", 
+     ylab = "Average silhouette width", main = "Silhouette Method")
+optimal_k <- which.max(silhouette_scores) + 1
+abline(v = optimal_k, lty = 2, col = "#FF0000")
+```
+
+##### Optimal clusters with NbClust
+
+```{r echo=FALSE}
+# Check dimensions before filtering
+print(dim(clustering_data))
+```
+
+I have problems with zero variance in some columns from \`clustering_data\`, so I must remove them for this clustering. Troubleshooting for zero-variance, near zero-variance and NAs:
+
+```{r echo=FALSE}
+# Remove zero-variance columns
+zero_var_cols <- apply(clustering_data, 2, function(x) var(x) == 0)
+clustering_data_filtered <- clustering_data[, !zero_var_cols]
+print(dim(clustering_data_filtered))
+
+# Remove near-zero variance (very small variation)
+near_zero_var <- apply(clustering_data_filtered, 2, function(x) var(x) < 1e-10)
+print(sum(near_zero_var))
+
+# Check for missing values
+print(sum(is.na(clustering_data_filtered)))
+```
+
+Check correlation structure:
+
+```{r echo=FALSE}
+cor_matrix <- cor(clustering_data_filtered)
+high_cor <- sum(abs(cor_matrix[upper.tri(cor_matrix)]) > 0.95)
+print(paste("Number of highly correlated pairs:", high_cor))
+```
+
+```{r eval=FALSE, include=FALSE}
+# Run NbClust with multiple indices
+set.seed(1)  # For reproducibility
+nb_results <- NbClust(data = clustering_data_filtered, 
+                     distance = "euclidean",
+                     min.nc = 2,  
+                     max.nc = 10, 
+                     method = "ward.D", 
+                     index = "all")
+
+print(nb_results$Best.nc)
+
+# Show how many indices recommend each cluster count
+barplot(table(nb_results$Best.nc[1,]),
+    main = "Number of clusters suggested by indices",
+    xlab = "Number of clusters",
+    ylab = "Number of indices")
+
+# Save the NbClust results
+#png("../../results/plots/nb_cluster_barplot.png", width = 4000, height = 3000, res = 600)
+#barplot(table(nb_results$Best.nc[1,]),
+#    main = "Number of clusters suggested by indices",
+#    xlab = "Number of clusters",
+#    ylab = "Number of indices",
+#    col = "steelblue")
+#invisible(dev.off())
+```
+
+##### Optimal clusters with PCA
+
+Since there is high correlation, perform PCA
+
+```{r eval=FALSE, include=FALSE}
+pca_result <- prcomp(clustering_data_filtered, scale = TRUE)
+
+# Determine how many components to keep (e.g., explaining 90% variance)
+variance_explained <- cumsum(pca_result$sdev^2 / sum(pca_result$sdev^2))
+num_components <- which(variance_explained >= 0.90)[1]
+print(paste("Number of components explaining 90% variance:", num_components))
+
+# Use these principal components for clustering
+pca_data <- pca_result$x[, 1:num_components]
+
+# Now run NbClust on the PCA-transformed data
+set.seed(1)
+nb_results <- NbClust(data = pca_data, 
+                     distance = "euclidean",
+                     min.nc = 2,  
+                     max.nc = 10, 
+                     method = "ward.D", 
+                     index = c("kl", "ch", "hartigan", "silhouette"))
+
+print(nb_results$Best.nc)
+
+# Show how many indices recommend each cluster count
+barplot(table(nb_results$Best.nc[1,]),
+    main = "Number of clusters suggested by indices",
+    xlab = "Number of clusters",
+    ylab = "Number of indices")
+```
+Problems with NbClust perisist, due to high correlation. Ignore this method.
+
+#### Perform Heriarchical Clustering
+
+Optimal K determined as 4.
 
 ```{r include=FALSE}
 # Define consistent color palette for clusters
 cluster_colors <- c(
   "1" = "#4FB28F",  # Green
-  "2" = "#8F4FB2",  # Purple
+  "2" = "#F65215",   # Orange
   "3" = "#3681F7",  # Blue
-  "4" = "#F65215"   # Orange
+  "4" = "#8F4FB2"  # Purple
 )
 ```
 
@@ -107,15 +225,6 @@ technique_clusters <- data.frame(
   cluster = clusters
 )
 
-# Create a named vector to map colors to specific clusters
-# This ensures consistent color usage across all plots
-cluster_colors <- c(
-  "1" = "#4FB28F",  # Green
-  "2" = "#8F4FB2",  # Purple
-  "3" = "#3681F7",  # Blue
-  "4" = "#F65215"   # Orange
-)
-
 # Save the dendrogram with colored rectangles by cluster
 png("../results/plots/dendogram.png", width = 4000, height = 3000, res = 600)
 plot(hclusters, hang = -1, labels = wide_data$technique, 
@@ -134,6 +243,10 @@ sil <- silhouette(clusters, dist = distance_matrix)
 plot(sil, col = cluster_colors[as.character(sort(unique(clusters)))], 
      main = paste("Silhouette Plot (k =", k, ")"))
 invisible(dev.off())
+```
+
+```{r include=FALSE}
+saveRDS(technique_clusters, "../results/important_clusters.rds")
 ```
 
 ## Plots

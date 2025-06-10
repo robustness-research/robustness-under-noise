@@ -27,8 +27,6 @@ Load files
 # Load files
 datasets <- readRDS("../files/datasets.rds")
 method_names = readRDS("../files/method_names.rds")
-# Remove svmLinear for testing on most popular key attribute
-method_names <- method_names[! method_names %in% c("svmLinear")]
 noise_level <- readRDS("../files/noise.rds")
 noise_names <- readRDS("../files/noise_names.rds")
 instances_names = readRDS("../files/instances_names.rds")
