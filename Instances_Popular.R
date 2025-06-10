@@ -84,53 +84,217 @@ for(dataset in datasets) {
     method_list <- list()
     method_CM <- list()
     method_counter = 1
+    if(FALSE) {
+      # Train for each method selected
+      for(method in methods) {
+        
+        # Train to obtain model
+        print(paste("Dataset:", dataset))
+        print(paste("Method:", method))
+        print("BEGINNING TRAINING")
+        if(method == "C5.0"){
+          fit = caret::train(class ~ ., data = train_df, method = "C5.0")
+        }else if(method == "ctree"){
+          fit = caret::train(class~., data = train_df, method = "ctree")
+        }else if(method == "fda"){
+          fit = caret::train(class~., data = train_df, method = "fda")
+        }else if(method == "gbm"){
+          fit = caret::train(class~., data = train_df, method = "gbm")
+        }else if(method == "gcvEarth"){
+          fit = caret::train(class ~ ., data = train_df, method = "gcvEarth")
+        }else if(method == "JRip"){
+          fit = caret::train(class~., data = train_df, method = "JRip")
+        }else if(method == "lvq"){
+          fit = caret::train(class~., data = train_df, method = "lvq")
+        }else if(method == "mlpML"){
+          fit = caret::train(class ~ ., data = train_df, method = "mlpML")
+        }else if(method == "multinom"){
+          fit = caret::train(class ~ ., data = train_df, method = "multinom", trControl = control, tuneGrid = expand.grid(decay = c(0)), MaxNWts = 10000)
+        }else if(method == "naive_bayes"){
+          fit = caret::train(class ~ ., data = train_df, method = "naive_bayes")
+        }else if(method == "PART"){
+          fit = caret::train(class ~ ., data = train_df, method = "PART")
+        }else if(method == "rbfDDA"){
+          fit = caret::train(class ~ ., data = train_df, method = "rbfDDA", trControl = control)
+        }else if(method == "rda"){
+          fit = caret::train(class~., data = train_df, method = "rda")
+        }else if(method == "rf"){
+          fit = caret::train(class ~ ., data = train_df, method = "rf")
+        }else if(method == "rpart"){
+          fit = caret::train(class ~ ., data = train_df, method = "rpart")
+        }else if(method == "simpls"){
+          fit = caret::train(class ~ ., data = train_df, method = "simpls")
+        }else if(method == "svmLinear"){
+          fit = caret::train(class ~ ., data = train_df, method = "svmLinear")
+        }else if(method == "svmRadial"){
+          fit = caret::train(class ~ ., data = train_df, method = "svmRadial")
+        }else if(method == "rfRules"){
+          fit = caret::train(class ~ ., data = train_df, method = "rfRules")
+        }
+        #print(fit)
+        print("TRAINING SUCCESSFULL")
+        
+        # Create a list to store the % instance lists per noise level
+        noise_list <- list()
+        noise_CM <- list()
+        noise_counter = 1
+        
+        # Control variable to make sure sampling only happens on the first iteration
+        semaphore = TRUE
+        
+        for(noise in noise_level){
+          
+          # Create a list to store the dataframe with instances per % of instances
+          instances_list <- list()
+          confMatrix_list <- list()
+          instances_counter = 1
+          
+          for(percent in instances) {
+            
+            # Print relevant information for the iteration
+            print(paste("Dataset:", dataset))
+            print(paste("Fold:", i))
+            print(paste("Method:", method))
+            print(paste0("Noise level: ", noise * 100, "%"))
+            print(paste0("Percentage of altered instances: ", percent * 100, "%"))
+            
+            # Create a new dataframe with the noise from noiseMIA_list
+            noiselvl <- paste0("noise_", noise * 100)
+            noise_df <- noiseMIA_list[[dataset]][[mia]][[noiselvl]]
+            #noise_df <- noiseMIA_list[[mia]][[noiselvl]]
+            
+            # Create a new df with the altered number of instances desired
+            instances_df <- test_df
+            
+            # Add rownames to manipulate dataframes
+            test_df <- cbind(index = rownames(test_df), test_df)
+            noise_df <- cbind(index = rownames(noise_df), noise_df)
+            instances_df <- cbind(index = rownames(instances_df), instances_df)
+            
+            # Determine the indices list to alter the same instances consistently
+            if(semaphore) {
+              print("Obtain vector of altered instances")
+              
+              # Number of values to be altered (instances)
+              sample_size = round(nrow(instances_df) * 1, 0)
+              
+              # Sample of ids that we want from the test df
+              indices <- instances_df$index[sample(nrow(instances_df), sample_size)]
+              
+              # Store vector of indices in list
+              index_list[[index_counter]] <- indices
+              
+              # Advance index counter
+              index_counter = index_counter + 1
+              
+              # Set control variable to 0
+              semaphore = FALSE
+            }
+            
+            print(paste0("Alter ", percent * 100, "% of instances with noise"))
+            
+            # Number of values to be altered (instances)
+            sample_size = round(nrow(instances_df) * percent, 0)
+            
+            # Sample of ids that we want from the test df
+            indices <- tail(index_list, n = 1)
+            indices <- indices[[1]][1:sample_size]
+            
+            # Create auxiliary dataframe to extract rows from and clean NAs
+            aux_df <- noise_df[indices,] 
+            
+            # Eliminate corresponding rows
+            instances_df <- instances_df[!(instances_df$index %in% indices),]
+            
+            # Insert noised sample into clean dataframe
+            instances_df <- rbind(instances_df, aux_df)
+            
+            # Reorder dataframe
+            instances_df$index = as.numeric(as.character(instances_df$index))
+            sapply(instances_df, class)
+            instances_df = instances_df %>% arrange(index)
+            rownames(instances_df) <- instances_df[,1]
+            
+            # Eliminate auxiliary index column
+            instances_df <- instances_df %>% select(-index)
+            aux_df <- aux_df %>% select(-index)
+            test_df <- test_df %>% select(-index)
+            noise_df <- noise_df %>% select(-index)
+            
+            # Prediction
+            print("Calculate prediction")
+            
+            # Prediction without noise
+            predict_unseen = predict(fit, test_df)
+            predict_unseen
+            
+            # Prediction with noise 
+            noise_predict = predict(fit, instances_df)
+            noise_predict
+            
+            # Confusion matrix
+            print("Confusion matrix")
+            if(noise == 0) {
+              conf_matrix = caret::confusionMatrix(predict_unseen, predict_unseen)
+              #print(conf_matrix)
+            }else {
+              conf_matrix = caret::confusionMatrix(predict_unseen, noise_predict)
+              #print(conf_matrix)
+            }
+            
+            # Store df with noise in list
+            instances_list[[instances_counter]] <- instances_df
+            
+            # Store Accuracy and Kappa results for % instances from the confusion matrix
+            if(conf_matrix$overall["Kappa"] == "NaN"){ conf_matrix$overall["Kappa"] = 1 }
+            #instances_AK[[instances_counter]] <- list(Accuracy = conf_matrix$overall["Accuracy"], Kappa = conf_matrix$overall["Kappa"])
+            confMatrix_list[[instances_counter]] <- conf_matrix
+            
+            # Advance instances counter
+            instances_counter = instances_counter + 1
+            
+            print("-")
+          }
+          
+          # Alter names to make it easily readable
+          names(instances_list) <- instances_names
+          names(confMatrix_list) <- instances_names
+          
+          # Store % list with noise in list
+          noise_list[[noise_counter]] <- instances_list
+          noise_CM[[noise_counter]] <- confMatrix_list
+          
+          # Advance noise counter
+          noise_counter = noise_counter + 1
+        }
+        
+        # Alter names to make it easily readable
+        names(noise_list) <- noise_names
+        names(noise_CM) <- noise_names
+        
+        # Store noise list in method
+        method_list[[method_counter]] <- noise_list
+        method_CM[[method_counter]] <- noise_CM
+        
+        # Advance method counter
+        method_counter = method_counter + 1
+      }
+    }
+    # Standardize DF for KNN and GLM
+    #train_df =  train_df %>% mutate_if(is.numeric, ~(scale(.) %>% as.vector))
+    #test_df =  test_df %>% mutate_if(is.numeric, ~(scale(.) %>% as.vector))
     
-    # Train for each method selected
-    for(method in methods) {
+    #########
+    ## KNN ##
+    #########
+    if(TRUE) {
+      method = "knn"
       
       # Train to obtain model
       print(paste("Dataset:", dataset))
       print(paste("Method:", method))
       print("BEGINNING TRAINING")
-      if(method == "C5.0"){
-        fit = caret::train(class ~ ., data = train_df, method = "C5.0")
-      }else if(method == "ctree"){
-        fit = caret::train(class~., data = train_df, method = "ctree")
-      }else if(method == "fda"){
-        fit = caret::train(class~., data = train_df, method = "fda")
-      }else if(method == "gbm"){
-        fit = caret::train(class~., data = train_df, method = "gbm")
-      }else if(method == "gcvEarth"){
-        fit = caret::train(class ~ ., data = train_df, method = "gcvEarth")
-      }else if(method == "JRip"){
-        fit = caret::train(class~., data = train_df, method = "JRip")
-      }else if(method == "lvq"){
-        fit = caret::train(class~., data = train_df, method = "lvq")
-      }else if(method == "mlpML"){
-        fit = caret::train(class ~ ., data = train_df, method = "mlpML")
-      }else if(method == "multinom"){
-        fit = caret::train(class ~ ., data = train_df, method = "multinom", trControl = control, tuneGrid = expand.grid(decay = c(0)), MaxNWts = 10000)
-      }else if(method == "naive_bayes"){
-        fit = caret::train(class ~ ., data = train_df, method = "naive_bayes")
-      }else if(method == "PART"){
-        fit = caret::train(class ~ ., data = train_df, method = "PART")
-      }else if(method == "rbfDDA"){
-        fit = caret::train(class ~ ., data = train_df, method = "rbfDDA", trControl = control)
-      }else if(method == "rda"){
-        fit = caret::train(class~., data = train_df, method = "rda")
-      }else if(method == "rf"){
-        fit = caret::train(class ~ ., data = train_df, method = "rf")
-      }else if(method == "rpart"){
-        fit = caret::train(class ~ ., data = train_df, method = "rpart")
-      }else if(method == "simpls"){
-        fit = caret::train(class ~ ., data = train_df, method = "simpls")
-      }else if(method == "svmLinear"){
-        fit = caret::train(class ~ ., data = train_df, method = "svmLinear")
-      }else if(method == "svmRadial"){
-        fit = caret::train(class ~ ., data = train_df, method = "svmRadial")
-      }else if(method == "rfRules"){
-        fit = caret::train(class ~ ., data = train_df, method = "rfRules")
-      }
+      fit = caret::train(class ~ ., data = train_df, method = "knn", tuneGrid = expand.grid(k = 5:5), trControl = trainControl(method = "none", number = 1, preProcess = c("center", "scale")))
       #print(fit)
       print("TRAINING SUCCESSFULL")
       
@@ -279,328 +443,168 @@ for(dataset in datasets) {
       # Advance method counter
       method_counter = method_counter + 1
     }
-    
-    # Standardize DF for KNN and GLM
-    #train_df =  train_df %>% mutate_if(is.numeric, ~(scale(.) %>% as.vector))
-    #test_df =  test_df %>% mutate_if(is.numeric, ~(scale(.) %>% as.vector))
-    
-    #########
-    ## KNN ##
-    #########
-    method = "knn"
-    
-    # Train to obtain model
-    print(paste("Dataset:", dataset))
-    print(paste("Method:", method))
-    print("BEGINNING TRAINING")
-    fit = caret::train(class ~ ., data = train_df, method = "knn", tuneGrid = expand.grid(k = 5:5), trControl = control)
-    #print(fit)
-    print("TRAINING SUCCESSFULL")
-    
-    # Create a list to store the % instance lists per noise level
-    noise_list <- list()
-    noise_CM <- list()
-    noise_counter = 1
-    
-    # Control variable to make sure sampling only happens on the first iteration
-    semaphore = TRUE
-    
-    for(noise in noise_level){
-      
-      # Create a list to store the dataframe with instances per % of instances
-      instances_list <- list()
-      confMatrix_list <- list()
-      instances_counter = 1
-      
-      for(percent in instances) {
-        
-        # Print relevant information for the iteration
-        print(paste("Dataset:", dataset))
-        print(paste("Fold:", i))
-        print(paste("Method:", method))
-        print(paste0("Noise level: ", noise * 100, "%"))
-        print(paste0("Percentage of altered instances: ", percent * 100, "%"))
-        
-        # Create a new dataframe with the noise from noiseMIA_list
-        noiselvl <- paste0("noise_", noise * 100)
-        noise_df <- noiseMIA_list[[dataset]][[mia]][[noiselvl]]
-        #noise_df <- noiseMIA_list[[mia]][[noiselvl]]
-        
-        # Create a new df with the altered number of instances desired
-        instances_df <- test_df
-        
-        # Add rownames to manipulate dataframes
-        test_df <- cbind(index = rownames(test_df), test_df)
-        noise_df <- cbind(index = rownames(noise_df), noise_df)
-        instances_df <- cbind(index = rownames(instances_df), instances_df)
-        
-        # Determine the indices list to alter the same instances consistently
-        if(semaphore) {
-          print("Obtain vector of altered instances")
-          
-          # Number of values to be altered (instances)
-          sample_size = round(nrow(instances_df) * 1, 0)
-          
-          # Sample of ids that we want from the test df
-          indices <- instances_df$index[sample(nrow(instances_df), sample_size)]
-          
-          # Store vector of indices in list
-          index_list[[index_counter]] <- indices
-          
-          # Advance index counter
-          index_counter = index_counter + 1
-          
-          # Set control variable to 0
-          semaphore = FALSE
-        }
-        
-        print(paste0("Alter ", percent * 100, "% of instances with noise"))
-        
-        # Number of values to be altered (instances)
-        sample_size = round(nrow(instances_df) * percent, 0)
-        
-        # Sample of ids that we want from the test df
-        indices <- tail(index_list, n = 1)
-        indices <- indices[[1]][1:sample_size]
-        
-        # Create auxiliary dataframe to extract rows from and clean NAs
-        aux_df <- noise_df[indices,] 
-        
-        # Eliminate corresponding rows
-        instances_df <- instances_df[!(instances_df$index %in% indices),]
-        
-        # Insert noised sample into clean dataframe
-        instances_df <- rbind(instances_df, aux_df)
-        
-        # Reorder dataframe
-        instances_df$index = as.numeric(as.character(instances_df$index))
-        sapply(instances_df, class)
-        instances_df = instances_df %>% arrange(index)
-        rownames(instances_df) <- instances_df[,1]
-        
-        # Eliminate auxiliary index column
-        instances_df <- instances_df %>% select(-index)
-        aux_df <- aux_df %>% select(-index)
-        test_df <- test_df %>% select(-index)
-        noise_df <- noise_df %>% select(-index)
-        
-        # Prediction
-        print("Calculate prediction")
-        
-        # Prediction without noise
-        predict_unseen = predict(fit, test_df)
-        predict_unseen
-        
-        # Prediction with noise 
-        noise_predict = predict(fit, instances_df)
-        noise_predict
-        
-        # Confusion matrix
-        print("Confusion matrix")
-        if(noise == 0) {
-          conf_matrix = caret::confusionMatrix(predict_unseen, predict_unseen)
-          #print(conf_matrix)
-        }else {
-          conf_matrix = caret::confusionMatrix(predict_unseen, noise_predict)
-          #print(conf_matrix)
-        }
-        
-        # Store df with noise in list
-        instances_list[[instances_counter]] <- instances_df
-        
-        # Store Accuracy and Kappa results for % instances from the confusion matrix
-        if(conf_matrix$overall["Kappa"] == "NaN"){ conf_matrix$overall["Kappa"] = 1 }
-        #instances_AK[[instances_counter]] <- list(Accuracy = conf_matrix$overall["Accuracy"], Kappa = conf_matrix$overall["Kappa"])
-        confMatrix_list[[instances_counter]] <- conf_matrix
-        
-        # Advance instances counter
-        instances_counter = instances_counter + 1
-        
-        print("-")
-      }
-      
-      # Alter names to make it easily readable
-      names(instances_list) <- instances_names
-      names(confMatrix_list) <- instances_names
-      
-      # Store % list with noise in list
-      noise_list[[noise_counter]] <- instances_list
-      noise_CM[[noise_counter]] <- confMatrix_list
-      
-      # Advance noise counter
-      noise_counter = noise_counter + 1
-    }
-    
-    # Alter names to make it easily readable
-    names(noise_list) <- noise_names
-    names(noise_CM) <- noise_names
-    
-    # Store noise list in method
-    method_list[[method_counter]] <- noise_list
-    method_CM[[method_counter]] <- noise_CM
-    
-    # Advance method counter
-    method_counter = method_counter + 1
-    
+
     #########
     ## GLM ##
     #########
-    method = "bayesglm"
-    
-    # Train to obtain model
-    print(paste("Dataset:", dataset))
-    print(paste("Method:", method))
-    print("BEGINNING TRAINING")
-    fit = caret::train(class ~ ., data = train_df, method="bayesglm", trControl = control)
-    #print(fit)
-    print("TRAINING SUCCESSFULL")
-    
-    # Create a list to store the % instance lists per noise level
-    noise_list <- list()
-    noise_CM <- list()
-    noise_counter = 1
-    
-    # Control variable to make sure sampling only happens on the first iteration
-    semaphore = TRUE
-    
-    for(noise in noise_level){
+    if(FALSE) {
+      method = "bayesglm"
       
-      # Create a list to store the dataframe with instances per % of instances
-      instances_list <- list()
-      confMatrix_list <- list()
-      instances_counter = 1
+      # Train to obtain model
+      print(paste("Dataset:", dataset))
+      print(paste("Method:", method))
+      print("BEGINNING TRAINING")
+      fit = caret::train(class ~ ., data = train_df, method="bayesglm", trControl = control)
+      #print(fit)
+      print("TRAINING SUCCESSFULL")
       
-      for(percent in instances) {
+      # Create a list to store the % instance lists per noise level
+      noise_list <- list()
+      noise_CM <- list()
+      noise_counter = 1
+      
+      # Control variable to make sure sampling only happens on the first iteration
+      semaphore = TRUE
+      
+      for(noise in noise_level){
         
-        # Print relevant information for the iteration
-        print(paste("Dataset:", dataset))
-        print(paste("Fold:", i))
-        print(paste("Method:", method))
-        print(paste0("Noise level: ", noise * 100, "%"))
-        print(paste0("Percentage of altered instances: ", percent * 100, "%"))
+        # Create a list to store the dataframe with instances per % of instances
+        instances_list <- list()
+        confMatrix_list <- list()
+        instances_counter = 1
         
-        # Create a new dataframe with the noise from noiseMIA_list
-        noiselvl <- paste0("noise_", noise * 100)
-        noise_df <- noiseMIA_list[[dataset]][[mia]][[noiselvl]]
-        #noise_df <- noiseMIA_list[[mia]][[noiselvl]]
-        
-        # Create a new df with the altered number of instances desired
-        instances_df <- test_df
-        
-        # Add rownames to manipulate dataframes
-        test_df <- cbind(index = rownames(test_df), test_df)
-        noise_df <- cbind(index = rownames(noise_df), noise_df)
-        instances_df <- cbind(index = rownames(instances_df), instances_df)
-        
-        # Determine the indices list to alter the same instances consistently
-        if(semaphore) {
-          print("Obtain vector of altered instances")
+        for(percent in instances) {
+          
+          # Print relevant information for the iteration
+          print(paste("Dataset:", dataset))
+          print(paste("Fold:", i))
+          print(paste("Method:", method))
+          print(paste0("Noise level: ", noise * 100, "%"))
+          print(paste0("Percentage of altered instances: ", percent * 100, "%"))
+          
+          # Create a new dataframe with the noise from noiseMIA_list
+          noiselvl <- paste0("noise_", noise * 100)
+          noise_df <- noiseMIA_list[[dataset]][[mia]][[noiselvl]]
+          #noise_df <- noiseMIA_list[[mia]][[noiselvl]]
+          
+          # Create a new df with the altered number of instances desired
+          instances_df <- test_df
+          
+          # Add rownames to manipulate dataframes
+          test_df <- cbind(index = rownames(test_df), test_df)
+          noise_df <- cbind(index = rownames(noise_df), noise_df)
+          instances_df <- cbind(index = rownames(instances_df), instances_df)
+          
+          # Determine the indices list to alter the same instances consistently
+          if(semaphore) {
+            print("Obtain vector of altered instances")
+            
+            # Number of values to be altered (instances)
+            sample_size = round(nrow(instances_df) * 1, 0)
+            
+            # Sample of ids that we want from the test df
+            indices <- instances_df$index[sample(nrow(instances_df), sample_size)]
+            
+            # Store vector of indices in list
+            index_list[[index_counter]] <- indices
+            
+            # Advance index counter
+            index_counter = index_counter + 1
+            
+            # Set control variable to 0
+            semaphore = FALSE
+          }
+          
+          print(paste0("Alter ", percent * 100, "% of instances with noise"))
           
           # Number of values to be altered (instances)
-          sample_size = round(nrow(instances_df) * 1, 0)
+          sample_size = round(nrow(instances_df) * percent, 0)
           
           # Sample of ids that we want from the test df
-          indices <- instances_df$index[sample(nrow(instances_df), sample_size)]
+          indices <- tail(index_list, n = 1)
+          indices <- indices[[1]][1:sample_size]
           
-          # Store vector of indices in list
-          index_list[[index_counter]] <- indices
+          # Create auxiliary dataframe to extract rows from and clean NAs
+          aux_df <- noise_df[indices,] 
           
-          # Advance index counter
-          index_counter = index_counter + 1
+          # Eliminate corresponding rows
+          instances_df <- instances_df[!(instances_df$index %in% indices),]
           
-          # Set control variable to 0
-          semaphore = FALSE
+          # Insert noised sample into clean dataframe
+          instances_df <- rbind(instances_df, aux_df)
+          
+          # Reorder dataframe
+          instances_df$index = as.numeric(as.character(instances_df$index))
+          sapply(instances_df, class)
+          instances_df = instances_df %>% arrange(index)
+          rownames(instances_df) <- instances_df[,1]
+          
+          # Eliminate auxiliary index column
+          instances_df <- instances_df %>% select(-index)
+          aux_df <- aux_df %>% select(-index)
+          test_df <- test_df %>% select(-index)
+          noise_df <- noise_df %>% select(-index)
+          
+          # Prediction
+          print("Calculate prediction")
+          
+          # Prediction without noise
+          predict_unseen = predict(fit, test_df)
+          predict_unseen
+          
+          # Prediction with noise 
+          noise_predict = predict(fit, instances_df)
+          noise_predict
+          
+          # Confusion matrix
+          print("Confusion matrix")
+          if(noise == 0) {
+            conf_matrix = caret::confusionMatrix(predict_unseen, predict_unseen)
+            #print(conf_matrix)
+          }else {
+            conf_matrix = caret::confusionMatrix(predict_unseen, noise_predict)
+            #print(conf_matrix)
+          }
+          
+          # Store df with noise in list
+          instances_list[[instances_counter]] <- instances_df
+          
+          # Store Accuracy and Kappa results for % instances from the confusion matrix
+          if(conf_matrix$overall["Kappa"] == "NaN"){ conf_matrix$overall["Kappa"] = 1 }
+          #instances_AK[[instances_counter]] <- list(Accuracy = conf_matrix$overall["Accuracy"], Kappa = conf_matrix$overall["Kappa"])
+          confMatrix_list[[instances_counter]] <- conf_matrix
+          
+          # Advance instances counter
+          instances_counter = instances_counter + 1
+          
+          print("-")
         }
         
-        print(paste0("Alter ", percent * 100, "% of instances with noise"))
+        # Alter names to make it easily readable
+        names(instances_list) <- instances_names
+        names(confMatrix_list) <- instances_names
         
-        # Number of values to be altered (instances)
-        sample_size = round(nrow(instances_df) * percent, 0)
+        # Store % list with noise in list
+        noise_list[[noise_counter]] <- instances_list
+        noise_CM[[noise_counter]] <- confMatrix_list
         
-        # Sample of ids that we want from the test df
-        indices <- tail(index_list, n = 1)
-        indices <- indices[[1]][1:sample_size]
-        
-        # Create auxiliary dataframe to extract rows from and clean NAs
-        aux_df <- noise_df[indices,] 
-        
-        # Eliminate corresponding rows
-        instances_df <- instances_df[!(instances_df$index %in% indices),]
-        
-        # Insert noised sample into clean dataframe
-        instances_df <- rbind(instances_df, aux_df)
-        
-        # Reorder dataframe
-        instances_df$index = as.numeric(as.character(instances_df$index))
-        sapply(instances_df, class)
-        instances_df = instances_df %>% arrange(index)
-        rownames(instances_df) <- instances_df[,1]
-        
-        # Eliminate auxiliary index column
-        instances_df <- instances_df %>% select(-index)
-        aux_df <- aux_df %>% select(-index)
-        test_df <- test_df %>% select(-index)
-        noise_df <- noise_df %>% select(-index)
-        
-        # Prediction
-        print("Calculate prediction")
-        
-        # Prediction without noise
-        predict_unseen = predict(fit, test_df)
-        predict_unseen
-        
-        # Prediction with noise 
-        noise_predict = predict(fit, instances_df)
-        noise_predict
-        
-        # Confusion matrix
-        print("Confusion matrix")
-        if(noise == 0) {
-          conf_matrix = caret::confusionMatrix(predict_unseen, predict_unseen)
-          #print(conf_matrix)
-        }else {
-          conf_matrix = caret::confusionMatrix(predict_unseen, noise_predict)
-          #print(conf_matrix)
-        }
-        
-        # Store df with noise in list
-        instances_list[[instances_counter]] <- instances_df
-        
-        # Store Accuracy and Kappa results for % instances from the confusion matrix
-        if(conf_matrix$overall["Kappa"] == "NaN"){ conf_matrix$overall["Kappa"] = 1 }
-        #instances_AK[[instances_counter]] <- list(Accuracy = conf_matrix$overall["Accuracy"], Kappa = conf_matrix$overall["Kappa"])
-        confMatrix_list[[instances_counter]] <- conf_matrix
-        
-        # Advance instances counter
-        instances_counter = instances_counter + 1
-        
-        print("-")
+        # Advance noise counter
+        noise_counter = noise_counter + 1
       }
-      
+    
       # Alter names to make it easily readable
-      names(instances_list) <- instances_names
-      names(confMatrix_list) <- instances_names
+      names(noise_list) <- noise_names
+      names(noise_CM) <- noise_names
       
-      # Store % list with noise in list
-      noise_list[[noise_counter]] <- instances_list
-      noise_CM[[noise_counter]] <- confMatrix_list
+      # Store noise list in method
+      method_list[[method_counter]] <- noise_list
+      method_CM[[method_counter]] <- noise_CM
       
-      # Advance noise counter
-      noise_counter = noise_counter + 1
+      # End of techniques
+      # Alter names to make it easily readable
+      names(method_list) <- method_names
+      names(method_CM) <- method_names
     }
-    
-    # Alter names to make it easily readable
-    names(noise_list) <- noise_names
-    names(noise_CM) <- noise_names
-    
-    # Store noise list in method
-    method_list[[method_counter]] <- noise_list
-    method_CM[[method_counter]] <- noise_CM
-    
-    # End of techniques
-    # Alter names to make it easily readable
-    names(method_list) <- method_names
-    names(method_CM) <- method_names
     
     # Store noise list in method
     folds_list[[folds_counter]] <- method_list
@@ -622,8 +626,8 @@ for(dataset in datasets) {
   dataset_counter = dataset_counter + 1
   
   # Safeguard store by dataset
-  filename1 = paste0("results/instances/by_dataset_popular/", dataset, "_instances_popular.rds")
-  filename2 = paste0("results/instances/by_dataset_popular/", dataset, "_instancesCM_popular.rds")
+  filename1 = paste0("results/instances/by_dataset_popular/", dataset, "_instances_popular_KNN.rds")
+  filename2 = paste0("results/instances/by_dataset_popular/", dataset, "_instancesCM_popular_KNN.rds")
   saveRDS(folds_list, file = filename1)
   saveRDS(folds_CM, file = filename2)
   
