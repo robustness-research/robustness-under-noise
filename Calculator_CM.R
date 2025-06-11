@@ -12,7 +12,9 @@ args <- commandArgs(trailingOnly = TRUE)
 datasets <- args
 fold_names <- readRDS("files/folds.rds")
 #method_names <- readRDS("files/method_names.rds")
-method_names = c("C5.0", "ctree", "fda", "gbm", "gcvEarth", "JRip", "lvq", "mlpML", "multinom", "naive_bayes", "PART", "rbfDDA", "rda", "rf", "rpart", "simpls", "svmRadial", "rfRules", "knn", "bayesglm") # Without SVMLinear (for popular)
+#method_names = c("C5.0", "ctree", "fda", "gbm", "gcvEarth", "JRip", "lvq", "mlpML", "multinom", "naive_bayes", "PART", "rbfDDA", "rda", "rf", "rpart", "simpls", "svmRadial", "rfRules", "knn", "bayesglm") # Without SVMLinear (for popular)
+method_names <- "knn"
+#method_names <- c("knn", "svmLinear")
 noise_names <- readRDS("files/noise_names.rds")
 instances_names = readRDS("files/instances_names.rds")
 #instances_names = append(readRDS("files/instances_names.rds"), c("25", "75")) # Without quartiles (for popular)

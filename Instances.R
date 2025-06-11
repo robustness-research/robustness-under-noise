@@ -11,7 +11,8 @@ args <- commandArgs(trailingOnly = TRUE)
 datasets <- args
 fold_names <- readRDS("files/folds.rds")
 methods <- readRDS("files/methods.rds")
-method_names = readRDS("files/method_names.rds")
+#method_names = readRDS("files/method_names.rds")
+method_names <- "knn"
 control <- readRDS("files/control.rds")
 noise_level <- readRDS("files/noise.rds")
 noise_names <- readRDS("files/noise_names.rds")
@@ -71,7 +72,6 @@ for(dataset in datasets) {
     if(FALSE) {
       # Train for each method selected
       for(method in methods) {
-        
         # Train to obtain model
         print(paste("Dataset:", dataset))
         print(paste("Method:", method))
@@ -281,9 +281,8 @@ for(dataset in datasets) {
       # Train to obtain model
       print(paste("Dataset:", dataset))
       print(paste("Method:", method))
-      print("BEGINNING TRAINING")
-      fit = caret::train(class ~ ., data = train_df, method = "knn", tuneGrid = expand.grid(k = 5:5), trControl = trainControl(method = "none", number = 1, preProcess = c("center", "scale")))
-      #print(fit)
+      print("BEGIN TRAINING")
+      fit = caret::train(class ~ ., data = df, method="knn", tuneGrid = expand.grid(k = 5:5), preProcess = c("center", "scale"), trControl = control)
       print("TRAINING SUCCESSFULL")
       
       # Select the MIA we will get the noise from

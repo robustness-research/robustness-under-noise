@@ -11,7 +11,8 @@ args <- commandArgs(trailingOnly = TRUE)
 datasets <- args
 fold_names <- readRDS("files/folds.rds")
 methods <- readRDS("files/methods.rds")
-method_names = readRDS("files/method_names.rds")
+#method_names = readRDS("files/method_names.rds")
+method_names <- c("knn", "svmLinear")
 control <- readRDS("files/control.rds")
 noise_level <- readRDS("files/noise.rds")
 noise_names <- readRDS("files/noise_names.rds")
@@ -84,10 +85,9 @@ for(dataset in datasets) {
     method_list <- list()
     method_CM <- list()
     method_counter = 1
-    if(FALSE) {
+    if(TRUE) {
       # Train for each method selected
       for(method in methods) {
-        
         # Train to obtain model
         print(paste("Dataset:", dataset))
         print(paste("Method:", method))
@@ -293,9 +293,8 @@ for(dataset in datasets) {
       # Train to obtain model
       print(paste("Dataset:", dataset))
       print(paste("Method:", method))
-      print("BEGINNING TRAINING")
-      fit = caret::train(class ~ ., data = train_df, method = "knn", tuneGrid = expand.grid(k = 5:5), trControl = trainControl(method = "none", number = 1, preProcess = c("center", "scale")))
-      #print(fit)
+      print("BEGIN TRAINING")
+      fit = caret::train(class ~ ., data = df, method="knn", tuneGrid = expand.grid(k = 5:5), preProcess = c("center", "scale"), trControl = control)
       print("TRAINING SUCCESSFULL")
       
       # Create a list to store the % instance lists per noise level
@@ -626,8 +625,8 @@ for(dataset in datasets) {
   dataset_counter = dataset_counter + 1
   
   # Safeguard store by dataset
-  filename1 = paste0("results/instances/by_dataset_popular/", dataset, "_instances_popular_KNN.rds")
-  filename2 = paste0("results/instances/by_dataset_popular/", dataset, "_instancesCM_popular_KNN.rds")
+  filename1 = paste0("results/instances/by_dataset_popular/", dataset, "_instances_popular_", method, ".rds")
+  filename2 = paste0("results/instances/by_dataset_popular/", dataset, "_instancesCM_popular_", method, ".rds")
   saveRDS(folds_list, file = filename1)
   saveRDS(folds_CM, file = filename2)
   

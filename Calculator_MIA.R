@@ -123,7 +123,7 @@ for (dataset in datasets) {
     print(paste("Dataset:", dataset))
     print(paste("Technique:", method))
     print("BEGIN TRAINING")
-    fit = caret::train(class ~ ., data = df, method="knn", tuneGrid = expand.grid(k = 5:5), trControl = trainControl(method = "none", number = 1, preProcess = c("center", "scale")))
+    fit = caret::train(class ~ ., data = df, method="knn", tuneGrid = expand.grid(k = 5:5), preProcess = c("center", "scale"), trControl = control)
     print("TRAINING SUCCESSFULL")
       
     # Create a predictor object from the trained data and
@@ -185,7 +185,7 @@ for (dataset in datasets) {
   print("Most important attribute obtained with all techniques")
   
   # Safeguard store by dataset
-  filename = paste0("results/most_important_attr/by_dataset/", dataset, "_mia_KNN.rds")
+  filename = paste0("results/most_important_attr/by_dataset/", dataset, "_mia.rds")
   saveRDS(aux_df, file = filename)
   
   # Save list of most important attributes (unique)
@@ -193,7 +193,7 @@ for (dataset in datasets) {
   aux_df_unique <- distinct(aux_df_unique, dataset_name, most_important_attribute)
   
   # Safeguard store by dataset
-  filename = paste0("results/most_important_attr/by_dataset/", dataset, "_miaUnique_KNN.rds")
+  filename = paste0("results/most_important_attr/by_dataset/", dataset, "_miaUnique.rds")
   saveRDS(aux_df_unique, file = filename)
   
   print("----------------")
