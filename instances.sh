@@ -4,6 +4,6 @@ arguments=("analcatdata_authorship" "badges2" "banknote" "blood-transfusion-serv
 
 for arg in "${arguments[@]}"; do
 
-	nohup Rscript Instances.R "$arg" > output/instances-out/"output_$arg.log" 2>&1 &
+	nohup Rscript Instances_Popular.R "$arg" > output/instances-popular-out/"knnsvm_$arg.log" 2>&1 &
 
 done

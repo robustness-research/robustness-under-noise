@@ -11,8 +11,7 @@ args <- commandArgs(trailingOnly = TRUE)
 datasets <- args
 fold_names <- readRDS("files/folds.rds")
 methods <- readRDS("files/methods.rds")
-#method_names = readRDS("files/method_names.rds")
-method_names <- "knn"
+method_names = readRDS("files/method_names.rds")
 control <- readRDS("files/control.rds")
 noise_level <- readRDS("files/noise.rds")
 noise_names <- readRDS("files/noise_names.rds")
@@ -598,9 +597,11 @@ for(dataset in datasets) {
     
     # End of techniques
     # Alter names to make it easily readable
-    names(method_list) <- method_names
-    names(method_CM) <- method_names
+    #names(method_list) <- method_names
+    #names(method_CM) <- method_names
     
+    names(method_list) <- c("knn")
+    names(method_CM) <- c("knn")
     # Store noise list in method
     folds_list[[folds_counter]] <- method_list
     folds_CM[[folds_counter]] <- method_CM
