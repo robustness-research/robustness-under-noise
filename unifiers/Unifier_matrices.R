@@ -17,8 +17,8 @@ c = 1
   
 for(dataset in datasets) {
   # Load dataset
-  #filename1 = paste0("../results/conf_matrices/by_dataset/", dataset, "_cm.rds")
-  filename1 = paste0("../results/conf_matrices/by_dataset_popular/", dataset, "_cm_popular.rds")
+  filename1 = paste0("../results/conf_matrices/by_dataset/", dataset, "_cm.rds")
+  #filename1 = paste0("../results/conf_matrices/by_dataset_popular/", dataset, "_cm_popular.rds")
   df1 <- readRDS(filename1)
   matrices_list[[c]] <- df1
   c = c + 1
@@ -26,8 +26,8 @@ for(dataset in datasets) {
 }
   
 names(matrices_list) <- datasets
-#saveRDS(matrices_list, file = "../results/conf_matrices/confusion_matrices.rds")
-saveRDS(matrices_list, file = "../results/conf_matrices/confusion_matrices_popular.rds")
+saveRDS(matrices_list, file = "../results/conf_matrices/confusion_matrices.rds")
+#saveRDS(matrices_list, file = "../results/conf_matrices/confusion_matrices_popular.rds")
 print("Results recorded")
 print("-----")
 
