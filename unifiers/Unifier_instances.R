@@ -3,8 +3,8 @@
 # Packages that need to be loaded
 pacman::p_load(dplyr, data.table)
 
-# Load files
-datasets <- readRDS("files/datasets.rds")
+# Load
+datasets <- readRDS("../files/datasets.rds")
 
 if(FALSE) {
   # Merge all dataset's instances lists in one .rds file
@@ -16,10 +16,10 @@ if(FALSE) {
     
   for(dataset in datasets) {
     # Load dataset
-    #filename1 = paste0("results/instances/by_dataset/", dataset, "_instances.rds")
-    #filename2 = paste0("results/instances/by_dataset/", dataset, "_instancesCM.rds")
-    filename1 = paste0("results/instances/by_dataset_popular/", dataset, "_instances_popular.rds")
-    filename2 = paste0("results/instances/by_dataset_popular/", dataset, "_instancesCM_popular.rds")
+    #filename1 = paste0("../results/instances/by_dataset/", dataset, "_instances.rds")
+    #filename2 = paste0("../results/instances/by_dataset/", dataset, "_instancesCM.rds")
+    filename1 = paste0("../results/instances/by_dataset_popular/", dataset, "_instances_popular.rds")
+    filename2 = paste0("../results/instances/by_dataset_popular/", dataset, "_instancesCM_popular.rds")
     df1 <- readRDS(filename1)
     df2 <- readRDS(filename2)
     instances_list[[c]] <- df1
@@ -30,32 +30,32 @@ if(FALSE) {
     
   names(instances_list) <- datasets
   names(instancesCM_list) <- datasets
-  #saveRDS(instances_list, file = "results/instances/instances_list.rds")
-  #saveRDS(instancesCM_list, file = "results/instances/instancesCM_list.rds")
-  saveRDS(instances_list, file = "results/instances_list_popular.rds")
-  saveRDS(instancesCM_list, file = "results/instancesCM_list_popular.rds")
+  #saveRDS(instances_list, file = "../results/instances/instances_list.rds")
+  #saveRDS(instancesCM_list, file = "../results/instances/instancesCM_list.rds")
+  saveRDS(instances_list, file = "../results/instances_list_popular.rds")
+  saveRDS(instancesCM_list, file = "../results/instancesCM_list_popular.rds")
   print("Results recorded")
   print("-----")
 }
 
 if(TRUE) {
-  fold_names <- readRDS("files/folds.rds")
+  fold_names <- readRDS("../files/folds.rds")
   #####
   # Add only KNN
   # Load dataframes
-  #instances_list <- readRDS("results/instances/instances_list.rds")
-  #instances_list_popular <- readRDS("results/instances/instances_list_popular.rds")
-  instancesCM_list <- readRDS("results/instances/instancesCM_list.rds")
-  instancesCM_list_popular <- readRDS("results/instances/instancesCM_list_popular.rds")
-  print("Files loaded")
+  #instances_list <- readRDS("../results/instances/instances_list.rds")
+  #instances_list_popular <- readRDS("../results/instances/instances_list_popular.rds")
+  instancesCM_list <- readRDS("../results/instances/instancesCM_list.rds")
+  instancesCM_list_popular <- readRDS("../results/instances/instancesCM_list_popular.rds")
+  print("../files loaded")
 
   # Remove KNN entries in lists
   for(dataset in datasets) {
     # Load new KNN dataset
-    #knn_filename1 = paste0("results/instances/by_dataset/", dataset, "_instances_KNN.rds") 
-    #knn_filename2 = paste0("results/instances/by_dataset_popular/", dataset, "_instances_popular_knn.rds")
-    knn_filename3 = paste0("results/instances/by_dataset/", dataset, "_instancesCM_KNN.rds")
-    knn_filename4 = paste0("results/instances/by_dataset_popular/", dataset, "_instancesCM_popular_knn.rds")
+    #knn_filename1 = paste0("../results/instances/by_dataset/", dataset, "_instances_KNN.rds") 
+    #knn_filename2 = paste0("../results/instances/by_dataset_popular/", dataset, "_instances_popular_knn.rds")
+    knn_filename3 = paste0("../results/instances/by_dataset/", dataset, "_instancesCM_KNN.rds")
+    knn_filename4 = paste0("../results/instances/by_dataset_popular/", dataset, "_instancesCM_popular_knn.rds")
     print("KNN removed from lists")
     
     #knn_list1 <- readRDS(knn_filename1)
@@ -91,10 +91,10 @@ if(TRUE) {
   instancesCM_list_popular <- instancesCM_list_popular[order(names(instancesCM_list_popular))]
 
   # Save the updated dataframes
-  #saveRDS(instances_list, file = "results/instances/instances_list.rds")
-  #saveRDS(instancesCM_list, file = "results/instances/instancesCM_list.rds")
-  saveRDS(instances_list_popular, file = "results/instances/instances_list_popular.rds")
-  saveRDS(instancesCM_list_popular, file = "results/instances/instancesCM_list_popular.rds")
+  #saveRDS(instances_list, file = "../results/instances/instances_list.rds")
+  #saveRDS(instancesCM_list, file = "../results/instances/instancesCM_list.rds")
+  saveRDS(instances_list_popular, file = "../results/instances/instances_list_popular.rds")
+  saveRDS(instancesCM_list_popular, file = "../results/instances/instancesCM_list_popular.rds")
   print("Updated results saved")
   print("-----")
 }
