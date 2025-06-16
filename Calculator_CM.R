@@ -11,10 +11,8 @@ set.seed(1)
 args <- commandArgs(trailingOnly = TRUE)
 datasets <- args
 fold_names <- readRDS("files/folds.rds")
-#method_names <- readRDS("files/method_names.rds")
+method_names <- readRDS("files/method_names.rds")
 #method_names = c("C5.0", "ctree", "fda", "gbm", "gcvEarth", "JRip", "lvq", "mlpML", "multinom", "naive_bayes", "PART", "rbfDDA", "rda", "rf", "rpart", "simpls", "svmRadial", "rfRules", "knn", "bayesglm") # Without SVMLinear (for popular)
-method_names <- "knn"
-#method_names <- c("knn", "svmLinear")
 noise_names <- readRDS("files/noise_names.rds")
 instances_names = readRDS("files/instances_names.rds")
 #instances_names = append(readRDS("files/instances_names.rds"), c("25", "75")) # Without quartiles (for popular)
@@ -22,35 +20,36 @@ instances_names = readRDS("files/instances_names.rds")
 ## Load results
 mia_df <- readRDS("results/most_important_attr/mia_df.rds")
 noiseMIA_list <- readRDS("results/noise/noise_list.rds")
-#instancesCM_list = readRDS("results/instances/instancesCM_list.rds")
-instancesCM_list = readRDS("results/instances/instancesCM_list_popular.rds")
+instancesCM_list = readRDS("results/instances/instancesCM_list.rds")
+#instancesCM_list = readRDS("results/instances/instancesCM_list_popular.rds")
 
 confMatrices_list <- list()
 cm_counter = 1
 
 for(dataset in datasets) {
+  print(paste0("Dataset: ", dataset))
   # Load dataset
   filename = paste0("datasets/", dataset, ".rds")
   df <- readRDS(filename)
-  
+
   # Set counter to 1
   methodCM_list <- list()
   m_counter = 1
   
   for(method in method_names){
-    
+    print(paste0("Model: ", method))
     # Set counter to 1
     noiseCM_list <- list()
     n_counter = 1
     
     for(noise in noise_names) {
-      
+      print(paste0("Noise: ", noise))
       # Set counter to 1
       percentagesCM_list <- list()
       p_counter = 1
       
       for(instance in instances_names){
-        
+        print(paste0("Instance: ", instance))
         item_list <- list()
         
         # Obtain each confusion matrix from all five folds
@@ -153,8 +152,8 @@ for(dataset in datasets) {
   confMatrices_list[[cm_counter]] <- methodCM_list
   cm_counter = cm_counter + 1
   
-  #filename1 = paste0("results/conf_matrices/by_dataset/", dataset, "_cm.rds")
-  filename1 = paste0("results/conf_matrices/by_dataset_popular/", dataset, "_cm_popular.rds")
+  filename1 = paste0("results/conf_matrices/by_dataset/", dataset, "_cm.rds")
+  #filename1 = paste0("results/conf_matrices/by_dataset_popular/", dataset, "_cm_popular.rds")
   saveRDS(confMatrices_list, file = filename1)
   
   print(paste0("Recorded matrices, kappa and accuracy for dataset: ", dataset))

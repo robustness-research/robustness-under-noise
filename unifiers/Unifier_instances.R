@@ -79,7 +79,7 @@ if(TRUE) {
       instancesCM_list_popular[[dataset]][[fold]][["knn"]] <- knn_list4[[fold]]
       instancesCM_list_popular[[dataset]][[fold]][["svmLinear"]] <- knn_list4[[fold]]
     
-      print(paste0("Added model results for dataset: ", dataset, "and fold", fold))
+      print(paste0("Added model results for dataset: ", dataset, " and fold ", fold))
     }
     print(paste0("Added model results for dataset: ", dataset))
   }
@@ -92,8 +92,8 @@ if(TRUE) {
 
   # Save the updated dataframes
   #saveRDS(instances_list, file = "../results/instances/instances_list.rds")
-  #saveRDS(instancesCM_list, file = "../results/instances/instancesCM_list.rds")
-  saveRDS(instances_list_popular, file = "../results/instances/instances_list_popular.rds")
+  saveRDS(instancesCM_list, file = "../results/instances/instancesCM_list.rds")
+  #saveRDS(instances_list_popular, file = "../results/instances/instances_list_popular.rds")
   saveRDS(instancesCM_list_popular, file = "../results/instances/instancesCM_list_popular.rds")
   print("Updated results saved")
   print("-----")

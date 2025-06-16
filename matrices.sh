@@ -4,6 +4,6 @@ arguments=("analcatdata_authorship" "badges2" "banknote" "blood-transfusion-serv
 
 for arg in "${arguments[@]}"; do
 
-	nohup Rscript Calculator_CM.R "$arg" > output/matrices-out/popular/"output_$arg.log" 2>&1 &
+	nohup Rscript Calculator_CM.R "$arg" > output/matrices-out/"output_$arg.log" 2>&1 &
 
 done
