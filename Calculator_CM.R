@@ -20,8 +20,8 @@ instances_names = readRDS("files/instances_names.rds")
 ## Load results
 mia_df <- readRDS("results/most_important_attr/mia_df.rds")
 noiseMIA_list <- readRDS("results/noise/noise_list.rds")
-instancesCM_list = readRDS("results/instances/instancesCM_list.rds")
-#instancesCM_list = readRDS("results/instances/instancesCM_list_popular.rds")
+#instancesCM_list = readRDS("results/instances/instancesCM_list.rds")
+instancesCM_list = readRDS("results/instances/instancesCM_list_popular.rds")
 
 confMatrices_list <- list()
 cm_counter = 1
@@ -152,8 +152,8 @@ for(dataset in datasets) {
   confMatrices_list[[cm_counter]] <- methodCM_list
   cm_counter = cm_counter + 1
   
-  filename1 = paste0("results/conf_matrices/by_dataset/", dataset, "_cm.rds")
-  #filename1 = paste0("results/conf_matrices/by_dataset_popular/", dataset, "_cm_popular.rds")
+  #filename1 = paste0("results/conf_matrices/by_dataset/", dataset, "_cm.rds")
+  filename1 = paste0("results/conf_matrices/by_dataset_popular/", dataset, "_cm_popular.rds")
   saveRDS(confMatrices_list, file = filename1)
   
   print(paste0("Recorded matrices, kappa and accuracy for dataset: ", dataset))
