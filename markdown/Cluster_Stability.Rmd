@@ -261,7 +261,7 @@ dend_popular <- as.dendrogram(hc_popular)
 
 # Color the branches by the original cluster assignment
 dend_important <- color_branches(dend_important, k=4, col=important_colors[1:4])
-dend_popular <- color_branches(dend_popular, k=2, col=popular_colors[1:2])
+dend_popular <- color_branches(dend_popular, k=4, col=popular_colors[1:4])
 
 # Make sure labels are visible and properly sized
 dend_important <- set(dend_important, "labels_cex", 0.8)

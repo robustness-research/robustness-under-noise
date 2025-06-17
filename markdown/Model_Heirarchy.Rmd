@@ -189,6 +189,7 @@ barplot(table(nb_results$Best.nc[1,]),
     xlab = "Number of clusters",
     ylab = "Number of indices")
 ```
+
 Problems with NbClust perisist, due to high correlation. Ignore this method.
 
 #### Perform Heriarchical Clustering
