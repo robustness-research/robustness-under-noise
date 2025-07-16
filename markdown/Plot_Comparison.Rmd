@@ -32,15 +32,28 @@ Load files
 # Load files
 datasets <- readRDS("../files/datasets.rds")
 method_names = readRDS("../files/method_names.rds")
-# Remove svmLinear for testing on most popular key attribute
-method_names <- method_names[! method_names %in% c("svmLinear")]
 noise_level <- readRDS("../files/noise.rds")
 noise_names <- readRDS("../files/noise_names.rds")
 instances_names = readRDS("../files/instances_names.rds")
 
 # Load results
+mia_df <- readRDS("../results/most_important_attr/mia_df.rds")
 KLC_res <- readRDS("../results/KLC_plot_deciles.rds") 
 KLC_p <- readRDS("../results/KLC_plot_deciles_popular.rds") 
+```
+
+```{r}
+# Find the most common attribute in the most_important_attribute column for each dataset
+popular_df <- mia_df %>%
+  group_by(dataset_name) %>%
+  count(most_important_attribute) %>%
+  arrange(dataset_name, desc(n)) %>%
+  slice_head(n = 1) %>%
+  select(dataset_name, most_important_attribute, n) %>%
+  rename(most_common_attr = most_important_attribute, frequency = n)
+
+# Display the results
+print(popular_df)
 ```
 
 ## Extract and Compare Plots for mfeat-zernike with multinom
@@ -58,7 +71,7 @@ cat("Top attribute dataset rows:", nrow(mfeat_multinom_top), "\n")
 cat("Popular attribute dataset rows:", nrow(mfeat_multinom_popular), "\n")
 ```
 
-```{r fig.width=12, fig.height=6}
+```{r fig.width=6, fig.height=12}
 # Create plot for top attribute
 plot_top <- ggplot(mfeat_multinom_top, aes(x = percentage, y = kappa_loss, color = factor(noise))) +
   geom_point() +
@@ -81,8 +94,8 @@ plot_popular <- ggplot(mfeat_multinom_popular, aes(x = percentage, y = kappa_los
   theme_bw() +
   scale_y_continuous(limits = c(0.0, 1), breaks = seq(0, 1, by = 0.1))
 
-# Display plots side by side
-grid.arrange(plot_top, plot_popular, ncol = 2)
+# Display plots vertically (one on top of the other)
+grid.arrange(plot_top, plot_popular, nrow = 2)
 
 # Extract kappa loss at 100% noise and 100% instances
 top_100_100 <- mfeat_multinom_top %>%
@@ -105,8 +118,8 @@ cat("Relative Difference: ", round(((top_100_100 - popular_100_100) / popular_10
 
 ```{r}
 # Save the comparison plot
-comparison_plot <- grid.arrange(plot_top, plot_popular, ncol = 2)
-ggsave("../results/plots/plot_comparison.png", comparison_plot, width = 40, height = 40, dpi = 600)
+comparison_plot <- grid.arrange(plot_top, plot_popular, nrow = 2)
+ggsave("../results/plots/plot_comparison.png", comparison_plot, width = 6, height = 10, dpi = 600)
 ```
 
 ## Analyze Differences
@@ -152,4 +165,79 @@ ggplot(combined_stats, aes(x = factor(noise), y = difference)) +
        x = "Noise Level", 
        y = "Difference") +
   theme_bw()
+```
+
+## Analysis for Paragraph Values
+
+```{r}
+# Calculate ratios between top-attribute and popular-attribute kappa loss for all dataset-model pairs
+# Extract kappa loss at 100% noise and 100% instances for all combinations
+
+# Get all unique dataset-technique combinations from both datasets
+all_combinations_top <- KLC_res %>%
+  filter(noise == 100, percentage == 100) %>%
+  select(dataset_name, technique, kappa_loss) %>%
+  rename(top_kappa_loss = kappa_loss)
+
+all_combinations_popular <- KLC_p %>%
+  filter(noise == 100, percentage == 100) %>%
+  select(dataset_name, technique, kappa_loss) %>%
+  rename(popular_kappa_loss = kappa_loss)
+
+# Join the datasets to compare top vs popular attribute performance
+comparison_all <- all_combinations_top %>%
+  inner_join(all_combinations_popular, by = c("dataset_name", "technique")) %>%
+  mutate(
+    ratio = top_kappa_loss / popular_kappa_loss,
+    ratio_rounded = round(ratio, 1)
+  ) %>%
+  filter(!is.na(ratio), !is.infinite(ratio), popular_kappa_loss > 0.01, top_kappa_loss > 0.01) # Filter out very small values
+
+# Print data quality check
+cat("Data Quality Check:\n")
+cat("Total combinations before filtering: ", nrow(all_combinations_top), "\n")
+cat("Total combinations after joining: ", nrow(comparison_all), "\n")
+cat("Number of zero popular kappa loss: ", sum(all_combinations_popular$popular_kappa_loss == 0, na.rm = TRUE), "\n")
+cat("Number of very small popular kappa loss (<0.01): ", sum(all_combinations_popular$popular_kappa_loss < 0.01 & all_combinations_popular$popular_kappa_loss > 0, na.rm = TRUE), "\n")
+
+# Filter for meaningful ratios (exclude extreme outliers)
+comparison_filtered <- comparison_all %>%
+  filter(ratio <= 20, ratio >= 0.1) # Remove extreme outliers
+
+# Get summary statistics
+max_ratio <- max(comparison_filtered$ratio, na.rm = TRUE)
+min_ratio <- min(comparison_filtered$ratio, na.rm = TRUE)
+median_ratio <- median(comparison_filtered$ratio, na.rm = TRUE)
+mean_ratio <- mean(comparison_filtered$ratio, na.rm = TRUE)
+
+# Print summary
+cat("\nRatio Analysis (Top-attribute Kappa Loss / Popular-attribute Kappa Loss):\n")
+cat("After filtering extreme values (ratio between 0.1 and 20):\n")
+cat("Maximum ratio: ", round(max_ratio, 1), " times\n", sep = "")
+cat("Minimum ratio: ", round(min_ratio, 1), " times\n", sep = "")
+cat("Median ratio: ", round(median_ratio, 1), " times\n", sep = "")
+cat("Mean ratio: ", round(mean_ratio, 1), " times\n", sep = "")
+
+# Show the top 5 highest ratios
+cat("\nTop 5 highest ratios (datasets with dominant predictors):\n")
+top_ratios <- comparison_filtered %>%
+  arrange(desc(ratio)) %>%
+  head(5) %>%
+  select(dataset_name, technique, top_kappa_loss, popular_kappa_loss, ratio_rounded)
+print(top_ratios)
+
+# Show datasets with more evenly distributed importance (lower ratios)
+cat("\nDatasets with more evenly distributed importance (lowest 5 ratios):\n")
+low_ratios <- comparison_filtered %>%
+  arrange(ratio) %>%
+  head(5) %>%
+  select(dataset_name, technique, top_kappa_loss, popular_kappa_loss, ratio_rounded)
+print(low_ratios)
+
+# Additional analysis: Count ratios in ranges
+cat("\nDistribution of ratios:\n")
+cat("Ratios 1.0-2.0 times: ", sum(comparison_filtered$ratio >= 1.0 & comparison_filtered$ratio < 2.0), "\n")
+cat("Ratios 2.0-3.0 times: ", sum(comparison_filtered$ratio >= 2.0 & comparison_filtered$ratio < 3.0), "\n")
+cat("Ratios 3.0-5.0 times: ", sum(comparison_filtered$ratio >= 3.0 & comparison_filtered$ratio < 5.0), "\n")
+cat("Ratios 5.0+ times: ", sum(comparison_filtered$ratio >= 5.0), "\n")
 ```

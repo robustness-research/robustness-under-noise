@@ -80,7 +80,7 @@ clustering_data_filtered <- clustering_data[, !zero_var_cols]
 
 ```{r echo=FALSE}
 # method parameters: "silhouette", "wss", "gap_stat"
-print(fviz_nbclust(clustering_data, kmeans, method = "wss") + geom_vline(xintercept = 4, linetype = 2) + labs(subtitle = "Elbow method") + theme_minimal())
+print(fviz_nbclust(clustering_data, kmeans, method = "wss") + geom_vline(xintercept = 3, linetype = 2) + labs(subtitle = "Elbow method") + theme_minimal())
 ```
 
 ##### Optimal clusters with Silhouette
@@ -194,15 +194,15 @@ Problems with NbClust perisist, due to high correlation. Ignore this method.
 
 #### Perform Heriarchical Clustering
 
-Optimal K determined as 4.
+Optimal K determined as 3.
 
 ```{r include=FALSE}
 # Define consistent color palette for clusters
 cluster_colors <- c(
   "1" = "#4FB28F",  # Green
-  "2" = "#F65215",   # Orange
-  "3" = "#3681F7",  # Blue
-  "4" = "#8F4FB2"  # Purple
+  "2" = "#F65215",  # Orange
+  "3" = "#3681F7"   # Blue
+  #"4" = "#8F4FB2"  # Purple
 )
 ```
 
@@ -210,8 +210,8 @@ cluster_colors <- c(
 # Perform hierarchical clustering
 hclusters <- hclust(distance_matrix, method = "ward.D")
 
-# Cut the tree to get k=4 clusters
-k <- 4
+# Cut the tree to get k=3 clusters
+k <- 3
 clusters <- cutree(hclusters, k = k)
 
 # Print cluster assignments
@@ -226,14 +226,23 @@ technique_clusters <- data.frame(
   cluster = clusters
 )
 
+print(technique_clusters)
+
 # Save the dendrogram with colored rectangles by cluster
 png("../results/plots/dendogram.png", width = 4000, height = 3000, res = 600)
 plot(hclusters, hang = -1, labels = wide_data$technique, 
      main = paste("Hierarchical Grouping (k =", k, ")"), 
      xlab = "Observations", sub = NULL)
 
+# Get the order of clusters as they appear from left to right in dendrogram
+cluster_order <- clusters[hclusters$order]
+unique_clusters_in_order <- unique(cluster_order)
+
+# Create a color vector that matches the dendrogram order
+dendro_colors <- cluster_colors[as.character(unique_clusters_in_order)]
+
 # Create colored rectangles with consistent colors per cluster
-rect.hclust(hclusters, k = k, border = cluster_colors[as.character(1:k)])
+rect.hclust(hclusters, k = k, border = dendro_colors)
 invisible(dev.off())
 
 # Generate silhouette plot with consistent colors

@@ -7,150 +7,12 @@ output:
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
-```
 
-#### Libraries
-
-```{r include=FALSE}
-# Libraries needed
-library(dplyr)      # For data manipulation
+# Load all required libraries
 library(caret)      # For createDataPartition and confusion matrix
 library(ggplot2)    # For visualization
-```
-
-# Create the dataset
-
-Colors for the data
-
-```{r include=FALSE}
-# Set colors
-c_a = "#39a0ca"
-c_b = "#478559"
-c_c = "#161748"
-c_d = "#f95d9b" 
-line = "#1d1e22"
-colors <- c("A" = "#39a0ca", "B" = "#478559", "C" = "#161748", "D" = "#f95d9b")
-```
-
-Dataset creation
-
-```{r echo=FALSE}
-# Set seed for reproducibility
-set.seed(42)
-
-# Total number of points
-n <- 2000
-
-# Calculate points per division based on proportions
-n_a <- floor(n * 0.50)  # 50% of the data
-n_b <- floor(n * 0.25)  # 25% of the data
-n_c <- floor(n * 0.125)  # 25% of the data
-n_d <- floor(n * 0.125)  # 25% of the data
-
-# Based on the drawing:
-# A is on the left side of the graph (x1 < threshold)
-# B is on the bottom right quadrant
-# C is on the top left of the right side
-# D is on the top right of the right side
-
-# Thresholds for dividing the space
-x1_threshold <- 0.4  # Dividing left (A) from right (B,C,D)
-x1_right_threshold <- 0.7  # Dividing C from D on the right side
-x2_threshold <- 0.5  # Dividing B from C,D
-
-# Division A: Left portion (50% of data)
-a_x1 <- runif(n_a, 0, x1_threshold)
-a_x2 <- runif(n_a, 0, 1)
-a_labels <- rep("A", n_a)
-
-# Division B: Bottom right portion (25% of data)
-b_x1 <- runif(n_b, x1_threshold, 1)
-b_x2 <- runif(n_b, 0, x2_threshold)
-b_labels <- rep("B", n_b)
-
-# Division C: Top left of right portion (12.5% of data)
-c_x1 <- runif(n_c, x1_threshold, x1_right_threshold)
-c_x2 <- runif(n_c, x2_threshold, 1)
-c_labels <- rep("C", n_c)
-
-# Division D: Top right of right portion (12.5% of data)
-d_x1 <- runif(n_d, x1_right_threshold, 1)
-d_x2 <- runif(n_d, x2_threshold, 1)
-d_labels <- rep("D", n_d)
-
-# Combine all data into a single dataframe
-df <- data.frame(
-  x1 = c(a_x1, b_x1, c_x1, d_x1),
-  x2 = c(a_x2, b_x2, c_x2, d_x2),
-  division = c(a_labels, b_labels, c_labels, d_labels)
-)
-
-# Start PNG device
-png("../results/plots/original_data.png", width = 4000, height = 3000, res = 600)
-
-# Create the plot with Base R
-# Set up an empty plot area
-plot(NULL, xlim = c(0, 1), ylim = c(0, 1), 
-     xlab = "x1", ylab = "x2", 
-     main = "Dataset with Four Divisions",
-     type = "n")
-
-# Add points for each division
-for(div in c("A", "B", "C", "D")) {
-  subset_df <- df[df$division == div, ]
-  points(subset_df$x1, subset_df$x2, 
-         col = adjustcolor(colors[div], alpha.f = 0.8),
-         pch = 16) # filled circle
-}
-
-# Close the device to save the plot
-dev.off()
-```
-
-## Create data partitions
-
-Divide data into training and test partitions
-
-```{r echo=FALSE}
-# Set training/test split proportion
-train_prop <- 0.7 # 70% training, 30% test
-
-# Create stratified split indices based on division
-set.seed(42) # Keep the same seed for reproducibility
-train_indices <- createDataPartition(df$division, p = train_prop, list = FALSE)
-
-# Create training and test sets
-train_df <- df[train_indices, ]
-test_df <- df[-train_indices, ]
-
-# Convert division to factor to ensure consistent levels
-train_df$division <- factor(train_df$division)
-test_df$division <- factor(test_df$division)
-
-# Optional: Visualize the training and test sets
-df$set <- "test"
-df[train_indices, "set"] <- "train"
-
-ggplot(df, aes(x = x1, y = x2, color = division, shape = set)) +
-  geom_point(alpha = 0.8) +
-  scale_color_manual(values = c("A" = c_a, "B" = c_b, "C" = c_c, "D" = c_d)) +
-  labs(title = "Training and Test Sets with Four Divisions",
-       x = "x1", y = "x2") +
-  theme_minimal() +
-  theme(,
-    axis.title.y = element_text(angle = 0, vjust = 0.5, hjust = 0.5)
-  )
-```
-
-# Decision boundaries
-
-## Decision boundaries with clean data
-
-#### Libraries
-
-```{r include=FALSE}
-# Load necessary libraries
-library(caret)      # For confusion matrix
+library(dplyr)      # For data manipulation
+library(stringr)    # For string manipulation
 library(class)      # For kNN classification
 library(e1071)      # For SVM
 if (!require("nnet")) install.packages("nnet")
@@ -158,366 +20,599 @@ library(nnet)       # For multinomial logistic regression
 if (!require("randomForest")) install.packages("randomForest")
 library(randomForest) # For random forest
 library(gridExtra)  # For arranging multiple plots
+library(grid)       # For textGrob function
 ```
 
-### Grid creation for visualization
+# Decision boundary analysis
+
+## Load iris dataset
 
 ```{r include=FALSE}
-# Create a fine grid for decision boundary visualization
-grid_size <- 100
-x1_range <- seq(min(df$x1) - 0.1, max(df$x1) + 0.1, length.out = grid_size)
-x2_range <- seq(min(df$x2) - 0.1, max(df$x2) + 0.1, length.out = grid_size)
-grid <- expand.grid(x1 = x1_range, x2 = x2_range)
+df = readRDS("../datasets/iris.rds")
 
-# Ensure column names match training data
-colnames(grid) <- c("x1", "x2")  # Explicitly set column names
+# Create division column from class (rename species to A, B, C)
+df$division <- factor(df$class, 
+                     levels = c("Iris_setosa", "Iris_versicolor", "Iris_virginica"),
+                     labels = c("A", "B", "C"))
+
+# Set colors for iris classes
+colors <- c("A" = "#39a0ca", "B" = "#478559", "C" = "#161748")
 ```
 
-### Function to plot the decision boundaries
+## Feature Selection
 
-```{r include=FALSE}
-# Function to plot decision boundaries
-plot_decision_boundary <- function(predictions, model_name, kappa_value) {
-  grid_predictions <- cbind(grid, pred = predictions)
-  
-  # Plot decision boundaries with test data points
-  p <- ggplot() +
-    geom_raster(data = grid_predictions, aes(x = x1, y = x2, fill = pred), alpha = 0.8, show.legend = FALSE) +
-    #geom_point(data = test_df, aes(x = x1, y = x2, color = division), size = 2.5) +
-    scale_fill_manual(values = c("A" = c_a, "B" = c_b, "C" = c_c, "D" = c_d), name = "Predicted") +
-    scale_color_manual(values = c("A" = c_a, "B" = c_b, "C" = c_c, "D" = c_d), name = "Actual") +
-    #labs(x = "x1", y = "x2") +
-    scale_x_continuous(limits = c(0.0, 1), breaks = seq(0, 1, by = 0.25)) +
-    scale_y_continuous(limits = c(0.0, 1), breaks = seq(0, 1, by = 0.25)) +
-    labs(title = paste(model_name, "Decision Boundaries"),
-         subtitle = paste("Test Data with Cohen's Kappa =", round(kappa_value, 3)),
-         x = "x1", y = "x2") +
-    theme_minimal() +
-  theme(,
-    axis.title.y = element_text(angle = 0, vjust = 0.5, hjust = 0.5)
+```{r}
+# Select features for analysis and normalize them
+df$x1 <- (df$petallength - min(df$petallength)) / (max(df$petallength) - min(df$petallength))
+df$x2 <- (df$sepalwidth - min(df$sepalwidth)) / (max(df$sepalwidth) - min(df$sepalwidth))
+
+# Feature names to reflect manual selection
+x1_name <- "petallength"  # Most important feature
+x2_name <- "sepalwidth"   # Least important feature
+
+print("=== MANUAL FEATURE SELECTION ===")
+print("Selected features for analysis:")
+print("x1 (Important): petallength")
+print("x2 (Unimportant): sepalwidth")
+print("================================")
+```
+
+```{r eval=FALSE, include=FALSE}
+plot(df)
+```
+
+## Data Preparation and Partitioning
+
+```{r}
+# Set seed for reproducibility
+set.seed(1)
+
+# Set training/test split proportion
+train_prop <- 0.7 # 70% training, 30% test
+
+# Create stratified training indices using caret
+train_indices <- createDataPartition(df$division, 
+                                    p = train_prop, 
+                                    list = FALSE, 
+                                    times = 1)
+
+# Create training and test sets
+train_data <- df[train_indices, ]
+test_data <- df[-train_indices, ]
+
+# Visualize the training and test sets
+df$set <- "test"
+df[train_indices, "set"] <- "train"
+
+# Print split information
+cat("Training set size:", nrow(train_data), "\n")
+cat("Test set size:", nrow(test_data), "\n")
+#cat("Training indices (first 10):", head(train_indices, 10), "\n")
+#cat("Test indices (first 10):", head(which(!seq_len(nrow(df)) %in% train_indices), 10), "\n")
+
+# Plot the training and test sets
+ggplot(df, aes(x = x1, y = x2, color = division, shape = set)) +
+  geom_point(alpha = 0.8, size = 2.5) +
+  scale_color_manual(values = colors) +
+  scale_shape_manual(values = c("train" = 16, "test" = 17)) +  # circle for train, triangle for test
+  labs(title = "Iris Dataset with Stratified Split",
+       subtitle = "Training and Test Sets by Division",
+       x = paste0(tools::toTitleCase(x1_name)), 
+       y = paste0(tools::toTitleCase(x2_name)),
+       color = "Division",
+       shape = "Dataset") +
+  theme_minimal() +
+  theme(
+    axis.title.y = element_text(vjust = 0.5, hjust = 0.5),
+    plot.title = element_text(hjust = 0.5),
+    plot.subtitle = element_text(hjust = 0.5),
+    legend.position = "right"
   )
+```
+
+## Model Training with clean data
+
+```{r}
+# Train models on training set only
+set.seed(1)
+
+# Prepare data partitions for KNN
+train_x <- train_data[, c("x1", "x2")]
+train_y <- train_data$division
+test_x <- test_data[, c("x1", "x2")]
+
+# k-Nearest Neighbors (k=5) - Note: kNN returns predictions directly
+#knn_predictions <- knn(train_x, test_x, train_y, k = 5)
+
+# Random Forest
+rf_model <- randomForest(division ~ x1 + x2, 
+                        data = train_data, 
+                        ntree = 100)
+
+# SVM Linear
+svm_model <- svm(division ~ x1 + x2, 
+                data = train_data, 
+                kernel = "linear", 
+                cost = 1)
+
+# Multinomial Logistic Regression
+multinom_model <- multinom(division ~ x1 + x2, 
+                          data = train_data, 
+                          trace = FALSE)
+
+print("All models trained successfully!")
+```
+
+## Noise Injection and Kappa Calculation
+
+```{r}
+# Function to add noise to a specific feature
+add_noise <- function(data, feature, noise_level = 1) {
+  data_noisy <- data
+  feature_sd <- sd(data[[feature]], na.rm = TRUE)
+  noise <- rnorm(nrow(data), mean = 0, sd = noise_level * feature_sd)
+  data_noisy[[feature]] <- data_noisy[[feature]] + noise
+  return(data_noisy)
+}
+
+```
+
+## Prediction Function for Decision Boundaries
+
+### Grid
+
+```{r}
+# Create prediction grid for decision boundaries
+create_prediction_grid <- function(data, resolution = 100) {
+  x_range <- range(data$x1)
+  y_range <- range(data$x2)
   
-  return(p)
+  x_seq <- seq(x_range[1] - 0.1, x_range[2] + 0.1, length.out = resolution)
+  y_seq <- seq(y_range[1] - 0.1, y_range[2] + 0.1, length.out = resolution)
+  
+  expand.grid(x1 = x_seq, x2 = y_seq)
 }
 ```
 
-### Function to plot Cohen's kappa score and create confusion matrix
+### Test Set Predictions
 
-```{r include=FALSE}
+```{r}
+# Function to make predictions on test data for all models
+test_predictions <- function(test_data, train_data) {
+  
+  predictions <- list()
+  
+  # KNN predictions
+  train_x <- train_data[, c("x1", "x2")]
+  train_y <- train_data$division
+  test_x <- test_data[, c("x1", "x2")]
+  predictions$knn <- knn(train_x, test_x, train_y, k = 5)
+  
+  # Random Forest predictions  
+  predictions$rf <- predict(rf_model, test_data)
+  
+  # SVM predictions
+  predictions$svm <- predict(svm_model, test_data)
+  
+  # Multinomial predictions
+  predictions$multinom <- predict(multinom_model, test_data)
+  
+  return(predictions)
+}
+```
+
+```{r}
+# Add noise to petallength in test set
+x1_noisy <- add_noise(test_data, "x1", noise_level = 0.8) # Noisy df x1
+
+# Add noise to petallength in test set
+x2_noisy <- add_noise(test_data, "x2", noise_level = 0.8) # Noisy df x2
+
+# Clean test set predictions
+predictions_clean <- test_predictions(test_data, train_data)
+
+# Test set with noise in x1 (petallength)
+predictions_x1_noisy <- test_predictions(x1_noisy, train_data)
+
+# Test set with noise in x2 (sepalwidth)
+predictions_x2_noisy <- test_predictions(x2_noisy, train_data)
+
+print("All test set predictions completed!")
+print("- Clean test set")
+print("- Test set with x1 (petallength) noise")
+print("- Test set with x2 (sepalwidth) noise")
+```
+
+### Model Evaluation with Kappa
+
+```{r}
+# Function to evaluate model performance
 evaluate_model <- function(actual, predicted, model_name) {
+  # Ensure both are factors with same levels
+  predicted <- factor(predicted, levels = levels(actual))
+  
   # Create confusion matrix
   confusion <- confusionMatrix(predicted, actual)
   
-  # Extract Cohen's Kappa
+  # Extract Cohen's Kappa and Accuracy
   kappa <- confusion$overall['Kappa']
+  accuracy <- confusion$overall['Accuracy']
   
   # Print model performance
-  cat("\n", model_name, "Performance:\n")
-  cat("Cohen's Kappa:", kappa, "\n")
-  cat("Accuracy:", confusion$overall['Accuracy'], "\n\n")
+  cat("\n=== ", model_name, " ===\n")
+  cat("Cohen's Kappa: ", round(kappa, 4), "\n")
+  cat("Accuracy:      ", round(accuracy, 4), "\n")
   
-  return(kappa)
+  return(list(kappa = kappa, accuracy = accuracy))
 }
 ```
 
-#### KNN
+```{r}
+# Calculate Kappa scores
+models_list <- c("knn", "rf", "svm", "multinom")
+model_names <- c("K-Nearest Neighbors", "Random Forest", "SVM Linear", "Multinomial Logistic")
 
-```{r include=FALSE}
-# Train KNN model (k=5)
-k <- 5
-knn_model <- knn(train = train_df[, c("x1", "x2")],
-                 test = test_df[, c("x1", "x2")],
-                 cl = train_df$division,
-                 k = k)
+# Initialize results dataframe
+kappa_results <- data.frame(
+  Model = character(),
+  Clean_Kappa = numeric(),
+  Clean_Accuracy = numeric(),
+  X1_Noise_Kappa = numeric(),
+  X1_Noise_Accuracy = numeric(),
+  X2_Noise_Kappa = numeric(),
+  X2_Noise_Accuracy = numeric(),
+  X1_Kappa_Drop = numeric(),
+  X2_Kappa_Drop = numeric(),
+  stringsAsFactors = FALSE
+)
 
-# Evaluate KNN model
-knn_kappa <- evaluate_model(test_df$division, knn_model, "KNN")
+# Evaluate each model across all three scenarios
+for (i in 1:length(models_list)) {
+  model_key <- models_list[i]
+  model_name <- model_names[i]
+  
+  # Clean data evaluation
+  clean_eval <- evaluate_model(test_data$division, 
+                              predictions_clean[[model_key]], 
+                              paste(model_name, "- Clean"))
+  
+  # X1 noisy data evaluation
+  x1_noisy_eval <- evaluate_model(test_data$division, 
+                                 predictions_x1_noisy[[model_key]], 
+                                 paste(model_name, "- X1 Noise"))
+  
+  # X2 noisy data evaluation
+  x2_noisy_eval <- evaluate_model(test_data$division, 
+                                 predictions_x2_noisy[[model_key]], 
+                                 paste(model_name, "- X2 Noise"))
+  
+  # Store results
+  kappa_results <- rbind(kappa_results, data.frame(
+    Model = model_name,
+    Clean_Kappa = round(clean_eval$kappa, 4),
+    Clean_Accuracy = round(clean_eval$accuracy, 4),
+    X1_Noise_Kappa = round(x1_noisy_eval$kappa, 4),
+    X1_Noise_Accuracy = round(x1_noisy_eval$accuracy, 4),
+    X2_Noise_Kappa = round(x2_noisy_eval$kappa, 4),
+    X2_Noise_Accuracy = round(x2_noisy_eval$accuracy, 4),
+    X1_Kappa_Drop = round(clean_eval$kappa - x1_noisy_eval$kappa, 4),
+    X2_Kappa_Drop = round(clean_eval$kappa - x2_noisy_eval$kappa, 4)
+  ))
+}
 
-# Get KNN predictions for the grid
-knn_grid_pred <- knn(train = train_df[, c("x1", "x2")],
-                     test = grid,
-                     cl = train_df$division,
-                     k = k)
-
-# Plot KNN decision boundaries
-knn_plot <- plot_decision_boundary(knn_grid_pred, "K-Nearest Neighbors (k=5)", knn_kappa)
+# Display comprehensive results
+cat("\n========================================\n")
+cat("MODEL PERFORMANCE COMPARISON\n")
+cat("========================================\n")
+print(kappa_results)
 ```
 
-#### Multinomial
+```{r}
+# Extract kappa values for visualization
+kappa_clean <- setNames(kappa_results$Clean_Kappa, c("knn", "rf", "svm", "multinom"))
+kappa_x1_noisy <- setNames(kappa_results$X1_Noise_Kappa, c("knn", "rf", "svm", "multinom"))
+kappa_x2_noisy <- setNames(kappa_results$X2_Noise_Kappa, c("knn", "rf", "svm", "multinom"))
 
-```{r include=FALSE}
-# Train multinomial model
-multinom_model <- multinom(division ~ x1 + x2, data = train_df, trace = FALSE)
+# Find most robust model (smallest kappa drop)
+most_robust_x1 <- kappa_results[which.min(kappa_results$X1_Kappa_Drop), "Model"]
+most_robust_x2 <- kappa_results[which.min(kappa_results$X2_Kappa_Drop), "Model"]
 
-# Make predictions on test data
-multinom_pred <- predict(multinom_model, newdata = test_df)
-
-# Evaluate multinomial model
-multinom_kappa <- evaluate_model(test_df$division, multinom_pred, "Multinomial Logistic Regression")
-
-# Get multinomial predictions for the grid
-multinom_grid_pred <- predict(multinom_model, newdata = grid)
-
-# Plot multinomial decision boundaries
-multinom_plot <- plot_decision_boundary(multinom_grid_pred, "Multinomial Logistic Regression", multinom_kappa)
+cat("\n========================================\n")
+cat("ROBUSTNESS ANALYSIS\n")
+cat("========================================\n")
+cat("Most robust to X1 (petallength) noise: ", most_robust_x1, "\n")
+cat("Most robust to X2 (sepalwidth) noise:  ", most_robust_x2, "\n")
 ```
 
-#### Random Forest
+## Visualization
 
-```{r include=FALSE}
-# Train random forest model
-rf_model <- randomForest(division ~ x1 + x2, data = train_df, ntree = 500)
+### Add background to grid
 
-# Make predictions on test data
-rf_pred <- predict(rf_model, newdata = test_df)
+```{r}
+# Create prediction grid for decision boundaries
+grid <- create_prediction_grid(df, resolution = 100)
 
-# Evaluate random forest model
-rf_kappa <- evaluate_model(test_df$division, rf_pred, "Random Forest")
-
-# Get random forest predictions for the grid
-rf_grid_pred <- predict(rf_model, newdata = grid)
-
-# Plot random forest decision boundaries
-rf_plot <- plot_decision_boundary(rf_grid_pred, "Random Forest", rf_kappa)
+# Make grid predictions for all models
+grid_predictions <- function(grid_data, train_data) {
+  train_x <- train_data[, c("x1", "x2")]
+  train_y <- train_data$division
+  
+  predictions <- list()
+  
+  # KNN predictions on grid
+  predictions$knn <- knn(train_x, grid_data, train_y, k = 5)
+  
+  # Other model predictions on grid
+  predictions$rf <- predict(rf_model, grid_data)
+  predictions$svm <- predict(svm_model, grid_data)
+  predictions$multinom <- predict(multinom_model, grid_data)
+  
+  return(predictions)
+}
 ```
 
-#### Support Vector Machine
-
-```{r include=FALSE}
-# Train SVM model with radial kernel
-svm_model <- svm(division ~ x1 + x2, data = train_df, kernel = "radial")
-
-# Make predictions on test data
-svm_pred <- predict(svm_model, newdata = test_df)
-
-# Evaluate SVM model
-svm_kappa <- evaluate_model(test_df$division, svm_pred, "SVM")
-
-# Get SVM predictions for the grid
-svm_grid_pred <- predict(svm_model, newdata = grid)
-
-# Plot SVM decision boundaries
-svm_plot <- plot_decision_boundary(svm_grid_pred, "Support Vector Machine", svm_kappa)
+```{r}
+# Make grid predictions for all models
+grid_predictions_x1 <- function(grid_data, train_data) {
+  # Add noise to x1 in training data
+  train_data_noisy <- add_noise(train_data, "x1", noise_level = 0.8)
+  
+  # Retrain models with noisy training data
+  train_x_noisy <- train_data_noisy[, c("x1", "x2")]
+  train_y <- train_data_noisy$division
+  
+  # Train models on noisy data
+  rf_model_noisy <- randomForest(division ~ x1 + x2, data = train_data_noisy, ntree = 100)
+  svm_model_noisy <- svm(division ~ x1 + x2, data = train_data_noisy, kernel = "linear", cost = 1)
+  multinom_model_noisy <- multinom(division ~ x1 + x2, data = train_data_noisy, trace = FALSE)
+  
+  predictions <- list()
+  predictions$knn <- knn(train_x_noisy, grid_data, train_y, k = 5)
+  predictions$rf <- predict(rf_model_noisy, grid_data)
+  predictions$svm <- predict(svm_model_noisy, grid_data)
+  predictions$multinom <- predict(multinom_model_noisy, grid_data)
+  
+  return(predictions)
+}
 ```
 
-### Display the plots
-
-```{r echo=FALSE}
-# Display all plots
-print(knn_plot)
-print(multinom_plot)
-print(rf_plot)
-print(svm_plot)
-
-ggsave("../results/plots/knn.png", plot = knn_plot, width = 6.67, height = 5, dpi = 600)
-ggsave("../results/plots/multi.png", plot = knn_plot, width = 6.67, height = 5, dpi = 600)
-ggsave("../results/plots/rf.png", plot = rf_plot, width = 6.67, height = 5, dpi = 600)
-ggsave("../results/plots/svm.png", plot = svm_plot, width = 6.67, height = 5, dpi = 600)
+```{r}
+# Make grid predictions for all models
+grid_predictions_x2 <- function(grid_data, train_data) {
+  # Add noise to x2 in training data
+  train_data_noisy <- add_noise(train_data, "x2", noise_level = 0.8)
+  
+  # Retrain models with noisy training data
+  train_x_noisy <- train_data_noisy[, c("x1", "x2")]
+  train_y <- train_data_noisy$division
+  
+  # Train models on noisy data
+  rf_model_noisy <- randomForest(division ~ x1 + x2, data = train_data_noisy, ntree = 100)
+  svm_model_noisy <- svm(division ~ x1 + x2, data = train_data_noisy, kernel = "linear", cost = 1)
+  multinom_model_noisy <- multinom(division ~ x1 + x2, data = train_data_noisy, trace = FALSE)
+  
+  predictions <- list()
+  predictions$knn <- knn(train_x_noisy, grid_data, train_y, k = 5)
+  predictions$rf <- predict(rf_model_noisy, grid_data)
+  predictions$svm <- predict(svm_model_noisy, grid_data)
+  predictions$multinom <- predict(multinom_model_noisy, grid_data)
+  
+  return(predictions)
+}
 ```
 
-## Add noise to data
-
-### Create noisy datasets
-
-```{r include=FALSE}
-# Standard deviation for the attributes
-x1_sd <- sd(df$x1)
-x2_sd <- sd(df$x2)
-cat("Standard deviation of x1:", x1_sd, "\n")
-cat("Standard deviation of x2:", x2_sd, "\n")
-
-# Noise level (proportion of std dev to use)
-noise_level <- 0.3  # You can adjust this between 0 and 1
-set.seed(123)  # Different seed to ensure randomness
-
-# Get test set indices
-test_indices <- setdiff(1:nrow(df), train_indices)
-
-# Randomly select half of the test set
-half_test_size <- floor(length(test_indices) / 2)
-noisy_test_indices <- sample(test_indices, half_test_size)
-
-# Create first noisy dataset (noise in x1)
-df_noisy1 <- df
-# Add noise only to the selected half of test set
-df_noisy1$x1[noisy_test_indices] <- df$x1[noisy_test_indices] + 
-                                   rnorm(half_test_size, mean = 0, sd = x1_sd * noise_level)
-
-# Create second noisy dataset (noise in x2)
-df_noisy2 <- df
-# Add noise only to the selected half of test set
-df_noisy2$x2[noisy_test_indices] <- df$x2[noisy_test_indices] + 
-                                   rnorm(half_test_size, mean = 0, sd = x2_sd * noise_level)
-
-# Extract the test partition rows from the noisy datasets
-noisytest_df1 <- df_noisy1[-train_indices, ]
-noisytest_df2 <- df_noisy2[-train_indices, ]
-
-# Ensure division is a factor with consistent levels in both datasets
-noisytest_df1$division <- factor(noisytest_df1$division, levels = levels(test_df$division))
-noisytest_df2$division <- factor(noisytest_df2$division, levels = levels(test_df$division))
+```{r}
+# Create all grid predictions
+set.seed(1)
+grid_predictions <- grid_predictions(grid, train_data)
+grid_predictions_x1 <- grid_predictions_x1(grid, train_data)
+grid_predictions_x2 <- grid_predictions_x2(grid, train_data)
 ```
 
-## Decision boundaries with noise
+```{r fig.width=16, fig.height=12}
+# Function to create decision boundary plot
+create_boundary_plot <- function(model_name, grid_pred, train_data, test_data, kappa_val) {
+  p <- ggplot() +
+    # Decision boundary background
+    geom_point(data = data.frame(grid, prediction = grid_pred), 
+               aes(x = x1, y = x2, color = prediction),
+               alpha = 0.3, size = 0.5) +
+    # Training data points
+    geom_point(data = train_data, 
+               aes(x = x1, y = x2, fill = division),
+               color = "black", size = 3, shape = 21, stroke = 1) +
+    # Test data points
+    geom_point(data = test_data, 
+               aes(x = x1, y = x2, color = division),
+               size = 2, shape = 19) +
+    scale_color_manual(values = colors, name = "Division") +
+    scale_fill_manual(values = colors, name = "Division") +
+    labs(title = model_name,
+         subtitle = paste0("Cohen's Kappa = ", round(kappa_val, 3)),
+         x = "x1", y = "x2") + 
+    theme_minimal() +
+    theme(legend.position = "none",
+          plot.title = element_text(hjust = 0.5, size = 12, face = "bold"),
+          plot.subtitle = element_text(hjust = 0.5, size = 10))
+  
+  return(p)
+}
 
-### Grid creation for visualization (with noise)
+create_noisy_plot <- function(model_name, grid_pred, train_data, test_data_noisy, kappa_val) {
+  p <- ggplot() +
+    # Decision boundary background (now using noisy grid predictions)
+    geom_point(data = data.frame(grid, prediction = grid_pred), 
+               aes(x = x1, y = x2, color = prediction),
+               alpha = 0.3, size = 0.5) +
+    # Training data points
+    geom_point(data = train_data, 
+               aes(x = x1, y = x2, fill = division),
+               color = "black", size = 3, shape = 21, stroke = 1) +
+    # Noisy test data points
+    geom_point(data = test_data_noisy, 
+               aes(x = x1, y = x2, color = division),
+               size = 2, shape = 19) +
+    scale_color_manual(values = colors, name = "Division") +
+    scale_fill_manual(values = colors, name = "Division") +
+    labs(title = model_name,
+         subtitle = paste0("Cohen's Kappa = ", round(kappa_val, 3)),
+         x = "x1", y = "x2") +
+    theme_minimal() +
+    theme(legend.position = "none",
+          plot.title = element_text(hjust = 0.5, size = 12, face = "bold"),
+          plot.subtitle = element_text(hjust = 0.5, size = 10))
+  
+  return(p)
+}
 
-```{r include=FALSE}
-# Create noisy grids for decision boundary visualization
-# For noisy x1
-noise_x1_range <- seq(min(df_noisy1$x1) - 0.1, max(df_noisy1$x1) + 0.1, length.out = grid_size)
-grid_noisy1 <- expand.grid(x1 = noise_x1_range, x2 = x2_range)
-# Ensure column names match training data
-colnames(grid_noisy1) <- c("x1", "x2")  # Explicitly set column names
+# Create dataset overview plot with legend
+dataset_plot <- ggplot(df, aes(x = x1, y = x2, color = division, shape = set)) +
+  geom_point(alpha = 0.8, size = 2.5) +
+  scale_color_manual(values = colors) +
+  scale_shape_manual(values = c("train" = 16, "test" = 17)) +
+  labs(title = "Dataset",
+       subtitle = "Training & Test Split",
+       x = "x1", y = "x2",
+       color = "Division",
+       shape = "Dataset") +
+  theme_minimal() +
+  theme(plot.title = element_text(hjust = 0.5, size = 12, face = "bold"),
+        plot.subtitle = element_text(hjust = 0.5, size = 10),
+        legend.position = "right")
 
-# For noisy x2
-noise_x2_range <- seq(min(df_noisy2$x2) - 0.1, max(df_noisy2$x2) + 0.1, length.out = grid_size)
-grid_noisy2 <- grid
-# Ensure column names match training data
-colnames(grid_noisy2) <- c("x1", "x2")  # Explicitly set column names
-```
+# Create dataset plots for noisy scenarios (same dataset, different titles)
+dataset_plot_x1 <- ggplot(df, aes(x = x1, y = x2, color = division, shape = set)) +
+  geom_point(alpha = 0.8, size = 2.5) +
+  scale_color_manual(values = colors) +
+  scale_shape_manual(values = c("train" = 16, "test" = 17)) +
+  labs(title = "Dataset",
+       subtitle = "with X1 Noise in Models",
+       x = "x1", y = "x2") +
+  theme_minimal() +
+  theme(plot.title = element_text(hjust = 0.5, size = 12, face = "bold"),
+        plot.subtitle = element_text(hjust = 0.5, size = 10),
+        legend.position = "none")
 
-#### KNN
+dataset_plot_x2 <- ggplot(df, aes(x = x1, y = x2, color = division, shape = set)) +
+  geom_point(alpha = 0.8, size = 2.5) +
+  scale_color_manual(values = colors) +
+  scale_shape_manual(values = c("train" = 16, "test" = 17)) +
+  labs(title = "Dataset", 
+       subtitle = "with X2 Noise in Models",
+       x = "x1", y = "x2") +
+  theme_minimal() +
+  theme(plot.title = element_text(hjust = 0.5, size = 12, face = "bold"),
+        plot.subtitle = element_text(hjust = 0.5, size = 10),
+        legend.position = "none")
 
-```{r include=FALSE}
-# Evaluate KNN model
-knn_kappa <- evaluate_model(noisytest_df1$division, knn_model, "KNN")
+# Create plots for each model
+model_names <- c("KNN", "Multinomial", "Random Forest", "SVM")
+model_keys <- c("knn", "multinom", "rf", "svm")
 
-# Get KNN predictions for the grid
-knn_grid_pred <- knn(train = train_df[, c("x1", "x2")],
-                     test = grid_noisy1,
-                     cl = train_df$division,
-                     k = k)
+# Create clean data plots
+plots_clean <- list()
+for (i in 1:4) {
+  plots_clean[[i]] <- create_boundary_plot(
+    model_names[i], 
+    grid_predictions[[model_keys[i]]], 
+    train_data, 
+    test_data, 
+    kappa_clean[model_keys[i]]
+  )
+}
 
-# Plot KNN decision boundaries
-knn_plot1 <- plot_decision_boundary(knn_grid_pred, "K-Nearest Neighbors (k=5)", knn_kappa)
-```
+# Create X1 noise plots (using noisy grid predictions)
+plots_x1_noisy <- list()
+for (i in 1:4) {
+  plots_x1_noisy[[i]] <- create_noisy_plot(
+    model_names[i], 
+    grid_predictions_x1[[model_keys[i]]], 
+    train_data, 
+    x1_noisy,
+    kappa_x1_noisy[model_keys[i]]
+  )
+}
 
-```{r include=FALSE}
-# Evaluate KNN model
-knn_kappa <- evaluate_model(noisytest_df2$division, knn_model, "KNN")
+# Create X2 noise plots (using noisy grid predictions)
+plots_x2_noisy <- list()
+for (i in 1:4) {
+  plots_x2_noisy[[i]] <- create_noisy_plot(
+    model_names[i], 
+    grid_predictions_x2[[model_keys[i]]], 
+    train_data, 
+    x2_noisy,
+    kappa_x2_noisy[model_keys[i]]
+  )
+}
 
-# Get KNN predictions for the grid
-knn_grid_pred <- knn(train = train_df[, c("x1", "x2")],
-                     test = grid_noisy2,
-                     cl = train_df$division,
-                     k = k)
+# Create blank plot for empty spaces
+blank_plot <- ggplot() + theme_void()
 
-# Plot KNN decision boundaries
-knn_plot2 <- plot_decision_boundary(knn_grid_pred, "K-Nearest Neighbors (k=5)", knn_kappa)
-```
+# Create the main title
+main_title <- textGrob("Dataset Visualization and Model Decision Boundaries", 
+                      gp = gpar(fontsize = 16, fontface = "bold"))
 
-#### Multinomial
+# Create column headers
+col_headers <- list(
+  textGrob("Dataset", gp = gpar(fontsize = 14, fontface = "bold")),
+  textGrob("KNN", gp = gpar(fontsize = 14, fontface = "bold")),
+  textGrob("Multinomial", gp = gpar(fontsize = 14, fontface = "bold")),
+  textGrob("Random Forest", gp = gpar(fontsize = 14, fontface = "bold")),
+  textGrob("SVM", gp = gpar(fontsize = 14, fontface = "bold"))
+)
 
-```{r include=FALSE}
-# Make predictions on test data
-multinom_pred <- predict(multinom_model, newdata = noisytest_df1)
+# Create row labels
+row_labels <- list(
+  textGrob("Original", rot = 90, gp = gpar(fontsize = 14, fontface = "bold")),
+  textGrob("Noise in x1", rot = 90, gp = gpar(fontsize = 14, fontface = "bold")),
+  textGrob("Noise in x2", rot = 90, gp = gpar(fontsize = 14, fontface = "bold"))
+)
 
-# Evaluate multinomial model
-multinom_kappa <- evaluate_model(noisytest_df1$division, multinom_pred, "Multinomial Logistic Regression")
+# Ensure the results/plots directory exists
+dir.create("../results/plots", recursive = TRUE, showWarnings = FALSE)
 
-# Get multinomial predictions for the grid
-multinom_grid_pred <- predict(multinom_model, newdata = grid_noisy1)
+# Create the plot and save
+png("../results/plots/complete_analysis_grid.png", width = 25, height = 15, units = "in", res = 600)
 
-# Plot multinomial decision boundaries
-multinom_plot1 <- plot_decision_boundary(multinom_grid_pred, "Multinomial Logistic Regression", multinom_kappa)
-```
+# Create a custom layout matrix for the grid
+layout_matrix <- rbind(
+  c(1, 1, 1, 1, 1, 1),     # Title row (spans all columns)
+  c(2, 3, 4, 5, 6, 7),     # Column headers
+  c(8, 9, 10, 11, 12, 13), # Original row
+  c(14, 15, 16, 17, 18, 19), # X1 noise row
+  c(20, 21, 22, 23, 24, 25)  # X2 noise row
+)
 
-```{r include=FALSE}
-# Make predictions on test data
-multinom_pred <- predict(multinom_model, newdata = noisytest_df2)
+# Create the full plot list
+plot_list <- list(
+  # Title (spans all columns)
+  main_title,
+  
+  # Column headers
+  nullGrob(), col_headers[[1]], col_headers[[2]], col_headers[[3]], col_headers[[4]], col_headers[[5]],
+  
+  # Original row
+  row_labels[[1]], dataset_plot, plots_clean[[1]], plots_clean[[2]], plots_clean[[3]], plots_clean[[4]],
+  
+  # X1 noise row
+  row_labels[[2]], blank_plot, plots_x1_noisy[[1]], plots_x1_noisy[[2]], plots_x1_noisy[[3]], plots_x1_noisy[[4]],
+  
+  # X2 noise row
+  row_labels[[3]], blank_plot, plots_x2_noisy[[1]], plots_x2_noisy[[2]], plots_x2_noisy[[3]], plots_x2_noisy[[4]]
+)
 
-# Evaluate multinomial model
-multinom_kappa <- evaluate_model(noisytest_df2$division, multinom_pred, "Multinomial Logistic Regression")
+# Create the grid with custom layout
+grid_plot <- grid.arrange(
+  grobs = plot_list,
+  layout_matrix = layout_matrix,
+  heights = unit(c(0.8, 0.5, 4, 4, 4), "in"),  # Title, headers, then equal row heights
+  widths = unit(c(0.8, 4, 4, 4, 4, 4), "in")   # Row label column narrower, equal plot widths
+)
 
-# Get multinomial predictions for the grid
-multinom_grid_pred <- predict(multinom_model, newdata = grid_noisy2)
+dev.off()
 
-# Plot multinomial decision boundaries
-multinom_plot2 <- plot_decision_boundary(multinom_grid_pred, "Multinomial Logistic Regression", multinom_kappa)
-```
+# Display the plot in the notebook as well
+grid_plot
 
-#### Random Forest
-
-```{r include=FALSE}
-# Make predictions on test data
-rf_pred <- predict(rf_model, newdata = noisytest_df1)
-
-# Evaluate random forest model
-rf_kappa <- evaluate_model(noisytest_df1$division, rf_pred, "Random Forest")
-
-# Get random forest predictions for the grid
-rf_grid_pred <- predict(rf_model, newdata = grid_noisy1)
-
-# Plot random forest decision boundaries
-rf_plot1 <- plot_decision_boundary(rf_grid_pred, "Random Forest", rf_kappa)
-```
-
-```{r include=FALSE}
-# Make predictions on test data
-rf_pred <- predict(rf_model, newdata = noisytest_df2)
-
-# Evaluate random forest model
-rf_kappa <- evaluate_model(noisytest_df2$division, rf_pred, "Random Forest")
-
-# Get random forest predictions for the grid
-rf_grid_pred <- predict(rf_model, newdata = grid_noisy2)
-
-# Plot random forest decision boundaries
-rf_plot2 <- plot_decision_boundary(rf_grid_pred, "Random Forest", rf_kappa)
-```
-
-#### Support Vector Machine
-
-```{r include=FALSE}
-# Make predictions on test data
-svm_pred <- predict(svm_model, newdata = noisytest_df1)
-
-# Evaluate SVM model
-svm_kappa <- evaluate_model(noisytest_df1$division, svm_pred, "SVM")
-
-# Get SVM predictions for the grid
-svm_grid_pred <- predict(svm_model, newdata = grid_noisy1)
-
-# Plot SVM decision boundaries
-svm_plot1 <- plot_decision_boundary(svm_grid_pred, "Support Vector Machine", svm_kappa)
-```
-
-```{r include=FALSE}
-# Make predictions on test data
-svm_pred <- predict(svm_model, newdata = noisytest_df2)
-
-# Evaluate SVM model
-svm_kappa <- evaluate_model(noisytest_df2$division, svm_pred, "SVM")
-
-# Get SVM predictions for the grid
-svm_grid_pred <- predict(svm_model, newdata = grid_noisy2)
-
-# Plot SVM decision boundaries
-svm_plot2 <- plot_decision_boundary(svm_grid_pred, "Support Vector Machine", svm_kappa)
-```
-
-### Display the plots
-
-```{r echo=FALSE}
-# Display all plots
-print(knn_plot1)
-print(multinom_plot1)
-print(rf_plot1)
-print(svm_plot1)
-
-ggsave("../results/plots/knn_x1.png", plot = knn_plot1, width = 6.67, height = 5, dpi = 600)
-ggsave("../results/plots/multi_x1.png", plot = multinom_plot1, width = 6.67, height = 5, dpi = 600)
-ggsave("../results/plots/rf_x1.png", plot = rf_plot1,width = 6.67, height = 5, dpi = 600)
-ggsave("../results/plots/svm_x1.png", plot = svm_plot1, width = 6.67, height = 5, dpi = 600)
-
-print(knn_plot2)
-print(multinom_plot2)
-print(rf_plot2)
-print(svm_plot2)
-
-ggsave("../results/plots/knn_x2.png", plot = knn_plot2, width = 6.67, height = 5, dpi = 600)
-ggsave("../results/plots/multi_x2.png", plot = multinom_plot2, width = 6.67, height = 5, dpi = 600)
-ggsave("../results/plots/rf_x2.png", plot = rf_plot2, width = 6.67, height = 5, dpi = 600)
-ggsave("../results/plots/svm_x2.png", plot = svm_plot2, width = 6.67, height = 5, dpi = 600)
+cat("Plot saved successfully to: ../results/plots/complete_analysis_grid.png")
 ```
