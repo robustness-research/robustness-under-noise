@@ -11,14 +11,12 @@ args <- commandArgs(trailingOnly = TRUE)
 datasets <- args
 fold_names <- readRDS("files/folds.rds")
 methods <- readRDS("files/methods.rds")
-#method_names = readRDS("files/method_names.rds")
-methods <- c("svmLinear", "knn")
-method_names <- c("svmLinear", "knn")
+method_names = readRDS("files/method_names.rds")
 control <- readRDS("files/control.rds")
 noise_level <- readRDS("files/noise.rds")
 noise_names <- readRDS("files/noise_names.rds")
-instances <- append(readRDS("files/instances.rds"), c(0.25, 0.75))
-instances_names <- append(readRDS("files/instances_names.rds"), c("25", "75"))
+instances <- c(0.25, 0.75)
+instances_names <- c("25", "75")
 
 # Load previous results
 mia_df <- readRDS("results/most_important_attr/mia_df.rds")
@@ -626,8 +624,8 @@ for(dataset in datasets) {
   dataset_counter = dataset_counter + 1
   
   # Safeguard store by dataset
-  filename1 = paste0("results/instances/by_dataset_popular/", dataset, "_instances_popular_", method, ".rds")
-  filename2 = paste0("results/instances/by_dataset_popular/", dataset, "_instancesCM_popular_", method, ".rds")
+  filename1 = paste0("results/instances/by_dataset_popular/", dataset, "_instances_popular_q_", method, ".rds")
+  filename2 = paste0("results/instances/by_dataset_popular/", dataset, "_instancesCM_popular_q_", method, ".rds")
   saveRDS(folds_list, file = filename1)
   saveRDS(folds_CM, file = filename2)
   
