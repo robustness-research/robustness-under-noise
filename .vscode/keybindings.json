@@ -1,0 +1,17 @@
+[
+  {
+    "key": "cmd+enter",
+    "command": "r.runSelection",
+    "when": "editorTextFocus && editorLangId == 'r'"
+  },
+  {
+    "key": "shift+cmd+enter",
+    "command": "r.runCurrentChunk",
+    "when": "editorTextFocus && editorLangId == 'rmd'"
+  },
+  {
+    "key": "cmd+enter",
+    "command": "r.runSelection",
+    "when": "editorTextFocus && editorLangId == 'rmd'"
+  }
+]

@@ -15,7 +15,6 @@ library(dplyr)
 library(ggplot2)
 ```
 
-\
 Load files
 
 ```{r, include=FALSE}
@@ -30,7 +29,7 @@ quartiles_names = c("0", "25", "50", "75", "100")
 # Load results
 quartiles_df <- readRDS("../results/KLC_plot_quartiles.rds")
 #quartilesP_df <- readRDS("../results/KLC_plot_quartiles2.rds")
-#deciles_df <- readRDS("../results/KLC_plot_deciles.rds")
+deciles_df <- readRDS("../results/KLC_plot_deciles.rds")
 decilesP_df <- readRDS("../results/KLC_plot_deciles2.rds")
 ```
 
@@ -188,10 +187,10 @@ openPDFEPS <- function(file, height= PDFheight, width= PDFwidth, PDFEPS = 1) {
 
 
 # Create a new column to control the order of datasets
-decilesP_df$dataset_order <- factor(decilesP_df$dataset_name, levels = datasets)
+deciles_df$dataset_order <- factor(deciles_df$dataset_name, levels = datasets)
 
 # Create a new column to control the order of methods
-decilesP_df$method_order <- factor(decilesP_df$technique, levels = method_names)
+deciles_df$method_order <- factor(deciles_df$technique, levels = method_names)
 
 # Create custom labels for methods (a-u) and datasets (1-26)
 method_labels <- letters[1:length(method_names)]
@@ -200,7 +199,7 @@ dataset_labels <- as.character(1:length(datasets))
 names(dataset_labels) <- datasets
 
 # Create plot
-p <- ggplot(decilesP_df, aes(x = percentage, y = kappa_loss, color = factor(noise))) +
+p <- ggplot(deciles_df, aes(x = percentage, y = kappa_loss, color = factor(noise))) +
   geom_point() +
   geom_line(aes(group = factor(noise))) +
   labs(x = "Instances", y = "Kappa", color = "Noise") +
@@ -226,7 +225,7 @@ p <- ggplot(decilesP_df, aes(x = percentage, y = kappa_loss, color = factor(nois
   # facet_grid(method_order ~ dataset_order, scales = "free")
 
 # Print plot
-openPDFEPS("KLC_plot_d_popular_v2", heigh = 26, width = 20)
+openPDFEPS("KLC_plot_d_v2", heigh = 26, width = 20)
 print(p)
 dev.off()
 ```
