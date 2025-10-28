@@ -10,12 +10,15 @@ library(caret)
 
 ## ----load-data---------------------------------------------------------------------------------------
 # Datasets and methods
-#datasets <- c("analcatdata_authorship",  "cmc", "pc4", "wilt") # Datasets
 args <- commandArgs(trailingOnly = TRUE)
-datasets <- args
-methods = c("C5.0", "rf", "rda") #ML techniques
-rankers <- c("IML", "LIME", "SHAP") 
+datasets <- args[1]  # First argument is the dataset
+methods <- args[2]   # Second argument is the method
 
+if (length(args) < 2) {
+  stop("Usage: Rscript Ranking.R <dataset> <method>")
+}
+
+rankers <- c("IML", "LIME", "SHAP") 
 
 ## ----agreement---------------------------------------------------------------------------------------
 # Function to calculate agreement statistic (pairwise Kendall, Spearman, IOU@k)
@@ -383,7 +386,7 @@ set.seed(1)
 # Main loop
 for (dataset in datasets) {
   # Load dataset
-  filename = paste0("../datasets/", dataset, ".rds")
+  filename = paste0("datasets/", dataset, ".rds")
   df <- readRDS(filename)
 
   for (method in methods) {
