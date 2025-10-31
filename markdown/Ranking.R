@@ -1,14 +1,7 @@
-## ----setup, include=FALSE----------------------------------------------------------------------------
-knitr::opts_chunk$set(echo = TRUE)
-
-
-## ----include=FALSE, load-libraries-------------------------------------------------------------------
 library(iml)
 library(lime)
 library(caret)
 
-
-## ----load-data---------------------------------------------------------------------------------------
 # Datasets and methods
 args <- commandArgs(trailingOnly = TRUE)
 datasets <- args[1]  # First argument is the dataset
@@ -95,10 +88,37 @@ calculate_agreement <- function(rankings_list, k = 3) {
 
 
 ## ----colinearity-------------------------------------------------------------------------------------
-# Function to check collinearity
-check_collinearity <- function(attributes, data, corr_threshold = 0.8, vif_threshold = 5) {
-  # Subset the dataset to include only the selected attributes
-  subset_data <- data[, attributes, drop = FALSE]
+# Function to check collinearity (dataset-level, not dataset-method level)
+# Now accepts only `data` (the dataset) and inspects numeric predictors.
+# By default it evaluates collinearity among the top_n numeric predictors
+# selected by variance (top_n = 3).
+check_collinearity <- function(data, corr_threshold = 0.8, vif_threshold = 5) {
+
+  # Select predictor columns (exclude target 'class')
+  if (!"class" %in% names(data)) {
+    stop("Data must contain a 'class' column.")
+  }
+
+  predictors <- data[, setdiff(names(data), "class"), drop = FALSE]
+
+  # Keep only numeric predictors for correlation / VIF checks
+  numeric_preds <- predictors[, sapply(predictors, is.numeric), drop = FALSE]
+  if (ncol(numeric_preds) == 0) {
+    cat("\n--- Collinearity diagnostics ---\n")
+    cat("No numeric predictors available for collinearity checks.\n")
+    return(FALSE)
+  }
+
+  # Choose top_n numeric predictors by variance (dataset-level choice)
+  vars <- apply(numeric_preds, 2, var, na.rm = TRUE)
+  top_n <- min(top_n, length(vars))
+  top_attributes <- names(sort(vars, decreasing = TRUE))[seq_len(top_n)]
+  subset_data <- numeric_preds[, top_attributes, drop = FALSE]
+
+  cat("\n--- Collinearity diagnostics ---\n")
+  cat(sprintf("Selected predictors for collinearity check (top %d by variance): %s\n",
+
+  top_n, paste(top_attributes, collapse = ", ")))
 
   # --- Pairwise correlation (Pearson)
   cor_matrix <- try(suppressWarnings(cor(subset_data, method = "pearson", use = "pairwise.complete.obs")), silent = TRUE)
@@ -122,7 +142,8 @@ check_collinearity <- function(attributes, data, corr_threshold = 0.8, vif_thres
       fit <- try(lm(xj ~ ., data = as.data.frame(others)), silent = TRUE)
       if (inherits(fit, "try-error")) {
         vifs[j] <- Inf
-      } else {
+      } 
+      else {
         r2 <- try(summary(fit)$r.squared, silent = TRUE)
         if (inherits(r2, "try-error") || is.na(r2) || r2 >= 1) {
           vifs[j] <- Inf
@@ -132,21 +153,21 @@ check_collinearity <- function(attributes, data, corr_threshold = 0.8, vif_thres
       }
     }
   }
+
   any_vif_high <- any(vifs > vif_threshold, na.rm = TRUE)
   max_vif <- if (any(is.infinite(vifs))) Inf else suppressWarnings(max(vifs, na.rm = TRUE))
 
-  # --- Diagnostics
-  cat("\n--- Collinearity diagnostics ---\n")
+  # --- Diagnostics output
   cat(sprintf("Correlation: thr=%.2f | any>thr=%s | max|r|=%s\n",
-              corr_threshold,
-              ifelse(isTRUE(high_corr), "TRUE", "FALSE"),
-              ifelse(is.na(max_abs_corr), "NA", sprintf("%.3f", max_abs_corr))))
-  cat(sprintf("VIF:         thr=%.1f | any>thr=%s | max VIF=%s\n",
-              vif_threshold,
-              ifelse(isTRUE(any_vif_high), "TRUE", "FALSE"),
-              ifelse(is.infinite(max_vif), "Inf", sprintf("%.3f", max_vif))))
+  corr_threshold,
+  ifelse(isTRUE(high_corr), "TRUE", "FALSE"),
+  ifelse(is.na(max_abs_corr), "NA", sprintf("%.3f", max_abs_corr))))
+  cat(sprintf("VIF: thr=%.1f | any>thr=%s | max VIF=%s\n",
+  vif_threshold,
+  ifelse(isTRUE(any_vif_high), "TRUE", "FALSE"),
+  ifelse(is.infinite(max_vif), "Inf", sprintf("%.3f", max_vif))))
 
-  # Keep original behavior: return correlation-based flag
+  # Return boolean indicating whether correlation threshold was exceeded
   return(high_corr)
 }
 
@@ -412,8 +433,8 @@ for (dataset in datasets) {
     agreement_stat <- calculate_agreement(rankings_list, k = 3)
 
     # Check colinearity among top 3 attributes from FEAT_IMP
-    top_attributes <- head(feat_imp, 3)
-    is_colinear <- check_collinearity(top_attributes, df)
+    #top_attributes <- head(feat_imp, 3)
+    is_colinear <- check_collinearity(df)
     cat("\n=== Colinearity Check for Top 3 FEAT_IMP Attributes ===\n")
     
     # IF TRUE ELSE logic
