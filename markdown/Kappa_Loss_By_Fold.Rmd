@@ -3,11 +3,14 @@ output: html_document
 ---
 
 ```{r setup, include=FALSE}
+knitr::opts_knit$set(root.dir = "/Users/chris/github/robustness-under-noise")
 knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE)
 library(dplyr)
 library(purrr)
 library(tidyr)
+```
 
+```{r helper-functions}
 # Helper to coerce names like "noise_10" -> 0.10 and percent names like "25" -> 0.25
 parse_noise <- function(nm) {
   # nm expected like "noise_0" or "noise_10" or "0"
@@ -42,11 +45,12 @@ safe_kappa <- function(x) {
     NA_real_
   }
 }
+```
 
+```{r load-files}
 instances_file_candidates <- c(
   "results/instances/instances_list.rds",
-  "results/instances/instancesCM_list.rds",
-  "results/instances/instancesCM.rds"
+  "results/instances/instancesCM_list.rds"
 )
 instances_file <- instances_file_candidates[file.exists(instances_file_candidates)][1]
 if (is.na(instances_file) || is.null(instances_file)) stop("No instances file found in results/instances; expected instances_list.rds or instancesCM_list.rds")
@@ -55,6 +59,7 @@ message("Using instances file: ", instances_file)
 
 instances_all <- readRDS(instances_file)
 
+print(file.exists(instances_file_candidates))
 ```
 
 ## Extract Kappa values into a tidy table
@@ -142,9 +147,9 @@ agg_by_noise <- df_kappa2 %>%
 agg_by_noise %>% head()
 
 # Save
-dir.create("results/instances/aggregated", recursive = TRUE, showWarnings = FALSE)
-saveRDS(agg_by_noise, file = "results/instances/aggregated/agg_kappa_loss_by_noise_per_fold.rds")
-write.csv(agg_by_noise, file = "results/instances/aggregated/agg_kappa_loss_by_noise_per_fold.csv", row.names = FALSE)
+dir.create("results/instances/folds", recursive = TRUE, showWarnings = FALSE)
+saveRDS(agg_by_noise, file = "results/instances/folds/agg_kappa_loss_by_noise_per_fold.rds")
+write.csv(agg_by_noise, file = "results/instances/folds/agg_kappa_loss_by_noise_per_fold.csv", row.names = FALSE)
 
 ```
 
@@ -161,8 +166,8 @@ agg_by_percent <- df_kappa2 %>%
 
 agg_by_percent %>% head()
 
-saveRDS(agg_by_percent, file = "results/instances/aggregated/agg_kappa_loss_by_percent_per_fold.rds")
-write.csv(agg_by_percent, file = "results/instances/aggregated/agg_kappa_loss_by_percent_per_fold.csv", row.names = FALSE)
+saveRDS(agg_by_percent, file = "results/instances/folds/agg_kappa_loss_by_percent_per_fold.rds")
+write.csv(agg_by_percent, file = "results/instances/folds/agg_kappa_loss_by_percent_per_fold.csv", row.names = FALSE)
 
 ```
 
@@ -176,10 +181,10 @@ The following section performs statistical comparisons across noise levels (for 
 
 - similarly for percent-level comparisons (per-method mean across noise levels).
 
-Results (R objects) are saved under `results/instances/aggregated/tests/` as RDS files.
+Results (R objects) are saved under `results/instances/folds/tests/` as RDS files.
 
 ```{r stats}
-dir.create("results/instances/aggregated/tests", recursive = TRUE, showWarnings = FALSE)
+dir.create("results/instances/folds/tests", recursive = TRUE, showWarnings = FALSE)
 
 library(broom)
 
@@ -241,7 +246,7 @@ for (r in seq_len(nrow(datasets_folds))) {
   tests_by_noise[[paste(ds, fd, sep = "__")]] <- res
 }
 
-saveRDS(tests_by_noise, file = "results/instances/aggregated/tests/tests_by_noise_per_fold.rds")
+saveRDS(tests_by_noise, file = "results/instances/folds/tests/tests_by_noise_per_fold.rds")
 
 # Now do the analogous analysis across percent levels (average across noise)
 per_method_percent <- df_kappa2 %>%
@@ -291,7 +296,7 @@ for (r in seq_len(nrow(datasets_folds2))) {
   tests_by_percent[[paste(ds, fd, sep = "__")]] <- res
 }
 
-saveRDS(tests_by_percent, file = "results/instances/aggregated/tests/tests_by_percent_per_fold.rds")
+saveRDS(tests_by_percent, file = "results/instances/folds/tests/tests_by_percent_per_fold.rds")
 
 # Write brief summaries to CSVs for quick inspection
 summarize_test <- function(tlist) {
@@ -325,10 +330,10 @@ summarize_test <- function(tlist) {
 
 sum_noise <- summarize_test(tests_by_noise)
 sum_percent <- summarize_test(tests_by_percent)
-if (nrow(sum_noise)>0) write.csv(sum_noise, file = "results/instances/aggregated/tests/summary_tests_by_noise.csv", row.names = FALSE)
-if (nrow(sum_percent)>0) write.csv(sum_percent, file = "results/instances/aggregated/tests/summary_tests_by_percent.csv", row.names = FALSE)
+if (nrow(sum_noise)>0) write.csv(sum_noise, file = "results/instances/folds/tests/summary_tests_by_noise.csv", row.names = FALSE)
+if (nrow(sum_percent)>0) write.csv(sum_percent, file = "results/instances/folds/tests/summary_tests_by_percent.csv", row.names = FALSE)
 
-cat("Statistical tests completed. Results saved to results/instances/aggregated/tests/\n")
+cat("Statistical tests completed. Results saved to results/instances/folds/tests/\n")
 
 ```
 
@@ -336,8 +341,8 @@ cat("Statistical tests completed. Results saved to results/instances/aggregated/
 
 - This report assumes the nested structure dataset -> fold -> method -> noise -> percent -> confusionMatrix (or at least an object that contains an `overall["Kappa"]` entry). If your stored object name differs, please point me to the correct file or structure and I will adapt the extractor.
 - The two saved aggregate files are:
-  - `results/instances/aggregated/agg_kappa_loss_by_noise_per_fold.rds` (and .csv)
-  - `results/instances/aggregated/agg_kappa_loss_by_percent_per_fold.rds` (and .csv)
-- The statistical test outputs are saved under `results/instances/aggregated/tests/` as RDS and short CSV summaries.
+  - `results/instances/folds/agg_kappa_loss_by_noise_per_fold.rds` (and .csv)
+  - `results/instances/folds/agg_kappa_loss_by_percent_per_fold.rds` (and .csv)
+- The statistical test outputs are saved under `results/instances/folds/tests/` as RDS and short CSV summaries.
 
 You can now knit this Rmd to produce an HTML with the tables, statistical test summaries and the saved CSVs for downstream plotting/analysis.
