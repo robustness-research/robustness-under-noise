@@ -4,6 +4,9 @@
 # Ignore all .log files
 *.log
 
+# Ignore all .csv files
+*.csv
+
 # Ignore DS_Store file from Mac
 .DS_Store
 
