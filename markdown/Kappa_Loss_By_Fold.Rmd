@@ -227,7 +227,7 @@ for (r in seq_len(nrow(datasets_folds))) {
 }
 ```
 
-```{r plot-noise}
+```{r plot-noise, fig.width=12, fig.height=8}
 library(ggplot2)
 
 # Plot aggregated by noise level
@@ -294,7 +294,7 @@ for (r in seq_len(nrow(datasets_folds2))) {
 }
 ```
 
-```{r plot-percent}
+```{r plot-percent, fig.width=12, fig.height=8}
 # Plot aggregated by percentage of altered instances
 p_percent <- ggplot(agg_by_percent, aes(x = factor(percent), y = mean_kappa_loss, fill = factor(percent))) +
   geom_boxplot() +
