@@ -1,0 +1,318 @@
+---
+title: "Plots - Dendrogram Groups"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+Load libraries
+
+```{r, include=FALSE}
+# Packages that need to be loaded
+library(dplyr)
+library(ggplot2)
+```
+
+Load files
+
+```{r, include=FALSE}
+# Load files
+datasets <- readRDS("../files/datasets.rds")
+method_names = readRDS("../files/method_names.rds")
+noise_level <- readRDS("../files/noise.rds")
+noise_names <- readRDS("../files/noise_names.rds")
+instances_names = readRDS("../files/instances_names.rds")
+quartiles_names = c("0", "25", "50", "75", "100")
+
+# Load results
+quartiles_df <- readRDS("../results/KLC_plot_quartiles.rds")
+deciles_df <- readRDS("../results/KLC_plot_deciles.rds")
+
+# Define dendrogram groups based on hierarchical clustering
+dendo1_methods <- c("multinom", "rbfDDA", "rda", "fda", "gcvEarth")
+dendo2_methods <- c("gbm", "PART", "C5.0", "JRip", "bayesglm", "rpart", "svmLinear", "ctree", "lvq")
+dendo3_methods <- c("mlpML", "knn", "naive_bayes", "slmpts", "svmRadial", "rf", "rRules")
+
+# Create original method labels mapping (same as in Plots.Rmd)
+method_labels_all <- letters[seq_along(method_names)]
+names(method_labels_all) <- method_names
+```
+
+# Plotting the Kappa Loss Curves for each dataset and technique by Dendrogram Groups
+
+## Helper function for PDF/EPS output
+
+```{r echo=FALSE}
+openPDFEPS <- function(file, height = 26, width = 20, PDFEPS = 1) {
+  if (PDFEPS == 1) {
+    pdf(paste(file, ".pdf", sep=""), width, height)
+  } else if (PDFEPS == 2) {
+    postscript(paste(file, ".eps", sep=""), width, height, horizontal=FALSE)
+  }
+}
+```
+
+## Dendrogram Group 1 - Quartiles (multinom, rbfDDA, rda, fda, gcvEarth)
+
+```{r echo=FALSE}
+# Filter data for Group 1 methods
+dendo1_df <- quartiles_df %>% 
+  filter(technique %in% dendo1_methods)
+
+# Create a new column to control the order of datasets
+dendo1_df$dataset_order <- factor(dendo1_df$dataset_name, levels = datasets)
+
+# Create a new column to control the order of methods (alphabetical)
+dendo1_df$method_order <- factor(dendo1_df$technique, levels = sort(dendo1_methods))
+
+# Create custom labels for methods and datasets (using original method binding, alphabetical order)
+method_labels_1 <- method_labels_all[sort(dendo1_methods)]
+dataset_labels <- as.character(seq_along(datasets))
+names(dataset_labels) <- datasets
+
+# Create plot
+dendo1 <- ggplot(dendo1_df, aes(x = percentage, y = kappa_loss, color = factor(noise))) +
+  geom_point() +
+  geom_line(aes(group = factor(noise))) +
+  labs(x = "Instances", y = "Kappa", color = "Noise", 
+       title = "Group 1: multinom, rbfDDA, rda, fda, gcvEarth") +
+  scale_y_continuous(limits = c(0.0, 1), breaks = seq(0, 1, by = 0.5)) +
+  scale_x_discrete(limits = c(50, 100)) + 
+  facet_grid(dataset_order ~ method_order, scales = "free", 
+             labeller = labeller(dataset_order = dataset_labels, method_order = method_labels_1)) +
+  guides(colour = guide_legend(nrow = 1)) +
+  theme_minimal() +  
+  theme(legend.position = "bottom",
+        legend.text=element_text(size=16),
+        axis.text=element_text(size=12),
+        axis.text.x = element_text(angle = 90, vjust = 0, hjust=0.5),
+        axis.title = element_text(size=14,face = "bold"),
+        panel.grid.minor = element_blank(),
+        strip.background = element_rect(
+          color="white", fill="#edf2f4", size=0.0, linetype="solid"),
+        strip.text = element_text(face = "bold"),
+        strip.text.y = element_text(angle = 0))
+
+# Print plot
+openPDFEPS("../results/plots/dendo1", height = 26, width = 15)
+print(dendo1)
+dev.off()
+```
+
+## Dendrogram Group 2 - Quartiles (gbm, PART, C5.0, JRip, bayesglm, rpart, svmLinear, ctree, lvq)
+
+```{r echo=FALSE}
+# Filter data for Group 2 methods
+dendo2_df <- quartiles_df %>% 
+  filter(technique %in% dendo2_methods)
+
+# Create a new column to control the order of datasets
+dendo2_df$dataset_order <- factor(dendo2_df$dataset_name, levels = datasets)
+
+# Create a new column to control the order of methods (alphabetical)
+dendo2_df$method_order <- factor(dendo2_df$technique, levels = sort(dendo2_methods))
+
+# Create custom labels for methods and datasets (using original method binding, alphabetical order)
+method_labels_2 <- method_labels_all[sort(dendo2_methods)]
+
+# Create plot
+dendo2 <- ggplot(dendo2_df, aes(x = percentage, y = kappa_loss, color = factor(noise))) +
+  geom_point() +
+  geom_line(aes(group = factor(noise))) +
+  labs(x = "Instances", y = "Kappa", color = "Noise", 
+       title = "Group 2: gbm, PART, C5.0, JRip, bayesglm, rpart, svmLinear, ctree, lvq") +
+  scale_y_continuous(limits = c(0.0, 1), breaks = seq(0, 1, by = 0.5)) +
+  scale_x_discrete(limits = c(50, 100)) + 
+  facet_grid(dataset_order ~ method_order, scales = "free", 
+             labeller = labeller(dataset_order = dataset_labels, method_order = method_labels_2)) +
+  guides(colour = guide_legend(nrow = 1)) +
+  theme_minimal() +  
+  theme(legend.position = "bottom",
+        legend.text=element_text(size=16),
+        axis.text=element_text(size=12),
+        axis.text.x = element_text(angle = 90, vjust = 0, hjust=0.5),
+        axis.title = element_text(size=14,face = "bold"),
+        panel.grid.minor = element_blank(),
+        strip.background = element_rect(
+          color="white", fill="#edf2f4", size=0.0, linetype="solid"),
+        strip.text = element_text(face = "bold"),
+        strip.text.y = element_text(angle = 0))
+
+# Print plot
+openPDFEPS("../results/plots/dendo2", height = 26, width = 25)
+print(dendo2)
+dev.off()
+```
+
+## Dendrogram Group 3 - Quartiles (mlpML, knn, naive_bayes, slmpts, svmRadial, rf, rRules)
+
+```{r echo=FALSE}
+# Filter data for Group 3 methods
+dendo3_df <- quartiles_df %>% 
+  filter(technique %in% dendo3_methods)
+
+# Create a new column to control the order of datasets
+dendo3_df$dataset_order <- factor(dendo3_df$dataset_name, levels = datasets)
+
+# Create a new column to control the order of methods (alphabetical)
+dendo3_df$method_order <- factor(dendo3_df$technique, levels = sort(dendo3_methods))
+
+# Create custom labels for methods and datasets (using original method binding, alphabetical order)
+method_labels_3 <- method_labels_all[sort(dendo3_methods)]
+
+# Create plot
+dendo3 <- ggplot(dendo3_df, aes(x = percentage, y = kappa_loss, color = factor(noise))) +
+  geom_point() +
+  geom_line(aes(group = factor(noise))) +
+  labs(x = "Instances", y = "Kappa", color = "Noise", 
+       title = "Group 3: mlpML, knn, naive_bayes, slmpts, svmRadial, rf, rRules") +
+  scale_y_continuous(limits = c(0.0, 1), breaks = seq(0, 1, by = 0.5)) +
+  scale_x_discrete(limits = c(50, 100)) + 
+  facet_grid(dataset_order ~ method_order, scales = "free", 
+             labeller = labeller(dataset_order = dataset_labels, method_order = method_labels_3)) +
+  guides(colour = guide_legend(nrow = 1)) +
+  theme_minimal() +  
+  theme(legend.position = "bottom",
+        legend.text=element_text(size=16),
+        axis.text=element_text(size=12),
+        axis.text.x = element_text(angle = 90, vjust = 0, hjust=0.5),
+        axis.title = element_text(size=14,face = "bold"),
+        panel.grid.minor = element_blank(),
+        strip.background = element_rect(
+          color="white", fill="#edf2f4", size=0.0, linetype="solid"),
+        strip.text = element_text(face = "bold"),
+        strip.text.y = element_text(angle = 0))
+
+# Print plot
+openPDFEPS("../results/plots/dendo3", height = 26, width = 20)
+print(dendo3)
+dev.off()
+```
+
+## Dendrogram Group 1 - Deciles (multinom, rbfDDA, rda, fda, gcvEarth)
+
+```{r echo=FALSE}
+# Filter data for Group 1 methods
+dendo1_deciles_df <- deciles_df %>% 
+  filter(technique %in% dendo1_methods)
+
+# Create a new column to control the order of datasets
+dendo1_deciles_df$dataset_order <- factor(dendo1_deciles_df$dataset_name, levels = datasets)
+
+# Create a new column to control the order of methods (alphabetical)
+dendo1_deciles_df$method_order <- factor(dendo1_deciles_df$technique, levels = sort(dendo1_methods))
+
+# Create plot
+dendo1_deciles <- ggplot(dendo1_deciles_df, aes(x = percentage, y = kappa_loss, color = factor(noise))) +
+  geom_point() +
+  geom_line(aes(group = factor(noise))) +
+  labs(x = "Instances", y = "Kappa", color = "Noise", 
+       title = "Group 1 Deciles: multinom, rbfDDA, rda, fda, gcvEarth") +
+  scale_y_continuous(limits = c(0.0, 1), breaks = seq(0, 1, by = 0.5)) +
+  scale_x_discrete(limits = c(50, 100)) + 
+  facet_grid(dataset_order ~ method_order, scales = "free", 
+             labeller = labeller(dataset_order = dataset_labels, method_order = method_labels_1)) +
+  guides(colour = guide_legend(nrow = 1)) +
+  theme_minimal() +  
+  theme(legend.position = "bottom",
+        legend.text=element_text(size=16),
+        axis.text=element_text(size=12),
+        axis.text.x = element_text(angle = 90, vjust = 0, hjust=0.5),
+        axis.title = element_text(size=14,face = "bold"),
+        panel.grid.minor = element_blank(),
+        strip.background = element_rect(
+          color="white", fill="#edf2f4", size=0.0, linetype="solid"),
+        strip.text = element_text(face = "bold"),
+        strip.text.y = element_text(angle = 0))
+
+# Print plot
+openPDFEPS("../results/plots/dendo1_deciles", height = 26, width = 15)
+print(dendo1_deciles)
+dev.off()
+```
+
+## Dendrogram Group 2 - Deciles (gbm, PART, C5.0, JRip, bayesglm, rpart, svmLinear, ctree, lvq)
+
+```{r echo=FALSE}
+# Filter data for Group 2 methods
+dendo2_deciles_df <- deciles_df %>% 
+  filter(technique %in% dendo2_methods)
+
+# Create a new column to control the order of datasets
+dendo2_deciles_df$dataset_order <- factor(dendo2_deciles_df$dataset_name, levels = datasets)
+
+# Create a new column to control the order of methods (alphabetical)
+dendo2_deciles_df$method_order <- factor(dendo2_deciles_df$technique, levels = sort(dendo2_methods))
+
+# Create plot
+dendo2_deciles <- ggplot(dendo2_deciles_df, aes(x = percentage, y = kappa_loss, color = factor(noise))) +
+  geom_point() +
+  geom_line(aes(group = factor(noise))) +
+  labs(x = "Instances", y = "Kappa", color = "Noise", 
+       title = "Group 2 Deciles: gbm, PART, C5.0, JRip, bayesglm, rpart, svmLinear, ctree, lvq") +
+  scale_y_continuous(limits = c(0.0, 1), breaks = seq(0, 1, by = 0.5)) +
+  scale_x_discrete(limits = c(50, 100)) + 
+  facet_grid(dataset_order ~ method_order, scales = "free", 
+             labeller = labeller(dataset_order = dataset_labels, method_order = method_labels_2)) +
+  guides(colour = guide_legend(nrow = 1)) +
+  theme_minimal() +  
+  theme(legend.position = "bottom",
+        legend.text=element_text(size=16),
+        axis.text=element_text(size=12),
+        axis.text.x = element_text(angle = 90, vjust = 0, hjust=0.5),
+        axis.title = element_text(size=14,face = "bold"),
+        panel.grid.minor = element_blank(),
+        strip.background = element_rect(
+          color="white", fill="#edf2f4", size=0.0, linetype="solid"),
+        strip.text = element_text(face = "bold"),
+        strip.text.y = element_text(angle = 0))
+
+# Print plot
+openPDFEPS("../results/plots/dendo2_deciles", height = 26, width = 25)
+print(dendo2_deciles)
+dev.off()
+```
+
+## Dendrogram Group 3 - Deciles (mlpML, knn, naive_bayes, slmpts, svmRadial, rf, rRules)
+
+```{r echo=FALSE}
+# Filter data for Group 3 methods
+dendo3_deciles_df <- deciles_df %>% 
+  filter(technique %in% dendo3_methods)
+
+# Create a new column to control the order of datasets
+dendo3_deciles_df$dataset_order <- factor(dendo3_deciles_df$dataset_name, levels = datasets)
+
+# Create a new column to control the order of methods (alphabetical)
+dendo3_deciles_df$method_order <- factor(dendo3_deciles_df$technique, levels = sort(dendo3_methods))
+
+# Create plot
+dendo3_deciles <- ggplot(dendo3_deciles_df, aes(x = percentage, y = kappa_loss, color = factor(noise))) +
+  geom_point() +
+  geom_line(aes(group = factor(noise))) +
+  labs(x = "Instances", y = "Kappa", color = "Noise", 
+       title = "Group 3 Deciles: mlpML, knn, naive_bayes, slmpts, svmRadial, rf, rRules") +
+  scale_y_continuous(limits = c(0.0, 1), breaks = seq(0, 1, by = 0.5)) +
+  scale_x_discrete(limits = c(50, 100)) + 
+  facet_grid(dataset_order ~ method_order, scales = "free", 
+             labeller = labeller(dataset_order = dataset_labels, method_order = method_labels_3)) +
+  guides(colour = guide_legend(nrow = 1)) +
+  theme_minimal() +  
+  theme(legend.position = "bottom",
+        legend.text=element_text(size=16),
+        axis.text=element_text(size=12),
+        axis.text.x = element_text(angle = 90, vjust = 0, hjust=0.5),
+        axis.title = element_text(size=14,face = "bold"),
+        panel.grid.minor = element_blank(),
+        strip.background = element_rect(
+          color="white", fill="#edf2f4", size=0.0, linetype="solid"),
+        strip.text = element_text(face = "bold"),
+        strip.text.y = element_text(angle = 0))
+
+# Print plot
+openPDFEPS("../results/plots/dendo3_deciles", height = 26, width = 20)
+print(dendo3_deciles)
+dev.off()
+```

@@ -101,14 +101,83 @@ cluster_colors <- c(
 ) #F7AC36, #BF1F5A
 ```
 
+### Silhouette Analysis to Determine Optimal K
+
 ```{r echo=TRUE}
 # Perform hierarchical clustering
 hclusters <- hclust(distance_matrix, method = "ward.D")
 
-# Cut the tree to get k=4 clusters (tested to be best K)
-k <- 4
-clusters <- cutree(hclusters, k = k)
+# Test different values of k to find the optimal number of clusters
+k_values <- c(2, 3, 4)
+silhouette_scores <- numeric(length(k_values))
+silhouette_plots <- list()
 
+# Calculate silhouette scores for each k
+for (i in seq_along(k_values)) {
+  k <- k_values[i]
+  clusters_temp <- cutree(hclusters, k = k)
+  sil_temp <- silhouette(clusters_temp, dist = distance_matrix)
+  silhouette_scores[i] <- mean(sil_temp[, 3])
+  
+  # Store silhouette plot data
+  silhouette_plots[[i]] <- sil_temp
+  
+  cat("k =", k, "- Average silhouette width:", round(silhouette_scores[i], 3), "\n")
+}
+
+# Create a dataframe for plotting
+silhouette_df <- data.frame(
+  k = k_values,
+  avg_silhouette = silhouette_scores
+)
+
+# Plot silhouette scores
+silhouette_comparison_plot <- ggplot(silhouette_df, aes(x = k, y = avg_silhouette)) +
+  geom_line(color = "#3151CC", size = 1.2) +
+  geom_point(color = "#3151CC", size = 3) +
+  scale_x_continuous(breaks = k_values) +
+  labs(x = "Number of Clusters (k)", 
+       y = "Average Silhouette Width",
+       title = "Silhouette Analysis for Optimal Number of Clusters") +
+  theme_bw() +
+  theme(plot.title = element_text(hjust = 0.5))
+
+print(silhouette_comparison_plot)
+
+# Save the silhouette comparison plot
+png("../results/plots/silhouette_comparison.png", width = 3000, height = 2000, res = 400)
+print(silhouette_comparison_plot)
+invisible(dev.off())
+
+# Generate individual silhouette plots for each k
+for (i in seq_along(k_values)) {
+  k <- k_values[i]
+  clusters_temp <- cutree(hclusters, k = k)
+  
+  png(paste0("../results/plots/silhouette_k", k, ".png"), width = 4000, height = 3000, res = 600)
+  
+  # Create color palette for this k
+  colors_k <- cluster_colors[1:k]
+  
+  plot(silhouette_plots[[i]], col = colors_k, 
+       main = paste("Silhouette Plot (k =", k, ")"))
+  invisible(dev.off())
+}
+
+# Determine the optimal k based on highest average silhouette width
+optimal_k_idx <- which.max(silhouette_scores)
+optimal_k <- k_values[optimal_k_idx]
+cat("\nOptimal number of clusters based on silhouette analysis: k =", optimal_k, "\n")
+cat("Average silhouette width for optimal k:", round(silhouette_scores[optimal_k_idx], 3), "\n")
+
+# Use the optimal k for the main analysis (or keep k=4 if preferred)
+k <- 4  # You can change this to optimal_k if you want to use the data-driven choice
+clusters <- cutree(hclusters, k = k)
+```
+
+### Final Clustering Results
+
+```{r echo=TRUE}
 # Print cluster assignments
 #print(clusters)
 

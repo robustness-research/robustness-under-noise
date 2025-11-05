@@ -52,14 +52,12 @@ instances_file_candidates <- c(
   "results/instances/instances_list.rds",
   "results/instances/instancesCM_list.rds"
 )
-instances_file <- instances_file_candidates[file.exists(instances_file_candidates)][1]
+instances_file <- instances_file_candidates[file.exists(instances_file_candidates)][2]
 if (is.na(instances_file) || is.null(instances_file)) stop("No instances file found in results/instances; expected instances_list.rds or instancesCM_list.rds")
 
 message("Using instances file: ", instances_file)
 
 instances_all <- readRDS(instances_file)
-
-print(file.exists(instances_file_candidates))
 ```
 
 ## Extract Kappa values into a tidy table
@@ -109,28 +107,18 @@ head(df_kappa)
 
 ## Compute baseline Kappa and Kappa loss
 
-We define kappa loss as: baseline_kappa - kappa, where baseline_kappa is the kappa measured with noise == 0 for the same dataset, fold and method. If a noise==0 value cannot be found for a method/fold, the code will fall back to the maximum kappa observed for that method/fold.
+We define kappa loss as: 1 - kappa.
 
 ```{r loss}
-# compute baseline per dataset/fold/method
-baseline <- df_kappa %>%
-  group_by(dataset, fold, method) %>%
-  summarise(
-    baseline_kappa = {
-      x <- kappa[which(noise == 0)]
-      if (length(x) == 0 || all(is.na(x))) x <- max(kappa, na.rm = TRUE)
-      # if still NA (all missing), set NA
-      if (!is.finite(x)) NA_real_ else mean(x, na.rm = TRUE)
-    },
-    .groups = "drop"
-  )
-
-df_kappa2 <- df_kappa %>% left_join(baseline, by = c("dataset","fold","method")) %>%
-  mutate(kappa_loss = baseline_kappa - kappa)
+# compute kappa loss as 1 - kappa and add to df_kappa
+df_kappa2 <- df_kappa %>%
+  mutate(kappa_loss = 1 - kappa)
 
 # Quick sanity check: noise==0 rows should have loss approx 0
-df_kappa2 %>% filter(noise == 0) %>% select(dataset, fold, method, percent, kappa, baseline_kappa, kappa_loss) %>% head()
-
+df_kappa2 %>%
+  filter(noise == 0) %>%
+  select(dataset, fold, method, percent, kappa, kappa_loss) %>%
+  head()
 ```
 
 ## Aggregate: 1) Kappa loss by noise level (mean across instance percentages and across models)
@@ -147,10 +135,7 @@ agg_by_noise <- df_kappa2 %>%
 agg_by_noise %>% head()
 
 # Save
-dir.create("results/instances/folds", recursive = TRUE, showWarnings = FALSE)
-saveRDS(agg_by_noise, file = "results/instances/folds/agg_kappa_loss_by_noise_per_fold.rds")
 write.csv(agg_by_noise, file = "results/instances/folds/agg_kappa_loss_by_noise_per_fold.csv", row.names = FALSE)
-
 ```
 
 ## Aggregate: 2) Kappa loss by percentage of altered instances (mean across noise levels and across models)
@@ -166,9 +151,7 @@ agg_by_percent <- df_kappa2 %>%
 
 agg_by_percent %>% head()
 
-saveRDS(agg_by_percent, file = "results/instances/folds/agg_kappa_loss_by_percent_per_fold.rds")
 write.csv(agg_by_percent, file = "results/instances/folds/agg_kappa_loss_by_percent_per_fold.csv", row.names = FALSE)
-
 ```
 
 ## Statistical tests (ANOVA / Friedman / Wilcoxon)
@@ -183,13 +166,10 @@ The following section performs statistical comparisons across noise levels (for 
 
 Results (R objects) are saved under `results/instances/folds/tests/` as RDS files.
 
-```{r stats}
-dir.create("results/instances/folds/tests", recursive = TRUE, showWarnings = FALSE)
-
+```{r stats-noise}
 library(broom)
 
 tests_by_noise <- list()
-tests_by_percent <- list()
 
 # Prepare per-method per-noise means (average across percent)
 per_method_noise <- df_kappa2 %>%
@@ -245,10 +225,27 @@ for (r in seq_len(nrow(datasets_folds))) {
 
   tests_by_noise[[paste(ds, fd, sep = "__")]] <- res
 }
+```
 
-saveRDS(tests_by_noise, file = "results/instances/folds/tests/tests_by_noise_per_fold.rds")
+```{r plot-noise}
+library(ggplot2)
 
+# Plot aggregated by noise level
+p_noise <- ggplot(agg_by_noise, aes(x = factor(noise), y = mean_kappa_loss, fill = factor(noise))) +
+  geom_boxplot() +
+  facet_wrap(~ dataset) +
+  labs(title = "Kappa Loss by Noise Level",
+       x = "Noise Level",
+       y = "Mean Kappa Loss",
+       fill = "Noise") +
+  theme_minimal()
+
+print(p_noise)
+```
+```{r stats-percent}
 # Now do the analogous analysis across percent levels (average across noise)
+tests_by_percent <- list()
+
 per_method_percent <- df_kappa2 %>%
   group_by(dataset, fold, method, percent) %>%
   summarise(mean_kappa_loss = mean(kappa_loss, na.rm = TRUE), .groups = "drop")
@@ -295,9 +292,23 @@ for (r in seq_len(nrow(datasets_folds2))) {
 
   tests_by_percent[[paste(ds, fd, sep = "__")]] <- res
 }
+```
 
-saveRDS(tests_by_percent, file = "results/instances/folds/tests/tests_by_percent_per_fold.rds")
+```{r plot-percent}
+# Plot aggregated by percentage of altered instances
+p_percent <- ggplot(agg_by_percent, aes(x = factor(percent), y = mean_kappa_loss, fill = factor(percent))) +
+  geom_boxplot() +
+  facet_wrap(~ dataset) +
+  labs(title = "Kappa Loss by Percentage Altered",
+       x = "Percentage",
+       y = "Mean Kappa Loss",
+       fill = "Percent") +
+  theme_minimal()
 
+print(p_percent)
+```
+
+```{r summarize-tests}
 # Write brief summaries to CSVs for quick inspection
 summarize_test <- function(tlist) {
   rows <- list(); ri <- 1
@@ -330,19 +341,8 @@ summarize_test <- function(tlist) {
 
 sum_noise <- summarize_test(tests_by_noise)
 sum_percent <- summarize_test(tests_by_percent)
-if (nrow(sum_noise)>0) write.csv(sum_noise, file = "results/instances/folds/tests/summary_tests_by_noise.csv", row.names = FALSE)
-if (nrow(sum_percent)>0) write.csv(sum_percent, file = "results/instances/folds/tests/summary_tests_by_percent.csv", row.names = FALSE)
+if (nrow(sum_noise)>0) write.csv(sum_noise, file = "results/instances/folds/summary_tests_by_noise.csv", row.names = FALSE)
+if (nrow(sum_percent)>0) write.csv(sum_percent, file = "results/instances/folds/summary_tests_by_percent.csv", row.names = FALSE)
 
-cat("Statistical tests completed. Results saved to results/instances/folds/tests/\n")
-
+print("Statistical tests completed. Results saved to results/instances/folds/")
 ```
-
-## Notes
-
-- This report assumes the nested structure dataset -> fold -> method -> noise -> percent -> confusionMatrix (or at least an object that contains an `overall["Kappa"]` entry). If your stored object name differs, please point me to the correct file or structure and I will adapt the extractor.
-- The two saved aggregate files are:
-  - `results/instances/folds/agg_kappa_loss_by_noise_per_fold.rds` (and .csv)
-  - `results/instances/folds/agg_kappa_loss_by_percent_per_fold.rds` (and .csv)
-- The statistical test outputs are saved under `results/instances/folds/tests/` as RDS and short CSV summaries.
-
-You can now knit this Rmd to produce an HTML with the tables, statistical test summaries and the saved CSVs for downstream plotting/analysis.

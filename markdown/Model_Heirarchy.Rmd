@@ -24,6 +24,7 @@ library(GGally) # extensión de ggplot2
 library(factoextra) # visualizacion de los clusters
 library(NbClust) # determinar el mejor numero de grupos
 library(cluster) # medidas de evaluacion como silhouette
+library(rlang) # for sym() function
 ```
 
 Load files
@@ -96,6 +97,695 @@ plot(2:10, silhouette_scores, type = "b", xlab = "Number of clusters",
      ylab = "Average silhouette width", main = "Silhouette Method")
 optimal_k <- which.max(silhouette_scores) + 1
 abline(v = optimal_k, lty = 2, col = "#FF0000")
+```
+
+##### Detailed Silhouette Analysis for k=2, k=3, and k=4
+
+Let's examine detailed silhouette plots and statistics for k=2, k=3, and k=4 to make an informed decision:
+
+```{r echo=TRUE}
+# Perform hierarchical clustering once
+hc <- hclust(distance_matrix, method = "ward.D")
+
+# Function to calculate silhouette statistics
+calculate_silhouette_stats <- function(k) {
+  clusters <- cutree(hc, k = k)
+  sil <- silhouette(clusters, distance_matrix)
+  
+  # Calculate statistics
+  avg_sil_width <- mean(sil[,3])
+  cluster_sil_widths <- aggregate(sil[,3], by = list(sil[,1]), FUN = mean)
+  names(cluster_sil_widths) <- c("cluster", "avg_silhouette")
+  
+  # Count negative silhouettes (misclassified points)
+  negative_sil <- sum(sil[,3] < 0)
+  
+  return(list(
+    k = k,
+    avg_silhouette = avg_sil_width,
+    cluster_silhouettes = cluster_sil_widths,
+    negative_count = negative_sil,
+    silhouette_object = sil,
+    clusters = clusters
+  ))
+}
+
+# Calculate for k=2, k=3, k=4
+k_values <- c(2, 3, 4)
+silhouette_results <- lapply(k_values, calculate_silhouette_stats)
+names(silhouette_results) <- paste0("k", k_values)
+
+# Display summary statistics
+cat("Silhouette Analysis Summary:\n")
+cat("===========================\n\n")
+
+for(i in seq_along(silhouette_results)) {
+  result <- silhouette_results[[i]]
+  cat(sprintf("K = %d:\n", result$k))
+  cat(sprintf("  Average silhouette width: %.4f\n", result$avg_silhouette))
+  cat(sprintf("  Number of negative silhouettes: %d\n", result$negative_count))
+  cat("  Cluster-wise average silhouettes:\n")
+  for(j in seq_len(nrow(result$cluster_silhouettes))) {
+    cat(sprintf("    Cluster %d: %.4f\n", 
+               result$cluster_silhouettes$cluster[j], 
+               result$cluster_silhouettes$avg_silhouette[j]))
+  }
+  cat("\n")
+}
+```
+
+```{r echo=TRUE, fig.width=12, fig.height=8}
+# Create silhouette plots for k=2, k=3, k=4
+par(mfrow = c(2, 2))
+
+# Plot comparison of average silhouette widths
+avg_silhouettes <- sapply(silhouette_results, function(x) x$avg_silhouette)
+barplot(avg_silhouettes, 
+        names.arg = paste("k =", k_values),
+        main = "Average Silhouette Width by K",
+        ylab = "Average Silhouette Width",
+        col = c("#4FB28F", "#F65215", "#3681F7"),
+        ylim = c(0, max(avg_silhouettes) * 1.1))
+
+# Add values on top of bars
+text(x = seq_along(avg_silhouettes) * 1.2 - 0.6, 
+     y = avg_silhouettes + max(avg_silhouettes) * 0.02,
+     labels = round(avg_silhouettes, 4),
+     cex = 0.8)
+
+# Individual silhouette plots for each k
+for(i in seq_along(silhouette_results)) {
+  result <- silhouette_results[[i]]
+  
+  # Define colors for clusters
+  if(result$k == 2) {
+    colors <- c("#4FB28F", "#F65215")
+  } else if(result$k == 3) {
+    colors <- c("#4FB28F", "#F65215", "#3681F7")
+  } else {
+    colors <- c("#4FB28F", "#F65215", "#3681F7", "#8F4FB2")
+  }
+  
+  plot(result$silhouette_object, 
+       col = colors[seq_len(result$k)],
+       main = paste("Silhouette Plot (k =", result$k, ")"),
+       cex.names = 0.6)
+}
+
+# Reset plotting parameters
+par(mfrow = c(1, 1))
+```
+
+```{r echo=TRUE}
+# Create a comprehensive comparison table
+comparison_df <- data.frame(
+  k = k_values,
+  avg_silhouette = sapply(silhouette_results, function(x) round(x$avg_silhouette, 4)),
+  negative_count = sapply(silhouette_results, function(x) x$negative_count),
+  min_cluster_silhouette = sapply(silhouette_results, function(x) round(min(x$cluster_silhouettes$avg_silhouette), 4)),
+  max_cluster_silhouette = sapply(silhouette_results, function(x) round(max(x$cluster_silhouettes$avg_silhouette), 4)),
+  silhouette_range = sapply(silhouette_results, function(x) {
+    round(max(x$cluster_silhouettes$avg_silhouette) - min(x$cluster_silhouettes$avg_silhouette), 4)
+  })
+)
+
+print("Comprehensive Silhouette Comparison:")
+print(comparison_df)
+
+# Determine best k based on silhouette analysis
+best_k_idx <- which.max(comparison_df$avg_silhouette)
+best_k <- comparison_df$k[best_k_idx]
+
+cat(sprintf("\nRecommended k based on silhouette analysis: k = %d\n", best_k))
+cat(sprintf("This k has the highest average silhouette width: %.4f\n", 
+           comparison_df$avg_silhouette[best_k_idx]))
+
+# Save silhouette comparison plot
+png("../results/plots/silhouette_comparison.png", width = 4000, height = 3000, res = 600)
+par(mfrow = c(2, 2))
+
+# Plot comparison of average silhouette widths
+avg_silhouettes <- sapply(silhouette_results, function(x) x$avg_silhouette)
+barplot(avg_silhouettes, 
+        names.arg = paste("k =", k_values),
+        main = "Average Silhouette Width by K",
+        ylab = "Average Silhouette Width",
+        col = c("#4FB28F", "#F65215", "#3681F7"),
+        ylim = c(0, max(avg_silhouettes) * 1.1))
+
+text(x = seq_along(avg_silhouettes) * 1.2 - 0.6, 
+     y = avg_silhouettes + max(avg_silhouettes) * 0.02,
+     labels = round(avg_silhouettes, 4),
+     cex = 0.8)
+
+# Individual silhouette plots
+for(i in seq_along(silhouette_results)) {
+  result <- silhouette_results[[i]]
+  
+  if(result$k == 2) {
+    colors <- c("#4FB28F", "#F65215")
+  } else if(result$k == 3) {
+    colors <- c("#4FB28F", "#F65215", "#3681F7")
+  } else {
+    colors <- c("#4FB28F", "#F65215", "#3681F7", "#8F4FB2")
+  }
+  
+  plot(result$silhouette_object, 
+       col = colors[seq_len(result$k)],
+       main = paste("Silhouette Plot (k =", result$k, ")"),
+       cex.names = 0.6)
+}
+
+invisible(dev.off())
+par(mfrow = c(1, 1))
+```
+
+##### Cophenetic Correlation Analysis
+
+The cophenetic correlation coefficient measures how well the hierarchical clustering preserves the pairwise distances in the original data:
+
+```{r echo=TRUE}
+# Calculate cophenetic correlation for different linkage methods
+linkage_methods <- c("ward.D", "ward.D2", "complete", "average", "single")
+cophenetic_results <- list()
+
+cat("Cophenetic Correlation Analysis:\n")
+cat("===============================\n\n")
+
+for(method in linkage_methods) {
+  # Perform hierarchical clustering with current method
+  hc_method <- hclust(distance_matrix, method = method)
+  
+  # Calculate cophenetic distances
+  coph_dist <- cophenetic(hc_method)
+  
+  # Calculate cophenetic correlation
+  coph_corr <- cor(distance_matrix, coph_dist)
+  
+  # Store results
+  cophenetic_results[[method]] <- list(
+    method = method,
+    correlation = coph_corr,
+    hclust_object = hc_method
+  )
+  
+  cat(sprintf("Method: %s\n", method))
+  cat(sprintf("  Cophenetic correlation: %.4f\n\n", coph_corr))
+}
+
+# Find best method based on cophenetic correlation
+best_method_idx <- which.max(sapply(cophenetic_results, function(x) x$correlation))
+best_method <- names(cophenetic_results)[best_method_idx]
+best_correlation <- cophenetic_results[[best_method]]$correlation
+
+cat(sprintf("Best linkage method: %s (correlation = %.4f)\n", best_method, best_correlation))
+
+# Create comparison plot
+coph_correlations <- sapply(cophenetic_results, function(x) x$correlation)
+png("../results/plots/cophenetic_comparison.png", width = 4000, height = 3000, res = 600)
+barplot(coph_correlations,
+        main = "Cophenetic Correlation by Linkage Method",
+        ylab = "Cophenetic Correlation",
+        col = "#4FB28F",
+        ylim = c(0, 1),
+        las = 2)  # Rotate x-axis labels
+text(x = seq_along(coph_correlations) * 1.2 - 0.6,
+     y = coph_correlations + 0.02,
+     labels = round(coph_correlations, 4),
+     cex = 0.8)
+invisible(dev.off())
+```
+
+##### Bootstrap Stability Analysis
+
+Bootstrap analysis evaluates the stability of clusters by resampling the data:
+
+```{r echo=TRUE}
+# Load required library for bootstrap analysis
+if (!requireNamespace("pvclust", quietly = TRUE)) {
+  cat("Installing pvclust package for bootstrap analysis...\n")
+  install.packages("pvclust", repos = "https://cran.r-project.org/")
+}
+library(pvclust)
+
+# Perform bootstrap analysis with multiple methods
+cat("Bootstrap Stability Analysis:\n")
+cat("============================\n\n")
+
+# Note: pvclust requires data to be transposed (features as rows, observations as columns)
+bootstrap_data <- t(clustering_data_filtered)
+
+cat("Performing bootstrap analysis (this may take a few minutes)...\n")
+
+# Set number of bootstrap replicates
+n_boot <- 1000
+
+# Perform bootstrap clustering with different methods
+bootstrap_methods <- c("ward.D", "complete", "average")
+bootstrap_results <- list()
+
+for(method in bootstrap_methods) {
+  cat(sprintf("Running bootstrap for method: %s\n", method))
+  
+  # Perform bootstrap clustering
+  set.seed(123)  # For reproducibility
+  pv_result <- pvclust(bootstrap_data, 
+                      method.hclust = method,
+                      method.dist = "euclidean",
+                      nboot = n_boot,
+                      parallel = FALSE)  # Set to TRUE if you have multiple cores
+  
+  bootstrap_results[[method]] <- pv_result
+}
+
+# Display results for each method
+for(method in names(bootstrap_results)) {
+  cat(sprintf("\nBootstrap results for %s method:\n", method))
+  pv_result <- bootstrap_results[[method]]
+  
+  # Print clusters with high support (AU p-value > 0.95)
+  high_support_clusters <- which(pv_result$edges[,"au"] > 0.95)
+  cat(sprintf("Number of clusters with AU p-value > 0.95: %d\n", length(high_support_clusters)))
+  
+  if(length(high_support_clusters) > 0) {
+    cat("Highly supported clusters (AU > 0.95):\n")
+    for(i in high_support_clusters) {
+      au_pvalue <- pv_result$edges[i,"au"]
+      bp_pvalue <- pv_result$edges[i,"bp"] 
+      cat(sprintf("  Cluster %d: AU = %.3f, BP = %.3f\n", i, au_pvalue, bp_pvalue))
+    }
+  }
+}
+
+# Create bootstrap plots
+for(method in names(bootstrap_results)) {
+  pv_result <- bootstrap_results[[method]]
+  
+  # Save bootstrap dendrogram
+  png(paste0("../results/plots/bootstrap_", method, ".png"), 
+      width = 4000, height = 3000, res = 600)
+  plot(pv_result, 
+       main = paste("Bootstrap Analysis -", method, "linkage"),
+       cex = 0.8,
+       cex.pv = 0.7)
+  
+  # Add rectangles for significant clusters (AU > 0.95)
+  pvrect(pv_result, alpha = 0.95, pv = "au", type = "geq", max.only = TRUE)
+  invisible(dev.off())
+}
+
+# Summary of bootstrap stability
+cat("\nBootstrap Stability Summary:\n")
+cat("===========================\n")
+
+bootstrap_summary <- data.frame(
+  Method = names(bootstrap_results),
+  High_Support_Clusters = sapply(bootstrap_results, function(x) sum(x$edges[,"au"] > 0.95)),
+  Max_AU_Pvalue = sapply(bootstrap_results, function(x) max(x$edges[,"au"])),
+  Avg_AU_Pvalue = sapply(bootstrap_results, function(x) mean(x$edges[,"au"])),
+  stringsAsFactors = FALSE
+)
+
+print(bootstrap_summary)
+
+# Determine most stable method
+most_stable_idx <- which.max(bootstrap_summary$High_Support_Clusters)
+if(length(unique(bootstrap_summary$High_Support_Clusters)) == 1) {
+  # If tied, use highest average AU p-value
+  most_stable_idx <- which.max(bootstrap_summary$Avg_AU_Pvalue)
+}
+most_stable_method <- bootstrap_summary$Method[most_stable_idx]
+
+cat(sprintf("\nMost stable clustering method: %s\n", most_stable_method))
+cat(sprintf("Number of highly supported clusters: %d\n", 
+           bootstrap_summary$High_Support_Clusters[most_stable_idx]))
+```
+
+##### Cluster Validation with Multiple Metrics
+
+Let's combine all validation metrics for a comprehensive assessment:
+
+```{r echo=TRUE}
+# Function to calculate multiple validation metrics
+calculate_validation_metrics <- function(clusters, data_matrix, dist_matrix) {
+  
+  # Silhouette analysis
+  sil <- silhouette(clusters, dist_matrix)
+  avg_sil <- mean(sil[,3])
+  
+  # Within-cluster sum of squares (WSS)
+  wss <- sum(sapply(unique(clusters), function(cluster_id) {
+    cluster_points <- which(clusters == cluster_id)
+    if(length(cluster_points) > 1) {
+      cluster_data <- data_matrix[cluster_points, , drop = FALSE]
+      sum(dist(cluster_data)^2) / (2 * length(cluster_points))
+    } else {
+      0
+    }
+  }))
+  
+  # Between-cluster sum of squares (BSS)
+  overall_centroid <- colMeans(data_matrix)
+  bss <- sum(sapply(unique(clusters), function(cluster_id) {
+    cluster_points <- which(clusters == cluster_id)
+    cluster_centroid <- colMeans(data_matrix[cluster_points, , drop = FALSE])
+    length(cluster_points) * sum((cluster_centroid - overall_centroid)^2)
+  }))
+  
+  # Calinski-Harabasz Index
+  n <- nrow(data_matrix)
+  k <- length(unique(clusters))
+  if(k > 1 && k < n) {
+    ch_index <- (bss / (k - 1)) / (wss / (n - k))
+  } else {
+    ch_index <- NA
+  }
+  
+  return(list(
+    silhouette = avg_sil,
+    wss = wss,
+    bss = bss,
+    calinski_harabasz = ch_index
+  ))
+}
+
+# Calculate validation metrics for k=2, k=3, k=4 using best method
+best_hc <- cophenetic_results[[best_method]]$hclust_object
+
+validation_summary <- data.frame(
+  k = k_values,
+  silhouette = numeric(length(k_values)),
+  calinski_harabasz = numeric(length(k_values)),
+  wss = numeric(length(k_values)),
+  bss = numeric(length(k_values)),
+  stringsAsFactors = FALSE
+)
+
+cat("Comprehensive Validation Metrics:\n")
+cat("=================================\n\n")
+
+for(i in seq_along(k_values)) {
+  k <- k_values[i]
+  clusters <- cutree(best_hc, k = k)
+  
+  metrics <- calculate_validation_metrics(clusters, as.matrix(clustering_data_filtered), distance_matrix)
+  
+  validation_summary$silhouette[i] <- round(metrics$silhouette, 4)
+  validation_summary$calinski_harabasz[i] <- round(metrics$calinski_harabasz, 2)
+  validation_summary$wss[i] <- round(metrics$wss, 2)
+  validation_summary$bss[i] <- round(metrics$bss, 2)
+  
+  cat(sprintf("k = %d:\n", k))
+  cat(sprintf("  Silhouette coefficient: %.4f\n", metrics$silhouette))
+  cat(sprintf("  Calinski-Harabasz index: %.2f\n", metrics$calinski_harabasz))
+  cat(sprintf("  Within-cluster SS: %.2f\n", metrics$wss))
+  cat(sprintf("  Between-cluster SS: %.2f\n", metrics$bss))
+  cat("\n")
+}
+
+print("Validation Summary Table:")
+print(validation_summary)
+
+# Create comprehensive validation plot
+png("../results/plots/comprehensive_validation.png", width = 4000, height = 3000, res = 600)
+par(mfrow = c(2, 2))
+
+# Silhouette plot
+barplot(validation_summary$silhouette,
+        names.arg = paste("k =", validation_summary$k),
+        main = "Silhouette Coefficient",
+        ylab = "Average Silhouette Width",
+        col = c("#4FB28F", "#F65215", "#3681F7"))
+
+# Calinski-Harabasz plot
+barplot(validation_summary$calinski_harabasz,
+        names.arg = paste("k =", validation_summary$k),
+        main = "Calinski-Harabasz Index",
+        ylab = "CH Index",
+        col = c("#4FB28F", "#F65215", "#3681F7"))
+
+# WSS plot
+barplot(validation_summary$wss,
+        names.arg = paste("k =", validation_summary$k),
+        main = "Within-Cluster Sum of Squares",
+        ylab = "WSS",
+        col = c("#4FB28F", "#F65215", "#3681F7"))
+
+# BSS plot
+barplot(validation_summary$bss,
+        names.arg = paste("k =", validation_summary$k),
+        main = "Between-Cluster Sum of Squares",
+        ylab = "BSS",
+        col = c("#4FB28F", "#F65215", "#3681F7"))
+
+invisible(dev.off())
+par(mfrow = c(1, 1))
+
+# Final recommendation
+cat("Final Clustering Recommendations:\n")
+cat("================================\n")
+cat(sprintf("Best linkage method (cophenetic): %s (%.4f)\n", best_method, best_correlation))
+cat(sprintf("Most stable method (bootstrap): %s\n", most_stable_method))
+
+# Determine overall best k
+sil_best_k <- validation_summary$k[which.max(validation_summary$silhouette)]
+ch_best_k <- validation_summary$k[which.max(validation_summary$calinski_harabasz)]
+
+cat(sprintf("Best k by silhouette: k = %d\n", sil_best_k))
+cat(sprintf("Best k by Calinski-Harabasz: k = %d\n", ch_best_k))
+
+if(sil_best_k == ch_best_k) {
+  cat(sprintf("\nRecommended configuration: k = %d with %s linkage\n", sil_best_k, best_method))
+} else {
+  cat(sprintf("\nSilhouette and CH index disagree. Consider k = %d (silhouette) or k = %d (CH index)\n", 
+             sil_best_k, ch_best_k))
+  cat("Review the detailed plots to make final decision.\n")
+}
+```
+
+##### Resolving Metric Disagreements: Decision Framework
+
+When validation metrics disagree, we need a systematic approach to choose the optimal k:
+
+```{r echo=TRUE}
+cat("\nDetailed Analysis of Metric Disagreement:\n")
+cat("========================================\n\n")
+
+# Analyze the trade-offs between different k values
+cat("Understanding the disagreement:\n")
+cat("-------------------------------\n")
+cat("• Silhouette (k=2): Prefers fewer, well-separated clusters\n")
+cat("• Calinski-Harabasz (k=4): Prefers more clusters with tight within-cluster variance\n")
+cat("• Your preference (k=3): A compromise between interpretability and cluster quality\n\n")
+
+# Calculate additional metrics for decision making
+additional_metrics <- data.frame(
+  k = k_values,
+  silhouette_decline = c(NA, diff(validation_summary$silhouette)),
+  ch_improvement = c(NA, diff(validation_summary$calinski_harabasz)),
+  wss_reduction = c(NA, -diff(validation_summary$wss)),  # Negative diff because WSS should decrease
+  interpretability_score = c(3, 2, 1),  # Subjective: fewer clusters = more interpretable
+  stringsAsFactors = FALSE
+)
+
+# Add normalized scores (0-1 scale) for fair comparison
+normalize_score <- function(x) (x - min(x, na.rm = TRUE)) / (max(x, na.rm = TRUE) - min(x, na.rm = TRUE))
+
+scoring_df <- data.frame(
+  k = k_values,
+  silhouette_norm = normalize_score(validation_summary$silhouette),
+  ch_norm = normalize_score(validation_summary$calinski_harabasz),
+  wss_norm = normalize_score(-validation_summary$wss),  # Lower WSS is better
+  bss_norm = normalize_score(validation_summary$bss),   # Higher BSS is better
+  stringsAsFactors = FALSE
+)
+
+# Calculate composite scores with different weightings
+scoring_df$balanced_score <- (scoring_df$silhouette_norm + scoring_df$ch_norm + 
+                             scoring_df$wss_norm + scoring_df$bss_norm) / 4
+
+scoring_df$interpretability_weighted <- (scoring_df$silhouette_norm * 0.4 + 
+                                        scoring_df$ch_norm * 0.3 + 
+                                        scoring_df$wss_norm * 0.2 + 
+                                        scoring_df$bss_norm * 0.1)
+
+scoring_df$separation_weighted <- (scoring_df$silhouette_norm * 0.5 + 
+                                  scoring_df$ch_norm * 0.3 + 
+                                  scoring_df$wss_norm * 0.1 + 
+                                  scoring_df$bss_norm * 0.1)
+
+print("Normalized Scores (0-1 scale):")
+print(round(scoring_df, 3))
+
+# Domain-specific evaluation for your research context
+cat("\nDomain-Specific Considerations for Technique Clustering:\n")
+cat("======================================================\n")
+
+# Calculate cluster interpretability metrics
+interpretability_analysis <- data.frame(
+  k = k_values,
+  avg_cluster_size = sapply(k_values, function(k) {
+    clusters <- cutree(best_hc, k = k)
+    mean(table(clusters))
+  }),
+  min_cluster_size = sapply(k_values, function(k) {
+    clusters <- cutree(best_hc, k = k)
+    min(table(clusters))
+  }),
+  max_cluster_size = sapply(k_values, function(k) {
+    clusters <- cutree(best_hc, k = k)
+    max(table(clusters))
+  }),
+  cluster_size_cv = sapply(k_values, function(k) {
+    clusters <- cutree(best_hc, k = k)
+    sizes <- table(clusters)
+    sd(sizes) / mean(sizes)  # Coefficient of variation
+  }),
+  stringsAsFactors = FALSE
+)
+
+print("Cluster Size Analysis:")
+print(round(interpretability_analysis, 3))
+
+cat("\nInterpretation Guidelines:\n")
+cat("• Lower cluster size CV = more balanced clusters\n")
+cat("• Avoid clusters with size < 2 (singletons)\n")
+cat("• Consider research interpretability\n\n")
+
+# Elbow analysis for WSS
+cat("Elbow Analysis (WSS reduction):\n")
+wss_reduction <- c(NA, -diff(validation_summary$wss))
+wss_reduction_pct <- c(NA, (-diff(validation_summary$wss) / validation_summary$wss[-length(validation_summary$wss)]) * 100)
+
+for(i in 2:length(k_values)) {
+  cat(sprintf("k=%d to k=%d: WSS reduction = %.3f (%.1f%%)\n", 
+             k_values[i-1], k_values[i], wss_reduction[i], wss_reduction_pct[i]))
+}
+
+# Look for the "elbow" point
+if(length(wss_reduction) > 2) {
+  elbow_k <- k_values[which.max(wss_reduction_pct[-1]) + 1]  # Skip first NA
+  cat(sprintf("\nElbow point (largest WSS reduction): k = %d\n", elbow_k))
+}
+```
+
+```{r echo=TRUE}
+# Create comprehensive decision plot
+png("../results/plots/decision_framework.png", width = 4000, height = 3600, res = 600)
+par(mfrow = c(3, 2))
+
+# 1. Validation metrics comparison
+barplot(rbind(validation_summary$silhouette, 
+              validation_summary$calinski_harabasz/max(validation_summary$calinski_harabasz)),
+        names.arg = paste("k =", validation_summary$k),
+        main = "Normalized Validation Metrics",
+        legend.text = c("Silhouette", "CH Index (scaled)"),
+        col = c("#4FB28F", "#F65215"),
+        beside = TRUE)
+
+# 2. WSS vs BSS trade-off
+plot(validation_summary$k, validation_summary$wss, type = "b", col = "#F65215", 
+     main = "WSS vs BSS Trade-off", xlab = "k", ylab = "Sum of Squares",
+     ylim = c(0, max(c(validation_summary$wss, validation_summary$bss))))
+lines(validation_summary$k, validation_summary$bss, type = "b", col = "#4FB28F")
+legend("topright", legend = c("WSS (lower better)", "BSS (higher better)"), 
+       col = c("#F65215", "#4FB28F"), lty = 1)
+
+# 3. Composite scores
+barplot(rbind(scoring_df$balanced_score, 
+              scoring_df$interpretability_weighted,
+              scoring_df$separation_weighted),
+        names.arg = paste("k =", scoring_df$k),
+        main = "Composite Decision Scores",
+        legend.text = c("Balanced", "Interpretability", "Separation"),
+        col = c("#4FB28F", "#F65215", "#3681F7"),
+        beside = TRUE)
+
+# 4. Cluster size distribution
+cluster_sizes_matrix <- sapply(k_values, function(k) {
+  clusters <- cutree(best_hc, k = k)
+  sizes <- table(clusters)
+  c(sizes, rep(0, max(k_values) - length(sizes)))  # Pad with zeros
+})
+barplot(cluster_sizes_matrix, 
+        main = "Cluster Size Distributions",
+        xlab = "k value", ylab = "Cluster Size",
+        col = rainbow(max(k_values)),
+        names.arg = paste("k =", k_values))
+
+# 5. WSS reduction (Elbow plot)
+plot(k_values[-1], wss_reduction_pct[-1], type = "b", col = "#3681F7",
+     main = "WSS Reduction (Elbow Analysis)", 
+     xlab = "k", ylab = "WSS Reduction (%)",
+     pch = 19, cex = 1.5)
+if(exists("elbow_k")) {
+  abline(v = elbow_k, lty = 2, col = "red")
+  text(elbow_k, max(wss_reduction_pct[-1]) * 0.8, paste("Elbow at k =", elbow_k), pos = 4)
+}
+
+# 6. Silhouette decline analysis
+plot(k_values, validation_summary$silhouette, type = "b", col = "#4FB28F",
+     main = "Silhouette Coefficient Trend", 
+     xlab = "k", ylab = "Average Silhouette Width",
+     pch = 19, cex = 1.5, ylim = c(0, max(validation_summary$silhouette) * 1.1))
+# Add acceptable threshold line
+abline(h = 0.5, lty = 2, col = "gray", alpha = 0.7)
+text(2.5, 0.52, "Acceptable threshold (0.5)", pos = 3, cex = 0.8)
+
+invisible(dev.off())
+par(mfrow = c(1, 1))
+```
+
+```{r echo=TRUE}
+# Final recommendation framework
+cat("\nFINAL RECOMMENDATION FRAMEWORK:\n")
+cat("==============================\n\n")
+
+# Score each k based on multiple criteria
+final_scores <- data.frame(
+  k = k_values,
+  silhouette_score = ifelse(validation_summary$silhouette >= 0.5, 2, 
+                           ifelse(validation_summary$silhouette >= 0.3, 1, 0)),
+  ch_score = rank(validation_summary$calinski_harabasz),
+  balanced_clusters = ifelse(interpretability_analysis$min_cluster_size >= 2, 2, 0),
+  interpretability = c(3, 2, 1),  # Subjective preference for fewer clusters
+  wss_improvement = rank(-validation_summary$wss),  # Lower WSS is better
+  stringsAsFactors = FALSE
+)
+
+final_scores$total_score <- rowSums(final_scores[, -1])
+
+print("Final Scoring Framework:")
+print(final_scores)
+
+best_overall_k <- final_scores$k[which.max(final_scores$total_score)]
+
+cat(sprintf("\nRECOMMENDED CHOICE: k = %d\n", best_overall_k))
+cat("\nReasoning:\n")
+
+if(best_overall_k == 2) {
+  cat("• Highest silhouette coefficient (0.5682 > 0.5 threshold)\n")
+  cat("• Most interpretable with clear separation\n")
+  cat("• Good balance of simplicity and cluster quality\n")
+} else if(best_overall_k == 3) {
+  cat("• Good compromise between silhouette and CH index\n")
+  cat("• Aligns with your domain expertise\n")
+  cat("• Moderate silhouette (0.4491) still acceptable for exploratory analysis\n")
+  cat("• Provides more nuanced groupings than k=2\n")
+} else if(best_overall_k == 4) {
+  cat("• Highest Calinski-Harabasz index (50.36)\n")
+  cat("• Best within-cluster compactness\n")
+  cat("• May provide more detailed technique groupings\n")
+}
+
+cat("\nFor your robustness-under-noise research context:\n")
+cat("• k=2: Broad categories (robust vs. sensitive techniques)\n") 
+cat("• k=3: Moderate detail (your current preference - robust/moderate/sensitive)\n")
+cat("• k=4: Fine-grained analysis (multiple robustness levels)\n")
+
+cat(sprintf("\nFinal recommendation: Use k = %d with %s linkage\n", best_overall_k, best_method))
+cat("This provides the best balance of statistical validity and interpretability.\n")
+```
 ```
 
 ##### Optimal clusters with NbClust
@@ -266,12 +956,53 @@ saveRDS(technique_clusters, "../results/important_clusters.rds")
 meanKLC_q_with_clusters <- meanKLC_q %>%
   left_join(technique_clusters, by = "technique")
 
-# Calculate mean kappa loss for each cluster, noise level, and percentage
-cluster_means <- meanKLC_q_with_clusters %>%
-  group_by(cluster, noise, percentage) %>%
-  summarize(kappa_loss = round(mean(kappa_loss, na.rm = TRUE), 2), .groups = 'drop')
+# Function to find prototype techniques (closest to centroid)
+get_prototypes <- function(data) {
+  prototypes <- data %>%
+    group_by(cluster) %>%
+    mutate(
+      centroid = mean(kappa_loss),
+      distance_to_centroid = abs(kappa_loss - centroid)
+    ) %>%
+    arrange(distance_to_centroid) %>%
+    slice(1) %>%
+    ungroup() %>%
+    select(-centroid, -distance_to_centroid)
+  
+  return(prototypes)
+}
 
+# Calculate cluster means for smooth curves
+cluster_means <- meanKLC_q_with_clusters %>%
+  group_by(cluster, percentage, noise) %>%
+  summarise(kappa_loss = mean(kappa_loss), .groups = 'drop')
+
+# Alternative approach: Choose single prototype per cluster (most representative)
+# This finds the technique closest to overall cluster centroid across all conditions
+single_prototypes <- meanKLC_q_with_clusters %>%
+  group_by(cluster, technique) %>%
+  summarise(avg_kappa_loss = mean(kappa_loss), .groups = 'drop') %>%
+  group_by(cluster) %>%
+  mutate(
+    cluster_mean = mean(avg_kappa_loss),
+    distance_to_center = abs(avg_kappa_loss - cluster_mean)
+  ) %>%
+  slice_min(distance_to_center, n = 1) %>%
+  select(cluster, prototype_technique = technique) %>%
+  ungroup()
+
+# Create prototype data using single prototypes
+prototype_data <- meanKLC_q_with_clusters %>%
+  inner_join(single_prototypes, by = "cluster") %>%
+  filter(technique == prototype_technique) %>%
+  select(-prototype_technique)
+
+print("Cluster means:")
 print(cluster_means)
+print("Single prototypes per cluster:")
+print(single_prototypes)
+print("Prototype data:")
+print(prototype_data)
 ```
 
 ```{r echo=TRUE}
@@ -322,31 +1053,40 @@ for(instance in quartiles_names) {
 # Create an empty list to store plots
 plot_list <- list()
 
-# Create all plots and store them in the list
+# Choose plotting approach: "prototypes" or "means"
+plot_approach <- "prototypes"  # Change to "means" for cluster means instead
+
 for(i in seq_along(quartiles_names)) {
   instance <- quartiles_names[i]
   
-  # Filter data for both techniques and clusters
+  # Filter data for techniques and representative curves
   filtered_tech_data <- subset(meanKLC_q_with_clusters, percentage == instance)
-  filtered_cluster_data <- subset(cluster_means, percentage == instance)
+  
+  if (plot_approach == "prototypes") {
+    filtered_representative_data <- subset(prototype_data, percentage == instance)
+    representative_label <- "prototype techniques (closest to cluster center)"
+    group_var <- "technique"
+  } else {
+    filtered_representative_data <- subset(cluster_means, percentage == instance)
+    representative_label <- "cluster means"
+    group_var <- "cluster"
+  }
   
   # Create combined plot with consistent colors
   combined_plot <- ggplot() +
-    # Add technique lines with colors based on their cluster
+    # Add thin technique lines with colors based on their cluster
     geom_line(data = filtered_tech_data, 
               aes(x = noise, y = kappa_loss, group = technique, color = factor(cluster)),
-              linetype = "solid", alpha = 0.5) +
-    geom_point(data = filtered_tech_data,
-               aes(x = noise, y = kappa_loss, group = technique, color = factor(cluster)),
-               alpha = 0.5) +
+              linetype = "solid", alpha = 0.25) +
     
-    # Add thicker cluster lines to show the averages
-    geom_line(data = filtered_cluster_data,
-              aes(x = noise, y = kappa_loss, group = cluster, color = factor(cluster)),
-              linewidth = 1.5) +
-    geom_point(data = filtered_cluster_data,
-               aes(x = noise, y = kappa_loss, group = cluster, color = factor(cluster)),
-               size = 3) +
+    # Add the representative lines and points as thicker and more prominent
+    geom_line(data = filtered_representative_data,
+              aes(x = noise, y = kappa_loss, group = !!sym(group_var), color = factor(cluster)),
+              linewidth = 1.8) +
+    geom_point(data = filtered_representative_data,
+               aes(x = noise, y = kappa_loss, group = !!sym(group_var), color = factor(cluster)),
+               size = 4,
+               shape = if(plot_approach == "prototypes") 18 else 19) +  # Diamond for prototypes, circle for means
     
     # Set the specific color mapping - consistent with other plots
     scale_color_manual(name = "Cluster", values = cluster_colors) +
@@ -357,7 +1097,10 @@ for(i in seq_along(quartiles_names)) {
          y = "Kappa Loss",
          title = paste0(instance, "% of instances altered")) +
     theme_bw() +
-    theme(legend.position = "right")
+    theme(legend.position = "right",
+          title = element_text(size = 16),
+          axis.title = element_text(size = 14),
+          axis.text = element_text(size = 12))
   
   # Store plot in list
   plot_list[[i]] <- combined_plot
@@ -368,11 +1111,15 @@ if (requireNamespace("patchwork", quietly = TRUE)) {
   # Using patchwork
   library(patchwork)
   combined_grid <- wrap_plots(plot_list, ncol = 1) + 
-    plot_annotation(title = "Kappa Loss Curves by Technique and Cluster")
+    plot_annotation(
+      title = "Kappa Loss Curves by Technique and Cluster",
+      subtitle = paste0("Showing ", if(plot_approach == "prototypes") "prototype techniques (closest to cluster center)" else "cluster means"),
+      theme = theme(title = element_text(size = 16))
+    )
   print(combined_grid)
   
   # Save the grid plot
-  png(filename = "../results/plots/cluster_curves_grid.png", 
+  png(filename = "../results/plots/prototype_curves_grid.png", 
       width = 4000, height = 12000, res = 600)
   print(combined_grid)
   dev.off()
