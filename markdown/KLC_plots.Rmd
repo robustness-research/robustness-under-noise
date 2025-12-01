@@ -297,3 +297,58 @@ ggsave("../results/plots/KLC_plot_quartiles.png", p, width = 40, height = 40, dp
 ```{r include=FALSE}
 saveRDS(quartiles_df, file = "../results/KLC_plot_quartiles.rds")
 ```
+
+## Generate individual plots for LaTeX table
+
+Create individual plots for specific dataset-method combinations
+
+```{r include=FALSE}
+# Define the combinations we want to plot
+plot_combinations <- list(
+  list(dataset = "wilt", method = "gcvEarth", label = "wilt-gcvEarth"),
+  list(dataset = "diabetes", method = "ctree", label = "diabetes-ctree"),
+  list(dataset = "mfeat-karhunen", method = "rf", label = "mfeat-karhunen-rf"),
+  list(dataset = "ozone-level-8hr", method = "mlpML", label = "ozone-level-8hr-mlpML"),
+  list(dataset = "ozone-level-8hr", method = "multinom", label = "ozone-level-8hr-multinom")
+)
+
+# Function to create and save individual plot
+create_individual_plot <- function(dataset_name, method_name, label) {
+  # Filter data for specific dataset and method
+  plot_data <- deciles_df %>%
+    filter(dataset_name == !!dataset_name, technique == !!method_name)
+  
+  # Create plot
+  p <- ggplot(plot_data, aes(x = percentage, y = kappa_loss, color = factor(noise))) +
+    geom_point(size = 1.5) +
+    geom_line(aes(group = factor(noise)), linewidth = 0.8) +
+    labs(x = "Instances (%)", y = "Kappa Loss", color = "Noise (%)") +
+    scale_y_continuous(limits = c(0.0, 1), breaks = seq(0, 1, by = 0.25)) +
+    scale_x_continuous(breaks = seq(0, 100, by = 25)) +
+    guides(colour = guide_legend(nrow = 1)) +
+    theme_minimal() +
+    theme(
+      legend.position = "bottom",
+      legend.text = element_text(size = 8),
+      legend.title = element_text(size = 9),
+      axis.text = element_text(size = 8),
+      axis.title = element_text(size = 9),
+      panel.grid.minor = element_blank(),
+      plot.margin = margin(5, 5, 5, 5)
+    )
+  
+  # Save plot
+  filename <- paste0("../results/plots/individual/", label, ".pdf")
+  ggsave(filename, p, width = 3, height = 2.5, units = "in")
+  
+  return(p)
+}
+
+# Create directory if it doesn't exist
+dir.create("../results/plots/individual", showWarnings = FALSE, recursive = TRUE)
+
+# Generate all plots
+for (combo in plot_combinations) {
+  create_individual_plot(combo$dataset, combo$method, combo$label)
+}
+```

@@ -1,6 +1,4 @@
-title: "Kappa loss per fold (by noise level and by percent altered)"
-output: html_document
----
+title: "Kappa loss per fold (by noise level and by percent altered)" output: html_document ---
 
 ```{r setup, include=FALSE}
 knitr::opts_knit$set(root.dir = "/Users/chris/github/robustness-under-noise")
@@ -158,11 +156,10 @@ write.csv(agg_by_percent, file = "results/instances/folds/agg_kappa_loss_by_perc
 
 The following section performs statistical comparisons across noise levels (for each dataset & fold) and across percentage levels. For each dataset+fold we:
 
-- compute per-method mean kappa_loss across percentages (so each method provides one observation per noise level), then:
-  - if there are > 2 noise levels: run Friedman test (non-parametric repeated measures) and a paired Wilcoxon pairwise test (with BH correction);
-  - if there are exactly 2 noise levels: run a paired Wilcoxon signed-rank test.
-
-- similarly for percent-level comparisons (per-method mean across noise levels).
+-   compute per-method mean kappa_loss across percentages (so each method provides one observation per noise level), then:
+    -   if there are \> 2 noise levels: run Friedman test (non-parametric repeated measures) and a paired Wilcoxon pairwise test (with BH correction);
+    -   if there are exactly 2 noise levels: run a paired Wilcoxon signed-rank test.
+-   similarly for percent-level comparisons (per-method mean across noise levels).
 
 Results (R objects) are saved under `results/instances/folds/tests/` as RDS files.
 
@@ -227,7 +224,7 @@ for (r in seq_len(nrow(datasets_folds))) {
 }
 ```
 
-```{r plot-noise, fig.width=12, fig.height=8}
+```{r plot-noise, fig.width=20, fig.height=16}
 library(ggplot2)
 
 # Plot aggregated by noise level
@@ -242,6 +239,7 @@ p_noise <- ggplot(agg_by_noise, aes(x = factor(noise), y = mean_kappa_loss, fill
 
 print(p_noise)
 ```
+
 ```{r stats-percent}
 # Now do the analogous analysis across percent levels (average across noise)
 tests_by_percent <- list()
@@ -294,7 +292,7 @@ for (r in seq_len(nrow(datasets_folds2))) {
 }
 ```
 
-```{r plot-percent, fig.width=12, fig.height=8}
+```{r plot-percent, fig.width=20, fig.height=16}
 # Plot aggregated by percentage of altered instances
 p_percent <- ggplot(agg_by_percent, aes(x = factor(percent), y = mean_kappa_loss, fill = factor(percent))) +
   geom_boxplot() +
@@ -321,7 +319,7 @@ summarize_test <- function(tlist) {
     if (!is.null(res$wilcox) && inherits(res$wilcox, "htest")) {
       rows[[ri]] <- data.frame(target = nm, test = "wilcox", statistic = res$wilcox$statistic, p.value = res$wilcox$p.value, stringsAsFactors = FALSE); ri <- ri+1
     }
-    if (!is.null(res$pairwise_wilcox) && inherits(res$pairwise_wilcox, "list")) {
+    if (!is.null(res$pairwise_wilcox) && inherits(res$pairwise_wilcox, "pairwise.htest") && !inherits(res$pairwise_wilcox, "error")) {
       # pairwise.wilcox.test returns list with p.value matrix
       pmat <- res$pairwise_wilcox$p.value
       # flatten
@@ -329,7 +327,8 @@ summarize_test <- function(tlist) {
         for (i in seq_len(nrow(pmat))) for (j in seq_len(ncol(pmat))) {
           pv <- pmat[i,j]
           if (!is.na(pv)) {
-            rows[[ri]] <- data.frame(target = nm, test = "pairwise_wilcox", comparison = paste(rownames(pmat)[i], colnames(pmat)[j], sep = " vs "), p.value = pv, stringsAsFactors = FALSE); ri <- ri+1
+            comparison <- paste(rownames(pmat)[i], colnames(pmat)[j], sep = " vs ")
+            rows[[ri]] <- data.frame(target = nm, test = "pairwise_wilcox", comparison = comparison, p.value = pv, statistic = NA, stringsAsFactors = FALSE); ri <- ri+1
           }
         }
       }
@@ -341,8 +340,21 @@ summarize_test <- function(tlist) {
 
 sum_noise <- summarize_test(tests_by_noise)
 sum_percent <- summarize_test(tests_by_percent)
+
+# Save the results
 if (nrow(sum_noise)>0) write.csv(sum_noise, file = "results/instances/folds/summary_tests_by_noise.csv", row.names = FALSE)
 if (nrow(sum_percent)>0) write.csv(sum_percent, file = "results/instances/folds/summary_tests_by_percent.csv", row.names = FALSE)
+
+# Print summary of what we found
+cat("Summary of tests found:\n")
+if (nrow(sum_noise) > 0) {
+  cat("Noise tests:\n")
+  print(table(sum_noise$test))
+}
+if (nrow(sum_percent) > 0) {
+  cat("Percent tests:\n")
+  print(table(sum_percent$test))
+}
 
 print("Statistical tests completed. Results saved to results/instances/folds/")
 ```

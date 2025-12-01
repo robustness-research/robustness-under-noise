@@ -31,9 +31,9 @@ quartiles_df <- readRDS("../results/KLC_plot_quartiles.rds")
 deciles_df <- readRDS("../results/KLC_plot_deciles.rds")
 
 # Define dendrogram groups based on hierarchical clustering
-dendo1_methods <- c("multinom", "rbfDDA", "rda", "fda", "gcvEarth")
-dendo2_methods <- c("gbm", "PART", "C5.0", "JRip", "bayesglm", "rpart", "svmLinear", "ctree", "lvq")
-dendo3_methods <- c("mlpML", "knn", "naive_bayes", "slmpts", "svmRadial", "rf", "rRules")
+dendo1_methods <- c("gbm", "PART", "C5.0", "JRip", "bayesglm", "rpart", "svmLinear", "ctree", "lvq")
+dendo2_methods <- c("multinom", "rbfDDA", "rda", "fda", "gcvEarth")
+dendo3_methods <- c("mlpML", "knn", "naive_bayes", "simpls", "svmRadial", "rf", "rfRules")
 
 # Create original method labels mapping (same as in Plots.Rmd)
 method_labels_all <- letters[seq_along(method_names)]
@@ -54,7 +54,7 @@ openPDFEPS <- function(file, height = 26, width = 20, PDFEPS = 1) {
 }
 ```
 
-## Dendrogram Group 1 - Quartiles (multinom, rbfDDA, rda, fda, gcvEarth)
+## Dendrogram Group 1 - Quartiles (gbm, PART, C5.0, JRip, bayesglm, rpart, svmLinear, ctree, lvq)
 
 ```{r echo=FALSE}
 # Filter data for Group 1 methods
@@ -77,7 +77,7 @@ dendo1 <- ggplot(dendo1_df, aes(x = percentage, y = kappa_loss, color = factor(n
   geom_point() +
   geom_line(aes(group = factor(noise))) +
   labs(x = "Instances", y = "Kappa", color = "Noise", 
-       title = "Group 1: multinom, rbfDDA, rda, fda, gcvEarth") +
+       title = "Cluster 1: gbm, PART, C5.0, JRip, bayesglm, rpart, svmLinear, ctree, lvq") +
   scale_y_continuous(limits = c(0.0, 1), breaks = seq(0, 1, by = 0.5)) +
   scale_x_discrete(limits = c(50, 100)) + 
   facet_grid(dataset_order ~ method_order, scales = "free", 
@@ -101,10 +101,10 @@ print(dendo1)
 dev.off()
 ```
 
-## Dendrogram Group 2 - Quartiles (gbm, PART, C5.0, JRip, bayesglm, rpart, svmLinear, ctree, lvq)
+## Dendrogram Group 2 - Quartiles (multinom, rbfDDA, rda, fda, gcvEarth)
 
 ```{r echo=FALSE}
-# Filter data for Group 2 methods
+# Filter data for Group 1 methods
 dendo2_df <- quartiles_df %>% 
   filter(technique %in% dendo2_methods)
 
@@ -122,7 +122,7 @@ dendo2 <- ggplot(dendo2_df, aes(x = percentage, y = kappa_loss, color = factor(n
   geom_point() +
   geom_line(aes(group = factor(noise))) +
   labs(x = "Instances", y = "Kappa", color = "Noise", 
-       title = "Group 2: gbm, PART, C5.0, JRip, bayesglm, rpart, svmLinear, ctree, lvq") +
+       title = "Cluster 2: multinom, rbfDDA, rda, fda, gcvEarth") +
   scale_y_continuous(limits = c(0.0, 1), breaks = seq(0, 1, by = 0.5)) +
   scale_x_discrete(limits = c(50, 100)) + 
   facet_grid(dataset_order ~ method_order, scales = "free", 
@@ -167,7 +167,7 @@ dendo3 <- ggplot(dendo3_df, aes(x = percentage, y = kappa_loss, color = factor(n
   geom_point() +
   geom_line(aes(group = factor(noise))) +
   labs(x = "Instances", y = "Kappa", color = "Noise", 
-       title = "Group 3: mlpML, knn, naive_bayes, slmpts, svmRadial, rf, rRules") +
+       title = "Group 3: mlpML, knn, naive_bayes, simpls, svmRadial, rf, rfRules") +
   scale_y_continuous(limits = c(0.0, 1), breaks = seq(0, 1, by = 0.5)) +
   scale_x_discrete(limits = c(50, 100)) + 
   facet_grid(dataset_order ~ method_order, scales = "free", 
@@ -191,10 +191,10 @@ print(dendo3)
 dev.off()
 ```
 
-## Dendrogram Group 1 - Deciles (multinom, rbfDDA, rda, fda, gcvEarth)
+## Dendrogram Group 1 - Deciles (gbm, PART, C5.0, JRip, bayesglm, rpart, svmLinear, ctree, lvq)
 
 ```{r echo=FALSE}
-# Filter data for Group 1 methods
+# Filter data for Group 2 methods
 dendo1_deciles_df <- deciles_df %>% 
   filter(technique %in% dendo1_methods)
 
@@ -209,7 +209,7 @@ dendo1_deciles <- ggplot(dendo1_deciles_df, aes(x = percentage, y = kappa_loss, 
   geom_point() +
   geom_line(aes(group = factor(noise))) +
   labs(x = "Instances", y = "Kappa", color = "Noise", 
-       title = "Group 1 Deciles: multinom, rbfDDA, rda, fda, gcvEarth") +
+       title = "Cluster 1: gbm, PART, C5.0, JRip, bayesglm, rpart, svmLinear, ctree, lvq") +
   scale_y_continuous(limits = c(0.0, 1), breaks = seq(0, 1, by = 0.5)) +
   scale_x_discrete(limits = c(50, 100)) + 
   facet_grid(dataset_order ~ method_order, scales = "free", 
@@ -233,10 +233,10 @@ print(dendo1_deciles)
 dev.off()
 ```
 
-## Dendrogram Group 2 - Deciles (gbm, PART, C5.0, JRip, bayesglm, rpart, svmLinear, ctree, lvq)
+## Dendrogram Group 2 - Deciles (multinom, rbfDDA, rda, fda, gcvEarth)
 
 ```{r echo=FALSE}
-# Filter data for Group 2 methods
+# Filter data for Group 1 methods
 dendo2_deciles_df <- deciles_df %>% 
   filter(technique %in% dendo2_methods)
 
@@ -251,7 +251,7 @@ dendo2_deciles <- ggplot(dendo2_deciles_df, aes(x = percentage, y = kappa_loss, 
   geom_point() +
   geom_line(aes(group = factor(noise))) +
   labs(x = "Instances", y = "Kappa", color = "Noise", 
-       title = "Group 2 Deciles: gbm, PART, C5.0, JRip, bayesglm, rpart, svmLinear, ctree, lvq") +
+       title = "Cluster 2: multinom, rbfDDA, rda, fda, gcvEarth") +
   scale_y_continuous(limits = c(0.0, 1), breaks = seq(0, 1, by = 0.5)) +
   scale_x_discrete(limits = c(50, 100)) + 
   facet_grid(dataset_order ~ method_order, scales = "free", 
@@ -293,7 +293,7 @@ dendo3_deciles <- ggplot(dendo3_deciles_df, aes(x = percentage, y = kappa_loss, 
   geom_point() +
   geom_line(aes(group = factor(noise))) +
   labs(x = "Instances", y = "Kappa", color = "Noise", 
-       title = "Group 3 Deciles: mlpML, knn, naive_bayes, slmpts, svmRadial, rf, rRules") +
+       title = "Cluster 3: mlpML, knn, naive_bayes, simpls, svmRadial, rf, rfRules") +
   scale_y_continuous(limits = c(0.0, 1), breaks = seq(0, 1, by = 0.5)) +
   scale_x_discrete(limits = c(50, 100)) + 
   facet_grid(dataset_order ~ method_order, scales = "free", 
