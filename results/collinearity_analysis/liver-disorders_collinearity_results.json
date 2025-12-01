@@ -1,0 +1,79 @@
+{
+  "dataset": "liver-disorders",
+  "file_path": "datasets/csv/liver-disorders.csv",
+  "n_rows": 345,
+  "n_columns": 7,
+  "n_numeric_features": 7,
+  "numeric_features": [
+    "mcv",
+    "alkphos",
+    "sgpt",
+    "sgot",
+    "gammagt",
+    "drinks",
+    "class"
+  ],
+  "correlation_matrix_shape": [
+    7,
+    7
+  ],
+  "high_correlations": [
+    {
+      "feature1": "sgpt",
+      "feature2": "sgot",
+      "correlation": 0.7396748677149183
+    }
+  ],
+  "n_high_correlations": 1,
+  "vif_mean": 12.92686235073283,
+  "vif_median": 11.97476705969305,
+  "vif_max": 30.312488722055384,
+  "vif_values": [
+    {
+      "feature": "mcv",
+      "VIF": 30.312488722055384
+    },
+    {
+      "feature": "sgot",
+      "VIF": 18.441517978693795
+    },
+    {
+      "feature": "alkphos",
+      "VIF": 15.750369866730269
+    },
+    {
+      "feature": "class",
+      "VIF": 11.97476705969305
+    },
+    {
+      "feature": "sgpt",
+      "VIF": 8.503699824351859
+    },
+    {
+      "feature": "gammagt",
+      "VIF": 3.044293353022077
+    },
+    {
+      "feature": "drinks",
+      "VIF": 2.4608996505833547
+    }
+  ],
+  "n_high_vif": 4,
+  "condition_number": 3.3520335564902046,
+  "condition_number_interpretation": "Low - no multicollinearity",
+  "condition_index": 3.3520335564902055,
+  "eigenvalues": [
+    2.5083480498241286,
+    1.193846941786444,
+    1.0092915051773843,
+    0.8960046921177763,
+    0.670575157453056,
+    0.4986941324593836,
+    0.2232395211818304
+  ],
+  "min_eigenvalue": 0.2232395211818304,
+  "max_eigenvalue": 2.5083480498241286,
+  "n_small_eigenvalues": 0,
+  "has_multicollinearity": true,
+  "severity_score": 5
+}

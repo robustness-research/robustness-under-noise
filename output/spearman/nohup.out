@@ -1,0 +1,1152 @@
+nohup: ignoring input
+Starting analysis of 546 combinations...
+Running in parallel by dataset...
+Processing dataset: analcatdata_authorship
+Processing dataset: badges2
+Processing dataset: banknote
+Processing dataset: blood-transfusion-service-center
+Processing dataset: breast-w
+Processing dataset: cardiotocography
+Processing dataset: climate-model-simulation-crashes
+Processing dataset: cmc
+Processing dataset: diabetes
+Processing dataset: credit-g
+Processing dataset: iris
+Processing dataset: kc1
+  - Processing badges2 with C5.0
+Processing dataset: eucalyptus
+Processing dataset: liver-disorders
+  - Processing analcatdata_authorship with C5.0
+Processing dataset: mfeat-factors
+  - Processing banknote with C5.0
+Processing dataset: mfeat-karhunen
+  - Processing blood-transfusion-service-center with C5.0
+  - Processing breast-w with C5.0
+Processing dataset: mfeat-zernike
+  - Processing climate-model-simulation-crashes with C5.0
+Processing dataset: ozone-level-8hr
+  - Processing credit-g with C5.0
+  - Processing diabetes with C5.0
+  - Processing cmc with C5.0
+Processing dataset: pc4
+  - Processing iris with C5.0
+  - Processing cardiotocography with C5.0
+Processing dataset: phoneme
+Processing dataset: tic-tac-toe
+Processing dataset: qsar-biodeg
+  - Processing kc1 with C5.0
+  - Processing mfeat-factors with C5.0
+  - Processing eucalyptus with C5.0
+Processing dataset: vowel
+  - Processing liver-disorders with C5.0
+Processing dataset: waveform-5000
+  - Processing mfeat-zernike with C5.0
+  - Processing mfeat-karhunen with C5.0
+Processing dataset: wdbc
+Processing dataset: wilt
+  - Processing ozone-level-8hr with C5.0
+  - Processing pc4 with C5.0
+  - Processing phoneme with C5.0
+  - Processing tic-tac-toe with C5.0
+  - Processing qsar-biodeg with C5.0
+  - Processing waveform-5000 with C5.0
+  - Processing vowel with C5.0
+  - Processing wdbc with C5.0
+  - Processing wilt with C5.0
+  ✗ mfeat-factors/C5.0 Failed
+  - Processing mfeat-factors with ctree
+  ✗ badges2/C5.0 Failed
+  - Processing badges2 with ctree
+  ✗ analcatdata_authorship/C5.0 Failed
+  - Processing analcatdata_authorship with ctree
+  ✗ vowel/C5.0 Failed
+  - Processing vowel with ctree
+  ✗ pc4/C5.0 Failed
+  - Processing pc4 with ctree
+  ✗ ozone-level-8hr/C5.0 Failed
+  - Processing ozone-level-8hr with ctree
+  ✗ wdbc/C5.0 Failed
+  - Processing wdbc with ctree
+  ✗ eucalyptus/C5.0 Failed
+  - Processing eucalyptus with ctree
+  ✗ waveform-5000/C5.0 Failed
+  - Processing waveform-5000 with ctree
+  ✗ banknote/C5.0 Failed
+  - Processing banknote with ctree
+  ✗ kc1/C5.0 Failed
+  - Processing kc1 with ctree
+  ✗ credit-g/C5.0 Failed
+  - Processing credit-g with ctree
+  ✗ climate-model-simulation-crashes/C5.0 Failed
+  - Processing climate-model-simulation-crashes with ctree
+  ✗ tic-tac-toe/C5.0 Failed
+  - Processing tic-tac-toe with ctree
+  ✗ mfeat-zernike/C5.0 Failed
+  - Processing mfeat-zernike with ctree
+  ✗ cmc/C5.0 Failed
+  - Processing cmc with ctree
+  ✗ qsar-biodeg/C5.0 Failed
+  - Processing qsar-biodeg with ctree
+  ✗ mfeat-karhunen/C5.0 Failed
+  - Processing mfeat-karhunen with ctree
+  ✗ breast-w/C5.0 Failed
+  - Processing breast-w with ctree
+  ✗ wilt/C5.0 Failed
+  - Processing wilt with ctree
+  ✗ phoneme/C5.0 Failed
+  - Processing phoneme with ctree
+  ✗ liver-disorders/C5.0 Failed
+  - Processing liver-disorders with ctree
+  ✗ iris/C5.0 Failed
+  - Processing iris with ctree
+  ✗ blood-transfusion-service-center/C5.0 Failed
+  - Processing blood-transfusion-service-center with ctree
+  ✗ diabetes/C5.0 Failed
+  - Processing diabetes with ctree
+  ✗ cardiotocography/C5.0 Failed
+  - Processing cardiotocography with ctree
+  ✓ liver-disorders/ctree Success
+  - Processing liver-disorders with fda
+  ✓ banknote/ctree Success
+  - Processing banknote with fda
+  ✓ blood-transfusion-service-center/ctree Success
+  - Processing blood-transfusion-service-center with fda
+  ✓ iris/ctree Success
+  - Processing iris with fda
+  ✓ phoneme/ctree Success
+  - Processing phoneme with fda
+  ✗ iris/fda Failed
+  - Processing iris with gbm
+  ✓ wilt/ctree Success
+  - Processing wilt with fda
+  ✓ breast-w/ctree Success
+  - Processing breast-w with fda
+  ✓ diabetes/ctree Success
+  - Processing diabetes with fda
+  ✓ badges2/ctree Success
+  - Processing badges2 with fda
+  ✓ tic-tac-toe/ctree Success
+  - Processing tic-tac-toe with fda
+  ✓ vowel/ctree Success
+  - Processing vowel with fda
+  ✓ cmc/ctree Success
+  - Processing cmc with fda
+  ✓ liver-disorders/fda Success
+  - Processing liver-disorders with gbm
+  ✓ banknote/fda Success
+  - Processing banknote with gbm
+  ✓ blood-transfusion-service-center/fda Success
+  - Processing blood-transfusion-service-center with gbm
+  ✓ climate-model-simulation-crashes/ctree Success
+  - Processing climate-model-simulation-crashes with fda
+  ✓ iris/gbm Success
+  - Processing iris with gcvEarth
+  ✓ phoneme/fda Success
+  - Processing phoneme with gbm
+  ✓ banknote/gbm Success
+  - Processing banknote with gcvEarth
+  ✓ wilt/fda Success
+  - Processing wilt with gbm
+  ✓ blood-transfusion-service-center/gbm Success
+  - Processing blood-transfusion-service-center with gcvEarth
+  ✓ breast-w/fda Success
+  - Processing breast-w with gbm
+  ✓ liver-disorders/gbm Success
+  - Processing liver-disorders with gcvEarth
+  ✓ diabetes/fda Success
+  - Processing diabetes with gbm
+  ✓ tic-tac-toe/fda Success
+  - Processing tic-tac-toe with gbm
+  ✓ credit-g/ctree Success
+  - Processing credit-g with fda
+  ✓ iris/gcvEarth Success
+  - Processing iris with JRip
+  ✓ vowel/fda Success
+  - Processing vowel with gbm
+  ✓ badges2/fda Success
+  - Processing badges2 with gbm
+  ✓ cmc/fda Success
+  - Processing cmc with gbm
+  ✓ eucalyptus/ctree Success
+  - Processing eucalyptus with fda
+  ✓ banknote/gcvEarth Success
+  - Processing banknote with JRip
+  ✓ wdbc/ctree Success
+  - Processing wdbc with fda
+  ✓ phoneme/gbm Success
+  - Processing phoneme with gcvEarth
+  ✓ blood-transfusion-service-center/gcvEarth Success
+  - Processing blood-transfusion-service-center with JRip
+  ✓ kc1/ctree Success
+  - Processing kc1 with fda
+  ✓ wilt/gbm Success
+  - Processing wilt with gcvEarth
+  ✓ liver-disorders/gcvEarth Success
+  - Processing liver-disorders with JRip
+  ✓ iris/JRip Success
+  - Processing iris with lvq
+  ✓ iris/lvq Success
+  - Processing iris with mlpML
+  ✓ diabetes/gbm Success
+  - Processing diabetes with gcvEarth
+  ✓ breast-w/gbm Success
+  - Processing breast-w with gcvEarth
+  ✓ banknote/JRip Success
+  - Processing banknote with lvq
+  ✓ tic-tac-toe/gbm Success
+  - Processing tic-tac-toe with gcvEarth
+  ✓ vowel/gbm Success
+  - Processing vowel with gcvEarth
+  ✓ phoneme/gcvEarth Success
+  - Processing phoneme with JRip
+  ✓ banknote/lvq Success
+  - Processing banknote with mlpML
+  ✓ blood-transfusion-service-center/JRip Success
+  - Processing blood-transfusion-service-center with lvq
+  ✓ climate-model-simulation-crashes/fda Success
+  - Processing climate-model-simulation-crashes with gbm
+  ✓ cmc/gbm Success
+  - Processing cmc with gcvEarth
+  ✓ badges2/gbm Success
+  - Processing badges2 with gcvEarth
+  ✓ wilt/gcvEarth Success
+  - Processing wilt with JRip
+  ✓ liver-disorders/JRip Success
+  - Processing liver-disorders with lvq
+  ✓ iris/mlpML Success
+  - Processing iris with multinom
+  ✓ blood-transfusion-service-center/lvq Success
+  - Processing blood-transfusion-service-center with mlpML
+  ✓ liver-disorders/lvq Success
+  - Processing liver-disorders with mlpML
+  ✓ banknote/mlpML Success
+  - Processing banknote with multinom
+  ✓ diabetes/gcvEarth Success
+  - Processing diabetes with JRip
+  ✓ breast-w/gcvEarth Success
+  - Processing breast-w with JRip
+  ✓ iris/multinom Success
+  - Processing iris with naive_bayes
+  ✓ tic-tac-toe/gcvEarth Success
+  - Processing tic-tac-toe with JRip
+  ✓ vowel/gcvEarth Success
+  - Processing vowel with JRip
+  ✓ credit-g/fda Success
+  - Processing credit-g with gbm
+  ✓ pc4/ctree Success
+  - Processing pc4 with fda
+  ✓ blood-transfusion-service-center/mlpML Success
+  - Processing blood-transfusion-service-center with multinom
+  ✓ phoneme/JRip Success
+  - Processing phoneme with lvq
+  ✓ cardiotocography/ctree Success
+  - Processing cardiotocography with fda
+  ✓ eucalyptus/fda Success
+  - Processing eucalyptus with gbm
+  ✗ iris/naive_bayes Failed
+  - Processing iris with PART
+  ✓ badges2/gcvEarth Success
+  - Processing badges2 with JRip
+  ✗ cardiotocography/fda Failed
+  - Processing cardiotocography with gbm
+  ✓ wilt/JRip Success
+  - Processing wilt with lvq
+  ✓ cmc/gcvEarth Success
+  - Processing cmc with JRip
+  ✓ banknote/multinom Success
+  - Processing banknote with naive_bayes
+  ✓ phoneme/lvq Success
+  - Processing phoneme with mlpML
+  ✓ liver-disorders/mlpML Success
+  - Processing liver-disorders with multinom
+  ✓ qsar-biodeg/ctree Success
+  - Processing qsar-biodeg with fda
+  ✗ banknote/naive_bayes Failed
+  - Processing banknote with PART
+  ✓ blood-transfusion-service-center/multinom Success
+  - Processing blood-transfusion-service-center with naive_bayes
+  ✓ wilt/lvq Success
+  - Processing wilt with mlpML
+  ✓ iris/PART Success
+  - Processing iris with rbfDDA
+  ✓ climate-model-simulation-crashes/gbm Success
+  - Processing climate-model-simulation-crashes with gcvEarth
+  ✓ kc1/fda Success
+  - Processing kc1 with gbm
+  ✗ blood-transfusion-service-center/naive_bayes Failed
+  - Processing blood-transfusion-service-center with PART
+  ✓ diabetes/JRip Success
+  - Processing diabetes with lvq
+  ✓ wdbc/fda Success
+  - Processing wdbc with gbm
+  ✓ breast-w/JRip Success
+  - Processing breast-w with lvq
+  ✓ tic-tac-toe/JRip Success
+  - Processing tic-tac-toe with lvq
+  ✓ vowel/JRip Success
+  - Processing vowel with lvq
+  ✓ diabetes/lvq Success
+  - Processing diabetes with mlpML
+  ✓ liver-disorders/multinom Success
+  - Processing liver-disorders with naive_bayes
+  ✓ iris/rbfDDA Success
+  - Processing iris with rda
+  ✓ badges2/JRip Success
+  - Processing badges2 with lvq
+  ✓ banknote/PART Success
+  - Processing banknote with rbfDDA
+  ✗ liver-disorders/naive_bayes Failed
+  - Processing liver-disorders with PART
+  ✓ breast-w/lvq Success
+  - Processing breast-w with mlpML
+  ✓ phoneme/mlpML Success
+  - Processing phoneme with multinom
+  ✓ blood-transfusion-service-center/PART Success
+  - Processing blood-transfusion-service-center with rbfDDA
+  ✓ cmc/JRip Success
+  - Processing cmc with lvq
+  ✓ tic-tac-toe/lvq Success
+  - Processing tic-tac-toe with mlpML
+  ✓ vowel/lvq Success
+  - Processing vowel with mlpML
+  ✓ badges2/lvq Success
+  - Processing badges2 with mlpML
+  ✓ wilt/mlpML Success
+  - Processing wilt with multinom
+  ✓ mfeat-zernike/ctree Success
+  - Processing mfeat-zernike with fda
+  ✓ eucalyptus/gbm Success
+  - Processing eucalyptus with gcvEarth
+  ✓ iris/rda Success
+  - Processing iris with rf
+  ✓ credit-g/gbm Success
+  - Processing credit-g with gcvEarth
+  ✓ cmc/lvq Success
+  - Processing cmc with mlpML
+  ✓ banknote/rbfDDA Success
+  - Processing banknote with rda
+  ✓ waveform-5000/ctree Success
+  - Processing waveform-5000 with fda
+  ✓ diabetes/mlpML Success
+  - Processing diabetes with multinom
+  ✓ phoneme/multinom Success
+  - Processing phoneme with naive_bayes
+  ✓ liver-disorders/PART Success
+  - Processing liver-disorders with rbfDDA
+  ✓ climate-model-simulation-crashes/gcvEarth Success
+  - Processing climate-model-simulation-crashes with JRip
+  ✓ wilt/multinom Success
+  - Processing wilt with naive_bayes
+  ✗ phoneme/naive_bayes Failed
+  - Processing phoneme with PART
+  ✓ iris/rf Success
+  - Processing iris with rpart
+  ✓ breast-w/mlpML Success
+  - Processing breast-w with multinom
+  ✓ blood-transfusion-service-center/rbfDDA Success
+  - Processing blood-transfusion-service-center with rda
+  ✗ wilt/naive_bayes Failed
+  - Processing wilt with PART
+  ✓ badges2/mlpML Success
+  - Processing badges2 with multinom
+  ✓ vowel/mlpML Success
+  - Processing vowel with multinom
+  ✓ blood-transfusion-service-center/rda Success
+  - Processing blood-transfusion-service-center with rf
+  ✓ tic-tac-toe/mlpML Success
+  - Processing tic-tac-toe with multinom
+  ✓ iris/rpart Success
+  - Processing iris with simpls
+  ✓ banknote/rda Success
+  - Processing banknote with rf
+  ✓ analcatdata_authorship/ctree Success
+  - Processing analcatdata_authorship with fda
+  ✓ diabetes/multinom Success
+  - Processing diabetes with naive_bayes
+  ✓ kc1/gbm Success
+  - Processing kc1 with gcvEarth
+  ✓ phoneme/PART Success
+  - Processing phoneme with rbfDDA
+  ✗ diabetes/naive_bayes Failed
+  - Processing diabetes with PART
+  ✓ liver-disorders/rbfDDA Success
+  - Processing liver-disorders with rda
+  ✓ cmc/mlpML Success
+  - Processing cmc with multinom
+  ✓ iris/simpls Success
+  - Processing iris with svmLinear
+  ✓ blood-transfusion-service-center/rf Success
+  - Processing blood-transfusion-service-center with rpart
+  ✓ eucalyptus/gcvEarth Success
+  - Processing eucalyptus with JRip
+  ✓ wdbc/gbm Success
+  - Processing wdbc with gcvEarth
+  ✓ wilt/PART Success
+  - Processing wilt with rbfDDA
+  ✓ breast-w/multinom Success
+  - Processing breast-w with naive_bayes
+  ✓ pc4/fda Success
+  - Processing pc4 with gbm
+  ✓ iris/svmLinear Success
+  - Processing iris with svmRadial
+  ✓ badges2/multinom Success
+  - Processing badges2 with naive_bayes
+  ✗ breast-w/naive_bayes Failed
+  - Processing breast-w with PART
+  ✓ banknote/rf Success
+  - Processing banknote with rpart
+  ✓ blood-transfusion-service-center/rpart Success
+  - Processing blood-transfusion-service-center with simpls
+  ✓ vowel/multinom Success
+  - Processing vowel with naive_bayes
+  ✓ credit-g/gcvEarth Success
+  - Processing credit-g with JRip
+  ✗ badges2/naive_bayes Failed
+  - Processing badges2 with PART
+  ✓ tic-tac-toe/multinom Success
+  - Processing tic-tac-toe with naive_bayes
+  ✗ vowel/naive_bayes Failed
+  - Processing vowel with PART
+  ✓ climate-model-simulation-crashes/JRip Success
+  - Processing climate-model-simulation-crashes with lvq
+  ✓ liver-disorders/rda Success
+  - Processing liver-disorders with rf
+  ✓ iris/svmRadial Success
+  - Processing iris with rfRules
+  ✗ tic-tac-toe/naive_bayes Failed
+  - Processing tic-tac-toe with PART
+  ✓ diabetes/PART Success
+  - Processing diabetes with rbfDDA
+  ✓ banknote/rpart Success
+  - Processing banknote with simpls
+  ✓ cmc/multinom Success
+  - Processing cmc with naive_bayes
+  ✓ blood-transfusion-service-center/simpls Success
+  - Processing blood-transfusion-service-center with svmLinear
+  ✓ mfeat-karhunen/ctree Success
+  - Processing mfeat-karhunen with fda
+  ✓ iris/rfRules Success
+  - Processing iris with knn
+  ✗ cmc/naive_bayes Failed
+  - Processing cmc with PART
+  ✓ climate-model-simulation-crashes/lvq Success
+  - Processing climate-model-simulation-crashes with mlpML
+  ✓ qsar-biodeg/fda Success
+  - Processing qsar-biodeg with gbm
+  ✗ mfeat-karhunen/fda Failed
+  - Processing mfeat-karhunen with gbm
+  ✓ blood-transfusion-service-center/svmLinear Success
+  - Processing blood-transfusion-service-center with svmRadial
+  ✓ cardiotocography/gbm Success
+  - Processing cardiotocography with gcvEarth
+  ✓ banknote/simpls Success
+  - Processing banknote with svmLinear
+  ✓ breast-w/PART Success
+  - Processing breast-w with rbfDDA
+  ✓ liver-disorders/rf Success
+  - Processing liver-disorders with rpart
+  ✓ iris/knn Success
+  - Processing iris with bayesglm
+  ✓ badges2/PART Success
+  - Processing badges2 with rbfDDA
+  ✓ blood-transfusion-service-center/svmRadial Success
+  - Processing blood-transfusion-service-center with rfRules
+  ✓ banknote/svmLinear Success
+  - Processing banknote with svmRadial
+  ✓ tic-tac-toe/PART Success
+  - Processing tic-tac-toe with rbfDDA
+  ✓ kc1/gcvEarth Success
+  - Processing kc1 with JRip
+  ✓ iris/bayesglm Success
+Completed dataset: iris
+  ✓ vowel/PART Success
+  - Processing vowel with rbfDDA
+  ✓ liver-disorders/rpart Success
+  - Processing liver-disorders with simpls
+  ✓ eucalyptus/JRip Success
+  - Processing eucalyptus with lvq
+  ✓ banknote/svmRadial Success
+  - Processing banknote with rfRules
+  ✓ blood-transfusion-service-center/rfRules Success
+  - Processing blood-transfusion-service-center with knn
+  ✓ cmc/PART Success
+  - Processing cmc with rbfDDA
+  ✓ wdbc/gcvEarth Success
+  - Processing wdbc with JRip
+  ✓ mfeat-zernike/fda Success
+  - Processing mfeat-zernike with gbm
+  ✓ credit-g/JRip Success
+  - Processing credit-g with lvq
+  ✓ diabetes/rbfDDA Success
+  - Processing diabetes with rda
+  ✓ eucalyptus/lvq Success
+  - Processing eucalyptus with mlpML
+  ✓ climate-model-simulation-crashes/mlpML Success
+  - Processing climate-model-simulation-crashes with multinom
+  ✓ ozone-level-8hr/ctree Success
+  - Processing ozone-level-8hr with fda
+  ✓ liver-disorders/simpls Success
+  - Processing liver-disorders with svmLinear
+  ✓ breast-w/rbfDDA Success
+  - Processing breast-w with rda
+  ✓ blood-transfusion-service-center/knn Success
+  - Processing blood-transfusion-service-center with bayesglm
+  ✓ badges2/rbfDDA Success
+  - Processing badges2 with rda
+  ✓ banknote/rfRules Success
+  - Processing banknote with knn
+  ✓ credit-g/lvq Success
+  - Processing credit-g with mlpML
+  ✓ liver-disorders/svmLinear Success
+  - Processing liver-disorders with svmRadial
+  ✓ vowel/rbfDDA Success
+  - Processing vowel with rda
+  ✓ badges2/rda Success
+  - Processing badges2 with rf
+  ✓ pc4/gbm Success
+  - Processing pc4 with gcvEarth
+  ✓ liver-disorders/svmRadial Success
+  - Processing liver-disorders with rfRules
+  ✓ blood-transfusion-service-center/bayesglm Success
+Completed dataset: blood-transfusion-service-center
+  ✓ waveform-5000/fda Success
+  - Processing waveform-5000 with gbm
+  ✓ banknote/knn Success
+  - Processing banknote with bayesglm
+  ✓ diabetes/rda Success
+  - Processing diabetes with rf
+  ✓ liver-disorders/rfRules Success
+  - Processing liver-disorders with knn
+  ✓ breast-w/rda Success
+  - Processing breast-w with rf
+  ✓ kc1/JRip Success
+  - Processing kc1 with lvq
+  ✓ climate-model-simulation-crashes/multinom Success
+  - Processing climate-model-simulation-crashes with naive_bayes
+  ✓ tic-tac-toe/rbfDDA Success
+  - Processing tic-tac-toe with rda
+  ✗ climate-model-simulation-crashes/naive_bayes Failed
+  - Processing climate-model-simulation-crashes with PART
+  ✓ banknote/bayesglm Success
+Completed dataset: banknote
+  ✓ badges2/rf Success
+  - Processing badges2 with rpart
+  ✓ tic-tac-toe/rda Success
+  - Processing tic-tac-toe with rf
+  ✓ qsar-biodeg/gbm Success
+  - Processing qsar-biodeg with gcvEarth
+  ✓ liver-disorders/knn Success
+  - Processing liver-disorders with bayesglm
+  ✓ wilt/rbfDDA Success
+  - Processing wilt with rda
+  ✓ kc1/lvq Success
+  - Processing kc1 with mlpML
+  ✓ vowel/rda Success
+  - Processing vowel with rf
+  ✓ diabetes/rf Success
+  - Processing diabetes with rpart
+  ✓ phoneme/rbfDDA Success
+  - Processing phoneme with rda
+  ✓ eucalyptus/mlpML Success
+  - Processing eucalyptus with multinom
+  ✓ breast-w/rf Success
+  - Processing breast-w with rpart
+  ✓ wdbc/JRip Success
+  - Processing wdbc with lvq
+  ✓ badges2/rpart Success
+  - Processing badges2 with simpls
+  ✓ cardiotocography/gcvEarth Success
+  - Processing cardiotocography with JRip
+  ✓ credit-g/mlpML Success
+  - Processing credit-g with multinom
+  ✓ analcatdata_authorship/fda Success
+  - Processing analcatdata_authorship with gbm
+  ✓ diabetes/rpart Success
+  - Processing diabetes with simpls
+  ✓ wdbc/lvq Success
+  - Processing wdbc with mlpML
+  ✓ breast-w/rpart Success
+  - Processing breast-w with simpls
+  ✓ liver-disorders/bayesglm Success
+Completed dataset: liver-disorders
+  ✓ tic-tac-toe/rf Success
+  - Processing tic-tac-toe with rpart
+  ✓ wilt/rda Success
+  - Processing wilt with rf
+  ✓ phoneme/rda Success
+  - Processing phoneme with rf
+  ✓ vowel/rf Success
+  - Processing vowel with rpart
+  ✓ climate-model-simulation-crashes/PART Success
+  - Processing climate-model-simulation-crashes with rbfDDA
+  ✓ badges2/simpls Success
+  - Processing badges2 with svmLinear
+  ✓ tic-tac-toe/rpart Success
+  - Processing tic-tac-toe with simpls
+  ✓ cmc/rbfDDA Success
+  - Processing cmc with rda
+  ✓ diabetes/simpls Success
+  - Processing diabetes with svmLinear
+  ✓ breast-w/simpls Success
+  - Processing breast-w with svmLinear
+  ✓ badges2/svmLinear Success
+  - Processing badges2 with svmRadial
+  ✓ diabetes/svmLinear Success
+  - Processing diabetes with svmRadial
+  ✓ breast-w/svmLinear Success
+  - Processing breast-w with svmRadial
+  ✓ vowel/rpart Success
+  - Processing vowel with simpls
+  ✓ mfeat-zernike/gbm Success
+  - Processing mfeat-zernike with gcvEarth
+  ✓ wilt/rf Success
+  - Processing wilt with rpart
+  ✓ eucalyptus/multinom Success
+  - Processing eucalyptus with naive_bayes
+  ✓ badges2/svmRadial Success
+  - Processing badges2 with rfRules
+  ✗ eucalyptus/naive_bayes Failed
+  - Processing eucalyptus with PART
+  ✓ phoneme/rf Success
+  - Processing phoneme with rpart
+  ✓ diabetes/svmRadial Success
+  - Processing diabetes with rfRules
+  ✓ breast-w/svmRadial Success
+  - Processing breast-w with rfRules
+  ✓ kc1/mlpML Success
+  - Processing kc1 with multinom
+  ✓ tic-tac-toe/simpls Success
+  - Processing tic-tac-toe with svmLinear
+  ✓ pc4/gcvEarth Success
+  - Processing pc4 with JRip
+  ✓ wilt/rpart Success
+  - Processing wilt with simpls
+  ✓ badges2/rfRules Success
+  - Processing badges2 with knn
+  ✓ tic-tac-toe/svmLinear Success
+  - Processing tic-tac-toe with svmRadial
+  ✓ phoneme/rpart Success
+  - Processing phoneme with simpls
+  ✓ credit-g/multinom Success
+  - Processing credit-g with naive_bayes
+  ✓ breast-w/rfRules Success
+  - Processing breast-w with knn
+  ✓ cmc/rda Success
+  - Processing cmc with rf
+  ✓ diabetes/rfRules Success
+  - Processing diabetes with knn
+  ✗ credit-g/naive_bayes Failed
+  - Processing credit-g with PART
+  ✓ vowel/simpls Success
+  - Processing vowel with svmLinear
+  ✓ tic-tac-toe/svmRadial Success
+  - Processing tic-tac-toe with rfRules
+  ✓ wilt/simpls Success
+  - Processing wilt with svmLinear
+  ✓ qsar-biodeg/gcvEarth Success
+  - Processing qsar-biodeg with JRip
+  ✓ badges2/knn Success
+  - Processing badges2 with bayesglm
+  ✓ phoneme/simpls Success
+  - Processing phoneme with svmLinear
+  ✓ wdbc/mlpML Success
+  - Processing wdbc with multinom
+  ✓ mfeat-karhunen/gbm Success
+  - Processing mfeat-karhunen with gcvEarth
+  ✓ vowel/svmLinear Success
+  - Processing vowel with svmRadial
+  ✓ waveform-5000/gbm Success
+  - Processing waveform-5000 with gcvEarth
+  ✓ breast-w/knn Success
+  - Processing breast-w with bayesglm
+  ✓ climate-model-simulation-crashes/rbfDDA Success
+  - Processing climate-model-simulation-crashes with rda
+  ✓ wilt/svmLinear Success
+  - Processing wilt with svmRadial
+  ✓ diabetes/knn Success
+  - Processing diabetes with bayesglm
+  ✓ phoneme/svmLinear Success
+  - Processing phoneme with svmRadial
+  ✓ tic-tac-toe/rfRules Success
+  - Processing tic-tac-toe with knn
+  ✓ vowel/svmRadial Success
+  - Processing vowel with rfRules
+  ✓ badges2/bayesglm Success
+Completed dataset: badges2
+  ✓ eucalyptus/PART Success
+  - Processing eucalyptus with rbfDDA
+  ✓ cmc/rf Success
+  - Processing cmc with rpart
+  ✓ kc1/multinom Success
+  - Processing kc1 with naive_bayes
+  ✓ cardiotocography/JRip Success
+  - Processing cardiotocography with lvq
+  ✓ wilt/svmRadial Success
+  - Processing wilt with rfRules
+  ✗ kc1/naive_bayes Failed
+  - Processing kc1 with PART
+  ✓ breast-w/bayesglm Success
+Completed dataset: breast-w
+  ✓ phoneme/svmRadial Success
+  - Processing phoneme with rfRules
+  ✓ diabetes/bayesglm Success
+Completed dataset: diabetes
+  ✓ vowel/rfRules Success
+  - Processing vowel with knn
+  ✓ credit-g/PART Success
+  - Processing credit-g with rbfDDA
+  ✓ cmc/rpart Success
+  - Processing cmc with simpls
+  ✓ tic-tac-toe/knn Success
+  - Processing tic-tac-toe with bayesglm
+  ✓ cardiotocography/lvq Success
+  - Processing cardiotocography with mlpML
+  ✓ vowel/knn Success
+  - Processing vowel with bayesglm
+  ✓ ozone-level-8hr/fda Success
+  - Processing ozone-level-8hr with gbm
+  ✓ climate-model-simulation-crashes/rda Success
+  - Processing climate-model-simulation-crashes with rf
+  ✓ wdbc/multinom Success
+  - Processing wdbc with naive_bayes
+  ✗ wdbc/naive_bayes Failed
+  - Processing wdbc with PART
+  ✓ cmc/simpls Success
+  - Processing cmc with svmLinear
+  ✓ pc4/JRip Success
+  - Processing pc4 with lvq
+  ✓ tic-tac-toe/bayesglm Success
+Completed dataset: tic-tac-toe
+  ✓ mfeat-zernike/gcvEarth Success
+  - Processing mfeat-zernike with JRip
+  ✓ phoneme/rfRules Success
+  - Processing phoneme with knn
+  ✓ cmc/svmLinear Success
+  - Processing cmc with svmRadial
+  ✓ vowel/bayesglm Success
+Completed dataset: vowel
+  ✓ kc1/PART Success
+  - Processing kc1 with rbfDDA
+  ✓ analcatdata_authorship/gbm Success
+  - Processing analcatdata_authorship with gcvEarth
+  ✓ wilt/rfRules Success
+  - Processing wilt with knn
+  ✓ pc4/lvq Success
+  - Processing pc4 with mlpML
+  ✓ cmc/svmRadial Success
+  - Processing cmc with rfRules
+  ✓ phoneme/knn Success
+  - Processing phoneme with bayesglm
+  ✓ qsar-biodeg/JRip Success
+  - Processing qsar-biodeg with lvq
+  ✓ climate-model-simulation-crashes/rf Success
+  - Processing climate-model-simulation-crashes with rpart
+  ✓ eucalyptus/rbfDDA Success
+  - Processing eucalyptus with rda
+  ✓ wilt/knn Success
+  - Processing wilt with bayesglm
+  ✓ eucalyptus/rda Success
+  - Processing eucalyptus with rf
+  ✓ phoneme/bayesglm Success
+Completed dataset: phoneme
+  ✓ climate-model-simulation-crashes/rpart Success
+  - Processing climate-model-simulation-crashes with simpls
+  ✓ qsar-biodeg/lvq Success
+  - Processing qsar-biodeg with mlpML
+  ✓ cmc/rfRules Success
+  - Processing cmc with knn
+  ✓ waveform-5000/gcvEarth Success
+  - Processing waveform-5000 with JRip
+  ✓ wdbc/PART Success
+  - Processing wdbc with rbfDDA
+  ✓ wilt/bayesglm Success
+Completed dataset: wilt
+  ✓ cmc/knn Success
+  - Processing cmc with bayesglm
+  ✓ credit-g/rbfDDA Success
+  - Processing credit-g with rda
+  ✓ climate-model-simulation-crashes/simpls Success
+  - Processing climate-model-simulation-crashes with svmLinear
+  ✓ cmc/bayesglm Success
+Completed dataset: cmc
+  ✓ eucalyptus/rf Success
+  - Processing eucalyptus with rpart
+  ✓ credit-g/rda Success
+  - Processing credit-g with rf
+  ✓ cardiotocography/mlpML Success
+  - Processing cardiotocography with multinom
+  ✓ climate-model-simulation-crashes/svmLinear Success
+  - Processing climate-model-simulation-crashes with svmRadial
+  ✓ mfeat-karhunen/gcvEarth Success
+  - Processing mfeat-karhunen with JRip
+  ✓ mfeat-zernike/JRip Success
+  - Processing mfeat-zernike with lvq
+  ✓ pc4/mlpML Success
+  - Processing pc4 with multinom
+  ✓ climate-model-simulation-crashes/svmRadial Success
+  - Processing climate-model-simulation-crashes with rfRules
+  ✓ eucalyptus/rpart Success
+  - Processing eucalyptus with simpls
+  ✓ climate-model-simulation-crashes/rfRules Success
+  - Processing climate-model-simulation-crashes with knn
+  ✓ wdbc/rbfDDA Success
+  - Processing wdbc with rda
+  ✓ qsar-biodeg/mlpML Success
+  - Processing qsar-biodeg with multinom
+  ✓ mfeat-zernike/lvq Success
+  - Processing mfeat-zernike with mlpML
+  ✓ credit-g/rf Success
+  - Processing credit-g with rpart
+  ✓ analcatdata_authorship/gcvEarth Success
+  - Processing analcatdata_authorship with JRip
+  ✓ climate-model-simulation-crashes/knn Success
+  - Processing climate-model-simulation-crashes with bayesglm
+  ✓ ozone-level-8hr/gbm Success
+  - Processing ozone-level-8hr with gcvEarth
+  ✓ eucalyptus/simpls Success
+  - Processing eucalyptus with svmLinear
+  ✓ credit-g/rpart Success
+  - Processing credit-g with simpls
+  ✓ waveform-5000/JRip Success
+  - Processing waveform-5000 with lvq
+  ✓ wdbc/rda Success
+  - Processing wdbc with rf
+  ✓ cardiotocography/multinom Success
+  - Processing cardiotocography with naive_bayes
+  ✓ eucalyptus/svmLinear Success
+  - Processing eucalyptus with svmRadial
+  ✗ cardiotocography/naive_bayes Failed
+  - Processing cardiotocography with PART
+  ✓ pc4/multinom Success
+  - Processing pc4 with naive_bayes
+  ✓ climate-model-simulation-crashes/bayesglm Success
+Completed dataset: climate-model-simulation-crashes
+  ✗ pc4/naive_bayes Failed
+  - Processing pc4 with PART
+  ✓ eucalyptus/svmRadial Success
+  - Processing eucalyptus with rfRules
+  ✓ eucalyptus/rfRules Success
+  - Processing eucalyptus with knn
+  ✓ qsar-biodeg/multinom Success
+  - Processing qsar-biodeg with naive_bayes
+  ✓ credit-g/simpls Success
+  - Processing credit-g with svmLinear
+  ✗ qsar-biodeg/naive_bayes Failed
+  - Processing qsar-biodeg with PART
+  ✓ waveform-5000/lvq Success
+  - Processing waveform-5000 with mlpML
+  ✓ kc1/rbfDDA Success
+  - Processing kc1 with rda
+  ✓ credit-g/svmLinear Success
+  - Processing credit-g with svmRadial
+  ✓ wdbc/rf Success
+  - Processing wdbc with rpart
+  ✓ mfeat-zernike/mlpML Success
+  - Processing mfeat-zernike with multinom
+  ✓ credit-g/svmRadial Success
+  - Processing credit-g with rfRules
+  ✓ eucalyptus/knn Success
+  - Processing eucalyptus with bayesglm
+  ✓ wdbc/rpart Success
+  - Processing wdbc with simpls
+  ✓ kc1/rda Success
+  - Processing kc1 with rf
+  ✓ pc4/PART Success
+  - Processing pc4 with rbfDDA
+  ✓ analcatdata_authorship/JRip Success
+  - Processing analcatdata_authorship with lvq
+  ✓ cardiotocography/PART Success
+  - Processing cardiotocography with rbfDDA
+  ✓ mfeat-karhunen/JRip Success
+  - Processing mfeat-karhunen with lvq
+  ✓ credit-g/rfRules Success
+  - Processing credit-g with knn
+  ✓ eucalyptus/bayesglm Success
+Completed dataset: eucalyptus
+  ✓ qsar-biodeg/PART Success
+  - Processing qsar-biodeg with rbfDDA
+  ✓ analcatdata_authorship/lvq Success
+  - Processing analcatdata_authorship with mlpML
+  ✓ wdbc/simpls Success
+  - Processing wdbc with svmLinear
+  ✓ ozone-level-8hr/gcvEarth Success
+  - Processing ozone-level-8hr with JRip
+  ✓ wdbc/svmLinear Success
+  - Processing wdbc with svmRadial
+  ✓ credit-g/knn Success
+  - Processing credit-g with bayesglm
+  ✓ mfeat-karhunen/lvq Success
+  - Processing mfeat-karhunen with mlpML
+  ✓ kc1/rf Success
+  - Processing kc1 with rpart
+  ✓ wdbc/svmRadial Success
+  - Processing wdbc with rfRules
+  ✓ mfeat-zernike/multinom Success
+  - Processing mfeat-zernike with naive_bayes
+  ✓ waveform-5000/mlpML Success
+  - Processing waveform-5000 with multinom
+  ✗ mfeat-zernike/naive_bayes Failed
+  - Processing mfeat-zernike with PART
+  ✓ wdbc/rfRules Success
+  - Processing wdbc with knn
+  ✓ kc1/rpart Success
+  - Processing kc1 with simpls
+  ✓ credit-g/bayesglm Success
+Completed dataset: credit-g
+  ✓ kc1/simpls Success
+  - Processing kc1 with svmLinear
+  ✓ wdbc/knn Success
+  - Processing wdbc with bayesglm
+  ✓ kc1/svmLinear Success
+  - Processing kc1 with svmRadial
+  ✓ analcatdata_authorship/mlpML Success
+  - Processing analcatdata_authorship with multinom
+  ✓ kc1/svmRadial Success
+  - Processing kc1 with rfRules
+  ✓ mfeat-zernike/PART Success
+  - Processing mfeat-zernike with rbfDDA
+  ✓ waveform-5000/multinom Success
+  - Processing waveform-5000 with naive_bayes
+  ✗ waveform-5000/naive_bayes Failed
+  - Processing waveform-5000 with PART
+  ✓ wdbc/bayesglm Success
+Completed dataset: wdbc
+  ✓ kc1/rfRules Success
+  - Processing kc1 with knn
+  ✓ mfeat-karhunen/mlpML Success
+  - Processing mfeat-karhunen with multinom
+  ✓ pc4/rbfDDA Success
+  - Processing pc4 with rda
+  ✓ pc4/rda Success
+  - Processing pc4 with rf
+  ✓ qsar-biodeg/rbfDDA Success
+  - Processing qsar-biodeg with rda
+  ✓ cardiotocography/rbfDDA Success
+  - Processing cardiotocography with rda
+  ✓ kc1/knn Success
+  - Processing kc1 with bayesglm
+  ✓ cardiotocography/rda Success
+  - Processing cardiotocography with rf
+  ✓ qsar-biodeg/rda Success
+  - Processing qsar-biodeg with rf
+  ✓ ozone-level-8hr/JRip Success
+  - Processing ozone-level-8hr with lvq
+  ✓ analcatdata_authorship/multinom Success
+  - Processing analcatdata_authorship with naive_bayes
+  ✗ analcatdata_authorship/naive_bayes Failed
+  - Processing analcatdata_authorship with PART
+  ✓ waveform-5000/PART Success
+  - Processing waveform-5000 with rbfDDA
+  ✓ kc1/bayesglm Success
+Completed dataset: kc1
+  ✓ pc4/rf Success
+  - Processing pc4 with rpart
+  ✓ ozone-level-8hr/lvq Success
+  - Processing ozone-level-8hr with mlpML
+  ✓ qsar-biodeg/rf Success
+  - Processing qsar-biodeg with rpart
+  ✓ cardiotocography/rf Success
+  - Processing cardiotocography with rpart
+  ✓ pc4/rpart Success
+  - Processing pc4 with simpls
+  ✓ mfeat-karhunen/multinom Success
+  - Processing mfeat-karhunen with naive_bayes
+  ✗ mfeat-karhunen/naive_bayes Failed
+  - Processing mfeat-karhunen with PART
+  ✓ qsar-biodeg/rpart Success
+  - Processing qsar-biodeg with simpls
+  ✓ analcatdata_authorship/PART Success
+  - Processing analcatdata_authorship with rbfDDA
+  ✓ cardiotocography/rpart Success
+  - Processing cardiotocography with simpls
+  ✓ pc4/simpls Success
+  - Processing pc4 with svmLinear
+  ✓ pc4/svmLinear Success
+  - Processing pc4 with svmRadial
+  ✓ qsar-biodeg/simpls Success
+  - Processing qsar-biodeg with svmLinear
+  ✓ cardiotocography/simpls Success
+  - Processing cardiotocography with svmLinear
+  ✓ pc4/svmRadial Success
+  - Processing pc4 with rfRules
+  ✓ qsar-biodeg/svmLinear Success
+  - Processing qsar-biodeg with svmRadial
+  ✓ mfeat-zernike/rbfDDA Success
+  - Processing mfeat-zernike with rda
+  ✓ mfeat-factors/ctree Success
+  - Processing mfeat-factors with fda
+  ✗ mfeat-factors/fda Failed
+  - Processing mfeat-factors with gbm
+  ✓ pc4/rfRules Success
+  - Processing pc4 with knn
+  ✓ cardiotocography/svmLinear Success
+  - Processing cardiotocography with svmRadial
+  ✓ qsar-biodeg/svmRadial Success
+  - Processing qsar-biodeg with rfRules
+  ✓ mfeat-karhunen/PART Success
+  - Processing mfeat-karhunen with rbfDDA
+  ✓ ozone-level-8hr/mlpML Success
+  - Processing ozone-level-8hr with multinom
+  ✓ qsar-biodeg/rfRules Success
+  - Processing qsar-biodeg with knn
+  ✓ pc4/knn Success
+  - Processing pc4 with bayesglm
+  ✓ mfeat-zernike/rda Success
+  - Processing mfeat-zernike with rf
+  ✓ qsar-biodeg/knn Success
+  - Processing qsar-biodeg with bayesglm
+  ✓ pc4/bayesglm Success
+Completed dataset: pc4
+  ✓ cardiotocography/svmRadial Success
+  - Processing cardiotocography with rfRules
+  ✓ cardiotocography/rfRules Success
+  - Processing cardiotocography with knn
+  ✓ mfeat-zernike/rf Success
+  - Processing mfeat-zernike with rpart
+  ✓ qsar-biodeg/bayesglm Success
+Completed dataset: qsar-biodeg
+  ✓ ozone-level-8hr/multinom Success
+  - Processing ozone-level-8hr with naive_bayes
+  ✗ ozone-level-8hr/naive_bayes Failed
+  - Processing ozone-level-8hr with PART
+  ✓ mfeat-zernike/rpart Success
+  - Processing mfeat-zernike with simpls
+  ✓ analcatdata_authorship/rbfDDA Success
+  - Processing analcatdata_authorship with rda
+  ✓ cardiotocography/knn Success
+  - Processing cardiotocography with bayesglm
+  ✓ cardiotocography/bayesglm Success
+Completed dataset: cardiotocography
+  ✓ mfeat-zernike/simpls Success
+  - Processing mfeat-zernike with svmLinear
+  ✓ mfeat-zernike/svmLinear Success
+  - Processing mfeat-zernike with svmRadial
+  ✓ mfeat-zernike/svmRadial Success
+  - Processing mfeat-zernike with rfRules
+  ✓ analcatdata_authorship/rda Success
+  - Processing analcatdata_authorship with rf
+  ✓ ozone-level-8hr/PART Success
+  - Processing ozone-level-8hr with rbfDDA
+  ✓ mfeat-zernike/rfRules Success
+  - Processing mfeat-zernike with knn
+  ✓ analcatdata_authorship/rf Success
+  - Processing analcatdata_authorship with rpart
+  ✓ analcatdata_authorship/rpart Success
+  - Processing analcatdata_authorship with simpls
+  ✓ mfeat-zernike/knn Success
+  - Processing mfeat-zernike with bayesglm
+  ✓ mfeat-factors/gbm Success
+  - Processing mfeat-factors with gcvEarth
+  ✓ mfeat-zernike/bayesglm Success
+Completed dataset: mfeat-zernike
+  ✓ analcatdata_authorship/simpls Success
+  - Processing analcatdata_authorship with svmLinear
+  ✓ analcatdata_authorship/svmLinear Success
+  - Processing analcatdata_authorship with svmRadial
+  ✓ analcatdata_authorship/svmRadial Success
+  - Processing analcatdata_authorship with rfRules
+  ✓ analcatdata_authorship/rfRules Success
+  - Processing analcatdata_authorship with knn
+  ✓ analcatdata_authorship/knn Success
+  - Processing analcatdata_authorship with bayesglm
+  ✓ mfeat-factors/gcvEarth Success
+  - Processing mfeat-factors with JRip
+  ✓ analcatdata_authorship/bayesglm Success
+Completed dataset: analcatdata_authorship
+  ✓ mfeat-karhunen/rbfDDA Success
+  - Processing mfeat-karhunen with rda
+  ✓ mfeat-karhunen/rda Success
+  - Processing mfeat-karhunen with rf
+  ✓ mfeat-karhunen/rf Success
+  - Processing mfeat-karhunen with rpart
+  ✓ mfeat-karhunen/rpart Success
+  - Processing mfeat-karhunen with simpls
+  ✓ mfeat-factors/JRip Success
+  - Processing mfeat-factors with lvq
+  ✓ mfeat-karhunen/simpls Success
+  - Processing mfeat-karhunen with svmLinear
+  ✓ mfeat-karhunen/svmLinear Success
+  - Processing mfeat-karhunen with svmRadial
+  ✓ ozone-level-8hr/rbfDDA Success
+  - Processing ozone-level-8hr with rda
+  ✓ ozone-level-8hr/rda Success
+  - Processing ozone-level-8hr with rf
+  ✓ mfeat-factors/lvq Success
+  - Processing mfeat-factors with mlpML
+  ✓ mfeat-karhunen/svmRadial Success
+  - Processing mfeat-karhunen with rfRules
+  ✓ ozone-level-8hr/rf Success
+  - Processing ozone-level-8hr with rpart
+  ✓ mfeat-karhunen/rfRules Success
+  - Processing mfeat-karhunen with knn
+  ✓ ozone-level-8hr/rpart Success
+  - Processing ozone-level-8hr with simpls
+  ✓ ozone-level-8hr/simpls Success
+  - Processing ozone-level-8hr with svmLinear
+  ✓ ozone-level-8hr/svmLinear Success
+  - Processing ozone-level-8hr with svmRadial
+  ✓ mfeat-karhunen/knn Success
+  - Processing mfeat-karhunen with bayesglm
+  ✓ mfeat-karhunen/bayesglm Success
+Completed dataset: mfeat-karhunen
+  ✓ ozone-level-8hr/svmRadial Success
+  - Processing ozone-level-8hr with rfRules
+  ✓ ozone-level-8hr/rfRules Success
+  - Processing ozone-level-8hr with knn
+  ✓ mfeat-factors/mlpML Success
+  - Processing mfeat-factors with multinom
+  ✓ ozone-level-8hr/knn Success
+  - Processing ozone-level-8hr with bayesglm
+  ✓ waveform-5000/rbfDDA Success
+  - Processing waveform-5000 with rda
+  ✓ ozone-level-8hr/bayesglm Success
+Completed dataset: ozone-level-8hr
+  ✓ waveform-5000/rda Success
+  - Processing waveform-5000 with rf
+  ✓ waveform-5000/rf Success
+  - Processing waveform-5000 with rpart
+  ✓ waveform-5000/rpart Success
+  - Processing waveform-5000 with simpls
+  ✓ mfeat-factors/multinom Success
+  - Processing mfeat-factors with naive_bayes
+  ✗ mfeat-factors/naive_bayes Failed
+  - Processing mfeat-factors with PART
+  ✓ waveform-5000/simpls Success
+  - Processing waveform-5000 with svmLinear
+  ✓ waveform-5000/svmLinear Success
+  - Processing waveform-5000 with svmRadial
+  ✓ waveform-5000/svmRadial Success
+  - Processing waveform-5000 with rfRules
+  ✓ waveform-5000/rfRules Success
+  - Processing waveform-5000 with knn
+  ✓ waveform-5000/knn Success
+  - Processing waveform-5000 with bayesglm
+  ✓ mfeat-factors/PART Success
+  - Processing mfeat-factors with rbfDDA
+  ✓ waveform-5000/bayesglm Success
+Completed dataset: waveform-5000
+  ✓ mfeat-factors/rbfDDA Success
+  - Processing mfeat-factors with rda
+  ✓ mfeat-factors/rda Success
+  - Processing mfeat-factors with rf
+  ✓ mfeat-factors/rf Success
+  - Processing mfeat-factors with rpart
+  ✓ mfeat-factors/rpart Success
+  - Processing mfeat-factors with simpls
+  ✓ mfeat-factors/simpls Success
+  - Processing mfeat-factors with svmLinear
+  ✓ mfeat-factors/svmLinear Success
+  - Processing mfeat-factors with svmRadial
+  ✓ mfeat-factors/svmRadial Success
+  - Processing mfeat-factors with rfRules
+  ✓ mfeat-factors/rfRules Success
+  - Processing mfeat-factors with knn
+  ✓ mfeat-factors/knn Success
+  - Processing mfeat-factors with bayesglm
+  ✓ mfeat-factors/bayesglm Success
+Completed dataset: mfeat-factors
+Combining results...
+
+Analysis complete! Results saved to: output/spearman/topk_agreement_results.txt
+Individual dataset results in: output/spearman/
+Total combinations processed: 546

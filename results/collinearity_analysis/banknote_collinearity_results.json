@@ -1,0 +1,72 @@
+{
+  "dataset": "banknote",
+  "file_path": "datasets/csv/banknote.csv",
+  "n_rows": 1372,
+  "n_columns": 5,
+  "n_numeric_features": 5,
+  "numeric_features": [
+    "variance",
+    "skewness",
+    "curtosis",
+    "entropy",
+    "class"
+  ],
+  "correlation_matrix_shape": [
+    5,
+    5
+  ],
+  "high_correlations": [
+    {
+      "feature1": "variance",
+      "feature2": "class",
+      "correlation": -0.7248431424446066
+    },
+    {
+      "feature1": "skewness",
+      "feature2": "curtosis",
+      "correlation": -0.7868952243065797
+    }
+  ],
+  "n_high_correlations": 2,
+  "vif_mean": 2.147962965444824,
+  "vif_median": 1.951089613288567,
+  "vif_max": 3.4026794311194184,
+  "vif_values": [
+    {
+      "feature": "skewness",
+      "VIF": 3.4026794311194184
+    },
+    {
+      "feature": "entropy",
+      "VIF": 2.43566563559324
+    },
+    {
+      "feature": "curtosis",
+      "VIF": 1.951089613288567
+    },
+    {
+      "feature": "class",
+      "VIF": 1.4967362706442344
+    },
+    {
+      "feature": "variance",
+      "VIF": 1.4536438765786608
+    }
+  ],
+  "n_high_vif": 0,
+  "condition_number": 8.228054372253403,
+  "condition_number_interpretation": "Low - no multicollinearity",
+  "condition_index": 8.22805437225347,
+  "eigenvalues": [
+    2.4513294361424705,
+    1.6016223548413273,
+    0.6605686316477236,
+    0.25027134076501073,
+    0.0362082366034659
+  ],
+  "min_eigenvalue": 0.0362082366034659,
+  "max_eigenvalue": 2.4513294361424705,
+  "n_small_eigenvalues": 0,
+  "has_multicollinearity": true,
+  "severity_score": 2
+}

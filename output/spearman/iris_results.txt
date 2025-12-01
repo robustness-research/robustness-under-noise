@@ -1,0 +1,1464 @@
+Dataset: iris
+Generated: Mon Nov 24 10:36:01 PM CET 2025
+======================================
+
+
+========================================
+Model: C5.0
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=iris, Method=C5.0 ===
+No scaling applied for method: C5.0
+Error: Only one model should be specified in tuneGrid with no resampling
+Execution halted
+FAILED - See error above
+
+
+========================================
+Model: ctree
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=iris, Method=ctree ===
+No scaling applied for method: ctree
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature        importance.05   importance   importance.95   permutation.error
+------------  --------------  -----------  --------------  ------------------
+petallength         10.33333         11.5       12.500000                0.46
+petalwidth           7.30000          8.5        9.733333                0.34
+sepallength          1.00000          1.0        1.000000                0.04
+sepalwidth           1.00000          1.0        1.000000                0.04
+
+=== LIME Rankings ===
+
+
+Feature        Importance
+------------  -----------
+petallength     0.9626735
+sepalwidth      0.0051538
+sepallength     0.0036259
+petalwidth      0.0032583
+
+=== SHAP (IML Shapley) Rankings ===
+
+
+Feature        Importance
+------------  -----------
+petallength          0.71
+petalwidth           0.00
+sepallength          0.00
+sepalwidth           0.00
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair                Spearman   Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME           1                 2
+FEAT_IMP vs SHAP           1                 3
+LIME vs SHAP               1                 2
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME   NA                        1
+FEAT_IMP vs SHAP   NA                        1
+LIME vs SHAP       NA                        1
+
+=== Top-1 Features ===
+FEAT_IMP: petallength
+LIME: petallength
+SHAP: petallength
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1     Feature_2     Agreement 
+-----------------  ------------  ------------  ----------
+FEAT_IMP vs LIME   petallength   petallength   TRUE      
+FEAT_IMP vs SHAP   petallength   petallength   TRUE      
+LIME vs SHAP       petallength   petallength   TRUE      
+
+Agreeing pairs: 3 / 3 (100.0%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: fda
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=iris, Method=fda ===
+No scaling applied for method: fda
+Error in get(ctr, mode = "function", envir = parent.frame()) : 
+  object 'contr.earth.response' of mode 'function' was not found
+Calls: train_model ... model.matrix -> model.matrix.default -> contrasts -> get
+Execution halted
+FAILED - See error above
+
+
+========================================
+Model: gbm
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=iris, Method=gbm ===
+No scaling applied for method: gbm
+Iter   TrainDeviance   ValidDeviance   StepSize   Improve
+     1        1.0986            -nan     0.1000    0.2420
+     2        0.9138            -nan     0.1000    0.1986
+     3        0.7598            -nan     0.1000    0.1462
+     4        0.6482            -nan     0.1000    0.1313
+     5        0.5614            -nan     0.1000    0.1070
+     6        0.4848            -nan     0.1000    0.0910
+     7        0.4229            -nan     0.1000    0.0730
+     8        0.3713            -nan     0.1000    0.0633
+     9        0.3272            -nan     0.1000    0.0388
+    10        0.2945            -nan     0.1000    0.0423
+    20        0.1243            -nan     0.1000    0.0073
+    40        0.0630            -nan     0.1000   -0.0067
+    50        0.0542            -nan     0.1000   -0.0033
+
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature        importance.05   importance   importance.95   permutation.error
+------------  --------------  -----------  --------------  ------------------
+petallength        26.466667    28.333333       31.400000           0.5666667
+petalwidth         10.533333    12.000000       12.866667           0.2400000
+sepalwidth          2.000000     2.000000        2.266667           0.0400000
+sepallength         1.333333     1.666667        1.666667           0.0333333
+
+=== LIME Rankings ===
+
+
+Feature        Importance
+------------  -----------
+petallength     0.8842904
+sepalwidth      0.0077070
+sepallength     0.0073315
+petalwidth      0.0034300
+
+=== SHAP (IML Shapley) Rankings ===
+
+
+Feature        Importance
+------------  -----------
+petallength     0.6675944
+sepallength     0.0019256
+petalwidth      0.0006535
+sepalwidth      0.0002545
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair                Spearman   Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME           1                 2
+FEAT_IMP vs SHAP           1                 2
+LIME vs SHAP               1                 2
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME   NA                        1
+FEAT_IMP vs SHAP   NA                        1
+LIME vs SHAP       NA                        1
+
+=== Top-1 Features ===
+FEAT_IMP: petallength
+LIME: petallength
+SHAP: petallength
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1     Feature_2     Agreement 
+-----------------  ------------  ------------  ----------
+FEAT_IMP vs LIME   petallength   petallength   TRUE      
+FEAT_IMP vs SHAP   petallength   petallength   TRUE      
+LIME vs SHAP       petallength   petallength   TRUE      
+
+Agreeing pairs: 3 / 3 (100.0%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: gcvEarth
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=iris, Method=gcvEarth ===
+No scaling applied for method: gcvEarth
+Loading required package: earth
+Loading required package: Formula
+Loading required package: plotmo
+Loading required package: plotrix
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+Warning messages:
+1: glm.fit: fitted probabilities numerically 0 or 1 occurred 
+2: glm.fit: fitted probabilities numerically 0 or 1 occurred 
+3: glm.fit: fitted probabilities numerically 0 or 1 occurred 
+
+=== IML Rankings ===
+
+
+feature        importance.05   importance   importance.95   permutation.error
+------------  --------------  -----------  --------------  ------------------
+petallength             39.0         41.5            43.2           0.5533333
+petalwidth              11.5         12.5            15.0           0.1666667
+sepalwidth               2.6          3.0             3.4           0.0400000
+sepallength              1.2          2.0             3.4           0.0266667
+
+=== LIME Rankings ===
+
+
+Feature        Importance
+------------  -----------
+petallength     0.8393551
+petalwidth      0.0384537
+sepalwidth      0.0075168
+sepallength     0.0028265
+
+=== SHAP (IML Shapley) Rankings ===
+
+
+Feature        Importance
+------------  -----------
+petallength     0.6644657
+petalwidth      0.0457179
+sepallength     0.0002194
+sepalwidth      0.0000358
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair                Spearman   Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME           1                 3
+FEAT_IMP vs SHAP           1                 2
+LIME vs SHAP               1                 2
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME   NA                        1
+FEAT_IMP vs SHAP   NA                        1
+LIME vs SHAP       NA                        1
+
+=== Top-1 Features ===
+FEAT_IMP: petallength
+LIME: petallength
+SHAP: petallength
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1     Feature_2     Agreement 
+-----------------  ------------  ------------  ----------
+FEAT_IMP vs LIME   petallength   petallength   TRUE      
+FEAT_IMP vs SHAP   petallength   petallength   TRUE      
+LIME vs SHAP       petallength   petallength   TRUE      
+
+Agreeing pairs: 3 / 3 (100.0%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: JRip
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=iris, Method=JRip ===
+No scaling applied for method: JRip
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature        importance.05   importance   importance.95   permutation.error
+------------  --------------  -----------  --------------  ------------------
+petallength            19.80        21.00            22.6           0.5600000
+petalwidth              4.15         5.25             6.6           0.1400000
+sepallength             1.00         1.00             1.0           0.0266667
+sepalwidth              1.00         1.00             1.0           0.0266667
+
+=== LIME Rankings ===
+
+
+Feature        Importance
+------------  -----------
+petallength     0.9626735
+sepalwidth      0.0051538
+sepallength     0.0036259
+petalwidth      0.0032583
+
+=== SHAP (IML Shapley) Rankings ===
+
+
+Feature        Importance
+------------  -----------
+petallength          0.71
+petalwidth           0.00
+sepallength          0.00
+sepalwidth           0.00
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair                Spearman   Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME           1                 2
+FEAT_IMP vs SHAP           1                 3
+LIME vs SHAP               1                 2
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME   NA                        1
+FEAT_IMP vs SHAP   NA                        1
+LIME vs SHAP       NA                        1
+
+=== Top-1 Features ===
+FEAT_IMP: petallength
+LIME: petallength
+SHAP: petallength
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1     Feature_2     Agreement 
+-----------------  ------------  ------------  ----------
+FEAT_IMP vs LIME   petallength   petallength   TRUE      
+FEAT_IMP vs SHAP   petallength   petallength   TRUE      
+LIME vs SHAP       petallength   petallength   TRUE      
+
+Agreeing pairs: 3 / 3 (100.0%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: lvq
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=iris, Method=lvq ===
+Applying data scaling for method: lvq
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature        importance.05   importance   importance.95   permutation.error
+------------  --------------  -----------  --------------  ------------------
+petalwidth              7.96          9.2            9.72           0.3066667
+petallength             6.56          7.6            8.84           0.2533333
+sepallength             2.48          3.4            3.56           0.1133333
+sepalwidth              1.28          1.6            1.80           0.0533333
+
+=== LIME Rankings ===
+Error in get_lime: only classification models that produce probabilities are allowed 
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs SHAP   NA                        0
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs SHAP   NA                        0
+
+=== Top-1 Features ===
+FEAT_IMP: petalwidth
+SHAP: NA
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1    Feature_2   Agreement 
+-----------------  -----------  ----------  ----------
+FEAT_IMP vs SHAP   petalwidth   NA          FALSE     
+
+Agreeing pairs: 0 / 1 (0.0%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: mlpML
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=iris, Method=mlpML ===
+Applying data scaling for method: mlpML
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+Warning message:
+At least one layer had zero units and were removed. The new structure is 1 
+
+=== IML Rankings ===
+
+
+feature        importance.05   importance   importance.95   permutation.error
+------------  --------------  -----------  --------------  ------------------
+petalwidth          5.383333     5.750000        6.000000           0.4600000
+petallength         4.766667     4.916667        5.266667           0.3933333
+sepalwidth          1.666667     1.833333        2.166667           0.1466667
+sepallength         1.166667     1.250000        1.783333           0.1000000
+
+=== LIME Rankings ===
+
+
+Feature        Importance
+------------  -----------
+petalwidth      0.4225119
+petallength     0.3576037
+sepalwidth      0.0739987
+sepallength     0.0675541
+
+=== SHAP (IML Shapley) Rankings ===
+
+
+Feature        Importance
+------------  -----------
+petalwidth      0.3347396
+petallength     0.2341963
+sepallength     0.0332276
+sepalwidth      0.0267666
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair                Spearman   Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME           1                 3
+FEAT_IMP vs SHAP           1                 2
+LIME vs SHAP               1                 2
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME   NA                        1
+FEAT_IMP vs SHAP   NA                        1
+LIME vs SHAP       NA                        1
+
+=== Top-1 Features ===
+FEAT_IMP: petalwidth
+LIME: petalwidth
+SHAP: petalwidth
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1    Feature_2    Agreement 
+-----------------  -----------  -----------  ----------
+FEAT_IMP vs LIME   petalwidth   petalwidth   TRUE      
+FEAT_IMP vs SHAP   petalwidth   petalwidth   TRUE      
+LIME vs SHAP       petalwidth   petalwidth   TRUE      
+
+Agreeing pairs: 3 / 3 (100.0%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: multinom
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=iris, Method=multinom ===
+Applying data scaling for method: multinom
+# weights:  18 (10 variable)
+initial  value 164.791843 
+iter  10 value 16.326750
+iter  20 value 6.016313
+iter  30 value 5.967080
+iter  40 value 5.954635
+iter  50 value 5.952867
+iter  60 value 5.952088
+iter  70 value 5.951629
+iter  80 value 5.951337
+iter  90 value 5.950851
+iter 100 value 5.950641
+final  value 5.950641 
+stopped after 100 iterations
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature        importance.05   importance   importance.95   permutation.error
+------------  --------------  -----------  --------------  ------------------
+petallength             40.0         41.5            44.0           0.5533333
+petalwidth              26.1         26.5            29.9           0.3533333
+sepalwidth               2.6          3.5             3.9           0.0466667
+sepallength              1.6          2.0             2.5           0.0266667
+
+=== LIME Rankings ===
+
+
+Feature        Importance
+------------  -----------
+petallength     0.6426900
+petalwidth      0.2493810
+sepallength     0.0886968
+sepalwidth      0.0745254
+
+=== SHAP (IML Shapley) Rankings ===
+
+
+Feature        Importance
+------------  -----------
+petallength     0.5073539
+petalwidth      0.1580997
+sepallength     0.0412277
+sepalwidth      0.0297702
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair                Spearman   Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME           1                 2
+FEAT_IMP vs SHAP           1                 2
+LIME vs SHAP               1                 3
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME   NA                        1
+FEAT_IMP vs SHAP   NA                        1
+LIME vs SHAP       NA                        1
+
+=== Top-1 Features ===
+FEAT_IMP: petallength
+LIME: petallength
+SHAP: petallength
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1     Feature_2     Agreement 
+-----------------  ------------  ------------  ----------
+FEAT_IMP vs LIME   petallength   petallength   TRUE      
+FEAT_IMP vs SHAP   petallength   petallength   TRUE      
+LIME vs SHAP       petallength   petallength   TRUE      
+
+Agreeing pairs: 3 / 3 (100.0%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: naive_bayes
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=iris, Method=naive_bayes ===
+No scaling applied for method: naive_bayes
+Error: Only one model should be specified in tuneGrid with no resampling
+Execution halted
+FAILED - See error above
+
+
+========================================
+Model: PART
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=iris, Method=PART ===
+No scaling applied for method: PART
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature        importance.05   importance   importance.95   permutation.error
+------------  --------------  -----------  --------------  ------------------
+petalwidth             20.25         22.5           22.95           0.6000000
+petallength             4.35          5.5            6.00           0.1466667
+sepallength             1.00          1.0            1.00           0.0266667
+sepalwidth              1.00          1.0            1.00           0.0266667
+
+=== LIME Rankings ===
+
+
+Feature        Importance
+------------  -----------
+petalwidth      0.8829455
+sepalwidth      0.0097198
+petallength     0.0078983
+sepallength     0.0054382
+
+=== SHAP (IML Shapley) Rankings ===
+
+
+Feature        Importance
+------------  -----------
+petalwidth           0.71
+petallength          0.00
+sepallength          0.00
+sepalwidth           0.00
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair                Spearman   Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME           1                 2
+FEAT_IMP vs SHAP           1                 3
+LIME vs SHAP               1                 2
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME   NA                        1
+FEAT_IMP vs SHAP   NA                        1
+LIME vs SHAP       NA                        1
+
+=== Top-1 Features ===
+FEAT_IMP: petalwidth
+LIME: petalwidth
+SHAP: petalwidth
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1    Feature_2    Agreement 
+-----------------  -----------  -----------  ----------
+FEAT_IMP vs LIME   petalwidth   petalwidth   TRUE      
+FEAT_IMP vs SHAP   petalwidth   petalwidth   TRUE      
+LIME vs SHAP       petalwidth   petalwidth   TRUE      
+
+Agreeing pairs: 3 / 3 (100.0%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: rbfDDA
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=iris, Method=rbfDDA ===
+Applying data scaling for method: rbfDDA
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature        importance.05   importance   importance.95   permutation.error
+------------  --------------  -----------  --------------  ------------------
+petalwidth             13.05        13.75           14.80           0.3666667
+petallength            10.10        10.75           11.85           0.2866667
+sepallength             6.60         7.25            8.10           0.1933333
+sepalwidth              6.20         7.00            7.45           0.1866667
+
+=== LIME Rankings ===
+
+
+Feature        Importance
+------------  -----------
+petallength      4.539304
+petalwidth       4.244890
+sepallength      3.522490
+sepalwidth       2.518889
+
+=== SHAP (IML Shapley) Rankings ===
+
+
+Feature        Importance
+------------  -----------
+petallength      5.371540
+petalwidth       5.053104
+sepallength      4.773371
+sepalwidth       2.203025
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair                Spearman   Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME         0.5                 3
+FEAT_IMP vs SHAP         0.5                 3
+LIME vs SHAP             1.0                 3
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME   NA                        0
+FEAT_IMP vs SHAP   NA                        0
+LIME vs SHAP       NA                        1
+
+=== Top-1 Features ===
+FEAT_IMP: petalwidth
+LIME: petallength
+SHAP: petallength
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1     Feature_2     Agreement 
+-----------------  ------------  ------------  ----------
+FEAT_IMP vs LIME   petalwidth    petallength   FALSE     
+FEAT_IMP vs SHAP   petalwidth    petallength   FALSE     
+LIME vs SHAP       petallength   petallength   TRUE      
+
+Agreeing pairs: 1 / 3 (33.3%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: rda
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=iris, Method=rda ===
+Applying data scaling for method: rda
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature        importance.05   importance   importance.95   permutation.error
+------------  --------------  -----------  --------------  ------------------
+petallength        20.066667    20.666667       22.466667           0.4133333
+petalwidth         20.000000    20.666667       21.800000           0.4133333
+sepallength         1.733333     2.666667        3.533333           0.0533333
+sepalwidth          2.333333     2.333333        2.666667           0.0466667
+
+=== LIME Rankings ===
+
+
+Feature        Importance
+------------  -----------
+petallength     0.5242389
+petalwidth      0.2503067
+sepalwidth      0.0416603
+sepallength     0.0065042
+
+=== SHAP (IML Shapley) Rankings ===
+
+
+Feature        Importance
+------------  -----------
+petallength     0.4508113
+petalwidth      0.2506467
+sepalwidth      0.0251361
+sepallength     0.0165941
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair                Spearman   Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME           1                 2
+FEAT_IMP vs SHAP           1                 2
+LIME vs SHAP               1                 3
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME   NA                        1
+FEAT_IMP vs SHAP   NA                        1
+LIME vs SHAP       NA                        1
+
+=== Top-1 Features ===
+FEAT_IMP: petallength
+LIME: petallength
+SHAP: petallength
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1     Feature_2     Agreement 
+-----------------  ------------  ------------  ----------
+FEAT_IMP vs LIME   petallength   petallength   TRUE      
+FEAT_IMP vs SHAP   petallength   petallength   TRUE      
+LIME vs SHAP       petallength   petallength   TRUE      
+
+Agreeing pairs: 3 / 3 (100.0%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: rf
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=iris, Method=rf ===
+No scaling applied for method: rf
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature        importance.05   importance   importance.95   permutation.error
+------------  --------------  -----------  --------------  ------------------
+petallength        0.2133333    0.2533333       0.2586667           0.2533333
+petalwidth         0.1613333    0.2000000       0.2160000           0.2000000
+sepalwidth         0.0133333    0.0133333       0.0200000           0.0133333
+sepallength        0.0013333    0.0066667       0.0240000           0.0066667
+Warning message:
+In initialize(...) :
+  Model error is 0, switching from compare='ratio' to compare='difference'
+
+=== LIME Rankings ===
+
+
+Feature        Importance
+------------  -----------
+petallength     0.4143929
+petalwidth      0.3864733
+sepallength     0.0309873
+sepalwidth      0.0094447
+
+=== SHAP (IML Shapley) Rankings ===
+
+
+Feature        Importance
+------------  -----------
+petalwidth       0.327644
+petallength      0.325612
+sepallength      0.026604
+sepalwidth       0.004712
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair                Spearman   Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME         1.0                 2
+FEAT_IMP vs SHAP        -1.0                 2
+LIME vs SHAP             0.5                 3
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME   NA                        1
+FEAT_IMP vs SHAP   NA                        0
+LIME vs SHAP       NA                        0
+
+=== Top-1 Features ===
+FEAT_IMP: petallength
+LIME: petallength
+SHAP: petalwidth
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1     Feature_2     Agreement 
+-----------------  ------------  ------------  ----------
+FEAT_IMP vs LIME   petallength   petallength   TRUE      
+FEAT_IMP vs SHAP   petallength   petalwidth    FALSE     
+LIME vs SHAP       petallength   petalwidth    FALSE     
+
+Agreeing pairs: 1 / 3 (33.3%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: rpart
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=iris, Method=rpart ===
+No scaling applied for method: rpart
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature        importance.05   importance   importance.95   permutation.error
+------------  --------------  -----------  --------------  ------------------
+sepallength                1            1               1           0.6666667
+sepalwidth                 1            1               1           0.6666667
+petallength                1            1               1           0.6666667
+petalwidth                 1            1               1           0.6666667
+
+=== LIME Rankings ===
+Error in get_lime: Response is constant across permutations. Please check your model 
+
+=== SHAP (IML Shapley) Rankings ===
+
+
+Feature        Importance
+------------  -----------
+petallength             0
+petalwidth              0
+sepallength             0
+sepalwidth              0
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair                Spearman   Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs SHAP          -1                 2
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs SHAP   NA                        0
+
+=== Top-1 Features ===
+FEAT_IMP: sepallength
+SHAP: petallength
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1     Feature_2     Agreement 
+-----------------  ------------  ------------  ----------
+FEAT_IMP vs SHAP   sepallength   petallength   FALSE     
+
+Agreeing pairs: 0 / 1 (0.0%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: simpls
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=iris, Method=simpls ===
+Applying data scaling for method: simpls
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature        importance.05   importance   importance.95   permutation.error
+------------  --------------  -----------  --------------  ------------------
+petalwidth             1.084         1.10           1.152           0.3666667
+petallength            1.048         1.08           1.080           0.3600000
+sepallength            1.000         1.00           1.000           0.3333333
+sepalwidth             1.000         1.00           1.020           0.3333333
+
+=== LIME Rankings ===
+
+
+Feature        Importance
+------------  -----------
+petallength     0.0929775
+petalwidth      0.0804505
+sepallength     0.0712219
+sepalwidth      0.0311545
+
+=== SHAP (IML Shapley) Rankings ===
+
+
+Feature        Importance
+------------  -----------
+petallength     0.0733556
+petalwidth      0.0711620
+sepallength     0.0508243
+sepalwidth      0.0170825
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair                Spearman   Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME         0.5                 3
+FEAT_IMP vs SHAP         0.5                 3
+LIME vs SHAP             1.0                 3
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME   NA                        0
+FEAT_IMP vs SHAP   NA                        0
+LIME vs SHAP       NA                        1
+
+=== Top-1 Features ===
+FEAT_IMP: petalwidth
+LIME: petallength
+SHAP: petallength
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1     Feature_2     Agreement 
+-----------------  ------------  ------------  ----------
+FEAT_IMP vs LIME   petalwidth    petallength   FALSE     
+FEAT_IMP vs SHAP   petalwidth    petallength   FALSE     
+LIME vs SHAP       petallength   petallength   TRUE      
+
+Agreeing pairs: 1 / 3 (33.3%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: svmLinear
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=iris, Method=svmLinear ===
+Applying data scaling for method: svmLinear
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature        importance.05   importance   importance.95   permutation.error
+------------  --------------  -----------  --------------  ------------------
+petalwidth             10.76         12.4           13.76           0.4133333
+petallength             9.48         10.8           11.84           0.3600000
+sepalwidth              1.64          1.8            1.96           0.0600000
+sepallength             0.60          1.2            1.56           0.0400000
+
+=== LIME Rankings ===
+Error in get_lime: Response is constant across permutations. Please check your model 
+Warning message:
+In method$prob(modelFit = modelFit, newdata = newdata, submodels = param) :
+  kernlab class probability calculations failed; returning NAs
+Warning messages:
+1: In method$prob(modelFit = modelFit, newdata = newdata, submodels = param) :
+  kernlab class probability calculations failed; returning NAs
+2: In method$prob(modelFit = modelFit, newdata = newdata, submodels = param) :
+  kernlab class probability calculations failed; returning NAs
+3: In method$prob(modelFit = modelFit, newdata = newdata, submodels = param) :
+  kernlab class probability calculations failed; returning NAs
+4: In method$prob(modelFit = modelFit, newdata = newdata, submodels = param) :
+  kernlab class probability calculations failed; returning NAs
+5: In method$prob(modelFit = modelFit, newdata = newdata, submodels = param) :
+  kernlab class probability calculations failed; returning NAs
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs SHAP   NA                        0
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs SHAP   NA                        0
+
+=== Top-1 Features ===
+FEAT_IMP: petalwidth
+SHAP: NA
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1    Feature_2   Agreement 
+-----------------  -----------  ----------  ----------
+FEAT_IMP vs SHAP   petalwidth   NA          FALSE     
+
+Agreeing pairs: 0 / 1 (0.0%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: svmRadial
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=iris, Method=svmRadial ===
+Applying data scaling for method: svmRadial
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature        importance.05   importance   importance.95   permutation.error
+------------  --------------  -----------  --------------  ------------------
+petalwidth             10.28         11.0           13.52           0.3666667
+petallength             8.00          9.2            9.52           0.3066667
+sepallength             2.24          2.8            2.80           0.0933333
+sepalwidth              1.56          2.2            2.84           0.0733333
+
+=== LIME Rankings ===
+Error in get_lime: Response is constant across permutations. Please check your model 
+Warning message:
+In method$prob(modelFit = modelFit, newdata = newdata, submodels = param) :
+  kernlab class probability calculations failed; returning NAs
+Warning messages:
+1: In method$prob(modelFit = modelFit, newdata = newdata, submodels = param) :
+  kernlab class probability calculations failed; returning NAs
+2: In method$prob(modelFit = modelFit, newdata = newdata, submodels = param) :
+  kernlab class probability calculations failed; returning NAs
+3: In method$prob(modelFit = modelFit, newdata = newdata, submodels = param) :
+  kernlab class probability calculations failed; returning NAs
+4: In method$prob(modelFit = modelFit, newdata = newdata, submodels = param) :
+  kernlab class probability calculations failed; returning NAs
+5: In method$prob(modelFit = modelFit, newdata = newdata, submodels = param) :
+  kernlab class probability calculations failed; returning NAs
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs SHAP   NA                        0
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs SHAP   NA                        0
+
+=== Top-1 Features ===
+FEAT_IMP: petalwidth
+SHAP: NA
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1    Feature_2   Agreement 
+-----------------  -----------  ----------  ----------
+FEAT_IMP vs SHAP   petalwidth   NA          FALSE     
+
+Agreeing pairs: 0 / 1 (0.0%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: rfRules
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=iris, Method=rfRules ===
+No scaling applied for method: rfRules
+Registered S3 method overwritten by 'RRF':
+  method      from        
+  plot.margin randomForest
+1616 rules (length<=2) were extracted from the first 500 trees.
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature        importance.05   importance   importance.95   permutation.error
+------------  --------------  -----------  --------------  ------------------
+petalwidth          15.83333     16.83333        17.13333           0.6733333
+sepallength          1.00000      1.00000         1.00000           0.0400000
+sepalwidth           1.00000      1.00000         1.00000           0.0400000
+petallength          1.00000      1.00000         1.00000           0.0400000
+
+=== LIME Rankings ===
+Error in get_lime: only classification models that produce probabilities are allowed 
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs SHAP   NA                        0
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs SHAP   NA                        0
+
+=== Top-1 Features ===
+FEAT_IMP: petalwidth
+SHAP: NA
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1    Feature_2   Agreement 
+-----------------  -----------  ----------  ----------
+FEAT_IMP vs SHAP   petalwidth   NA          FALSE     
+
+Agreeing pairs: 0 / 1 (0.0%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: knn
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=iris, Method=knn ===
+Applying data scaling for method: knn
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature        importance.05   importance   importance.95   permutation.error
+------------  --------------  -----------  --------------  ------------------
+petalwidth          6.314286     7.000000        7.800000           0.3266667
+petallength         4.057143     4.857143        5.514286           0.2266667
+sepalwidth          1.571429     1.857143        1.971429           0.0866667
+sepallength         1.571429     1.571429        1.857143           0.0733333
+
+=== LIME Rankings ===
+
+
+Feature        Importance
+------------  -----------
+petallength     0.3761717
+petalwidth      0.2844327
+sepalwidth      0.1787436
+sepallength     0.1780780
+
+=== SHAP (IML Shapley) Rankings ===
+
+
+Feature        Importance
+------------  -----------
+petallength     0.2548000
+petalwidth      0.2048000
+sepalwidth      0.0906667
+sepallength     0.0797333
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair                Spearman   Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME         0.5                 3
+FEAT_IMP vs SHAP         0.5                 3
+LIME vs SHAP             1.0                 3
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME   NA                        0
+FEAT_IMP vs SHAP   NA                        0
+LIME vs SHAP       NA                        1
+
+=== Top-1 Features ===
+FEAT_IMP: petalwidth
+LIME: petallength
+SHAP: petallength
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1     Feature_2     Agreement 
+-----------------  ------------  ------------  ----------
+FEAT_IMP vs LIME   petalwidth    petallength   FALSE     
+FEAT_IMP vs SHAP   petalwidth    petallength   FALSE     
+LIME vs SHAP       petallength   petallength   TRUE      
+
+Agreeing pairs: 1 / 3 (33.3%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: bayesglm
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=iris, Method=bayesglm ===
+Applying data scaling for method: bayesglm
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature        importance.05   importance   importance.95   permutation.error
+------------  --------------  -----------  --------------  ------------------
+petallength            1.884         1.98           2.096           0.6600000
+sepallength            1.000         1.00           1.000           0.3333333
+sepalwidth             1.000         1.00           1.016           0.3333333
+petalwidth             1.000         1.00           1.000           0.3333333
+
+=== LIME Rankings ===
+Error in get_lime: length of 'dimnames' [2] not equal to array extent 
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs SHAP   NA                        0
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs SHAP   NA                        0
+
+=== Top-1 Features ===
+FEAT_IMP: petallength
+SHAP: NA
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1     Feature_2   Agreement 
+-----------------  ------------  ----------  ----------
+FEAT_IMP vs SHAP   petallength   NA          FALSE     
+
+Agreeing pairs: 0 / 1 (0.0%)
+
+=== All Results Recorded ===
+

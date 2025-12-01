@@ -1,0 +1,79 @@
+{
+  "dataset": "diabetes",
+  "file_path": "datasets/csv/diabetes.csv",
+  "n_rows": 768,
+  "n_columns": 9,
+  "n_numeric_features": 8,
+  "numeric_features": [
+    "preg",
+    "plas",
+    "pres",
+    "skin",
+    "insu",
+    "mass",
+    "pedi",
+    "age"
+  ],
+  "correlation_matrix_shape": [
+    8,
+    8
+  ],
+  "high_correlations": [],
+  "n_high_correlations": 0,
+  "vif_mean": 9.473777367794334,
+  "vif_median": 8.750840857533804,
+  "vif_max": 18.408884144460405,
+  "vif_values": [
+    {
+      "feature": "mass",
+      "VIF": 18.408884144460405
+    },
+    {
+      "feature": "plas",
+      "VIF": 16.725077911351004
+    },
+    {
+      "feature": "pres",
+      "VIF": 14.619512063882755
+    },
+    {
+      "feature": "age",
+      "VIF": 13.492985244320392
+    },
+    {
+      "feature": "skin",
+      "VIF": 4.008696470747215
+    },
+    {
+      "feature": "preg",
+      "VIF": 3.2757481168445413
+    },
+    {
+      "feature": "pedi",
+      "VIF": 3.195625686708614
+    },
+    {
+      "feature": "insu",
+      "VIF": 2.0636893040397504
+    }
+  ],
+  "n_high_vif": 4,
+  "condition_number": 2.2755629132101007,
+  "condition_number_interpretation": "Low - no multicollinearity",
+  "condition_index": 2.2755629132101034,
+  "eigenvalues": [
+    2.0943799452888077,
+    1.7312101406197191,
+    1.0296298691841528,
+    0.8755290438080349,
+    0.7623443855511702,
+    0.6826283879464914,
+    0.4198161797057519,
+    0.40446204789586865
+  ],
+  "min_eigenvalue": 0.40446204789586865,
+  "max_eigenvalue": 2.0943799452888077,
+  "n_small_eigenvalues": 0,
+  "has_multicollinearity": true,
+  "severity_score": 4
+}

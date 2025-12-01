@@ -1,0 +1,1552 @@
+Dataset: tic-tac-toe
+Generated: Mon Nov 24 10:36:01 PM CET 2025
+======================================
+
+
+========================================
+Model: C5.0
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=tic-tac-toe, Method=C5.0 ===
+No scaling applied for method: C5.0
+Error: Only one model should be specified in tuneGrid with no resampling
+Execution halted
+FAILED - See error above
+
+
+========================================
+Model: ctree
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=tic-tac-toe, Method=ctree ===
+No scaling applied for method: ctree
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature                 importance.05   importance   importance.95   permutation.error
+---------------------  --------------  -----------  --------------  ------------------
+middle_middle_square         2.013095     2.047619        2.254762           0.3590814
+top_left_square              1.444048     1.523810        1.572619           0.2672234
+top_right_square             1.475000     1.517857        1.580952           0.2661795
+bottom_right_square          1.365476     1.392857        1.398810           0.2442589
+bottom_left_square           1.339286     1.375000        1.408333           0.2411273
+
+=== LIME Rankings ===
+
+
+Feature                 Importance
+---------------------  -----------
+middle_middle_square     0.4294271
+bottom_right_square      0.0730910
+bottom_left_square       0.0674118
+top_right_square         0.0621924
+top_left_square          0.0472793
+
+=== SHAP (IML Shapley) Rankings ===
+
+
+Feature                 Importance
+---------------------  -----------
+middle_middle_square     0.2595197
+bottom_right_square      0.0542560
+top_right_square         0.0440782
+top_left_square          0.0197159
+bottom_left_square       0.0187857
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair                Spearman   Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME          NA                 1
+FEAT_IMP vs SHAP           1                 2
+LIME vs SHAP               1                 2
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME   NA                        1
+FEAT_IMP vs SHAP   NA                        1
+LIME vs SHAP       NA                        1
+
+=== Top-1 Features ===
+FEAT_IMP: middle_middle_square
+LIME: middle_middle_square
+SHAP: middle_middle_square
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1              Feature_2              Agreement 
+-----------------  ---------------------  ---------------------  ----------
+FEAT_IMP vs LIME   middle_middle_square   middle_middle_square   TRUE      
+FEAT_IMP vs SHAP   middle_middle_square   middle_middle_square   TRUE      
+LIME vs SHAP       middle_middle_square   middle_middle_square   TRUE      
+
+Agreeing pairs: 3 / 3 (100.0%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: fda
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=tic-tac-toe, Method=fda ===
+No scaling applied for method: fda
+Loading required package: earth
+Loading required package: Formula
+Loading required package: plotmo
+Loading required package: plotrix
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature                 importance.05   importance   importance.95   permutation.error
+---------------------  --------------  -----------  --------------  ------------------
+middle_middle_square         1.452778     1.465278        1.623611           0.4405010
+top_left_square              1.000000     1.000000        1.000000           0.3006263
+top_middle_square            1.000000     1.000000        1.000000           0.3006263
+top_right_square             1.000000     1.000000        1.000000           0.3006263
+middle_left_square           1.000000     1.000000        1.000000           0.3006263
+
+=== LIME Rankings ===
+
+
+Feature                 Importance
+---------------------  -----------
+middle_middle_square     0.3793209
+bottom_left_square       0.0000231
+bottom_right_square      0.0000201
+middle_left_square       0.0000188
+top_right_square         0.0000181
+
+=== SHAP (IML Shapley) Rankings ===
+
+
+Feature                 Importance
+---------------------  -----------
+middle_middle_square     0.2257982
+bottom_left_square       0.0000000
+bottom_middle_square     0.0000000
+bottom_right_square      0.0000000
+middle_left_square       0.0000000
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair                Spearman   Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME          NA                 1
+FEAT_IMP vs SHAP          NA                 1
+LIME vs SHAP               1                 2
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME   NA                        1
+FEAT_IMP vs SHAP   NA                        1
+LIME vs SHAP       NA                        1
+
+=== Top-1 Features ===
+FEAT_IMP: middle_middle_square
+LIME: middle_middle_square
+SHAP: middle_middle_square
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1              Feature_2              Agreement 
+-----------------  ---------------------  ---------------------  ----------
+FEAT_IMP vs LIME   middle_middle_square   middle_middle_square   TRUE      
+FEAT_IMP vs SHAP   middle_middle_square   middle_middle_square   TRUE      
+LIME vs SHAP       middle_middle_square   middle_middle_square   TRUE      
+
+Agreeing pairs: 3 / 3 (100.0%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: gbm
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=tic-tac-toe, Method=gbm ===
+No scaling applied for method: gbm
+Iter   TrainDeviance   ValidDeviance   StepSize   Improve
+     1        1.2683            -nan     0.1000    0.0111
+     2        1.2510            -nan     0.1000    0.0086
+     3        1.2383            -nan     0.1000    0.0071
+     4        1.2273            -nan     0.1000    0.0048
+     5        1.2227            -nan     0.1000    0.0018
+     6        1.2097            -nan     0.1000    0.0047
+     7        1.2033            -nan     0.1000    0.0011
+     8        1.1954            -nan     0.1000    0.0040
+     9        1.1890            -nan     0.1000    0.0016
+    10        1.1841            -nan     0.1000    0.0013
+    20        1.1339            -nan     0.1000    0.0000
+    40        1.0716            -nan     0.1000    0.0007
+    50        1.0502            -nan     0.1000    0.0005
+
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature                 importance.05   importance   importance.95   permutation.error
+---------------------  --------------  -----------  --------------  ------------------
+middle_middle_square         1.287660     1.382979        1.442553           0.3392484
+top_left_square              1.124255     1.174468        1.199149           0.2881002
+top_right_square             1.102979     1.131915        1.135319           0.2776618
+bottom_left_square           1.108085     1.131915        1.167660           0.2776618
+bottom_right_square          1.088511     1.131915        1.146383           0.2776618
+
+=== LIME Rankings ===
+
+
+Feature                 Importance
+---------------------  -----------
+middle_middle_square     0.2897525
+bottom_left_square       0.0961613
+top_right_square         0.0825700
+top_left_square          0.0784990
+bottom_right_square      0.0675215
+
+=== SHAP (IML Shapley) Rankings ===
+
+
+Feature                 Importance
+---------------------  -----------
+middle_middle_square     0.1875072
+bottom_left_square       0.0707101
+top_right_square         0.0550307
+top_left_square          0.0506448
+bottom_right_square      0.0460189
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair                Spearman   Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME           1                 2
+FEAT_IMP vs SHAP           1                 2
+LIME vs SHAP               1                 3
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME   NA                        1
+FEAT_IMP vs SHAP   NA                        1
+LIME vs SHAP       NA                        1
+
+=== Top-1 Features ===
+FEAT_IMP: middle_middle_square
+LIME: middle_middle_square
+SHAP: middle_middle_square
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1              Feature_2              Agreement 
+-----------------  ---------------------  ---------------------  ----------
+FEAT_IMP vs LIME   middle_middle_square   middle_middle_square   TRUE      
+FEAT_IMP vs SHAP   middle_middle_square   middle_middle_square   TRUE      
+LIME vs SHAP       middle_middle_square   middle_middle_square   TRUE      
+
+Agreeing pairs: 3 / 3 (100.0%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: gcvEarth
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=tic-tac-toe, Method=gcvEarth ===
+No scaling applied for method: gcvEarth
+Loading required package: earth
+Loading required package: Formula
+Loading required package: plotmo
+Loading required package: plotrix
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+Warning message:
+glm.fit: fitted probabilities numerically 0 or 1 occurred 
+
+=== IML Rankings ===
+
+
+feature                 importance.05   importance   importance.95   permutation.error
+---------------------  --------------  -----------  --------------  ------------------
+middle_middle_square          22.6125      23.5625         24.9125           0.3935282
+top_right_square              21.3125      21.6875         23.2000           0.3622129
+bottom_right_square           21.5625      21.6875         22.3500           0.3622129
+top_left_square               21.1500      21.5625         23.1500           0.3601253
+bottom_left_square            21.2500      21.5000         22.4625           0.3590814
+
+=== LIME Rankings ===
+
+
+Feature                 Importance
+---------------------  -----------
+middle_middle_square     0.2761800
+middle_right_square      0.2452230
+top_right_square         0.2424669
+top_left_square          0.2400100
+middle_left_square       0.2313608
+
+=== SHAP (IML Shapley) Rankings ===
+
+
+Feature                 Importance
+---------------------  -----------
+top_middle_square        0.2489556
+middle_middle_square     0.2426884
+top_right_square         0.2331889
+middle_left_square       0.2272655
+top_left_square          0.1939047
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair                Spearman   Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME           1                 2
+FEAT_IMP vs SHAP           1                 2
+LIME vs SHAP               1                 2
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME   NA                        1
+FEAT_IMP vs SHAP   NA                        0
+LIME vs SHAP       NA                        0
+
+=== Top-1 Features ===
+FEAT_IMP: middle_middle_square
+LIME: middle_middle_square
+SHAP: top_middle_square
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1              Feature_2              Agreement 
+-----------------  ---------------------  ---------------------  ----------
+FEAT_IMP vs LIME   middle_middle_square   middle_middle_square   TRUE      
+FEAT_IMP vs SHAP   middle_middle_square   top_middle_square      FALSE     
+LIME vs SHAP       middle_middle_square   top_middle_square      FALSE     
+
+Agreeing pairs: 1 / 3 (33.3%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: JRip
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=tic-tac-toe, Method=JRip ===
+No scaling applied for method: JRip
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature                 importance.05   importance   importance.95   permutation.error
+---------------------  --------------  -----------  --------------  ------------------
+middle_middle_square          14.9000      15.3750         16.5625           0.2567850
+top_right_square               8.8875       9.8125         10.5375           0.1638831
+bottom_left_square             9.0625       9.5625          9.7750           0.1597077
+bottom_right_square            9.0875       9.1875          9.5000           0.1534447
+top_left_square                8.6250       8.8750          9.3750           0.1482255
+
+=== LIME Rankings ===
+
+
+Feature                 Importance
+---------------------  -----------
+middle_middle_square     0.4199021
+top_right_square         0.2228825
+bottom_right_square      0.1648345
+bottom_left_square       0.1545617
+top_left_square          0.1377739
+
+=== SHAP (IML Shapley) Rankings ===
+
+
+Feature                 Importance
+---------------------  -----------
+top_right_square         0.2886231
+middle_middle_square     0.2028162
+middle_left_square       0.1579626
+bottom_right_square      0.1287103
+top_left_square          0.1053084
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair                Spearman   Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME           1                 2
+FEAT_IMP vs SHAP          -1                 2
+LIME vs SHAP              -1                 2
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME   NA                        1
+FEAT_IMP vs SHAP   NA                        0
+LIME vs SHAP       NA                        0
+
+=== Top-1 Features ===
+FEAT_IMP: middle_middle_square
+LIME: middle_middle_square
+SHAP: top_right_square
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1              Feature_2              Agreement 
+-----------------  ---------------------  ---------------------  ----------
+FEAT_IMP vs LIME   middle_middle_square   middle_middle_square   TRUE      
+FEAT_IMP vs SHAP   middle_middle_square   top_right_square       FALSE     
+LIME vs SHAP       middle_middle_square   top_right_square       FALSE     
+
+Agreeing pairs: 1 / 3 (33.3%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: lvq
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=tic-tac-toe, Method=lvq ===
+Applying data scaling for method: lvq
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature                 importance.05   importance   importance.95   permutation.error
+---------------------  --------------  -----------  --------------  ------------------
+middle_middle_square         1.197656     1.226562        1.238281           0.3277662
+bottom_right_square          1.067969     1.109375        1.151563           0.2964509
+top_middle_square            1.089063     1.101562        1.132031           0.2943633
+top_left_square              1.043750     1.082031        1.107813           0.2891441
+top_right_square             1.048437     1.058594        1.058594           0.2828810
+
+=== LIME Rankings ===
+Error in get_lime: only classification models that produce probabilities are allowed 
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs SHAP   NA                        0
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs SHAP   NA                        0
+
+=== Top-1 Features ===
+FEAT_IMP: middle_middle_square
+SHAP: NA
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1              Feature_2   Agreement 
+-----------------  ---------------------  ----------  ----------
+FEAT_IMP vs SHAP   middle_middle_square   NA          FALSE     
+
+Agreeing pairs: 0 / 1 (0.0%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: mlpML
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=tic-tac-toe, Method=mlpML ===
+Applying data scaling for method: mlpML
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+Warning message:
+At least one layer had zero units and were removed. The new structure is 1 
+
+=== IML Rankings ===
+
+
+feature                 importance.05   importance   importance.95   permutation.error
+---------------------  --------------  -----------  --------------  ------------------
+middle_middle_square          23.7125      24.2500         25.3125           0.4050104
+top_left_square               21.0000      21.9375         22.2875           0.3663883
+bottom_right_square           20.4875      21.8750         22.3750           0.3653445
+bottom_left_square            20.6250      21.2500         21.5625           0.3549061
+top_right_square              20.1750      21.0000         21.5125           0.3507307
+
+=== LIME Rankings ===
+
+
+Feature                 Importance
+---------------------  -----------
+middle_middle_square     0.2551921
+middle_right_square      0.2541611
+top_middle_square        0.2473218
+top_right_square         0.2278246
+top_left_square          0.2197500
+
+=== SHAP (IML Shapley) Rankings ===
+
+
+Feature                 Importance
+---------------------  -----------
+middle_middle_square     0.2506714
+top_middle_square        0.2449663
+middle_right_square      0.2331218
+bottom_left_square       0.2206457
+top_left_square          0.2181923
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair                Spearman   Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME          NA                 1
+FEAT_IMP vs SHAP          NA                 1
+LIME vs SHAP             0.5                 3
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME   NA                        1
+FEAT_IMP vs SHAP   NA                        1
+LIME vs SHAP       NA                        1
+
+=== Top-1 Features ===
+FEAT_IMP: middle_middle_square
+LIME: middle_middle_square
+SHAP: middle_middle_square
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1              Feature_2              Agreement 
+-----------------  ---------------------  ---------------------  ----------
+FEAT_IMP vs LIME   middle_middle_square   middle_middle_square   TRUE      
+FEAT_IMP vs SHAP   middle_middle_square   middle_middle_square   TRUE      
+LIME vs SHAP       middle_middle_square   middle_middle_square   TRUE      
+
+Agreeing pairs: 3 / 3 (100.0%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: multinom
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=tic-tac-toe, Method=multinom ===
+Applying data scaling for method: multinom
+# weights:  20 (19 variable)
+initial  value 664.034999 
+iter  10 value 49.359215
+iter  20 value 40.201993
+iter  30 value 38.444022
+iter  40 value 38.428199
+final  value 38.428198 
+converged
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature                 importance.05   importance   importance.95   permutation.error
+---------------------  --------------  -----------  --------------  ------------------
+middle_middle_square          22.6125      23.5625         24.9125           0.3935282
+top_right_square              21.3125      21.6875         23.2000           0.3622129
+bottom_right_square           21.5625      21.6875         22.3500           0.3622129
+top_left_square               21.1000      21.5625         23.1375           0.3601253
+bottom_left_square            21.2500      21.5000         22.4625           0.3590814
+
+=== LIME Rankings ===
+
+
+Feature                 Importance
+---------------------  -----------
+middle_middle_square     0.2747945
+middle_right_square      0.2452253
+top_right_square         0.2438041
+top_left_square          0.2413291
+middle_left_square       0.2320466
+
+=== SHAP (IML Shapley) Rankings ===
+
+
+Feature                 Importance
+---------------------  -----------
+top_middle_square        0.2497983
+middle_middle_square     0.2426885
+top_right_square         0.2333510
+middle_left_square       0.2276263
+top_left_square          0.1936200
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair                Spearman   Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME           1                 2
+FEAT_IMP vs SHAP           1                 2
+LIME vs SHAP               1                 2
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME   NA                        1
+FEAT_IMP vs SHAP   NA                        0
+LIME vs SHAP       NA                        0
+
+=== Top-1 Features ===
+FEAT_IMP: middle_middle_square
+LIME: middle_middle_square
+SHAP: top_middle_square
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1              Feature_2              Agreement 
+-----------------  ---------------------  ---------------------  ----------
+FEAT_IMP vs LIME   middle_middle_square   middle_middle_square   TRUE      
+FEAT_IMP vs SHAP   middle_middle_square   top_middle_square      FALSE     
+LIME vs SHAP       middle_middle_square   top_middle_square      FALSE     
+
+Agreeing pairs: 1 / 3 (33.3%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: naive_bayes
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=tic-tac-toe, Method=naive_bayes ===
+No scaling applied for method: naive_bayes
+Error: Only one model should be specified in tuneGrid with no resampling
+Execution halted
+FAILED - See error above
+
+
+========================================
+Model: PART
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=tic-tac-toe, Method=PART ===
+No scaling applied for method: PART
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature                 importance.05   importance   importance.95   permutation.error
+---------------------  --------------  -----------  --------------  ------------------
+middle_middle_square           27.725       28.875          30.250           0.2411273
+top_left_square                23.000       23.000          24.525           0.1920668
+bottom_right_square            19.125       19.750          19.850           0.1649269
+bottom_left_square             18.200       19.125          19.875           0.1597077
+top_right_square               17.200       18.625          20.100           0.1555324
+
+=== LIME Rankings ===
+
+
+Feature                 Importance
+---------------------  -----------
+middle_middle_square     0.3350423
+bottom_right_square      0.2073130
+top_left_square          0.1869354
+bottom_left_square       0.1563428
+top_right_square         0.1322199
+
+=== SHAP (IML Shapley) Rankings ===
+
+
+Feature                 Importance
+---------------------  -----------
+top_right_square         0.2342740
+top_left_square          0.1691042
+middle_middle_square     0.1462365
+top_middle_square        0.1286712
+bottom_left_square       0.0924594
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair                Spearman   Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME         0.5                 3
+FEAT_IMP vs SHAP        -1.0                 2
+LIME vs SHAP            -1.0                 2
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME   NA                        1
+FEAT_IMP vs SHAP   NA                        0
+LIME vs SHAP       NA                        0
+
+=== Top-1 Features ===
+FEAT_IMP: middle_middle_square
+LIME: middle_middle_square
+SHAP: top_right_square
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1              Feature_2              Agreement 
+-----------------  ---------------------  ---------------------  ----------
+FEAT_IMP vs LIME   middle_middle_square   middle_middle_square   TRUE      
+FEAT_IMP vs SHAP   middle_middle_square   top_right_square       FALSE     
+LIME vs SHAP       middle_middle_square   top_right_square       FALSE     
+
+Agreeing pairs: 1 / 3 (33.3%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: rbfDDA
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=tic-tac-toe, Method=rbfDDA ===
+Applying data scaling for method: rbfDDA
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature                 importance.05   importance   importance.95   permutation.error
+---------------------  --------------  -----------  --------------  ------------------
+middle_middle_square         1.673620     1.748466        1.769325           0.2974948
+top_right_square             1.332515     1.343558        1.414724           0.2286013
+top_left_square              1.331288     1.337423        1.377914           0.2275574
+bottom_right_square          1.301840     1.337423        1.401227           0.2275574
+bottom_left_square           1.284663     1.325153        1.349693           0.2254697
+
+=== LIME Rankings ===
+
+
+Feature                 Importance
+---------------------  -----------
+middle_middle_square     2.4088241
+top_left_square          1.0201428
+bottom_left_square       1.0156078
+top_right_square         0.7584076
+top_middle_square        0.7535850
+
+=== SHAP (IML Shapley) Rankings ===
+
+
+Feature                 Importance
+---------------------  -----------
+middle_middle_square     1.4369177
+top_left_square          1.0025317
+top_right_square         0.6357786
+bottom_left_square       0.6230711
+middle_left_square       0.5307701
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair                Spearman   Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME         1.0                 2
+FEAT_IMP vs SHAP         0.5                 3
+LIME vs SHAP             1.0                 2
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME   NA                        1
+FEAT_IMP vs SHAP   NA                        1
+LIME vs SHAP       NA                        1
+
+=== Top-1 Features ===
+FEAT_IMP: middle_middle_square
+LIME: middle_middle_square
+SHAP: middle_middle_square
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1              Feature_2              Agreement 
+-----------------  ---------------------  ---------------------  ----------
+FEAT_IMP vs LIME   middle_middle_square   middle_middle_square   TRUE      
+FEAT_IMP vs SHAP   middle_middle_square   middle_middle_square   TRUE      
+LIME vs SHAP       middle_middle_square   middle_middle_square   TRUE      
+
+Agreeing pairs: 3 / 3 (100.0%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: rda
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=tic-tac-toe, Method=rda ===
+Applying data scaling for method: rda
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+Error in get_featimp: system is computationally singular: reciprocal condition number = 1.19418e-17 
+
+=== LIME Rankings ===
+Error in get_lime: system is computationally singular: reciprocal condition number = 1.19418e-17 
+
+=== SHAP (IML Shapley) Rankings ===
+Error in get_shap: system is computationally singular: reciprocal condition number = 1.19418e-17 
+
+=== Top-3 Spearman ===
+Not enough valid rankings (need at least 2, got 0 )
+
+=== Top-1 Spearman ===
+Not enough valid rankings (need at least 2, got 0 )
+
+=== Top-1 Feature Agreement Count ===
+Not enough valid rankings (need at least 2, got 0 )
+
+=== All Results Recorded ===
+
+
+========================================
+Model: rf
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=tic-tac-toe, Method=rf ===
+No scaling applied for method: rf
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature                 importance.05   importance   importance.95   permutation.error
+---------------------  --------------  -----------  --------------  ------------------
+middle_middle_square        0.2208768    0.2254697       0.2448852           0.2254697
+top_right_square            0.1160752    0.1263048       0.1407098           0.1263048
+bottom_right_square         0.1263048    0.1263048       0.1382046           0.1263048
+top_left_square             0.1112735    0.1231733       0.1313152           0.1231733
+bottom_left_square          0.1154489    0.1221294       0.1334029           0.1221294
+Warning message:
+In initialize(...) :
+  Model error is 0, switching from compare='ratio' to compare='difference'
+
+=== LIME Rankings ===
+
+
+Feature                 Importance
+---------------------  -----------
+middle_middle_square     0.3266398
+top_right_square         0.1319646
+top_left_square          0.1296228
+bottom_left_square       0.1143613
+bottom_right_square      0.0916514
+
+=== SHAP (IML Shapley) Rankings ===
+
+
+Feature                 Importance
+---------------------  -----------
+top_left_square           0.153960
+middle_middle_square      0.142100
+top_right_square          0.137716
+top_middle_square         0.094400
+bottom_left_square        0.058244
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair                Spearman   Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME         1.0                 2
+FEAT_IMP vs SHAP         1.0                 2
+LIME vs SHAP            -0.5                 3
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME   NA                        1
+FEAT_IMP vs SHAP   NA                        0
+LIME vs SHAP       NA                        0
+
+=== Top-1 Features ===
+FEAT_IMP: middle_middle_square
+LIME: middle_middle_square
+SHAP: top_left_square
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1              Feature_2              Agreement 
+-----------------  ---------------------  ---------------------  ----------
+FEAT_IMP vs LIME   middle_middle_square   middle_middle_square   TRUE      
+FEAT_IMP vs SHAP   middle_middle_square   top_left_square        FALSE     
+LIME vs SHAP       middle_middle_square   top_left_square        FALSE     
+
+Agreeing pairs: 1 / 3 (33.3%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: rpart
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=tic-tac-toe, Method=rpart ===
+No scaling applied for method: rpart
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature                 importance.05   importance   importance.95   permutation.error
+---------------------  --------------  -----------  --------------  ------------------
+top_left_square                     1            1               1           0.3465553
+top_middle_square                   1            1               1           0.3465553
+top_right_square                    1            1               1           0.3465553
+middle_left_square                  1            1               1           0.3465553
+middle_middle_square                1            1               1           0.3465553
+
+=== LIME Rankings ===
+Error in get_lime: Response is constant across permutations. Please check your model 
+
+=== SHAP (IML Shapley) Rankings ===
+
+
+Feature                 Importance
+---------------------  -----------
+bottom_left_square               0
+bottom_middle_square             0
+bottom_right_square              0
+middle_left_square               0
+middle_middle_square             0
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs SHAP   NA                        0
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs SHAP   NA                        0
+
+=== Top-1 Features ===
+FEAT_IMP: top_left_square
+SHAP: bottom_left_square
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1         Feature_2            Agreement 
+-----------------  ----------------  -------------------  ----------
+FEAT_IMP vs SHAP   top_left_square   bottom_left_square   FALSE     
+
+Agreeing pairs: 0 / 1 (0.0%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: simpls
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=tic-tac-toe, Method=simpls ===
+Applying data scaling for method: simpls
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature                 importance.05   importance   importance.95   permutation.error
+---------------------  --------------  -----------  --------------  ------------------
+middle_middle_square        1.2156584    1.2419929       1.3010676           0.3643006
+top_right_square            0.9843416    0.9964413       1.0113879           0.2922756
+top_left_square             0.9537367    0.9893238       1.0128114           0.2901879
+bottom_right_square         0.9594306    0.9822064       1.0049822           0.2881002
+bottom_left_square          0.9352313    0.9679715       0.9928826           0.2839248
+
+=== LIME Rankings ===
+
+
+Feature                 Importance
+---------------------  -----------
+middle_middle_square     0.1474984
+top_right_square         0.0473282
+top_left_square          0.0459942
+bottom_left_square       0.0418147
+top_middle_square        0.0355945
+
+=== SHAP (IML Shapley) Rankings ===
+
+
+Feature                 Importance
+---------------------  -----------
+middle_middle_square     0.0916122
+top_right_square         0.0294917
+bottom_left_square       0.0291240
+top_left_square          0.0254537
+top_middle_square        0.0227174
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair                Spearman   Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME           1                 3
+FEAT_IMP vs SHAP           1                 2
+LIME vs SHAP               1                 2
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME   NA                        1
+FEAT_IMP vs SHAP   NA                        1
+LIME vs SHAP       NA                        1
+
+=== Top-1 Features ===
+FEAT_IMP: middle_middle_square
+LIME: middle_middle_square
+SHAP: middle_middle_square
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1              Feature_2              Agreement 
+-----------------  ---------------------  ---------------------  ----------
+FEAT_IMP vs LIME   middle_middle_square   middle_middle_square   TRUE      
+FEAT_IMP vs SHAP   middle_middle_square   middle_middle_square   TRUE      
+LIME vs SHAP       middle_middle_square   middle_middle_square   TRUE      
+
+Agreeing pairs: 3 / 3 (100.0%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: svmLinear
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=tic-tac-toe, Method=svmLinear ===
+Applying data scaling for method: svmLinear
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature                 importance.05   importance   importance.95   permutation.error
+---------------------  --------------  -----------  --------------  ------------------
+middle_middle_square          22.6125      23.5625         24.9125           0.3935282
+top_right_square              21.3125      21.6875         23.2000           0.3622129
+bottom_right_square           21.5625      21.6875         22.3500           0.3622129
+top_left_square               21.1500      21.5625         23.1500           0.3601253
+bottom_left_square            21.2500      21.5000         22.4625           0.3590814
+
+=== LIME Rankings ===
+Error in get_lime: Response is constant across permutations. Please check your model 
+Warning message:
+In method$prob(modelFit = modelFit, newdata = newdata, submodels = param) :
+  kernlab class probability calculations failed; returning NAs
+Warning messages:
+1: In method$prob(modelFit = modelFit, newdata = newdata, submodels = param) :
+  kernlab class probability calculations failed; returning NAs
+2: In method$prob(modelFit = modelFit, newdata = newdata, submodels = param) :
+  kernlab class probability calculations failed; returning NAs
+3: In method$prob(modelFit = modelFit, newdata = newdata, submodels = param) :
+  kernlab class probability calculations failed; returning NAs
+4: In method$prob(modelFit = modelFit, newdata = newdata, submodels = param) :
+  kernlab class probability calculations failed; returning NAs
+5: In method$prob(modelFit = modelFit, newdata = newdata, submodels = param) :
+  kernlab class probability calculations failed; returning NAs
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs SHAP   NA                        0
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs SHAP   NA                        0
+
+=== Top-1 Features ===
+FEAT_IMP: middle_middle_square
+SHAP: NA
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1              Feature_2   Agreement 
+-----------------  ---------------------  ----------  ----------
+FEAT_IMP vs SHAP   middle_middle_square   NA          FALSE     
+
+Agreeing pairs: 0 / 1 (0.0%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: svmRadial
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=tic-tac-toe, Method=svmRadial ===
+Applying data scaling for method: svmRadial
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature                 importance.05   importance   importance.95   permutation.error
+---------------------  --------------  -----------  --------------  ------------------
+middle_middle_square         2.322727     2.371212        2.424242           0.3267223
+top_left_square              1.600000     1.636364        1.684848           0.2254697
+top_right_square             1.590909     1.636364        1.710606           0.2254697
+bottom_left_square           1.562121     1.636364        1.642424           0.2254697
+bottom_right_square          1.565152     1.621212        1.665151           0.2233820
+
+=== LIME Rankings ===
+Error in get_lime: Response is constant across permutations. Please check your model 
+Warning message:
+In method$prob(modelFit = modelFit, newdata = newdata, submodels = param) :
+  kernlab class probability calculations failed; returning NAs
+Warning messages:
+1: In method$prob(modelFit = modelFit, newdata = newdata, submodels = param) :
+  kernlab class probability calculations failed; returning NAs
+2: In method$prob(modelFit = modelFit, newdata = newdata, submodels = param) :
+  kernlab class probability calculations failed; returning NAs
+3: In method$prob(modelFit = modelFit, newdata = newdata, submodels = param) :
+  kernlab class probability calculations failed; returning NAs
+4: In method$prob(modelFit = modelFit, newdata = newdata, submodels = param) :
+  kernlab class probability calculations failed; returning NAs
+5: In method$prob(modelFit = modelFit, newdata = newdata, submodels = param) :
+  kernlab class probability calculations failed; returning NAs
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs SHAP   NA                        0
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs SHAP   NA                        0
+
+=== Top-1 Features ===
+FEAT_IMP: middle_middle_square
+SHAP: NA
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1              Feature_2   Agreement 
+-----------------  ---------------------  ----------  ----------
+FEAT_IMP vs SHAP   middle_middle_square   NA          FALSE     
+
+Agreeing pairs: 0 / 1 (0.0%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: rfRules
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=tic-tac-toe, Method=rfRules ===
+No scaling applied for method: rfRules
+Registered S3 method overwritten by 'RRF':
+  method      from        
+  plot.margin randomForest
+2000 rules (length<=2) were extracted from the first 500 trees.
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature                 importance.05   importance   importance.95   permutation.error
+---------------------  --------------  -----------  --------------  ------------------
+middle_middle_square         1.544601     1.615023        1.631925           0.3590814
+bottom_right_square          1.203756     1.225352        1.234742           0.2724426
+top_right_square             1.178404     1.206573        1.218779           0.2682672
+bottom_left_square           1.171831     1.192488        1.228169           0.2651357
+top_left_square              1.153991     1.187793        1.213145           0.2640919
+
+=== LIME Rankings ===
+Error in get_lime: only classification models that produce probabilities are allowed 
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs SHAP   NA                        0
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs SHAP   NA                        0
+
+=== Top-1 Features ===
+FEAT_IMP: middle_middle_square
+SHAP: NA
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1              Feature_2   Agreement 
+-----------------  ---------------------  ----------  ----------
+FEAT_IMP vs SHAP   middle_middle_square   NA          FALSE     
+
+Agreeing pairs: 0 / 1 (0.0%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: knn
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=tic-tac-toe, Method=knn ===
+Applying data scaling for method: knn
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature                 importance.05   importance   importance.95   permutation.error
+---------------------  --------------  -----------  --------------  ------------------
+middle_middle_square        0.2022965    0.2192067       0.2240084           0.2192067
+top_left_square             0.1409186    0.1576200       0.1609603           0.1576200
+top_right_square            0.1371608    0.1565762       0.1617954           0.1565762
+bottom_left_square          0.1432150    0.1524008       0.1605428           0.1524008
+bottom_right_square         0.1463466    0.1503132       0.1640919           0.1503132
+Warning message:
+In initialize(...) :
+  Model error is 0, switching from compare='ratio' to compare='difference'
+
+=== LIME Rankings ===
+
+
+Feature                 Importance
+---------------------  -----------
+middle_middle_square     0.3077423
+top_left_square          0.1650611
+top_right_square         0.1629038
+bottom_left_square       0.1311966
+bottom_right_square      0.1001446
+
+=== SHAP (IML Shapley) Rankings ===
+
+
+Feature                 Importance
+---------------------  -----------
+top_left_square          0.1976310
+top_right_square         0.1620556
+middle_middle_square     0.1271048
+top_middle_square        0.0855786
+bottom_left_square       0.0547222
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair                Spearman   Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME         1.0                 3
+FEAT_IMP vs SHAP        -0.5                 3
+LIME vs SHAP            -0.5                 3
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME   NA                        1
+FEAT_IMP vs SHAP   NA                        0
+LIME vs SHAP       NA                        0
+
+=== Top-1 Features ===
+FEAT_IMP: middle_middle_square
+LIME: middle_middle_square
+SHAP: top_left_square
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1              Feature_2              Agreement 
+-----------------  ---------------------  ---------------------  ----------
+FEAT_IMP vs LIME   middle_middle_square   middle_middle_square   TRUE      
+FEAT_IMP vs SHAP   middle_middle_square   top_left_square        FALSE     
+LIME vs SHAP       middle_middle_square   top_left_square        FALSE     
+
+Agreeing pairs: 1 / 3 (33.3%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: bayesglm
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=tic-tac-toe, Method=bayesglm ===
+Applying data scaling for method: bayesglm
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature                 importance.05   importance   importance.95   permutation.error
+---------------------  --------------  -----------  --------------  ------------------
+middle_middle_square          22.6125      23.5625         24.9125           0.3935282
+bottom_right_square           21.4500      21.6250         22.1875           0.3611691
+top_left_square               21.0875      21.5625         23.1375           0.3601253
+top_right_square              21.2500      21.5625         23.1875           0.3601253
+bottom_left_square            21.0750      21.4375         22.4000           0.3580376
+
+=== LIME Rankings ===
+
+
+Feature                 Importance
+---------------------  -----------
+middle_middle_square     0.2782853
+middle_right_square      0.2441640
+top_right_square         0.2417920
+top_left_square          0.2394894
+middle_left_square       0.2293058
+
+=== SHAP (IML Shapley) Rankings ===
+
+
+Feature                 Importance
+---------------------  -----------
+top_middle_square        0.2476810
+middle_middle_square     0.2433110
+top_right_square         0.2330666
+middle_left_square       0.2266264
+top_left_square          0.1946142
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair                Spearman   Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME          NA                 1
+FEAT_IMP vs SHAP          NA                 1
+LIME vs SHAP               1                 2
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME   NA                        1
+FEAT_IMP vs SHAP   NA                        0
+LIME vs SHAP       NA                        0
+
+=== Top-1 Features ===
+FEAT_IMP: middle_middle_square
+LIME: middle_middle_square
+SHAP: top_middle_square
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1              Feature_2              Agreement 
+-----------------  ---------------------  ---------------------  ----------
+FEAT_IMP vs LIME   middle_middle_square   middle_middle_square   TRUE      
+FEAT_IMP vs SHAP   middle_middle_square   top_middle_square      FALSE     
+LIME vs SHAP       middle_middle_square   top_middle_square      FALSE     
+
+Agreeing pairs: 1 / 3 (33.3%)
+
+=== All Results Recorded ===
+

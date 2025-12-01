@@ -1,0 +1,1591 @@
+Dataset: cmc
+Generated: Mon Nov 24 10:36:01 PM CET 2025
+======================================
+
+
+========================================
+Model: C5.0
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=cmc, Method=C5.0 ===
+No scaling applied for method: C5.0
+Error: Only one model should be specified in tuneGrid with no resampling
+Execution halted
+FAILED - See error above
+
+
+========================================
+Model: ctree
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=cmc, Method=ctree ===
+No scaling applied for method: ctree
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature                         importance.05   importance   importance.95   permutation.error
+-----------------------------  --------------  -----------  --------------  ------------------
+Number_of_children_ever_born         1.466019     1.487864        1.513592           0.4161575
+Wifes_education                      1.312621     1.354369        1.396602           0.3788187
+Wifes_age                            1.280097     1.283981        1.300000           0.3591310
+Husbands_education                   1.000000     1.000000        1.000000           0.2797013
+Wifes_religion                       1.000000     1.000000        1.000000           0.2797013
+
+=== LIME Rankings ===
+
+
+Feature                         Importance
+-----------------------------  -----------
+Wifes_age                        0.1508458
+Number_of_children_ever_born     0.0924346
+Wifes_education                  0.0853258
+Media_exposure                   0.0399835
+Wifes_now_working                0.0084697
+
+=== SHAP (IML Shapley) Rankings ===
+
+
+Feature                         Importance
+-----------------------------  -----------
+Wifes_age                        0.1526752
+Wifes_education                  0.0981817
+Number_of_children_ever_born     0.0897280
+Media_exposure                   0.0138382
+Husbands_education               0.0000000
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair                Spearman   Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME        -0.5                 3
+FEAT_IMP vs SHAP        -1.0                 3
+LIME vs SHAP             0.5                 3
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME   NA                        0
+FEAT_IMP vs SHAP   NA                        0
+LIME vs SHAP       NA                        1
+
+=== Top-1 Features ===
+FEAT_IMP: Number_of_children_ever_born
+LIME: Wifes_age
+SHAP: Wifes_age
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1                      Feature_2   Agreement 
+-----------------  -----------------------------  ----------  ----------
+FEAT_IMP vs LIME   Number_of_children_ever_born   Wifes_age   FALSE     
+FEAT_IMP vs SHAP   Number_of_children_ever_born   Wifes_age   FALSE     
+LIME vs SHAP       Wifes_age                      Wifes_age   TRUE      
+
+Agreeing pairs: 1 / 3 (33.3%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: fda
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=cmc, Method=fda ===
+No scaling applied for method: fda
+Loading required package: earth
+Loading required package: Formula
+Loading required package: plotmo
+Loading required package: plotrix
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature                         importance.05   importance   importance.95   permutation.error
+-----------------------------  --------------  -----------  --------------  ------------------
+Number_of_children_ever_born         1.297338     1.304183        1.339924           0.4657162
+Wifes_age                            1.000000     1.000000        1.000000           0.3570944
+Wifes_education                      1.000000     1.000000        1.000000           0.3570944
+Husbands_education                   1.000000     1.000000        1.000000           0.3570944
+Wifes_religion                       1.000000     1.000000        1.000000           0.3570944
+
+=== LIME Rankings ===
+
+
+Feature                         Importance
+-----------------------------  -----------
+Number_of_children_ever_born     0.1650203
+Media_exposure                   0.0061936
+Wifes_religion                   0.0058875
+Standard_of_living_index         0.0049562
+Husbands_education               0.0048982
+
+=== SHAP (IML Shapley) Rankings ===
+
+
+Feature                         Importance
+-----------------------------  -----------
+Number_of_children_ever_born     0.1190901
+Husbands_education               0.0000000
+Husbands_occupation              0.0000000
+Media_exposure                   0.0000000
+Standard_of_living_index         0.0000000
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME   NA                        1
+FEAT_IMP vs SHAP   NA                        1
+LIME vs SHAP       NA                        1
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME   NA                        1
+FEAT_IMP vs SHAP   NA                        1
+LIME vs SHAP       NA                        1
+
+=== Top-1 Features ===
+FEAT_IMP: Number_of_children_ever_born
+LIME: Number_of_children_ever_born
+SHAP: Number_of_children_ever_born
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1                      Feature_2                      Agreement 
+-----------------  -----------------------------  -----------------------------  ----------
+FEAT_IMP vs LIME   Number_of_children_ever_born   Number_of_children_ever_born   TRUE      
+FEAT_IMP vs SHAP   Number_of_children_ever_born   Number_of_children_ever_born   TRUE      
+LIME vs SHAP       Number_of_children_ever_born   Number_of_children_ever_born   TRUE      
+
+Agreeing pairs: 3 / 3 (100.0%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: gbm
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=cmc, Method=gbm ===
+No scaling applied for method: gbm
+Iter   TrainDeviance   ValidDeviance   StepSize   Improve
+     1        1.3489            -nan     0.1000    0.0075
+     2        1.3357            -nan     0.1000    0.0071
+     3        1.3268            -nan     0.1000    0.0036
+     4        1.3155            -nan     0.1000    0.0055
+     5        1.3066            -nan     0.1000    0.0040
+     6        1.2982            -nan     0.1000    0.0038
+     7        1.2918            -nan     0.1000    0.0023
+     8        1.2851            -nan     0.1000    0.0027
+     9        1.2783            -nan     0.1000    0.0023
+    10        1.2714            -nan     0.1000    0.0025
+    20        1.2200            -nan     0.1000    0.0016
+    40        1.1606            -nan     0.1000    0.0007
+    50        1.1439            -nan     0.1000    0.0003
+
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature                         importance.05   importance   importance.95   permutation.error
+-----------------------------  --------------  -----------  --------------  ------------------
+Number_of_children_ever_born        1.3606635     1.407583        1.432701           0.4032587
+Wifes_age                           1.2047393     1.229858        1.258768           0.3523422
+Wifes_education                     1.0928910     1.118483        1.140758           0.3204345
+Media_exposure                      1.0364929     1.049763        1.058768           0.3007468
+Standard_of_living_index            0.9966825     1.002370        1.004739           0.2871690
+
+=== LIME Rankings ===
+
+
+Feature                         Importance
+-----------------------------  -----------
+Number_of_children_ever_born     0.1332116
+Wifes_age                        0.1226187
+Media_exposure                   0.0852349
+Wifes_education                  0.0640611
+Standard_of_living_index         0.0125695
+
+=== SHAP (IML Shapley) Rankings ===
+
+
+Feature                         Importance
+-----------------------------  -----------
+Wifes_age                        0.0994449
+Number_of_children_ever_born     0.0907521
+Wifes_education                  0.0551397
+Standard_of_living_index         0.0093794
+Media_exposure                   0.0047377
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair                Spearman   Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME         1.0                 2
+FEAT_IMP vs SHAP         0.5                 3
+LIME vs SHAP            -1.0                 2
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME   NA                        1
+FEAT_IMP vs SHAP   NA                        0
+LIME vs SHAP       NA                        0
+
+=== Top-1 Features ===
+FEAT_IMP: Number_of_children_ever_born
+LIME: Number_of_children_ever_born
+SHAP: Wifes_age
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1                      Feature_2                      Agreement 
+-----------------  -----------------------------  -----------------------------  ----------
+FEAT_IMP vs LIME   Number_of_children_ever_born   Number_of_children_ever_born   TRUE      
+FEAT_IMP vs SHAP   Number_of_children_ever_born   Wifes_age                      FALSE     
+LIME vs SHAP       Number_of_children_ever_born   Wifes_age                      FALSE     
+
+Agreeing pairs: 1 / 3 (33.3%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: gcvEarth
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=cmc, Method=gcvEarth ===
+No scaling applied for method: gcvEarth
+Loading required package: earth
+Loading required package: Formula
+Loading required package: plotmo
+Loading required package: plotrix
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature                         importance.05   importance   importance.95   permutation.error
+-----------------------------  --------------  -----------  --------------  ------------------
+Number_of_children_ever_born           1.4310       1.4700          1.5105           0.3991853
+Wifes_age                              1.2555       1.2700          1.3250           0.3448744
+Wifes_education                        1.1350       1.1675          1.1925           0.3170401
+Media_exposure                         1.0080       1.0225          1.0265           0.2776646
+Husbands_education                     1.0000       1.0000          1.0000           0.2715547
+
+=== LIME Rankings ===
+
+
+Feature                         Importance
+-----------------------------  -----------
+Number_of_children_ever_born     0.2671899
+Wifes_age                        0.1963108
+Media_exposure                   0.0976814
+Wifes_education                  0.0889250
+Standard_of_living_index         0.0358503
+
+=== SHAP (IML Shapley) Rankings ===
+
+
+Feature                         Importance
+-----------------------------  -----------
+Number_of_children_ever_born     0.1703431
+Wifes_age                        0.1534146
+Wifes_education                  0.0807486
+Standard_of_living_index         0.0293088
+Media_exposure                   0.0121050
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair                Spearman   Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME           1                 2
+FEAT_IMP vs SHAP           1                 3
+LIME vs SHAP               1                 2
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME   NA                        1
+FEAT_IMP vs SHAP   NA                        1
+LIME vs SHAP       NA                        1
+
+=== Top-1 Features ===
+FEAT_IMP: Number_of_children_ever_born
+LIME: Number_of_children_ever_born
+SHAP: Number_of_children_ever_born
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1                      Feature_2                      Agreement 
+-----------------  -----------------------------  -----------------------------  ----------
+FEAT_IMP vs LIME   Number_of_children_ever_born   Number_of_children_ever_born   TRUE      
+FEAT_IMP vs SHAP   Number_of_children_ever_born   Number_of_children_ever_born   TRUE      
+LIME vs SHAP       Number_of_children_ever_born   Number_of_children_ever_born   TRUE      
+
+Agreeing pairs: 3 / 3 (100.0%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: JRip
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=cmc, Method=JRip ===
+No scaling applied for method: JRip
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature                         importance.05   importance   importance.95   permutation.error
+-----------------------------  --------------  -----------  --------------  ------------------
+Number_of_children_ever_born         1.470886     1.478481        1.496203           0.3964698
+Wifes_age                            1.333165     1.359494        1.372658           0.3645621
+Wifes_education                      1.313924     1.349367        1.370633           0.3618466
+Husbands_education                   1.000000     1.000000        1.000000           0.2681602
+Wifes_religion                       1.000000     1.000000        1.000000           0.2681602
+
+=== LIME Rankings ===
+
+
+Feature                         Importance
+-----------------------------  -----------
+Wifes_age                        0.1751604
+Number_of_children_ever_born     0.0750134
+Wifes_education                  0.0596510
+Media_exposure                   0.0105809
+Wifes_religion                   0.0068974
+
+=== SHAP (IML Shapley) Rankings ===
+
+
+Feature                         Importance
+-----------------------------  -----------
+Wifes_age                        0.1607877
+Wifes_education                  0.0841510
+Number_of_children_ever_born     0.0806445
+Husbands_education               0.0000000
+Husbands_occupation              0.0000000
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair                Spearman   Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME         0.5                 3
+FEAT_IMP vs SHAP        -0.5                 3
+LIME vs SHAP             0.5                 3
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME   NA                        0
+FEAT_IMP vs SHAP   NA                        0
+LIME vs SHAP       NA                        1
+
+=== Top-1 Features ===
+FEAT_IMP: Number_of_children_ever_born
+LIME: Wifes_age
+SHAP: Wifes_age
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1                      Feature_2   Agreement 
+-----------------  -----------------------------  ----------  ----------
+FEAT_IMP vs LIME   Number_of_children_ever_born   Wifes_age   FALSE     
+FEAT_IMP vs SHAP   Number_of_children_ever_born   Wifes_age   FALSE     
+LIME vs SHAP       Wifes_age                      Wifes_age   TRUE      
+
+Agreeing pairs: 1 / 3 (33.3%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: lvq
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=cmc, Method=lvq ===
+Applying data scaling for method: lvq
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature                         importance.05   importance   importance.95   permutation.error
+-----------------------------  --------------  -----------  --------------  ------------------
+Wifes_education                     1.1118761     1.127367        1.159725           0.4446707
+Husbands_education                  1.0165232     1.043029        1.047504           0.4114053
+Wifes_age                           1.0220310     1.027539        1.039931           0.4052953
+Number_of_children_ever_born        0.9982788     1.013769        1.023408           0.3998642
+Media_exposure                      1.0092943     1.013769        1.018933           0.3998642
+
+=== LIME Rankings ===
+Error in get_lime: only classification models that produce probabilities are allowed 
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs SHAP   NA                        0
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs SHAP   NA                        0
+
+=== Top-1 Features ===
+FEAT_IMP: Wifes_education
+SHAP: NA
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1         Feature_2   Agreement 
+-----------------  ----------------  ----------  ----------
+FEAT_IMP vs SHAP   Wifes_education   NA          FALSE     
+
+Agreeing pairs: 0 / 1 (0.0%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: mlpML
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=cmc, Method=mlpML ===
+Applying data scaling for method: mlpML
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+Warning message:
+At least one layer had zero units and were removed. The new structure is 1 
+
+=== IML Rankings ===
+
+
+feature                         importance.05   importance   importance.95   permutation.error
+-----------------------------  --------------  -----------  --------------  ------------------
+Number_of_children_ever_born         1.421749     1.486998        1.513002           0.4270197
+Wifes_age                            1.203782     1.215130        1.233097           0.3489477
+Wifes_education                      1.101655     1.127660        1.162175           0.3238289
+Media_exposure                       1.087943     1.111111        1.117258           0.3190767
+Wifes_religion                       1.009456     1.014184        1.023641           0.2912424
+
+=== LIME Rankings ===
+
+
+Feature                         Importance
+-----------------------------  -----------
+Media_exposure                   0.2858300
+Number_of_children_ever_born     0.2149365
+Wifes_age                        0.1408778
+Wifes_education                  0.0420188
+Wifes_religion                   0.0417224
+
+=== SHAP (IML Shapley) Rankings ===
+
+
+Feature                         Importance
+-----------------------------  -----------
+Number_of_children_ever_born     0.1511511
+Wifes_age                        0.0636546
+Media_exposure                   0.0333234
+Wifes_education                  0.0262368
+Standard_of_living_index         0.0098610
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair                Spearman   Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME         1.0                 2
+FEAT_IMP vs SHAP         1.0                 2
+LIME vs SHAP            -0.5                 3
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME   NA                        0
+FEAT_IMP vs SHAP   NA                        1
+LIME vs SHAP       NA                        0
+
+=== Top-1 Features ===
+FEAT_IMP: Number_of_children_ever_born
+LIME: Media_exposure
+SHAP: Number_of_children_ever_born
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1                      Feature_2                      Agreement 
+-----------------  -----------------------------  -----------------------------  ----------
+FEAT_IMP vs LIME   Number_of_children_ever_born   Media_exposure                 FALSE     
+FEAT_IMP vs SHAP   Number_of_children_ever_born   Number_of_children_ever_born   TRUE      
+LIME vs SHAP       Media_exposure                 Number_of_children_ever_born   FALSE     
+
+Agreeing pairs: 1 / 3 (33.3%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: multinom
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=cmc, Method=multinom ===
+Applying data scaling for method: multinom
+# weights:  19 (18 variable)
+initial  value 1021.005797 
+iter  10 value 897.803392
+iter  20 value 882.180669
+final  value 881.308989 
+converged
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature                         importance.05   importance   importance.95   permutation.error
+-----------------------------  --------------  -----------  --------------  ------------------
+Number_of_children_ever_born        1.2430704     1.268657        1.274200           0.4039375
+Wifes_age                           1.1582090     1.196162        1.212793           0.3808554
+Wifes_education                     1.1650320     1.183369        1.246055           0.3767821
+Wifes_religion                      1.0046908     1.019190        1.029851           0.3245078
+Husbands_education                  0.9957356     1.014925        1.018763           0.3231500
+
+=== LIME Rankings ===
+
+
+Feature                         Importance
+-----------------------------  -----------
+Number_of_children_ever_born     0.3481412
+Wifes_age                        0.1975894
+Wifes_education                  0.0972434
+Media_exposure                   0.0833645
+Wifes_religion                   0.0795551
+
+=== SHAP (IML Shapley) Rankings ===
+
+
+Feature                         Importance
+-----------------------------  -----------
+Number_of_children_ever_born     0.2695552
+Wifes_age                        0.1340839
+Wifes_education                  0.0722719
+Standard_of_living_index         0.0264781
+Husbands_education               0.0203417
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair                Spearman   Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME           1                 3
+FEAT_IMP vs SHAP           1                 3
+LIME vs SHAP               1                 3
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME   NA                        1
+FEAT_IMP vs SHAP   NA                        1
+LIME vs SHAP       NA                        1
+
+=== Top-1 Features ===
+FEAT_IMP: Number_of_children_ever_born
+LIME: Number_of_children_ever_born
+SHAP: Number_of_children_ever_born
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1                      Feature_2                      Agreement 
+-----------------  -----------------------------  -----------------------------  ----------
+FEAT_IMP vs LIME   Number_of_children_ever_born   Number_of_children_ever_born   TRUE      
+FEAT_IMP vs SHAP   Number_of_children_ever_born   Number_of_children_ever_born   TRUE      
+LIME vs SHAP       Number_of_children_ever_born   Number_of_children_ever_born   TRUE      
+
+Agreeing pairs: 3 / 3 (100.0%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: naive_bayes
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=cmc, Method=naive_bayes ===
+No scaling applied for method: naive_bayes
+Error: Only one model should be specified in tuneGrid with no resampling
+Execution halted
+FAILED - See error above
+
+
+========================================
+Model: PART
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=cmc, Method=PART ===
+No scaling applied for method: PART
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature                         importance.05   importance   importance.95   permutation.error
+-----------------------------  --------------  -----------  --------------  ------------------
+Number_of_children_ever_born         2.268493     2.305936        2.349772           0.3428377
+Wifes_education                      2.087671     2.132420        2.165297           0.3170401
+Wifes_age                            1.937900     1.972603        2.019178           0.2932790
+Standard_of_living_index             1.780822     1.835616        1.849315           0.2729124
+Husbands_occupation                  1.496804     1.525114        1.563470           0.2267481
+
+=== LIME Rankings ===
+
+
+Feature                         Importance
+-----------------------------  -----------
+Wifes_age                        0.1566770
+Wifes_education                  0.1146513
+Number_of_children_ever_born     0.0963559
+Standard_of_living_index         0.0501179
+Husbands_education               0.0427262
+
+=== SHAP (IML Shapley) Rankings ===
+
+
+Feature                         Importance
+-----------------------------  -----------
+Number_of_children_ever_born     0.1541017
+Wifes_education                  0.1446799
+Wifes_age                        0.1010511
+Husbands_education               0.0943676
+Standard_of_living_index         0.0845363
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair                Spearman   Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME          -1                 3
+FEAT_IMP vs SHAP           1                 3
+LIME vs SHAP              -1                 3
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME   NA                        0
+FEAT_IMP vs SHAP   NA                        1
+LIME vs SHAP       NA                        0
+
+=== Top-1 Features ===
+FEAT_IMP: Number_of_children_ever_born
+LIME: Wifes_age
+SHAP: Number_of_children_ever_born
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1                      Feature_2                      Agreement 
+-----------------  -----------------------------  -----------------------------  ----------
+FEAT_IMP vs LIME   Number_of_children_ever_born   Wifes_age                      FALSE     
+FEAT_IMP vs SHAP   Number_of_children_ever_born   Number_of_children_ever_born   TRUE      
+LIME vs SHAP       Wifes_age                      Number_of_children_ever_born   FALSE     
+
+Agreeing pairs: 1 / 3 (33.3%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: rbfDDA
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=cmc, Method=rbfDDA ===
+Applying data scaling for method: rbfDDA
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature                         importance.05   importance   importance.95   permutation.error
+-----------------------------  --------------  -----------  --------------  ------------------
+Wifes_education                      5.782051     5.820513        6.182051           0.3082145
+Standard_of_living_index             5.271795     5.397436        5.648718           0.2858113
+Number_of_children_ever_born         5.225641     5.358974        5.700000           0.2837746
+Wifes_age                            4.858974     4.910256        5.112820           0.2600136
+Husbands_education                   4.123077     4.551282        4.628205           0.2410048
+
+=== LIME Rankings ===
+
+
+Feature                         Importance
+-----------------------------  -----------
+Wifes_religion                   0.3164109
+Number_of_children_ever_born     0.2345433
+Media_exposure                   0.1591274
+Wifes_age                        0.1219775
+Wifes_education                  0.0965724
+
+=== SHAP (IML Shapley) Rankings ===
+
+
+Feature                         Importance
+-----------------------------  -----------
+Wifes_age                        0.1993478
+Standard_of_living_index         0.1028907
+Number_of_children_ever_born     0.1016274
+Wifes_education                  0.0853342
+Husbands_education               0.0766771
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair                Spearman   Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME          NA                 1
+FEAT_IMP vs SHAP           1                 2
+LIME vs SHAP              NA                 1
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME   NA                        0
+FEAT_IMP vs SHAP   NA                        0
+LIME vs SHAP       NA                        0
+
+=== Top-1 Features ===
+FEAT_IMP: Wifes_education
+LIME: Wifes_religion
+SHAP: Wifes_age
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1         Feature_2        Agreement 
+-----------------  ----------------  ---------------  ----------
+FEAT_IMP vs LIME   Wifes_education   Wifes_religion   FALSE     
+FEAT_IMP vs SHAP   Wifes_education   Wifes_age        FALSE     
+LIME vs SHAP       Wifes_religion    Wifes_age        FALSE     
+
+Agreeing pairs: 0 / 3 (0.0%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: rda
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=cmc, Method=rda ===
+Applying data scaling for method: rda
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature                         importance.05   importance   importance.95   permutation.error
+-----------------------------  --------------  -----------  --------------  ------------------
+Number_of_children_ever_born         1.069323     1.093625        1.108765           0.3727088
+Standard_of_living_index             1.050996     1.083665        1.091235           0.3693143
+Wifes_education                      1.054183     1.067729        1.093625           0.3638832
+Wifes_age                            1.043825     1.053785        1.070518           0.3591310
+Husbands_education                   1.034263     1.041833        1.083665           0.3550577
+
+=== LIME Rankings ===
+
+
+Feature                         Importance
+-----------------------------  -----------
+Media_exposure                   0.4876846
+Number_of_children_ever_born     0.1819113
+Wifes_education                  0.1528857
+Wifes_age                        0.1399598
+Wifes_religion                   0.1210261
+
+=== SHAP (IML Shapley) Rankings ===
+
+
+Feature                         Importance
+-----------------------------  -----------
+Wifes_education                  0.1578404
+Husbands_education               0.0926294
+Wifes_age                        0.0761818
+Number_of_children_ever_born     0.0687169
+Standard_of_living_index         0.0413986
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair                Spearman   Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME           1                 2
+FEAT_IMP vs SHAP          NA                 1
+LIME vs SHAP              NA                 1
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME   NA                        0
+FEAT_IMP vs SHAP   NA                        0
+LIME vs SHAP       NA                        0
+
+=== Top-1 Features ===
+FEAT_IMP: Number_of_children_ever_born
+LIME: Media_exposure
+SHAP: Wifes_education
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1                      Feature_2         Agreement 
+-----------------  -----------------------------  ----------------  ----------
+FEAT_IMP vs LIME   Number_of_children_ever_born   Media_exposure    FALSE     
+FEAT_IMP vs SHAP   Number_of_children_ever_born   Wifes_education   FALSE     
+LIME vs SHAP       Media_exposure                 Wifes_education   FALSE     
+
+Agreeing pairs: 0 / 3 (0.0%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: rf
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=cmc, Method=rf ===
+No scaling applied for method: rf
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature                         importance.05   importance   importance.95   permutation.error
+-----------------------------  --------------  -----------  --------------  ------------------
+Number_of_children_ever_born         2.463095     2.541667        2.617857           0.2898846
+Wifes_age                            2.442857     2.511905        2.572619           0.2864902
+Wifes_education                      2.211905     2.238095        2.332143           0.2552614
+Standard_of_living_index             1.678571     1.755952        1.805952           0.2002716
+Husbands_education                   1.671429     1.744048        1.785714           0.1989138
+
+=== LIME Rankings ===
+
+
+Feature                         Importance
+-----------------------------  -----------
+Wifes_age                        0.1262896
+Number_of_children_ever_born     0.1240425
+Wifes_education                  0.1007871
+Media_exposure                   0.0955094
+Wifes_now_working                0.0346629
+
+=== SHAP (IML Shapley) Rankings ===
+
+
+Feature                         Importance
+-----------------------------  -----------
+Wifes_education                   0.127996
+Wifes_age                         0.123848
+Husbands_education                0.055872
+Number_of_children_ever_born      0.045380
+Standard_of_living_index          0.040812
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair                Spearman   Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME         0.5                 3
+FEAT_IMP vs SHAP        -1.0                 2
+LIME vs SHAP            -1.0                 2
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME   NA                        0
+FEAT_IMP vs SHAP   NA                        0
+LIME vs SHAP       NA                        0
+
+=== Top-1 Features ===
+FEAT_IMP: Number_of_children_ever_born
+LIME: Wifes_age
+SHAP: Wifes_education
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1                      Feature_2         Agreement 
+-----------------  -----------------------------  ----------------  ----------
+FEAT_IMP vs LIME   Number_of_children_ever_born   Wifes_age         FALSE     
+FEAT_IMP vs SHAP   Number_of_children_ever_born   Wifes_education   FALSE     
+LIME vs SHAP       Wifes_age                      Wifes_education   FALSE     
+
+Agreeing pairs: 0 / 3 (0.0%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: rpart
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=cmc, Method=rpart ===
+No scaling applied for method: rpart
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature                         importance.05   importance   importance.95   permutation.error
+-----------------------------  --------------  -----------  --------------  ------------------
+Wifes_age                                   1            1               1           0.4270197
+Wifes_education                             1            1               1           0.4270197
+Husbands_education                          1            1               1           0.4270197
+Number_of_children_ever_born                1            1               1           0.4270197
+Wifes_religion                              1            1               1           0.4270197
+
+=== LIME Rankings ===
+Error in get_lime: Response is constant across permutations. Please check your model 
+
+=== SHAP (IML Shapley) Rankings ===
+
+
+Feature                         Importance
+-----------------------------  -----------
+Husbands_education                       0
+Husbands_occupation                      0
+Media_exposure                           0
+Number_of_children_ever_born             0
+Standard_of_living_index                 0
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs SHAP   NA                        1
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs SHAP   NA                        0
+
+=== Top-1 Features ===
+FEAT_IMP: Wifes_age
+SHAP: Husbands_education
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1   Feature_2            Agreement 
+-----------------  ----------  -------------------  ----------
+FEAT_IMP vs SHAP   Wifes_age   Husbands_education   FALSE     
+
+Agreeing pairs: 0 / 1 (0.0%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: simpls
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=cmc, Method=simpls ===
+Applying data scaling for method: simpls
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature                         importance.05   importance   importance.95   permutation.error
+-----------------------------  --------------  -----------  --------------  ------------------
+Number_of_children_ever_born        1.0010657     1.024867        1.028419           0.3917176
+Wifes_education                     1.0010657     1.015986        1.039787           0.3883232
+Media_exposure                      1.0042629     1.015986        1.024512           0.3883232
+Wifes_age                           1.0042629     1.014210        1.028419           0.3876443
+Wifes_now_working                   0.9889876     1.007105        1.012789           0.3849287
+
+=== LIME Rankings ===
+
+
+Feature                         Importance
+-----------------------------  -----------
+Media_exposure                   0.0612350
+Number_of_children_ever_born     0.0401696
+Husbands_education               0.0329253
+Wifes_education                  0.0303201
+Standard_of_living_index         0.0262799
+
+=== SHAP (IML Shapley) Rankings ===
+
+
+Feature                         Importance
+-----------------------------  -----------
+Husbands_education               0.0257175
+Number_of_children_ever_born     0.0248863
+Wifes_education                  0.0230436
+Standard_of_living_index         0.0170012
+Wifes_age                        0.0118654
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair                Spearman   Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME          -1                 2
+FEAT_IMP vs SHAP           1                 2
+LIME vs SHAP              -1                 2
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME   NA                        0
+FEAT_IMP vs SHAP   NA                        0
+LIME vs SHAP       NA                        0
+
+=== Top-1 Features ===
+FEAT_IMP: Number_of_children_ever_born
+LIME: Media_exposure
+SHAP: Husbands_education
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1                      Feature_2            Agreement 
+-----------------  -----------------------------  -------------------  ----------
+FEAT_IMP vs LIME   Number_of_children_ever_born   Media_exposure       FALSE     
+FEAT_IMP vs SHAP   Number_of_children_ever_born   Husbands_education   FALSE     
+LIME vs SHAP       Media_exposure                 Husbands_education   FALSE     
+
+Agreeing pairs: 0 / 3 (0.0%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: svmLinear
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=cmc, Method=svmLinear ===
+Applying data scaling for method: svmLinear
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature                         importance.05   importance   importance.95   permutation.error
+-----------------------------  --------------  -----------  --------------  ------------------
+Number_of_children_ever_born         1.261674     1.277533        1.314097           0.3937542
+Wifes_age                            1.188106     1.226872        1.233480           0.3781399
+Wifes_education                      1.147137     1.189427        1.217181           0.3665988
+Standard_of_living_index             1.002203     1.022026        1.029956           0.3150034
+Husbands_education                   1.003084     1.008811        1.014537           0.3109301
+
+=== LIME Rankings ===
+Error in get_lime: Response is constant across permutations. Please check your model 
+Warning message:
+In method$prob(modelFit = modelFit, newdata = newdata, submodels = param) :
+  kernlab class probability calculations failed; returning NAs
+Warning messages:
+1: In method$prob(modelFit = modelFit, newdata = newdata, submodels = param) :
+  kernlab class probability calculations failed; returning NAs
+2: In method$prob(modelFit = modelFit, newdata = newdata, submodels = param) :
+  kernlab class probability calculations failed; returning NAs
+3: In method$prob(modelFit = modelFit, newdata = newdata, submodels = param) :
+  kernlab class probability calculations failed; returning NAs
+4: In method$prob(modelFit = modelFit, newdata = newdata, submodels = param) :
+  kernlab class probability calculations failed; returning NAs
+5: In method$prob(modelFit = modelFit, newdata = newdata, submodels = param) :
+  kernlab class probability calculations failed; returning NAs
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs SHAP   NA                        0
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs SHAP   NA                        0
+
+=== Top-1 Features ===
+FEAT_IMP: Number_of_children_ever_born
+SHAP: NA
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1                      Feature_2   Agreement 
+-----------------  -----------------------------  ----------  ----------
+FEAT_IMP vs SHAP   Number_of_children_ever_born   NA          FALSE     
+
+Agreeing pairs: 0 / 1 (0.0%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: svmRadial
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=cmc, Method=svmRadial ===
+Applying data scaling for method: svmRadial
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature                         importance.05   importance   importance.95   permutation.error
+-----------------------------  --------------  -----------  --------------  ------------------
+Number_of_children_ever_born         1.163801     1.185520        1.223982           0.3557366
+Wifes_education                      1.104525     1.117647        1.127149           0.3353700
+Wifes_age                            1.097285     1.115385        1.177828           0.3346911
+Husbands_occupation                  1.030769     1.049774        1.065158           0.3150034
+Media_exposure                       1.037104     1.042986        1.064253           0.3129667
+
+=== LIME Rankings ===
+Error in get_lime: Response is constant across permutations. Please check your model 
+Warning message:
+In method$prob(modelFit = modelFit, newdata = newdata, submodels = param) :
+  kernlab class probability calculations failed; returning NAs
+Warning messages:
+1: In method$prob(modelFit = modelFit, newdata = newdata, submodels = param) :
+  kernlab class probability calculations failed; returning NAs
+2: In method$prob(modelFit = modelFit, newdata = newdata, submodels = param) :
+  kernlab class probability calculations failed; returning NAs
+3: In method$prob(modelFit = modelFit, newdata = newdata, submodels = param) :
+  kernlab class probability calculations failed; returning NAs
+4: In method$prob(modelFit = modelFit, newdata = newdata, submodels = param) :
+  kernlab class probability calculations failed; returning NAs
+5: In method$prob(modelFit = modelFit, newdata = newdata, submodels = param) :
+  kernlab class probability calculations failed; returning NAs
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs SHAP   NA                        0
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs SHAP   NA                        0
+
+=== Top-1 Features ===
+FEAT_IMP: Number_of_children_ever_born
+SHAP: NA
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1                      Feature_2   Agreement 
+-----------------  -----------------------------  ----------  ----------
+FEAT_IMP vs SHAP   Number_of_children_ever_born   NA          FALSE     
+
+Agreeing pairs: 0 / 1 (0.0%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: rfRules
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=cmc, Method=rfRules ===
+No scaling applied for method: rfRules
+Registered S3 method overwritten by 'RRF':
+  method      from        
+  plot.margin randomForest
+1986 rules (length<=2) were extracted from the first 500 trees.
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature                         importance.05   importance   importance.95   permutation.error
+-----------------------------  --------------  -----------  --------------  ------------------
+Wifes_age                            1.257757     1.295943        1.353699           0.3686354
+Number_of_children_ever_born         1.277327     1.291170        1.355609           0.3672777
+Wifes_education                      1.102625     1.105012        1.152267           0.3143245
+Standard_of_living_index             1.040573     1.057279        1.065871           0.3007468
+Wifes_religion                       1.000477     1.004773        1.013365           0.2858113
+
+=== LIME Rankings ===
+Error in get_lime: only classification models that produce probabilities are allowed 
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs SHAP   NA                        0
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs SHAP   NA                        0
+
+=== Top-1 Features ===
+FEAT_IMP: Wifes_age
+SHAP: NA
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1   Feature_2   Agreement 
+-----------------  ----------  ----------  ----------
+FEAT_IMP vs SHAP   Wifes_age   NA          FALSE     
+
+Agreeing pairs: 0 / 1 (0.0%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: knn
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=cmc, Method=knn ===
+Applying data scaling for method: knn
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature                         importance.05   importance   importance.95   permutation.error
+-----------------------------  --------------  -----------  --------------  ------------------
+Wifes_education                      1.350700     1.378151        1.436975           0.3340122
+Standard_of_living_index             1.300280     1.333333        1.394398           0.3231500
+Number_of_children_ever_born         1.291316     1.305322        1.338936           0.3163612
+Wifes_age                            1.268908     1.285714        1.342857           0.3116090
+Husbands_education                   1.254902     1.263305        1.288515           0.3061779
+
+=== LIME Rankings ===
+
+
+Feature                         Importance
+-----------------------------  -----------
+Media_exposure                   0.2016276
+Wifes_age                        0.0731889
+Number_of_children_ever_born     0.0636833
+Wifes_education                  0.0610931
+Wifes_now_working                0.0603075
+
+=== SHAP (IML Shapley) Rankings ===
+
+
+Feature                         Importance
+-----------------------------  -----------
+Wifes_education                  0.0814429
+Wifes_age                        0.0663873
+Number_of_children_ever_born     0.0536008
+Husbands_education               0.0419595
+Husbands_occupation              0.0367437
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair                Spearman   Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME          NA                 1
+FEAT_IMP vs SHAP           1                 2
+LIME vs SHAP               1                 2
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME   NA                        0
+FEAT_IMP vs SHAP   NA                        1
+LIME vs SHAP       NA                        0
+
+=== Top-1 Features ===
+FEAT_IMP: Wifes_education
+LIME: Media_exposure
+SHAP: Wifes_education
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1         Feature_2         Agreement 
+-----------------  ----------------  ----------------  ----------
+FEAT_IMP vs LIME   Wifes_education   Media_exposure    FALSE     
+FEAT_IMP vs SHAP   Wifes_education   Wifes_education   TRUE      
+LIME vs SHAP       Media_exposure    Wifes_education   FALSE     
+
+Agreeing pairs: 1 / 3 (33.3%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: bayesglm
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=cmc, Method=bayesglm ===
+Applying data scaling for method: bayesglm
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature                         importance.05   importance   importance.95   permutation.error
+-----------------------------  --------------  -----------  --------------  ------------------
+Number_of_children_ever_born         1.243497     1.264392        1.278891           0.4025798
+Wifes_age                            1.160768     1.198294        1.214073           0.3815343
+Wifes_education                      1.166738     1.187633        1.246482           0.3781399
+Wifes_religion                       1.007249     1.019190        1.031556           0.3245078
+Husbands_education                   1.000000     1.017058        1.019190           0.3238289
+
+=== LIME Rankings ===
+
+
+Feature                         Importance
+-----------------------------  -----------
+Number_of_children_ever_born     0.3462940
+Wifes_age                        0.1966011
+Wifes_education                  0.0964227
+Media_exposure                   0.0842643
+Wifes_religion                   0.0792371
+
+=== SHAP (IML Shapley) Rankings ===
+
+
+Feature                         Importance
+-----------------------------  -----------
+Number_of_children_ever_born     0.2677873
+Wifes_age                        0.1334861
+Wifes_education                  0.0713840
+Standard_of_living_index         0.0265559
+Husbands_education               0.0196520
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair                Spearman   Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME           1                 3
+FEAT_IMP vs SHAP           1                 3
+LIME vs SHAP               1                 3
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME   NA                        1
+FEAT_IMP vs SHAP   NA                        1
+LIME vs SHAP       NA                        1
+
+=== Top-1 Features ===
+FEAT_IMP: Number_of_children_ever_born
+LIME: Number_of_children_ever_born
+SHAP: Number_of_children_ever_born
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1                      Feature_2                      Agreement 
+-----------------  -----------------------------  -----------------------------  ----------
+FEAT_IMP vs LIME   Number_of_children_ever_born   Number_of_children_ever_born   TRUE      
+FEAT_IMP vs SHAP   Number_of_children_ever_born   Number_of_children_ever_born   TRUE      
+LIME vs SHAP       Number_of_children_ever_born   Number_of_children_ever_born   TRUE      
+
+Agreeing pairs: 3 / 3 (100.0%)
+
+=== All Results Recorded ===
+

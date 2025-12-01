@@ -1,0 +1,1583 @@
+Dataset: wilt
+Generated: Mon Nov 24 10:36:01 PM CET 2025
+======================================
+
+
+========================================
+Model: C5.0
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=wilt, Method=C5.0 ===
+No scaling applied for method: C5.0
+Error: Only one model should be specified in tuneGrid with no resampling
+Execution halted
+FAILED - See error above
+
+
+========================================
+Model: ctree
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=wilt, Method=ctree ===
+No scaling applied for method: ctree
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature     importance.05   importance   importance.95   permutation.error
+---------  --------------  -----------  --------------  ------------------
+Mean_R          11.631818    11.988636       12.220455           0.2180203
+Mean_G           8.406818     8.579546        8.636364           0.1560240
+Mean_NIR         1.875000     1.931818        2.034091           0.0351312
+GLCM_Pan         1.000000     1.000000        1.000000           0.0181856
+SD_Plan          1.000000     1.000000        1.000000           0.0181856
+
+=== LIME Rankings ===
+
+
+Feature     Importance
+---------  -----------
+Mean_G       0.2030914
+Mean_NIR     0.0872998
+Mean_R       0.0775108
+SD_Plan      0.0084010
+GLCM_Pan     0.0079586
+
+=== SHAP (IML Shapley) Rankings ===
+
+
+Feature     Importance
+---------  -----------
+Mean_R       0.3716336
+Mean_G       0.2969280
+Mean_NIR     0.1864502
+GLCM_Pan     0.0000000
+SD_Plan      0.0000000
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair                Spearman   Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME        -0.5                 3
+FEAT_IMP vs SHAP         1.0                 3
+LIME vs SHAP            -0.5                 3
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME   NA                        0
+FEAT_IMP vs SHAP   NA                        1
+LIME vs SHAP       NA                        0
+
+=== Top-1 Features ===
+FEAT_IMP: Mean_R
+LIME: Mean_G
+SHAP: Mean_R
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1   Feature_2   Agreement 
+-----------------  ----------  ----------  ----------
+FEAT_IMP vs LIME   Mean_R      Mean_G      FALSE     
+FEAT_IMP vs SHAP   Mean_R      Mean_R      TRUE      
+LIME vs SHAP       Mean_G      Mean_R      FALSE     
+
+Agreeing pairs: 1 / 3 (33.3%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: fda
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=wilt, Method=fda ===
+No scaling applied for method: fda
+Loading required package: earth
+Loading required package: Formula
+Loading required package: plotmo
+Loading required package: plotrix
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature     importance.05   importance   importance.95   permutation.error
+---------  --------------  -----------  --------------  ------------------
+GLCM_Pan                1            1               1           0.0541434
+Mean_G                  1            1               1           0.0541434
+Mean_R                  1            1               1           0.0541434
+Mean_NIR                1            1               1           0.0541434
+SD_Plan                 1            1               1           0.0541434
+
+=== LIME Rankings ===
+
+
+Feature     Importance
+---------  -----------
+Mean_G       0.2713146
+SD_Plan      0.0029383
+Mean_NIR     0.0028641
+GLCM_Pan     0.0024755
+Mean_R       0.0015943
+
+=== SHAP (IML Shapley) Rankings ===
+
+
+Feature     Importance
+---------  -----------
+Mean_G       0.0423252
+GLCM_Pan     0.0000000
+Mean_NIR     0.0000000
+Mean_R       0.0000000
+SD_Plan      0.0000000
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair                Spearman   Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME          NA                 1
+FEAT_IMP vs SHAP          -1                 2
+LIME vs SHAP               1                 2
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME   NA                        0
+FEAT_IMP vs SHAP   NA                        0
+LIME vs SHAP       NA                        1
+
+=== Top-1 Features ===
+FEAT_IMP: GLCM_Pan
+LIME: Mean_G
+SHAP: Mean_G
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1   Feature_2   Agreement 
+-----------------  ----------  ----------  ----------
+FEAT_IMP vs LIME   GLCM_Pan    Mean_G      FALSE     
+FEAT_IMP vs SHAP   GLCM_Pan    Mean_G      FALSE     
+LIME vs SHAP       Mean_G      Mean_G      TRUE      
+
+Agreeing pairs: 1 / 3 (33.3%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: gbm
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=wilt, Method=gbm ===
+No scaling applied for method: gbm
+Iter   TrainDeviance   ValidDeviance   StepSize   Improve
+     1        0.4144            -nan     0.1000    0.0028
+     2        0.4087            -nan     0.1000    0.0020
+     3        0.4019            -nan     0.1000    0.0030
+     4        0.3970            -nan     0.1000    0.0020
+     5        0.3929            -nan     0.1000    0.0023
+     6        0.3886            -nan     0.1000    0.0020
+     7        0.3838            -nan     0.1000    0.0023
+     8        0.3787            -nan     0.1000    0.0023
+     9        0.3737            -nan     0.1000    0.0021
+    10        0.3691            -nan     0.1000    0.0023
+    20        0.3292            -nan     0.1000    0.0019
+    40        0.2700            -nan     0.1000    0.0008
+    50        0.2472            -nan     0.1000    0.0005
+
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature     importance.05   importance   importance.95   permutation.error
+---------  --------------  -----------  --------------  ------------------
+Mean_G           1.410811     1.474903        1.488803           0.0789419
+Mean_R           1.401544     1.413127        1.460232           0.0756355
+GLCM_Pan         1.000000     1.000000        1.000000           0.0535235
+Mean_NIR         1.000000     1.000000        1.000000           0.0535235
+SD_Plan          1.000000     1.000000        1.000000           0.0535235
+
+=== LIME Rankings ===
+
+
+Feature     Importance
+---------  -----------
+Mean_G       0.1558043
+Mean_R       0.0948479
+GLCM_Pan     0.0051426
+SD_Plan      0.0047441
+Mean_NIR     0.0046836
+
+=== SHAP (IML Shapley) Rankings ===
+
+
+Feature     Importance
+---------  -----------
+Mean_R       0.2051467
+Mean_G       0.1529074
+SD_Plan      0.0052928
+GLCM_Pan     0.0000000
+Mean_NIR     0.0000000
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair                Spearman   Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME           1                 3
+FEAT_IMP vs SHAP          -1                 2
+LIME vs SHAP              -1                 2
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME   NA                        1
+FEAT_IMP vs SHAP   NA                        0
+LIME vs SHAP       NA                        0
+
+=== Top-1 Features ===
+FEAT_IMP: Mean_G
+LIME: Mean_G
+SHAP: Mean_R
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1   Feature_2   Agreement 
+-----------------  ----------  ----------  ----------
+FEAT_IMP vs LIME   Mean_G      Mean_G      TRUE      
+FEAT_IMP vs SHAP   Mean_G      Mean_R      FALSE     
+LIME vs SHAP       Mean_G      Mean_R      FALSE     
+
+Agreeing pairs: 1 / 3 (33.3%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: gcvEarth
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=wilt, Method=gcvEarth ===
+No scaling applied for method: gcvEarth
+Loading required package: earth
+Loading required package: Formula
+Loading required package: plotmo
+Loading required package: plotrix
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+Warning message:
+glm.fit: fitted probabilities numerically 0 or 1 occurred 
+
+=== IML Rankings ===
+
+
+feature     importance.05   importance   importance.95   permutation.error
+---------  --------------  -----------  --------------  ------------------
+Mean_R          16.184849    16.515152       17.063636           0.2252532
+Mean_G          14.642424    14.742424       14.945455           0.2010746
+Mean_NIR         1.924242     2.045454        2.163636           0.0278983
+SD_Plan          1.066667     1.106061        1.203030           0.0150858
+GLCM_Pan         1.000000     1.000000        1.000000           0.0136392
+
+=== LIME Rankings ===
+
+
+Feature     Importance
+---------  -----------
+Mean_G       0.3652466
+Mean_R       0.1261874
+Mean_NIR     0.0412696
+SD_Plan      0.0105325
+GLCM_Pan     0.0063348
+
+=== SHAP (IML Shapley) Rankings ===
+
+
+Feature     Importance
+---------  -----------
+Mean_G       0.4464015
+Mean_R       0.4252187
+Mean_NIR     0.0160490
+SD_Plan      0.0117907
+GLCM_Pan     0.0000000
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair                Spearman   Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME         0.5                 3
+FEAT_IMP vs SHAP         0.5                 3
+LIME vs SHAP             1.0                 3
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME   NA                        0
+FEAT_IMP vs SHAP   NA                        0
+LIME vs SHAP       NA                        1
+
+=== Top-1 Features ===
+FEAT_IMP: Mean_R
+LIME: Mean_G
+SHAP: Mean_G
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1   Feature_2   Agreement 
+-----------------  ----------  ----------  ----------
+FEAT_IMP vs LIME   Mean_R      Mean_G      FALSE     
+FEAT_IMP vs SHAP   Mean_R      Mean_G      FALSE     
+LIME vs SHAP       Mean_G      Mean_G      TRUE      
+
+Agreeing pairs: 1 / 3 (33.3%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: JRip
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=wilt, Method=JRip ===
+No scaling applied for method: JRip
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature     importance.05   importance   importance.95   permutation.error
+---------  --------------  -----------  --------------  ------------------
+Mean_R          25.444444    25.537037       26.011111           0.2849762
+Mean_G          23.992593    24.351852       24.411111           0.2717504
+Mean_NIR         1.622222     1.685185        1.833333           0.0188055
+GLCM_Pan         1.000000     1.000000        1.000000           0.0111593
+SD_Plan          1.000000     1.000000        1.000000           0.0111593
+
+=== LIME Rankings ===
+
+
+Feature     Importance
+---------  -----------
+Mean_G       0.4139495
+Mean_R       0.1518438
+Mean_NIR     0.0392986
+GLCM_Pan     0.0148965
+SD_Plan      0.0107373
+
+=== SHAP (IML Shapley) Rankings ===
+
+
+Feature     Importance
+---------  -----------
+Mean_G       0.4682654
+Mean_R       0.4106568
+Mean_NIR     0.0170837
+GLCM_Pan     0.0000000
+SD_Plan      0.0000000
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair                Spearman   Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME         0.5                 3
+FEAT_IMP vs SHAP         0.5                 3
+LIME vs SHAP             1.0                 3
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME   NA                        0
+FEAT_IMP vs SHAP   NA                        0
+LIME vs SHAP       NA                        1
+
+=== Top-1 Features ===
+FEAT_IMP: Mean_R
+LIME: Mean_G
+SHAP: Mean_G
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1   Feature_2   Agreement 
+-----------------  ----------  ----------  ----------
+FEAT_IMP vs LIME   Mean_R      Mean_G      FALSE     
+FEAT_IMP vs SHAP   Mean_R      Mean_G      FALSE     
+LIME vs SHAP       Mean_G      Mean_G      TRUE      
+
+Agreeing pairs: 1 / 3 (33.3%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: lvq
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=wilt, Method=lvq ===
+Applying data scaling for method: lvq
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature     importance.05   importance   importance.95   permutation.error
+---------  --------------  -----------  --------------  ------------------
+GLCM_Pan                1            1               1           0.0539368
+Mean_G                  1            1               1           0.0539368
+Mean_R                  1            1               1           0.0539368
+Mean_NIR                1            1               1           0.0539368
+SD_Plan                 1            1               1           0.0539368
+
+=== LIME Rankings ===
+Error in get_lime: only classification models that produce probabilities are allowed 
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs SHAP   NA                        0
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs SHAP   NA                        0
+
+=== Top-1 Features ===
+FEAT_IMP: GLCM_Pan
+SHAP: NA
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1   Feature_2   Agreement 
+-----------------  ----------  ----------  ----------
+FEAT_IMP vs SHAP   GLCM_Pan    NA          FALSE     
+
+Agreeing pairs: 0 / 1 (0.0%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: mlpML
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=wilt, Method=mlpML ===
+Applying data scaling for method: mlpML
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+Warning message:
+At least one layer had zero units and were removed. The new structure is 1 
+
+=== IML Rankings ===
+
+
+feature     importance.05   importance   importance.95   permutation.error
+---------  --------------  -----------  --------------  ------------------
+Mean_G          9.2301887     9.314465        9.361006           0.3060550
+Mean_R          7.7484277     7.773585        7.918239           0.2554247
+Mean_NIR        2.1522013     2.163522        2.227673           0.0710891
+SD_Plan         1.0264151     1.056604        1.099371           0.0347179
+GLCM_Pan        0.9786164     1.006289        1.022641           0.0330647
+
+=== LIME Rankings ===
+
+
+Feature     Importance
+---------  -----------
+Mean_G       0.3822990
+Mean_R       0.1427669
+Mean_NIR     0.0462741
+SD_Plan      0.0097563
+GLCM_Pan     0.0080069
+
+=== SHAP (IML Shapley) Rankings ===
+
+
+Feature     Importance
+---------  -----------
+Mean_G       0.4307635
+Mean_R       0.2195155
+Mean_NIR     0.0381012
+SD_Plan      0.0128368
+GLCM_Pan     0.0059513
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair                Spearman   Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME           1                 3
+FEAT_IMP vs SHAP           1                 3
+LIME vs SHAP               1                 3
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME   NA                        1
+FEAT_IMP vs SHAP   NA                        1
+LIME vs SHAP       NA                        1
+
+=== Top-1 Features ===
+FEAT_IMP: Mean_G
+LIME: Mean_G
+SHAP: Mean_G
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1   Feature_2   Agreement 
+-----------------  ----------  ----------  ----------
+FEAT_IMP vs LIME   Mean_G      Mean_G      TRUE      
+FEAT_IMP vs SHAP   Mean_G      Mean_G      TRUE      
+LIME vs SHAP       Mean_G      Mean_G      TRUE      
+
+Agreeing pairs: 3 / 3 (100.0%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: multinom
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=wilt, Method=multinom ===
+Applying data scaling for method: multinom
+# weights:  7 (6 variable)
+initial  value 3354.139207 
+iter  10 value 501.076674
+iter  20 value 401.703707
+final  value 401.579806 
+converged
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature     importance.05   importance   importance.95   permutation.error
+---------  --------------  -----------  --------------  ------------------
+Mean_G          9.5909091     9.688312        9.841558           0.3083282
+Mean_R          7.8883117     8.071429        8.089610           0.2568713
+Mean_NIR        2.4272727     2.474026        2.583117           0.0787353
+SD_Plan         1.0220779     1.051948        1.088312           0.0334780
+GLCM_Pan        0.9935065     1.000000        1.005195           0.0318248
+
+=== LIME Rankings ===
+
+
+Feature     Importance
+---------  -----------
+Mean_G       0.5114188
+Mean_R       0.1957391
+Mean_NIR     0.0627673
+SD_Plan      0.0132905
+GLCM_Pan     0.0103366
+
+=== SHAP (IML Shapley) Rankings ===
+
+
+Feature     Importance
+---------  -----------
+Mean_G       0.5073255
+Mean_R       0.2238330
+Mean_NIR     0.0588802
+SD_Plan      0.0138369
+GLCM_Pan     0.0005881
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair                Spearman   Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME           1                 3
+FEAT_IMP vs SHAP           1                 3
+LIME vs SHAP               1                 3
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME   NA                        1
+FEAT_IMP vs SHAP   NA                        1
+LIME vs SHAP       NA                        1
+
+=== Top-1 Features ===
+FEAT_IMP: Mean_G
+LIME: Mean_G
+SHAP: Mean_G
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1   Feature_2   Agreement 
+-----------------  ----------  ----------  ----------
+FEAT_IMP vs LIME   Mean_G      Mean_G      TRUE      
+FEAT_IMP vs SHAP   Mean_G      Mean_G      TRUE      
+LIME vs SHAP       Mean_G      Mean_G      TRUE      
+
+Agreeing pairs: 3 / 3 (100.0%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: naive_bayes
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=wilt, Method=naive_bayes ===
+No scaling applied for method: naive_bayes
+Error: Only one model should be specified in tuneGrid with no resampling
+Execution halted
+FAILED - See error above
+
+
+========================================
+Model: PART
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=wilt, Method=PART ===
+No scaling applied for method: PART
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature     importance.05   importance   importance.95   permutation.error
+---------  --------------  -----------  --------------  ------------------
+Mean_R          33.419512    33.658537        34.72195           0.2851829
+Mean_G          32.653658    32.926829        33.19024           0.2789833
+Mean_NIR         2.302439     2.390244         2.55122           0.0202521
+GLCM_Pan         1.000000     1.000000         1.00000           0.0084728
+SD_Plan          1.000000     1.000000         1.00000           0.0084728
+
+=== LIME Rankings ===
+
+
+Feature     Importance
+---------  -----------
+Mean_G       0.2926779
+Mean_R       0.1992983
+Mean_NIR     0.0671220
+GLCM_Pan     0.0139795
+SD_Plan      0.0125557
+
+=== SHAP (IML Shapley) Rankings ===
+
+
+Feature     Importance
+---------  -----------
+Mean_G       0.4429005
+Mean_R       0.3863559
+Mean_NIR     0.0125633
+GLCM_Pan     0.0000000
+SD_Plan      0.0000000
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair                Spearman   Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME         0.5                 3
+FEAT_IMP vs SHAP         0.5                 3
+LIME vs SHAP             1.0                 3
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME   NA                        0
+FEAT_IMP vs SHAP   NA                        0
+LIME vs SHAP       NA                        1
+
+=== Top-1 Features ===
+FEAT_IMP: Mean_R
+LIME: Mean_G
+SHAP: Mean_G
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1   Feature_2   Agreement 
+-----------------  ----------  ----------  ----------
+FEAT_IMP vs LIME   Mean_R      Mean_G      FALSE     
+FEAT_IMP vs SHAP   Mean_R      Mean_G      FALSE     
+LIME vs SHAP       Mean_G      Mean_G      TRUE      
+
+Agreeing pairs: 1 / 3 (33.3%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: rbfDDA
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=wilt, Method=rbfDDA ===
+Applying data scaling for method: rbfDDA
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature     importance.05   importance   importance.95   permutation.error
+---------  --------------  -----------  --------------  ------------------
+GLCM_Pan                1            1               1           0.0539368
+Mean_G                  1            1               1           0.0539368
+Mean_R                  1            1               1           0.0539368
+Mean_NIR                1            1               1           0.0539368
+SD_Plan                 1            1               1           0.0539368
+
+=== LIME Rankings ===
+
+
+Feature     Importance
+---------  -----------
+Mean_G        4.513682
+Mean_R        3.170872
+Mean_NIR      2.603904
+GLCM_Pan      1.948557
+SD_Plan       0.995364
+
+=== SHAP (IML Shapley) Rankings ===
+
+
+Feature     Importance
+---------  -----------
+Mean_NIR     12.903295
+Mean_G        9.690124
+SD_Plan       4.705824
+GLCM_Pan      4.691251
+Mean_R        4.225457
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair                Spearman   Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME           1                 2
+FEAT_IMP vs SHAP          NA                 1
+LIME vs SHAP              -1                 2
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME   NA                        0
+FEAT_IMP vs SHAP   NA                        0
+LIME vs SHAP       NA                        0
+
+=== Top-1 Features ===
+FEAT_IMP: GLCM_Pan
+LIME: Mean_G
+SHAP: Mean_NIR
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1   Feature_2   Agreement 
+-----------------  ----------  ----------  ----------
+FEAT_IMP vs LIME   GLCM_Pan    Mean_G      FALSE     
+FEAT_IMP vs SHAP   GLCM_Pan    Mean_NIR    FALSE     
+LIME vs SHAP       Mean_G      Mean_NIR    FALSE     
+
+Agreeing pairs: 0 / 3 (0.0%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: rda
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=wilt, Method=rda ===
+Applying data scaling for method: rda
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature     importance.05   importance   importance.95   permutation.error
+---------  --------------  -----------  --------------  ------------------
+Mean_R           8.122727     8.488636        8.629546           0.1543707
+Mean_G           4.368182     4.500000        4.579546           0.0818351
+Mean_NIR         1.822727     1.988636        2.027273           0.0361645
+SD_Plan          1.477273     1.500000        1.654546           0.0272784
+GLCM_Pan         1.220454     1.318182        1.336364           0.0239719
+
+=== LIME Rankings ===
+Error in get_lime: missing value where TRUE/FALSE needed 
+
+=== SHAP (IML Shapley) Rankings ===
+
+
+Feature     Importance
+---------  -----------
+Mean_R       0.2932803
+Mean_G       0.2402742
+Mean_NIR     0.1556583
+SD_Plan      0.1158409
+GLCM_Pan     0.0389208
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair                Spearman   Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs SHAP           1                 3
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs SHAP   NA                        1
+
+=== Top-1 Features ===
+FEAT_IMP: Mean_R
+SHAP: Mean_R
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1   Feature_2   Agreement 
+-----------------  ----------  ----------  ----------
+FEAT_IMP vs SHAP   Mean_R      Mean_R      TRUE      
+
+Agreeing pairs: 1 / 1 (100.0%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: rf
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=wilt, Method=rf ===
+No scaling applied for method: rf
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature     importance.05   importance   importance.95   permutation.error
+---------  --------------  -----------  --------------  ------------------
+Mean_R          0.2268237    0.2326927       0.2336846           0.2326927
+Mean_G          0.1966522    0.1983881       0.2011986           0.1983881
+Mean_NIR        0.0133912    0.0152924       0.0156644           0.0152924
+SD_Plan         0.0080595    0.0095061       0.0103740           0.0095061
+GLCM_Pan        0.0026865    0.0030998       0.0035131           0.0030998
+Warning message:
+In initialize(...) :
+  Model error is 0, switching from compare='ratio' to compare='difference'
+
+=== LIME Rankings ===
+
+
+Feature     Importance
+---------  -----------
+Mean_G       0.2624707
+Mean_R       0.1087076
+Mean_NIR     0.0310258
+SD_Plan      0.0202483
+GLCM_Pan     0.0090002
+
+=== SHAP (IML Shapley) Rankings ===
+
+
+Feature     Importance
+---------  -----------
+Mean_G        0.400200
+Mean_R        0.363100
+Mean_NIR      0.078568
+SD_Plan       0.054084
+GLCM_Pan      0.021640
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair                Spearman   Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME         0.5                 3
+FEAT_IMP vs SHAP         0.5                 3
+LIME vs SHAP             1.0                 3
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME   NA                        0
+FEAT_IMP vs SHAP   NA                        0
+LIME vs SHAP       NA                        1
+
+=== Top-1 Features ===
+FEAT_IMP: Mean_R
+LIME: Mean_G
+SHAP: Mean_G
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1   Feature_2   Agreement 
+-----------------  ----------  ----------  ----------
+FEAT_IMP vs LIME   Mean_R      Mean_G      FALSE     
+FEAT_IMP vs SHAP   Mean_R      Mean_G      FALSE     
+LIME vs SHAP       Mean_G      Mean_G      TRUE      
+
+Agreeing pairs: 1 / 3 (33.3%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: rpart
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=wilt, Method=rpart ===
+No scaling applied for method: rpart
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature     importance.05   importance   importance.95   permutation.error
+---------  --------------  -----------  --------------  ------------------
+GLCM_Pan                1            1               1           0.0539368
+Mean_G                  1            1               1           0.0539368
+Mean_R                  1            1               1           0.0539368
+Mean_NIR                1            1               1           0.0539368
+SD_Plan                 1            1               1           0.0539368
+
+=== LIME Rankings ===
+Error in get_lime: Response is constant across permutations. Please check your model 
+
+=== SHAP (IML Shapley) Rankings ===
+
+
+Feature     Importance
+---------  -----------
+GLCM_Pan             0
+Mean_G               0
+Mean_NIR             0
+Mean_R               0
+SD_Plan              0
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair                Spearman   Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs SHAP           1                 2
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs SHAP   NA                        1
+
+=== Top-1 Features ===
+FEAT_IMP: GLCM_Pan
+SHAP: GLCM_Pan
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1   Feature_2   Agreement 
+-----------------  ----------  ----------  ----------
+FEAT_IMP vs SHAP   GLCM_Pan    GLCM_Pan    TRUE      
+
+Agreeing pairs: 1 / 1 (100.0%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: simpls
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=wilt, Method=simpls ===
+Applying data scaling for method: simpls
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature     importance.05   importance   importance.95   permutation.error
+---------  --------------  -----------  --------------  ------------------
+GLCM_Pan                1            1               1           0.0539368
+Mean_G                  1            1               1           0.0539368
+Mean_R                  1            1               1           0.0539368
+Mean_NIR                1            1               1           0.0539368
+SD_Plan                 1            1               1           0.0539368
+
+=== LIME Rankings ===
+
+
+Feature     Importance
+---------  -----------
+Mean_G       0.0257045
+SD_Plan      0.0148211
+Mean_NIR     0.0132115
+GLCM_Pan     0.0014517
+Mean_R       0.0013201
+
+=== SHAP (IML Shapley) Rankings ===
+
+
+Feature     Importance
+---------  -----------
+Mean_NIR     0.0061898
+SD_Plan      0.0038518
+Mean_G       0.0029441
+GLCM_Pan     0.0004041
+Mean_R       0.0000108
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair                Spearman   Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME          NA                 1
+FEAT_IMP vs SHAP          NA                 1
+LIME vs SHAP              -1                 3
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME   NA                        0
+FEAT_IMP vs SHAP   NA                        0
+LIME vs SHAP       NA                        0
+
+=== Top-1 Features ===
+FEAT_IMP: GLCM_Pan
+LIME: Mean_G
+SHAP: Mean_NIR
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1   Feature_2   Agreement 
+-----------------  ----------  ----------  ----------
+FEAT_IMP vs LIME   GLCM_Pan    Mean_G      FALSE     
+FEAT_IMP vs SHAP   GLCM_Pan    Mean_NIR    FALSE     
+LIME vs SHAP       Mean_G      Mean_NIR    FALSE     
+
+Agreeing pairs: 0 / 3 (0.0%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: svmLinear
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=wilt, Method=svmLinear ===
+Applying data scaling for method: svmLinear
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature     importance.05   importance   importance.95   permutation.error
+---------  --------------  -----------  --------------  ------------------
+Mean_G          7.6211111     7.722222        7.853333           0.2872494
+Mean_R          6.3988889     6.427778        6.512222           0.2390990
+Mean_NIR        1.5788889     1.666667        1.692222           0.0619963
+SD_Plan         0.9700000     1.005556        1.022222           0.0374044
+GLCM_Pan        0.9944444     1.000000        1.010000           0.0371978
+
+=== LIME Rankings ===
+Error in get_lime: Response is constant across permutations. Please check your model 
+Warning message:
+In method$prob(modelFit = modelFit, newdata = newdata, submodels = param) :
+  kernlab class probability calculations failed; returning NAs
+Warning messages:
+1: In method$prob(modelFit = modelFit, newdata = newdata, submodels = param) :
+  kernlab class probability calculations failed; returning NAs
+2: In method$prob(modelFit = modelFit, newdata = newdata, submodels = param) :
+  kernlab class probability calculations failed; returning NAs
+3: In method$prob(modelFit = modelFit, newdata = newdata, submodels = param) :
+  kernlab class probability calculations failed; returning NAs
+4: In method$prob(modelFit = modelFit, newdata = newdata, submodels = param) :
+  kernlab class probability calculations failed; returning NAs
+5: In method$prob(modelFit = modelFit, newdata = newdata, submodels = param) :
+  kernlab class probability calculations failed; returning NAs
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs SHAP   NA                        0
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs SHAP   NA                        0
+
+=== Top-1 Features ===
+FEAT_IMP: Mean_G
+SHAP: NA
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1   Feature_2   Agreement 
+-----------------  ----------  ----------  ----------
+FEAT_IMP vs SHAP   Mean_G      NA          FALSE     
+
+Agreeing pairs: 0 / 1 (0.0%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: svmRadial
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=wilt, Method=svmRadial ===
+Applying data scaling for method: svmRadial
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature     importance.05   importance   importance.95   permutation.error
+---------  --------------  -----------  --------------  ------------------
+Mean_R           4.408392     4.510490        4.562238           0.1332920
+Mean_G           3.324476     3.363636        3.468532           0.0994007
+Mean_NIR         1.230769     1.258741        1.363636           0.0371978
+SD_Plan          1.144056     1.160839        1.200000           0.0343046
+GLCM_Pan         1.092308     1.118881        1.135664           0.0330647
+
+=== LIME Rankings ===
+Error in get_lime: Response is constant across permutations. Please check your model 
+Warning message:
+In method$prob(modelFit = modelFit, newdata = newdata, submodels = param) :
+  kernlab class probability calculations failed; returning NAs
+Warning messages:
+1: In method$prob(modelFit = modelFit, newdata = newdata, submodels = param) :
+  kernlab class probability calculations failed; returning NAs
+2: In method$prob(modelFit = modelFit, newdata = newdata, submodels = param) :
+  kernlab class probability calculations failed; returning NAs
+3: In method$prob(modelFit = modelFit, newdata = newdata, submodels = param) :
+  kernlab class probability calculations failed; returning NAs
+4: In method$prob(modelFit = modelFit, newdata = newdata, submodels = param) :
+  kernlab class probability calculations failed; returning NAs
+5: In method$prob(modelFit = modelFit, newdata = newdata, submodels = param) :
+  kernlab class probability calculations failed; returning NAs
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs SHAP   NA                        0
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs SHAP   NA                        0
+
+=== Top-1 Features ===
+FEAT_IMP: Mean_R
+SHAP: NA
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1   Feature_2   Agreement 
+-----------------  ----------  ----------  ----------
+FEAT_IMP vs SHAP   Mean_R      NA          FALSE     
+
+Agreeing pairs: 0 / 1 (0.0%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: rfRules
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=wilt, Method=rfRules ===
+No scaling applied for method: rfRules
+Registered S3 method overwritten by 'RRF':
+  method      from        
+  plot.margin randomForest
+2000 rules (length<=2) were extracted from the first 500 trees.
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature     importance.05   importance   importance.95   permutation.error
+---------  --------------  -----------  --------------  ------------------
+Mean_R           4.966871     5.184049        5.249080           0.1746229
+Mean_G           4.867485     5.036810        5.133742           0.1696632
+GLCM_Pan         1.000000     1.000000        1.000000           0.0336846
+Mean_NIR         1.000000     1.000000        1.000000           0.0336846
+SD_Plan          1.000000     1.000000        1.000000           0.0336846
+
+=== LIME Rankings ===
+Error in get_lime: only classification models that produce probabilities are allowed 
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs SHAP   NA                        0
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs SHAP   NA                        0
+
+=== Top-1 Features ===
+FEAT_IMP: Mean_R
+SHAP: NA
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1   Feature_2   Agreement 
+-----------------  ----------  ----------  ----------
+FEAT_IMP vs SHAP   Mean_R      NA          FALSE     
+
+Agreeing pairs: 0 / 1 (0.0%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: knn
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=wilt, Method=knn ===
+Applying data scaling for method: knn
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature     importance.05   importance   importance.95   permutation.error
+---------  --------------  -----------  --------------  ------------------
+Mean_R           4.944348     5.121739        5.333913           0.1217194
+Mean_G           3.158261     3.226087        3.424348           0.0766687
+Mean_NIR         1.636522     1.695652        1.730435           0.0402976
+SD_Plan          1.389565     1.495652        1.546087           0.0355445
+GLCM_Pan         1.326957     1.400000        1.480000           0.0332713
+
+=== LIME Rankings ===
+
+
+Feature     Importance
+---------  -----------
+Mean_G       0.0323659
+Mean_R       0.0209389
+GLCM_Pan     0.0161326
+Mean_NIR     0.0106971
+SD_Plan      0.0094720
+
+=== SHAP (IML Shapley) Rankings ===
+
+
+Feature     Importance
+---------  -----------
+Mean_G       0.2262667
+Mean_R       0.2152000
+Mean_NIR     0.1649333
+SD_Plan      0.1208667
+GLCM_Pan     0.0899333
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair                Spearman   Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME        -1.0                 2
+FEAT_IMP vs SHAP         0.5                 3
+LIME vs SHAP             1.0                 2
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME   NA                        0
+FEAT_IMP vs SHAP   NA                        0
+LIME vs SHAP       NA                        1
+
+=== Top-1 Features ===
+FEAT_IMP: Mean_R
+LIME: Mean_G
+SHAP: Mean_G
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1   Feature_2   Agreement 
+-----------------  ----------  ----------  ----------
+FEAT_IMP vs LIME   Mean_R      Mean_G      FALSE     
+FEAT_IMP vs SHAP   Mean_R      Mean_G      FALSE     
+LIME vs SHAP       Mean_G      Mean_G      TRUE      
+
+Agreeing pairs: 1 / 3 (33.3%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: bayesglm
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=wilt, Method=bayesglm ===
+Applying data scaling for method: bayesglm
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+Warning message:
+fitted probabilities numerically 0 or 1 occurred 
+
+=== IML Rankings ===
+
+
+feature     importance.05   importance   importance.95   permutation.error
+---------  --------------  -----------  --------------  ------------------
+Mean_G           9.624837     9.732026        9.856209           0.3077082
+Mean_R           7.905882     8.104575        8.125490           0.2562513
+Mean_NIR         2.431373     2.464052        2.580392           0.0779087
+SD_Plan          1.032680     1.052288        1.095425           0.0332713
+GLCM_Pan         1.006536     1.013072        1.018301           0.0320314
+
+=== LIME Rankings ===
+
+
+Feature     Importance
+---------  -----------
+Mean_G       0.5116991
+Mean_R       0.1961443
+Mean_NIR     0.0620740
+SD_Plan      0.0131267
+GLCM_Pan     0.0102891
+
+=== SHAP (IML Shapley) Rankings ===
+
+
+Feature     Importance
+---------  -----------
+Mean_G       0.5053943
+Mean_R       0.2226726
+Mean_NIR     0.0586696
+SD_Plan      0.0135648
+GLCM_Pan     0.0006056
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair                Spearman   Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME           1                 3
+FEAT_IMP vs SHAP           1                 3
+LIME vs SHAP               1                 3
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME   NA                        1
+FEAT_IMP vs SHAP   NA                        1
+LIME vs SHAP       NA                        1
+
+=== Top-1 Features ===
+FEAT_IMP: Mean_G
+LIME: Mean_G
+SHAP: Mean_G
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1   Feature_2   Agreement 
+-----------------  ----------  ----------  ----------
+FEAT_IMP vs LIME   Mean_G      Mean_G      TRUE      
+FEAT_IMP vs SHAP   Mean_G      Mean_G      TRUE      
+LIME vs SHAP       Mean_G      Mean_G      TRUE      
+
+Agreeing pairs: 3 / 3 (100.0%)
+
+=== All Results Recorded ===
+

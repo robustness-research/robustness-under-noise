@@ -1,0 +1,1597 @@
+Dataset: waveform-5000
+Generated: Mon Nov 24 10:36:01 PM CET 2025
+======================================
+
+
+========================================
+Model: C5.0
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=waveform-5000, Method=C5.0 ===
+No scaling applied for method: C5.0
+Error: Only one model should be specified in tuneGrid with no resampling
+Execution halted
+FAILED - See error above
+
+
+========================================
+Model: ctree
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=waveform-5000, Method=ctree ===
+No scaling applied for method: ctree
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature    importance.05   importance   importance.95   permutation.error
+--------  --------------  -----------  --------------  ------------------
+x11             1.632545     1.684284        1.700695              0.2422
+x12             1.389152     1.406120        1.421697              0.2022
+x10             1.329346     1.365786        1.371627              0.1964
+x5              1.308206     1.335188        1.355216              0.1920
+x16             1.081780     1.093185        1.104311              0.1572
+
+=== LIME Rankings ===
+
+
+Feature    Importance
+--------  -----------
+x11         0.2176925
+x10         0.1420170
+x12         0.1109631
+x5          0.0681452
+x9          0.0578510
+
+=== SHAP (IML Shapley) Rankings ===
+
+
+Feature    Importance
+--------  -----------
+x11         0.1676434
+x10         0.1509379
+x9          0.0650846
+x5          0.0633012
+x12         0.0622787
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair                Spearman   Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME         0.5                 3
+FEAT_IMP vs SHAP         1.0                 2
+LIME vs SHAP             1.0                 2
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME   NA                        1
+FEAT_IMP vs SHAP   NA                        1
+LIME vs SHAP       NA                        1
+
+=== Top-1 Features ===
+FEAT_IMP: x11
+LIME: x11
+SHAP: x11
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1   Feature_2   Agreement 
+-----------------  ----------  ----------  ----------
+FEAT_IMP vs LIME   x11         x11         TRUE      
+FEAT_IMP vs SHAP   x11         x11         TRUE      
+LIME vs SHAP       x11         x11         TRUE      
+
+Agreeing pairs: 3 / 3 (100.0%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: fda
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=waveform-5000, Method=fda ===
+No scaling applied for method: fda
+Loading required package: earth
+Loading required package: Formula
+Loading required package: plotmo
+Loading required package: plotrix
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature    importance.05   importance   importance.95   permutation.error
+--------  --------------  -----------  --------------  ------------------
+x11             1.916254     1.941696        1.964664              0.4396
+x1              1.000000     1.000000        1.000000              0.2264
+x2              1.000000     1.000000        1.000000              0.2264
+x3              1.000000     1.000000        1.000000              0.2264
+x4              1.000000     1.000000        1.000000              0.2264
+
+=== LIME Rankings ===
+
+
+Feature    Importance
+--------  -----------
+x11         0.6112948
+x30         0.0080389
+x27         0.0070105
+x6          0.0067946
+x23         0.0066505
+
+=== SHAP (IML Shapley) Rankings ===
+
+
+Feature    Importance
+--------  -----------
+x11         0.4465836
+x1          0.0000000
+x10         0.0000000
+x12         0.0000000
+x13         0.0000000
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair                Spearman   Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME          NA                 1
+FEAT_IMP vs SHAP           1                 2
+LIME vs SHAP              NA                 1
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME   NA                        1
+FEAT_IMP vs SHAP   NA                        1
+LIME vs SHAP       NA                        1
+
+=== Top-1 Features ===
+FEAT_IMP: x11
+LIME: x11
+SHAP: x11
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1   Feature_2   Agreement 
+-----------------  ----------  ----------  ----------
+FEAT_IMP vs LIME   x11         x11         TRUE      
+FEAT_IMP vs SHAP   x11         x11         TRUE      
+LIME vs SHAP       x11         x11         TRUE      
+
+Agreeing pairs: 3 / 3 (100.0%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: gbm
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=waveform-5000, Method=gbm ===
+No scaling applied for method: gbm
+Iter   TrainDeviance   ValidDeviance   StepSize   Improve
+     1        1.2254            -nan     0.1000    0.0267
+     2        1.1787            -nan     0.1000    0.0236
+     3        1.1375            -nan     0.1000    0.0187
+     4        1.1044            -nan     0.1000    0.0166
+     5        1.0777            -nan     0.1000    0.0126
+     6        1.0506            -nan     0.1000    0.0126
+     7        1.0267            -nan     0.1000    0.0114
+     8        1.0078            -nan     0.1000    0.0093
+     9        0.9888            -nan     0.1000    0.0090
+    10        0.9745            -nan     0.1000    0.0063
+    20        0.8638            -nan     0.1000    0.0033
+    40        0.7489            -nan     0.1000    0.0019
+    50        0.7123            -nan     0.1000    0.0009
+
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature    importance.05   importance   importance.95   permutation.error
+--------  --------------  -----------  --------------  ------------------
+x11             1.705587     1.712290        1.763129              0.2452
+x10             1.296927     1.304469        1.355307              0.1868
+x12             1.268436     1.283520        1.305307              0.1838
+x5              1.133240     1.156425        1.174860              0.1656
+x6              1.059497     1.071229        1.080168              0.1534
+
+=== LIME Rankings ===
+
+
+Feature    Importance
+--------  -----------
+x11         0.2184466
+x10         0.1226518
+x12         0.1003103
+x5          0.0586913
+x17         0.0300864
+
+=== SHAP (IML Shapley) Rankings ===
+
+
+Feature    Importance
+--------  -----------
+x11         0.1651230
+x10         0.0944707
+x12         0.0849888
+x5          0.0380450
+x6          0.0253016
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair                Spearman   Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME           1                 3
+FEAT_IMP vs SHAP           1                 3
+LIME vs SHAP               1                 3
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME   NA                        1
+FEAT_IMP vs SHAP   NA                        1
+LIME vs SHAP       NA                        1
+
+=== Top-1 Features ===
+FEAT_IMP: x11
+LIME: x11
+SHAP: x11
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1   Feature_2   Agreement 
+-----------------  ----------  ----------  ----------
+FEAT_IMP vs LIME   x11         x11         TRUE      
+FEAT_IMP vs SHAP   x11         x11         TRUE      
+LIME vs SHAP       x11         x11         TRUE      
+
+Agreeing pairs: 3 / 3 (100.0%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: gcvEarth
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=waveform-5000, Method=gcvEarth ===
+No scaling applied for method: gcvEarth
+Loading required package: earth
+Loading required package: Formula
+Loading required package: plotmo
+Loading required package: plotrix
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature    importance.05   importance   importance.95   permutation.error
+--------  --------------  -----------  --------------  ------------------
+x11             1.691075     1.732240        1.812386              0.1902
+x5              1.347905     1.362477        1.390528              0.1496
+x10             1.272860     1.304189        1.316576              0.1432
+x12             1.268488     1.304189        1.332605              0.1432
+x9              1.253552     1.293260        1.302368              0.1420
+
+=== LIME Rankings ===
+
+
+Feature    Importance
+--------  -----------
+x11         0.2406124
+x10         0.1591651
+x9          0.1113752
+x12         0.1105033
+x5          0.0901453
+
+=== SHAP (IML Shapley) Rankings ===
+
+
+Feature    Importance
+--------  -----------
+x11         0.1961990
+x9          0.1493848
+x10         0.1384603
+x16         0.0813302
+x7          0.0798867
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair                Spearman   Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME         1.0                 2
+FEAT_IMP vs SHAP         1.0                 2
+LIME vs SHAP             0.5                 3
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME   NA                        1
+FEAT_IMP vs SHAP   NA                        1
+LIME vs SHAP       NA                        1
+
+=== Top-1 Features ===
+FEAT_IMP: x11
+LIME: x11
+SHAP: x11
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1   Feature_2   Agreement 
+-----------------  ----------  ----------  ----------
+FEAT_IMP vs LIME   x11         x11         TRUE      
+FEAT_IMP vs SHAP   x11         x11         TRUE      
+LIME vs SHAP       x11         x11         TRUE      
+
+Agreeing pairs: 3 / 3 (100.0%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: JRip
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=waveform-5000, Method=JRip ===
+No scaling applied for method: JRip
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature    importance.05   importance   importance.95   permutation.error
+--------  --------------  -----------  --------------  ------------------
+x11             2.197414     2.217672        2.275431              0.2058
+x10             1.658621     1.756466        1.766379              0.1630
+x12             1.453017     1.480603        1.502155              0.1374
+x5              1.267672     1.282328        1.307328              0.1190
+x15             1.202155     1.230603        1.245259              0.1142
+
+=== LIME Rankings ===
+
+
+Feature    Importance
+--------  -----------
+x11         0.3533994
+x10         0.1474501
+x12         0.1172445
+x5          0.0571449
+x15         0.0505613
+
+=== SHAP (IML Shapley) Rankings ===
+
+
+Feature    Importance
+--------  -----------
+x11         0.1963012
+x10         0.1600718
+x17         0.0946921
+x6          0.0833489
+x12         0.0789439
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair                Spearman   Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME           1                 3
+FEAT_IMP vs SHAP           1                 2
+LIME vs SHAP               1                 2
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME   NA                        1
+FEAT_IMP vs SHAP   NA                        1
+LIME vs SHAP       NA                        1
+
+=== Top-1 Features ===
+FEAT_IMP: x11
+LIME: x11
+SHAP: x11
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1   Feature_2   Agreement 
+-----------------  ----------  ----------  ----------
+FEAT_IMP vs LIME   x11         x11         TRUE      
+FEAT_IMP vs SHAP   x11         x11         TRUE      
+LIME vs SHAP       x11         x11         TRUE      
+
+Agreeing pairs: 3 / 3 (100.0%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: lvq
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=waveform-5000, Method=lvq ===
+Applying data scaling for method: lvq
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature    importance.05   importance   importance.95   permutation.error
+--------  --------------  -----------  --------------  ------------------
+x11             1.233237     1.250000        1.295087              0.1730
+x12             1.238439     1.250000        1.277457              0.1730
+x10             1.178324     1.183526        1.221098              0.1638
+x5              1.112717     1.141619        1.169364              0.1580
+x9              1.102023     1.128613        1.131214              0.1562
+
+=== LIME Rankings ===
+Error in get_lime: only classification models that produce probabilities are allowed 
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs SHAP   NA                        0
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs SHAP   NA                        0
+
+=== Top-1 Features ===
+FEAT_IMP: x11
+SHAP: NA
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1   Feature_2   Agreement 
+-----------------  ----------  ----------  ----------
+FEAT_IMP vs SHAP   x11         NA          FALSE     
+
+Agreeing pairs: 0 / 1 (0.0%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: mlpML
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=waveform-5000, Method=mlpML ===
+Applying data scaling for method: mlpML
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+Warning message:
+At least one layer had zero units and were removed. The new structure is 1 
+
+=== IML Rankings ===
+
+
+feature    importance.05   importance   importance.95   permutation.error
+--------  --------------  -----------  --------------  ------------------
+x11             1.290399     1.338257        1.350369              0.1812
+x10             1.289513     1.302806        1.344165              0.1764
+x6              1.227770     1.237814        1.267651              0.1676
+x9              1.210044     1.228951        1.272378              0.1664
+x5              1.153619     1.192024        1.214771              0.1614
+
+=== LIME Rankings ===
+
+
+Feature    Importance
+--------  -----------
+x10         0.1588174
+x11         0.1496562
+x9          0.1158324
+x6          0.1093501
+x12         0.0842994
+
+=== SHAP (IML Shapley) Rankings ===
+
+
+Feature    Importance
+--------  -----------
+x10         0.1407700
+x9          0.1327433
+x11         0.1292677
+x6          0.0773278
+x17         0.0651948
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair                Spearman   Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME        -1.0                 2
+FEAT_IMP vs SHAP        -1.0                 2
+LIME vs SHAP             0.5                 3
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME   NA                        0
+FEAT_IMP vs SHAP   NA                        0
+LIME vs SHAP       NA                        1
+
+=== Top-1 Features ===
+FEAT_IMP: x11
+LIME: x10
+SHAP: x10
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1   Feature_2   Agreement 
+-----------------  ----------  ----------  ----------
+FEAT_IMP vs LIME   x11         x10         FALSE     
+FEAT_IMP vs SHAP   x11         x10         FALSE     
+LIME vs SHAP       x10         x10         TRUE      
+
+Agreeing pairs: 1 / 3 (33.3%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: multinom
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=waveform-5000, Method=multinom ===
+Applying data scaling for method: multinom
+# weights:  42 (41 variable)
+initial  value 3465.735903 
+iter  10 value 1749.316333
+iter  20 value 1542.918907
+iter  30 value 1522.294696
+iter  40 value 1516.398123
+iter  50 value 1516.107915
+final  value 1516.107371 
+converged
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature    importance.05   importance   importance.95   permutation.error
+--------  --------------  -----------  --------------  ------------------
+x11             1.393093     1.408633        1.441151              0.1958
+x10             1.278273     1.290647        1.294101              0.1794
+x12             1.229065     1.257554        1.265611              0.1748
+x5              1.213237     1.241727        1.244029              0.1726
+x6              1.228201     1.237410        1.265899              0.1720
+
+=== LIME Rankings ===
+
+
+Feature    Importance
+--------  -----------
+x11         0.1821180
+x10         0.1609391
+x12         0.1122277
+x9          0.1066539
+x6          0.1030342
+
+=== SHAP (IML Shapley) Rankings ===
+
+
+Feature    Importance
+--------  -----------
+x11         0.1273078
+x10         0.1234261
+x9          0.0947248
+x6          0.0788757
+x16         0.0618238
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair                Spearman   Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME           1                 3
+FEAT_IMP vs SHAP           1                 2
+LIME vs SHAP               1                 2
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME   NA                        1
+FEAT_IMP vs SHAP   NA                        1
+LIME vs SHAP       NA                        1
+
+=== Top-1 Features ===
+FEAT_IMP: x11
+LIME: x11
+SHAP: x11
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1   Feature_2   Agreement 
+-----------------  ----------  ----------  ----------
+FEAT_IMP vs LIME   x11         x11         TRUE      
+FEAT_IMP vs SHAP   x11         x11         TRUE      
+LIME vs SHAP       x11         x11         TRUE      
+
+Agreeing pairs: 3 / 3 (100.0%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: naive_bayes
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=waveform-5000, Method=naive_bayes ===
+No scaling applied for method: naive_bayes
+Error: Only one model should be specified in tuneGrid with no resampling
+Execution halted
+FAILED - See error above
+
+
+========================================
+Model: PART
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=waveform-5000, Method=PART ===
+No scaling applied for method: PART
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature    importance.05   importance   importance.95   permutation.error
+--------  --------------  -----------  --------------  ------------------
+x12             1.672921     1.699360        1.779105              0.1594
+x11             1.637100     1.654584        1.691258              0.1552
+x10             1.537313     1.609808        1.630704              0.1510
+x5              1.376972     1.405117        1.457996              0.1318
+x16             1.267804     1.328358        1.355224              0.1246
+
+=== LIME Rankings ===
+
+
+Feature    Importance
+--------  -----------
+x11         0.1880163
+x12         0.1102243
+x10         0.1083058
+x16         0.0844474
+x17         0.0686397
+
+=== SHAP (IML Shapley) Rankings ===
+
+
+Feature    Importance
+--------  -----------
+x11         0.1404392
+x10         0.1099741
+x12         0.1046950
+x9          0.0991647
+x6          0.0800608
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair                Spearman   Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME         0.5                 3
+FEAT_IMP vs SHAP        -0.5                 3
+LIME vs SHAP             0.5                 3
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME   NA                        0
+FEAT_IMP vs SHAP   NA                        0
+LIME vs SHAP       NA                        1
+
+=== Top-1 Features ===
+FEAT_IMP: x12
+LIME: x11
+SHAP: x11
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1   Feature_2   Agreement 
+-----------------  ----------  ----------  ----------
+FEAT_IMP vs LIME   x12         x11         FALSE     
+FEAT_IMP vs SHAP   x12         x11         FALSE     
+LIME vs SHAP       x11         x11         TRUE      
+
+Agreeing pairs: 1 / 3 (33.3%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: rbfDDA
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=waveform-5000, Method=rbfDDA ===
+Applying data scaling for method: rbfDDA
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature    importance.05   importance   importance.95   permutation.error
+--------  --------------  -----------  --------------  ------------------
+x12             1.002990     1.006579        1.006579              0.3366
+x11             1.004904     1.005383        1.007536              0.3362
+x10             1.000718     1.004785        1.005263              0.3360
+x4              1.000598     1.003588        1.004665              0.3356
+x5              1.002392     1.003588        1.004546              0.3356
+
+=== LIME Rankings ===
+
+
+Feature    Importance
+--------  -----------
+x11         0.8271679
+x10         0.7354736
+x34         0.6483157
+x20         0.6243909
+x23         0.5703387
+
+=== SHAP (IML Shapley) Rankings ===
+
+
+Feature    Importance
+--------  -----------
+x11          6.240815
+x10          4.418958
+x29          4.416790
+x20          3.764503
+x30          3.554575
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair                Spearman   Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME           1                 2
+FEAT_IMP vs SHAP           1                 2
+LIME vs SHAP               1                 2
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME   NA                        0
+FEAT_IMP vs SHAP   NA                        0
+LIME vs SHAP       NA                        1
+
+=== Top-1 Features ===
+FEAT_IMP: x12
+LIME: x11
+SHAP: x11
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1   Feature_2   Agreement 
+-----------------  ----------  ----------  ----------
+FEAT_IMP vs LIME   x12         x11         FALSE     
+FEAT_IMP vs SHAP   x12         x11         FALSE     
+LIME vs SHAP       x11         x11         TRUE      
+
+Agreeing pairs: 1 / 3 (33.3%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: rda
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=waveform-5000, Method=rda ===
+Applying data scaling for method: rda
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature    importance.05   importance   importance.95   permutation.error
+--------  --------------  -----------  --------------  ------------------
+x11             1.260000     1.301613        1.364839              0.1614
+x10             1.174193     1.211290        1.227097              0.1502
+x9              1.138710     1.167742        1.186452              0.1448
+x6              1.149355     1.153226        1.189677              0.1430
+x7              1.105161     1.133871        1.148710              0.1406
+
+=== LIME Rankings ===
+
+
+Feature    Importance
+--------  -----------
+x11         0.1235614
+x10         0.1153745
+x9          0.0802084
+x12         0.0735442
+x6          0.0694448
+
+=== SHAP (IML Shapley) Rankings ===
+
+
+Feature    Importance
+--------  -----------
+x11         0.1444579
+x10         0.1281031
+x9          0.0748886
+x16         0.0559964
+x17         0.0527129
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair                Spearman   Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME           1                 3
+FEAT_IMP vs SHAP           1                 3
+LIME vs SHAP               1                 3
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME   NA                        1
+FEAT_IMP vs SHAP   NA                        1
+LIME vs SHAP       NA                        1
+
+=== Top-1 Features ===
+FEAT_IMP: x11
+LIME: x11
+SHAP: x11
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1   Feature_2   Agreement 
+-----------------  ----------  ----------  ----------
+FEAT_IMP vs LIME   x11         x11         TRUE      
+FEAT_IMP vs SHAP   x11         x11         TRUE      
+LIME vs SHAP       x11         x11         TRUE      
+
+Agreeing pairs: 3 / 3 (100.0%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: rf
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=waveform-5000, Method=rf ===
+No scaling applied for method: rf
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature    importance.05   importance   importance.95   permutation.error
+--------  --------------  -----------  --------------  ------------------
+x11              0.07824       0.0804         0.08316              0.0804
+x10              0.02788       0.0300         0.03488              0.0300
+x12              0.02120       0.0234         0.02552              0.0234
+x9               0.00512       0.0064         0.00688              0.0064
+x5               0.00520       0.0062         0.00772              0.0062
+Warning message:
+In initialize(...) :
+  Model error is 0, switching from compare='ratio' to compare='difference'
+
+=== LIME Rankings ===
+
+
+Feature    Importance
+--------  -----------
+x11         0.1310232
+x10         0.0948938
+x12         0.0707855
+x9          0.0444118
+x5          0.0328435
+
+=== SHAP (IML Shapley) Rankings ===
+
+
+Feature    Importance
+--------  -----------
+x11          0.153600
+x10          0.107392
+x9           0.050284
+x12          0.045556
+x5           0.042532
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair                Spearman   Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME           1                 3
+FEAT_IMP vs SHAP           1                 2
+LIME vs SHAP               1                 2
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME   NA                        1
+FEAT_IMP vs SHAP   NA                        1
+LIME vs SHAP       NA                        1
+
+=== Top-1 Features ===
+FEAT_IMP: x11
+LIME: x11
+SHAP: x11
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1   Feature_2   Agreement 
+-----------------  ----------  ----------  ----------
+FEAT_IMP vs LIME   x11         x11         TRUE      
+FEAT_IMP vs SHAP   x11         x11         TRUE      
+LIME vs SHAP       x11         x11         TRUE      
+
+Agreeing pairs: 3 / 3 (100.0%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: rpart
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=waveform-5000, Method=rpart ===
+No scaling applied for method: rpart
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature    importance.05   importance   importance.95   permutation.error
+--------  --------------  -----------  --------------  ------------------
+x1                     1            1               1              0.3384
+x2                     1            1               1              0.3384
+x3                     1            1               1              0.3384
+x4                     1            1               1              0.3384
+x5                     1            1               1              0.3384
+
+=== LIME Rankings ===
+Error in get_lime: Response is constant across permutations. Please check your model 
+
+=== SHAP (IML Shapley) Rankings ===
+
+
+Feature    Importance
+--------  -----------
+x1                  0
+x10                 0
+x11                 0
+x12                 0
+x13                 0
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs SHAP   NA                        1
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs SHAP   NA                        1
+
+=== Top-1 Features ===
+FEAT_IMP: x1
+SHAP: x1
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1   Feature_2   Agreement 
+-----------------  ----------  ----------  ----------
+FEAT_IMP vs SHAP   x1          x1          TRUE      
+
+Agreeing pairs: 1 / 1 (100.0%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: simpls
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=waveform-5000, Method=simpls ===
+Applying data scaling for method: simpls
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature    importance.05   importance   importance.95   permutation.error
+--------  --------------  -----------  --------------  ------------------
+x11             1.277929     1.291553        1.332698              0.1896
+x10             1.227793     1.264305        1.295368              0.1856
+x12             1.152316     1.179836        1.190191              0.1732
+x9              1.114441     1.126703        1.133242              0.1654
+x17             1.081199     1.091281        1.125886              0.1602
+
+=== LIME Rankings ===
+
+
+Feature    Importance
+--------  -----------
+x11         0.0727074
+x10         0.0672802
+x12         0.0531798
+x9          0.0369243
+x6          0.0271704
+
+=== SHAP (IML Shapley) Rankings ===
+
+
+Feature    Importance
+--------  -----------
+x11         0.0450922
+x10         0.0375941
+x9          0.0236241
+x12         0.0224226
+x6          0.0167630
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair                Spearman   Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME           1                 3
+FEAT_IMP vs SHAP           1                 2
+LIME vs SHAP               1                 2
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME   NA                        1
+FEAT_IMP vs SHAP   NA                        1
+LIME vs SHAP       NA                        1
+
+=== Top-1 Features ===
+FEAT_IMP: x11
+LIME: x11
+SHAP: x11
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1   Feature_2   Agreement 
+-----------------  ----------  ----------  ----------
+FEAT_IMP vs LIME   x11         x11         TRUE      
+FEAT_IMP vs SHAP   x11         x11         TRUE      
+LIME vs SHAP       x11         x11         TRUE      
+
+Agreeing pairs: 3 / 3 (100.0%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: svmLinear
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=waveform-5000, Method=svmLinear ===
+Applying data scaling for method: svmLinear
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature    importance.05   importance   importance.95   permutation.error
+--------  --------------  -----------  --------------  ------------------
+x11             1.329630     1.354701        1.387180              0.1902
+x10             1.234473     1.260684        1.272650              0.1770
+x12             1.159829     1.193732        1.200855              0.1676
+x9              1.132764     1.163818        1.182336              0.1634
+x6              1.154986     1.160969        1.201994              0.1630
+
+=== LIME Rankings ===
+Error in get_lime: Response is constant across permutations. Please check your model 
+Warning message:
+In method$prob(modelFit = modelFit, newdata = newdata, submodels = param) :
+  kernlab class probability calculations failed; returning NAs
+Warning messages:
+1: In method$prob(modelFit = modelFit, newdata = newdata, submodels = param) :
+  kernlab class probability calculations failed; returning NAs
+2: In method$prob(modelFit = modelFit, newdata = newdata, submodels = param) :
+  kernlab class probability calculations failed; returning NAs
+3: In method$prob(modelFit = modelFit, newdata = newdata, submodels = param) :
+  kernlab class probability calculations failed; returning NAs
+4: In method$prob(modelFit = modelFit, newdata = newdata, submodels = param) :
+  kernlab class probability calculations failed; returning NAs
+5: In method$prob(modelFit = modelFit, newdata = newdata, submodels = param) :
+  kernlab class probability calculations failed; returning NAs
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs SHAP   NA                        0
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs SHAP   NA                        0
+
+=== Top-1 Features ===
+FEAT_IMP: x11
+SHAP: NA
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1   Feature_2   Agreement 
+-----------------  ----------  ----------  ----------
+FEAT_IMP vs SHAP   x11         NA          FALSE     
+
+Agreeing pairs: 0 / 1 (0.0%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: svmRadial
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=waveform-5000, Method=svmRadial ===
+Applying data scaling for method: svmRadial
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature    importance.05   importance   importance.95   permutation.error
+--------  --------------  -----------  --------------  ------------------
+x11             1.489041     1.506849        1.559361              0.1320
+x10             1.303653     1.360731        1.366210              0.1192
+x9              1.227854     1.253425        1.301370              0.1098
+x12             1.226941     1.232877        1.260274              0.1080
+x5              1.176256     1.191781        1.242922              0.1044
+
+=== LIME Rankings ===
+Error in get_lime: Response is constant across permutations. Please check your model 
+Warning message:
+In method$prob(modelFit = modelFit, newdata = newdata, submodels = param) :
+  kernlab class probability calculations failed; returning NAs
+Warning messages:
+1: In method$prob(modelFit = modelFit, newdata = newdata, submodels = param) :
+  kernlab class probability calculations failed; returning NAs
+2: In method$prob(modelFit = modelFit, newdata = newdata, submodels = param) :
+  kernlab class probability calculations failed; returning NAs
+3: In method$prob(modelFit = modelFit, newdata = newdata, submodels = param) :
+  kernlab class probability calculations failed; returning NAs
+4: In method$prob(modelFit = modelFit, newdata = newdata, submodels = param) :
+  kernlab class probability calculations failed; returning NAs
+5: In method$prob(modelFit = modelFit, newdata = newdata, submodels = param) :
+  kernlab class probability calculations failed; returning NAs
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs SHAP   NA                        0
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs SHAP   NA                        0
+
+=== Top-1 Features ===
+FEAT_IMP: x11
+SHAP: NA
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1   Feature_2   Agreement 
+-----------------  ----------  ----------  ----------
+FEAT_IMP vs SHAP   x11         NA          FALSE     
+
+Agreeing pairs: 0 / 1 (0.0%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: rfRules
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=waveform-5000, Method=rfRules ===
+No scaling applied for method: rfRules
+Registered S3 method overwritten by 'RRF':
+  method      from        
+  plot.margin randomForest
+1998 rules (length<=2) were extracted from the first 500 trees.
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature    importance.05   importance   importance.95   permutation.error
+--------  --------------  -----------  --------------  ------------------
+x12             1.330263     1.355263        1.418640              0.2472
+x6              1.264693     1.286184        1.291667              0.2346
+x17             1.181579     1.199561        1.210965              0.2188
+x11             1.184211     1.196272        1.220175              0.2182
+x10             1.171711     1.183114        1.195395              0.2158
+
+=== LIME Rankings ===
+Error in get_lime: only classification models that produce probabilities are allowed 
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs SHAP   NA                        0
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs SHAP   NA                        0
+
+=== Top-1 Features ===
+FEAT_IMP: x12
+SHAP: NA
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1   Feature_2   Agreement 
+-----------------  ----------  ----------  ----------
+FEAT_IMP vs SHAP   x12         NA          FALSE     
+
+Agreeing pairs: 0 / 1 (0.0%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: knn
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=waveform-5000, Method=knn ===
+Applying data scaling for method: knn
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature    importance.05   importance   importance.95   permutation.error
+--------  --------------  -----------  --------------  ------------------
+x11             1.237728     1.286004        1.310750              0.1268
+x10             1.206085     1.223124        1.251927              0.1206
+x12             1.169574     1.184584        1.218256              0.1168
+x9              1.096146     1.129817        1.148884              0.1114
+x13             1.084787     1.103448        1.117647              0.1088
+
+=== LIME Rankings ===
+
+
+Feature    Importance
+--------  -----------
+x11         0.1571969
+x10         0.1480286
+x12         0.1142862
+x9          0.0895377
+x17         0.0611153
+
+=== SHAP (IML Shapley) Rankings ===
+
+
+Feature    Importance
+--------  -----------
+x11         0.1086667
+x10         0.0809619
+x12         0.0574667
+x9          0.0534667
+x5          0.0424000
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair                Spearman   Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME           1                 3
+FEAT_IMP vs SHAP           1                 3
+LIME vs SHAP               1                 3
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME   NA                        1
+FEAT_IMP vs SHAP   NA                        1
+LIME vs SHAP       NA                        1
+
+=== Top-1 Features ===
+FEAT_IMP: x11
+LIME: x11
+SHAP: x11
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1   Feature_2   Agreement 
+-----------------  ----------  ----------  ----------
+FEAT_IMP vs LIME   x11         x11         TRUE      
+FEAT_IMP vs SHAP   x11         x11         TRUE      
+LIME vs SHAP       x11         x11         TRUE      
+
+Agreeing pairs: 3 / 3 (100.0%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: bayesglm
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=waveform-5000, Method=bayesglm ===
+Applying data scaling for method: bayesglm
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature    importance.05   importance   importance.95   permutation.error
+--------  --------------  -----------  --------------  ------------------
+x11             1.394236     1.410663        1.444380              0.1958
+x10             1.281268     1.292507        1.295101              0.1794
+x12             1.231700     1.260807        1.266571              0.1750
+x5              1.216138     1.240634        1.246109              0.1722
+x6              1.229107     1.239193        1.266859              0.1720
+
+=== LIME Rankings ===
+
+
+Feature    Importance
+--------  -----------
+x11         0.1822864
+x10         0.1610242
+x12         0.1122520
+x9          0.1065501
+x6          0.1027484
+
+=== SHAP (IML Shapley) Rankings ===
+
+
+Feature    Importance
+--------  -----------
+x11         0.1273718
+x10         0.1233433
+x9          0.0945163
+x6          0.0786042
+x16         0.0615861
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair                Spearman   Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME           1                 3
+FEAT_IMP vs SHAP           1                 2
+LIME vs SHAP               1                 2
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME   NA                        1
+FEAT_IMP vs SHAP   NA                        1
+LIME vs SHAP       NA                        1
+
+=== Top-1 Features ===
+FEAT_IMP: x11
+LIME: x11
+SHAP: x11
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1   Feature_2   Agreement 
+-----------------  ----------  ----------  ----------
+FEAT_IMP vs LIME   x11         x11         TRUE      
+FEAT_IMP vs SHAP   x11         x11         TRUE      
+LIME vs SHAP       x11         x11         TRUE      
+
+Agreeing pairs: 3 / 3 (100.0%)
+
+=== All Results Recorded ===
+

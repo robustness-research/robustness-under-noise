@@ -1,0 +1,1607 @@
+Dataset: pc4
+Generated: Mon Nov 24 10:36:01 PM CET 2025
+======================================
+
+
+========================================
+Model: C5.0
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=pc4, Method=C5.0 ===
+No scaling applied for method: C5.0
+Error: Only one model should be specified in tuneGrid with no resampling
+Execution halted
+FAILED - See error above
+
+
+========================================
+Model: ctree
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=pc4, Method=ctree ===
+No scaling applied for method: ctree
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature                  importance.05   importance   importance.95   permutation.error
+----------------------  --------------  -----------  --------------  ------------------
+LOC_CODE_AND_COMMENT          1.625714     1.678571        1.691429           0.1611797
+CYCLOMATIC_COMPLEXITY         1.075714     1.100000        1.111429           0.1056241
+LOC_BLANK                     1.000000     1.000000        1.000000           0.0960219
+BRANCH_COUNT                  1.000000     1.000000        1.000000           0.0960219
+CALL_PAIRS                    1.000000     1.000000        1.000000           0.0960219
+
+=== LIME Rankings ===
+
+
+Feature                  Importance
+----------------------  -----------
+LOC_CODE_AND_COMMENT      0.4167546
+NUM_UNIQUE_OPERATORS      0.0473283
+CYCLOMATIC_COMPLEXITY     0.0433078
+ESSENTIAL_COMPLEXITY      0.0197796
+DECISION_DENSITY          0.0101140
+Warning messages:
+1: ESSENTIAL_COMPLEXITY does not contain enough variance to use quantile binning. Using standard binning instead. 
+2: ESSENTIAL_DENSITY does not contain enough variance to use quantile binning. Using standard binning instead. 
+
+=== SHAP (IML Shapley) Rankings ===
+
+
+Feature                  Importance
+----------------------  -----------
+LOC_CODE_AND_COMMENT      0.1363303
+NUM_UNIQUE_OPERATORS      0.0202868
+CYCLOMATIC_COMPLEXITY     0.0036721
+BRANCH_COUNT              0.0000000
+CALL_PAIRS                0.0000000
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair                Spearman   Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME           1                 2
+FEAT_IMP vs SHAP           1                 2
+LIME vs SHAP               1                 3
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME   NA                        1
+FEAT_IMP vs SHAP   NA                        1
+LIME vs SHAP       NA                        1
+
+=== Top-1 Features ===
+FEAT_IMP: LOC_CODE_AND_COMMENT
+LIME: LOC_CODE_AND_COMMENT
+SHAP: LOC_CODE_AND_COMMENT
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1              Feature_2              Agreement 
+-----------------  ---------------------  ---------------------  ----------
+FEAT_IMP vs LIME   LOC_CODE_AND_COMMENT   LOC_CODE_AND_COMMENT   TRUE      
+FEAT_IMP vs SHAP   LOC_CODE_AND_COMMENT   LOC_CODE_AND_COMMENT   TRUE      
+LIME vs SHAP       LOC_CODE_AND_COMMENT   LOC_CODE_AND_COMMENT   TRUE      
+
+Agreeing pairs: 3 / 3 (100.0%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: fda
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=pc4, Method=fda ===
+No scaling applied for method: fda
+Loading required package: earth
+Loading required package: Formula
+Loading required package: plotmo
+Loading required package: plotrix
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature                 importance.05   importance   importance.95   permutation.error
+---------------------  --------------  -----------  --------------  ------------------
+LOC_BLANK                           1            1               1            0.122085
+BRANCH_COUNT                        1            1               1            0.122085
+CALL_PAIRS                          1            1               1            0.122085
+LOC_CODE_AND_COMMENT                1            1               1            0.122085
+LOC_COMMENTS                        1            1               1            0.122085
+
+=== LIME Rankings ===
+
+
+Feature                 Importance
+---------------------  -----------
+LOC_CODE_AND_COMMENT     0.2749505
+ESSENTIAL_DENSITY        0.0152457
+ESSENTIAL_COMPLEXITY     0.0082483
+DECISION_DENSITY         0.0069499
+HALSTEAD_DIFFICULTY      0.0058443
+Warning messages:
+1: ESSENTIAL_COMPLEXITY does not contain enough variance to use quantile binning. Using standard binning instead. 
+2: ESSENTIAL_DENSITY does not contain enough variance to use quantile binning. Using standard binning instead. 
+
+=== SHAP (IML Shapley) Rankings ===
+
+
+Feature                  Importance
+----------------------  -----------
+LOC_CODE_AND_COMMENT      0.1527549
+BRANCH_COUNT              0.0000000
+CALL_PAIRS                0.0000000
+CONDITION_COUNT           0.0000000
+CYCLOMATIC_COMPLEXITY     0.0000000
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair                Spearman   Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME          NA                 0
+FEAT_IMP vs SHAP           1                 2
+LIME vs SHAP              NA                 1
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME   NA                        0
+FEAT_IMP vs SHAP   NA                        0
+LIME vs SHAP       NA                        1
+
+=== Top-1 Features ===
+FEAT_IMP: LOC_BLANK
+LIME: LOC_CODE_AND_COMMENT
+SHAP: LOC_CODE_AND_COMMENT
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1              Feature_2              Agreement 
+-----------------  ---------------------  ---------------------  ----------
+FEAT_IMP vs LIME   LOC_BLANK              LOC_CODE_AND_COMMENT   FALSE     
+FEAT_IMP vs SHAP   LOC_BLANK              LOC_CODE_AND_COMMENT   FALSE     
+LIME vs SHAP       LOC_CODE_AND_COMMENT   LOC_CODE_AND_COMMENT   TRUE      
+
+Agreeing pairs: 1 / 3 (33.3%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: gbm
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=pc4, Method=gbm ===
+No scaling applied for method: gbm
+Iter   TrainDeviance   ValidDeviance   StepSize   Improve
+     1        0.7029            -nan     0.1000    0.0192
+     2        0.6764            -nan     0.1000    0.0105
+     3        0.6458            -nan     0.1000    0.0135
+     4        0.6244            -nan     0.1000    0.0109
+     5        0.6059            -nan     0.1000    0.0089
+     6        0.5901            -nan     0.1000    0.0074
+     7        0.5799            -nan     0.1000    0.0044
+     8        0.5736            -nan     0.1000    0.0020
+     9        0.5675            -nan     0.1000    0.0033
+    10        0.5624            -nan     0.1000    0.0024
+    20        0.4992            -nan     0.1000    0.0014
+    40        0.4454            -nan     0.1000    0.0000
+    50        0.4255            -nan     0.1000    0.0004
+
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature                 importance.05   importance   importance.95   permutation.error
+---------------------  --------------  -----------  --------------  ------------------
+LOC_CODE_AND_COMMENT         1.429412     1.500000        1.566177           0.1399177
+CONDITION_COUNT              1.058823     1.066177        1.094118           0.0994513
+CYCLOMATIC_DENSITY           1.032353     1.044118        1.058823           0.0973937
+PERCENT_COMMENTS             1.023529     1.029412        1.042647           0.0960219
+NUM_UNIQUE_OPERATORS         1.016177     1.022059        1.027941           0.0953361
+
+=== LIME Rankings ===
+
+
+Feature                 Importance
+---------------------  -----------
+LOC_CODE_AND_COMMENT     0.3673773
+LOC_COMMENTS             0.0691680
+CYCLOMATIC_DENSITY       0.0339785
+ESSENTIAL_DENSITY        0.0177533
+CONDITION_COUNT          0.0164875
+Warning messages:
+1: ESSENTIAL_COMPLEXITY does not contain enough variance to use quantile binning. Using standard binning instead. 
+2: ESSENTIAL_DENSITY does not contain enough variance to use quantile binning. Using standard binning instead. 
+
+=== SHAP (IML Shapley) Rankings ===
+
+
+Feature                 Importance
+---------------------  -----------
+LOC_CODE_AND_COMMENT     0.0992205
+CONDITION_COUNT          0.0263080
+CYCLOMATIC_DENSITY       0.0262147
+PERCENT_COMMENTS         0.0106480
+LOC_COMMENTS             0.0068713
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair                Spearman   Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME           1                 2
+FEAT_IMP vs SHAP           1                 3
+LIME vs SHAP               1                 2
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME   NA                        1
+FEAT_IMP vs SHAP   NA                        1
+LIME vs SHAP       NA                        1
+
+=== Top-1 Features ===
+FEAT_IMP: LOC_CODE_AND_COMMENT
+LIME: LOC_CODE_AND_COMMENT
+SHAP: LOC_CODE_AND_COMMENT
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1              Feature_2              Agreement 
+-----------------  ---------------------  ---------------------  ----------
+FEAT_IMP vs LIME   LOC_CODE_AND_COMMENT   LOC_CODE_AND_COMMENT   TRUE      
+FEAT_IMP vs SHAP   LOC_CODE_AND_COMMENT   LOC_CODE_AND_COMMENT   TRUE      
+LIME vs SHAP       LOC_CODE_AND_COMMENT   LOC_CODE_AND_COMMENT   TRUE      
+
+Agreeing pairs: 3 / 3 (100.0%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: gcvEarth
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=pc4, Method=gcvEarth ===
+No scaling applied for method: gcvEarth
+Loading required package: earth
+Loading required package: Formula
+Loading required package: plotmo
+Loading required package: plotrix
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature                 importance.05   importance   importance.95   permutation.error
+---------------------  --------------  -----------  --------------  ------------------
+LOC_CODE_AND_COMMENT         2.696203     2.797468        3.078481           0.1515775
+NUMBER_OF_LINES              2.126582     2.215190        2.341772           0.1200274
+NUM_OPERANDS                 2.139241     2.202532        2.306329           0.1193416
+CYCLOMATIC_DENSITY           1.918987     2.063291        2.151899           0.1117970
+LOC_TOTAL                    1.754430     1.810127        1.891139           0.0980796
+
+=== LIME Rankings ===
+
+
+Feature                 Importance
+---------------------  -----------
+LOC_CODE_AND_COMMENT     0.3907592
+LOC_TOTAL                0.1481574
+NUMBER_OF_LINES          0.1042650
+CYCLOMATIC_DENSITY       0.1014599
+ESSENTIAL_DENSITY        0.0865912
+Warning messages:
+1: ESSENTIAL_COMPLEXITY does not contain enough variance to use quantile binning. Using standard binning instead. 
+2: ESSENTIAL_DENSITY does not contain enough variance to use quantile binning. Using standard binning instead. 
+
+=== SHAP (IML Shapley) Rankings ===
+
+
+Feature                 Importance
+---------------------  -----------
+LOC_CODE_AND_COMMENT     0.1234983
+NUM_OPERANDS             0.0816382
+DESIGN_COMPLEXITY        0.0723065
+CYCLOMATIC_DENSITY       0.0701830
+DESIGN_DENSITY           0.0636347
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair                Spearman   Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME           1                 2
+FEAT_IMP vs SHAP           1                 2
+LIME vs SHAP              NA                 1
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME   NA                        1
+FEAT_IMP vs SHAP   NA                        1
+LIME vs SHAP       NA                        1
+
+=== Top-1 Features ===
+FEAT_IMP: LOC_CODE_AND_COMMENT
+LIME: LOC_CODE_AND_COMMENT
+SHAP: LOC_CODE_AND_COMMENT
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1              Feature_2              Agreement 
+-----------------  ---------------------  ---------------------  ----------
+FEAT_IMP vs LIME   LOC_CODE_AND_COMMENT   LOC_CODE_AND_COMMENT   TRUE      
+FEAT_IMP vs SHAP   LOC_CODE_AND_COMMENT   LOC_CODE_AND_COMMENT   TRUE      
+LIME vs SHAP       LOC_CODE_AND_COMMENT   LOC_CODE_AND_COMMENT   TRUE      
+
+Agreeing pairs: 3 / 3 (100.0%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: JRip
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=pc4, Method=JRip ===
+No scaling applied for method: JRip
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature                 importance.05   importance   importance.95   permutation.error
+---------------------  --------------  -----------  --------------  ------------------
+LOC_CODE_AND_COMMENT         2.000000     2.042373        2.186441           0.1652949
+LOC_COMMENTS                 1.262712     1.296610        1.338983           0.1049383
+CYCLOMATIC_DENSITY           1.201695     1.245763        1.293220           0.1008230
+CONDITION_COUNT              1.105085     1.135593        1.135593           0.0919067
+LOC_BLANK                    1.098305     1.127119        1.147458           0.0912209
+
+=== LIME Rankings ===
+
+
+Feature                  Importance
+----------------------  -----------
+LOC_CODE_AND_COMMENT      0.5265388
+CONDITION_COUNT           0.0678902
+CYCLOMATIC_COMPLEXITY     0.0497687
+ESSENTIAL_COMPLEXITY      0.0235155
+LOC_COMMENTS              0.0229546
+Warning messages:
+1: ESSENTIAL_COMPLEXITY does not contain enough variance to use quantile binning. Using standard binning instead. 
+2: ESSENTIAL_DENSITY does not contain enough variance to use quantile binning. Using standard binning instead. 
+
+=== SHAP (IML Shapley) Rankings ===
+
+
+Feature                 Importance
+---------------------  -----------
+CONDITION_COUNT          0.0437430
+LOC_CODE_AND_COMMENT     0.0370115
+CYCLOMATIC_DENSITY       0.0248846
+LOC_BLANK                0.0177160
+NUM_OPERANDS             0.0070864
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair                Spearman   Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME          NA                 1
+FEAT_IMP vs SHAP           1                 2
+LIME vs SHAP              -1                 2
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME   NA                        1
+FEAT_IMP vs SHAP   NA                        0
+LIME vs SHAP       NA                        0
+
+=== Top-1 Features ===
+FEAT_IMP: LOC_CODE_AND_COMMENT
+LIME: LOC_CODE_AND_COMMENT
+SHAP: CONDITION_COUNT
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1              Feature_2              Agreement 
+-----------------  ---------------------  ---------------------  ----------
+FEAT_IMP vs LIME   LOC_CODE_AND_COMMENT   LOC_CODE_AND_COMMENT   TRUE      
+FEAT_IMP vs SHAP   LOC_CODE_AND_COMMENT   CONDITION_COUNT        FALSE     
+LIME vs SHAP       LOC_CODE_AND_COMMENT   CONDITION_COUNT        FALSE     
+
+Agreeing pairs: 1 / 3 (33.3%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: lvq
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=pc4, Method=lvq ===
+Applying data scaling for method: lvq
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature                 importance.05   importance   importance.95   permutation.error
+---------------------  --------------  -----------  --------------  ------------------
+LOC_CODE_AND_COMMENT         1.267606     1.281690        1.329578           0.1248285
+CALL_PAIRS                   1.038028     1.077465        1.090141           0.1049383
+MAINTENANCE_SEVERITY         1.045070     1.063380        1.107042           0.1035665
+PERCENT_COMMENTS             1.030986     1.042253        1.054930           0.1015089
+PARAMETER_COUNT              1.008451     1.035211        1.059155           0.1008230
+
+=== LIME Rankings ===
+Error in get_lime: only classification models that produce probabilities are allowed 
+Warning messages:
+1: ESSENTIAL_COMPLEXITY does not contain enough variance to use quantile binning. Using standard binning instead. 
+2: ESSENTIAL_DENSITY does not contain enough variance to use quantile binning. Using standard binning instead. 
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs SHAP   NA                        0
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs SHAP   NA                        0
+
+=== Top-1 Features ===
+FEAT_IMP: LOC_CODE_AND_COMMENT
+SHAP: NA
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1              Feature_2   Agreement 
+-----------------  ---------------------  ----------  ----------
+FEAT_IMP vs SHAP   LOC_CODE_AND_COMMENT   NA          FALSE     
+
+Agreeing pairs: 0 / 1 (0.0%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: mlpML
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=pc4, Method=mlpML ===
+Applying data scaling for method: mlpML
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+Warning message:
+At least one layer had zero units and were removed. The new structure is 1 
+
+=== IML Rankings ===
+
+
+feature                     importance.05   importance   importance.95   permutation.error
+-------------------------  --------------  -----------  --------------  ------------------
+LOC_CODE_AND_COMMENT             2.022609     2.078261        2.240000           0.1639232
+MODIFIED_CONDITION_COUNT         1.949565     1.991304        2.000000           0.1570645
+LOC_TOTAL                        1.793044     1.930435        1.977391           0.1522634
+LOC_EXECUTABLE                   1.521739     1.643478        1.714783           0.1296296
+NUM_UNIQUE_OPERANDS              1.406956     1.434783        1.511304           0.1131687
+
+=== LIME Rankings ===
+
+
+Feature                     Importance
+-------------------------  -----------
+MODIFIED_CONDITION_COUNT     0.2675507
+LOC_CODE_AND_COMMENT         0.1347946
+DECISION_COUNT               0.1111697
+NUM_UNIQUE_OPERANDS          0.0814576
+CONDITION_COUNT              0.0695099
+Warning messages:
+1: ESSENTIAL_COMPLEXITY does not contain enough variance to use quantile binning. Using standard binning instead. 
+2: ESSENTIAL_DENSITY does not contain enough variance to use quantile binning. Using standard binning instead. 
+
+=== SHAP (IML Shapley) Rankings ===
+
+
+Feature                     Importance
+-------------------------  -----------
+MAINTENANCE_SEVERITY         0.0639031
+DECISION_DENSITY             0.0617086
+MODIFIED_CONDITION_COUNT     0.0540172
+CYCLOMATIC_DENSITY           0.0503590
+NUM_UNIQUE_OPERATORS         0.0331441
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair                Spearman   Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME          -1                 2
+FEAT_IMP vs SHAP          NA                 1
+LIME vs SHAP              NA                 1
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME   NA                        0
+FEAT_IMP vs SHAP   NA                        0
+LIME vs SHAP       NA                        0
+
+=== Top-1 Features ===
+FEAT_IMP: LOC_CODE_AND_COMMENT
+LIME: MODIFIED_CONDITION_COUNT
+SHAP: MAINTENANCE_SEVERITY
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1                  Feature_2                  Agreement 
+-----------------  -------------------------  -------------------------  ----------
+FEAT_IMP vs LIME   LOC_CODE_AND_COMMENT       MODIFIED_CONDITION_COUNT   FALSE     
+FEAT_IMP vs SHAP   LOC_CODE_AND_COMMENT       MAINTENANCE_SEVERITY       FALSE     
+LIME vs SHAP       MODIFIED_CONDITION_COUNT   MAINTENANCE_SEVERITY       FALSE     
+
+Agreeing pairs: 0 / 3 (0.0%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: multinom
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=pc4, Method=multinom ===
+Applying data scaling for method: multinom
+# weights:  39 (38 variable)
+initial  value 1010.608589 
+iter  10 value 340.660802
+iter  20 value 312.958696
+iter  30 value 291.294050
+iter  40 value 285.217525
+iter  50 value 284.671602
+iter  60 value 284.577792
+iter  70 value 284.482423
+iter  80 value 284.462460
+iter  90 value 284.462262
+iter 100 value 284.461604
+final  value 284.461604 
+stopped after 100 iterations
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature                     importance.05   importance   importance.95   permutation.error
+-------------------------  --------------  -----------  --------------  ------------------
+NODE_COUNT                       4.192593     4.351852        4.651852           0.3223594
+HALSTEAD_VOLUME                  3.874074     3.925926        4.042593           0.2908093
+EDGE_COUNT                       3.681481     3.777778        3.907407           0.2798354
+MODIFIED_CONDITION_COUNT         3.159259     3.250000        3.344444           0.2407407
+HALSTEAD_ERROR_EST               2.605556     2.805556        2.840741           0.2078189
+
+=== LIME Rankings ===
+
+
+Feature                     Importance
+-------------------------  -----------
+MODIFIED_CONDITION_COUNT     0.2731419
+MULTIPLE_CONDITION_COUNT     0.1639618
+HALSTEAD_VOLUME              0.1561251
+CONDITION_COUNT              0.1420307
+NODE_COUNT                   0.1239583
+Warning messages:
+1: ESSENTIAL_COMPLEXITY does not contain enough variance to use quantile binning. Using standard binning instead. 
+2: ESSENTIAL_DENSITY does not contain enough variance to use quantile binning. Using standard binning instead. 
+
+=== SHAP (IML Shapley) Rankings ===
+
+
+Feature                     Importance
+-------------------------  -----------
+MODIFIED_CONDITION_COUNT     0.1444822
+MULTIPLE_CONDITION_COUNT     0.1244149
+NODE_COUNT                   0.1044909
+EDGE_COUNT                   0.1002425
+CONDITION_COUNT              0.0741190
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair                Spearman   Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME          NA                 1
+FEAT_IMP vs SHAP          NA                 1
+LIME vs SHAP               1                 2
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME   NA                        0
+FEAT_IMP vs SHAP   NA                        0
+LIME vs SHAP       NA                        1
+
+=== Top-1 Features ===
+FEAT_IMP: NODE_COUNT
+LIME: MODIFIED_CONDITION_COUNT
+SHAP: MODIFIED_CONDITION_COUNT
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1                  Feature_2                  Agreement 
+-----------------  -------------------------  -------------------------  ----------
+FEAT_IMP vs LIME   NODE_COUNT                 MODIFIED_CONDITION_COUNT   FALSE     
+FEAT_IMP vs SHAP   NODE_COUNT                 MODIFIED_CONDITION_COUNT   FALSE     
+LIME vs SHAP       MODIFIED_CONDITION_COUNT   MODIFIED_CONDITION_COUNT   TRUE      
+
+Agreeing pairs: 1 / 3 (33.3%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: naive_bayes
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=pc4, Method=naive_bayes ===
+No scaling applied for method: naive_bayes
+Error: Only one model should be specified in tuneGrid with no resampling
+Execution halted
+FAILED - See error above
+
+
+========================================
+Model: PART
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=pc4, Method=PART ===
+No scaling applied for method: PART
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature                 importance.05   importance   importance.95   permutation.error
+---------------------  --------------  -----------  --------------  ------------------
+LOC_CODE_AND_COMMENT         4.351020     4.530612        4.632653           0.1522634
+LOC_BLANK                    2.232653     2.408163        2.497959           0.0809328
+DECISION_DENSITY             2.126531     2.183673        2.355102           0.0733882
+CALL_PAIRS                   1.983674     2.000000        2.085714           0.0672154
+DESIGN_COMPLEXITY            1.497959     1.714286        1.816326           0.0576132
+
+=== LIME Rankings ===
+
+
+Feature                 Importance
+---------------------  -----------
+LOC_CODE_AND_COMMENT     0.2841467
+DESIGN_COMPLEXITY        0.1096112
+LOC_BLANK                0.0909014
+ESSENTIAL_DENSITY        0.0541094
+LOC_COMMENTS             0.0536751
+Warning messages:
+1: ESSENTIAL_COMPLEXITY does not contain enough variance to use quantile binning. Using standard binning instead. 
+2: ESSENTIAL_DENSITY does not contain enough variance to use quantile binning. Using standard binning instead. 
+
+=== SHAP (IML Shapley) Rankings ===
+
+
+Feature                 Importance
+---------------------  -----------
+LOC_CODE_AND_COMMENT     0.0814415
+DECISION_DENSITY         0.0447924
+PARAMETER_COUNT          0.0357538
+ESSENTIAL_DENSITY        0.0355822
+LOC_BLANK                0.0324167
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair                Spearman   Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME           1                 2
+FEAT_IMP vs SHAP           1                 2
+LIME vs SHAP              NA                 1
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME   NA                        1
+FEAT_IMP vs SHAP   NA                        1
+LIME vs SHAP       NA                        1
+
+=== Top-1 Features ===
+FEAT_IMP: LOC_CODE_AND_COMMENT
+LIME: LOC_CODE_AND_COMMENT
+SHAP: LOC_CODE_AND_COMMENT
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1              Feature_2              Agreement 
+-----------------  ---------------------  ---------------------  ----------
+FEAT_IMP vs LIME   LOC_CODE_AND_COMMENT   LOC_CODE_AND_COMMENT   TRUE      
+FEAT_IMP vs SHAP   LOC_CODE_AND_COMMENT   LOC_CODE_AND_COMMENT   TRUE      
+LIME vs SHAP       LOC_CODE_AND_COMMENT   LOC_CODE_AND_COMMENT   TRUE      
+
+Agreeing pairs: 3 / 3 (100.0%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: rbfDDA
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=pc4, Method=rbfDDA ===
+Applying data scaling for method: rbfDDA
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature                     importance.05   importance   importance.95   permutation.error
+-------------------------  --------------  -----------  --------------  ------------------
+LOC_CODE_AND_COMMENT             1.056098     1.060976        1.065854           0.1193416
+CONDITION_COUNT                  1.030488     1.036585        1.041463           0.1165981
+MODIFIED_CONDITION_COUNT         1.025610     1.036585        1.036585           0.1165981
+PERCENT_COMMENTS                 1.036585     1.036585        1.047561           0.1165981
+LOC_TOTAL                        1.024390     1.036585        1.041463           0.1165981
+
+=== LIME Rankings ===
+
+
+Feature                     Importance
+-------------------------  -----------
+ESSENTIAL_DENSITY            2.8606966
+DECISION_COUNT               0.0848156
+CONDITION_COUNT              0.0836373
+MODIFIED_CONDITION_COUNT     0.0823417
+MULTIPLE_CONDITION_COUNT     0.0799843
+Warning messages:
+1: ESSENTIAL_COMPLEXITY does not contain enough variance to use quantile binning. Using standard binning instead. 
+2: ESSENTIAL_DENSITY does not contain enough variance to use quantile binning. Using standard binning instead. 
+
+=== SHAP (IML Shapley) Rankings ===
+
+
+Feature               Importance
+-------------------  -----------
+DECISION_DENSITY        4.215703
+PARAMETER_COUNT         2.709568
+DESIGN_DENSITY          1.471249
+CYCLOMATIC_DENSITY      1.429339
+HALSTEAD_LEVEL          1.113717
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME   NA                        1
+FEAT_IMP vs SHAP   NA                        0
+LIME vs SHAP       NA                        0
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME   NA                        0
+FEAT_IMP vs SHAP   NA                        0
+LIME vs SHAP       NA                        0
+
+=== Top-1 Features ===
+FEAT_IMP: LOC_CODE_AND_COMMENT
+LIME: ESSENTIAL_DENSITY
+SHAP: DECISION_DENSITY
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1              Feature_2           Agreement 
+-----------------  ---------------------  ------------------  ----------
+FEAT_IMP vs LIME   LOC_CODE_AND_COMMENT   ESSENTIAL_DENSITY   FALSE     
+FEAT_IMP vs SHAP   LOC_CODE_AND_COMMENT   DECISION_DENSITY    FALSE     
+LIME vs SHAP       ESSENTIAL_DENSITY      DECISION_DENSITY    FALSE     
+
+Agreeing pairs: 0 / 3 (0.0%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: rda
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=pc4, Method=rda ===
+Applying data scaling for method: rda
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+Error in get_featimp: system is computationally singular: reciprocal condition number = 1.36016e-18 
+
+=== LIME Rankings ===
+Error in get_lime: system is computationally singular: reciprocal condition number = 1.36016e-18 
+Warning messages:
+1: ESSENTIAL_COMPLEXITY does not contain enough variance to use quantile binning. Using standard binning instead. 
+2: ESSENTIAL_DENSITY does not contain enough variance to use quantile binning. Using standard binning instead. 
+
+=== SHAP (IML Shapley) Rankings ===
+Error in get_shap: system is computationally singular: reciprocal condition number = 1.36016e-18 
+
+=== Top-3 Spearman ===
+Not enough valid rankings (need at least 2, got 0 )
+
+=== Top-1 Spearman ===
+Not enough valid rankings (need at least 2, got 0 )
+
+=== Top-1 Feature Agreement Count ===
+Not enough valid rankings (need at least 2, got 0 )
+
+=== All Results Recorded ===
+
+
+========================================
+Model: rf
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=pc4, Method=rf ===
+No scaling applied for method: rf
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature                 importance.05   importance   importance.95   permutation.error
+---------------------  --------------  -----------  --------------  ------------------
+LOC_CODE_AND_COMMENT            105.2          110           117.4           0.0754458
+CYCLOMATIC_DENSITY               35.0           41            47.4           0.0281207
+PERCENT_COMMENTS                 21.8           27            33.2           0.0185185
+LOC_COMMENTS                      3.2            7             8.8           0.0048011
+LOC_BLANK                         1.2            2             2.8           0.0013717
+
+=== LIME Rankings ===
+
+
+Feature                 Importance
+---------------------  -----------
+LOC_CODE_AND_COMMENT     0.1029249
+PERCENT_COMMENTS         0.0302203
+CYCLOMATIC_DENSITY       0.0278619
+ESSENTIAL_DENSITY        0.0246227
+DECISION_DENSITY         0.0187694
+Warning messages:
+1: ESSENTIAL_COMPLEXITY does not contain enough variance to use quantile binning. Using standard binning instead. 
+2: ESSENTIAL_DENSITY does not contain enough variance to use quantile binning. Using standard binning instead. 
+
+=== SHAP (IML Shapley) Rankings ===
+
+
+Feature                     Importance
+-------------------------  -----------
+LOC_CODE_AND_COMMENT          0.061192
+CYCLOMATIC_DENSITY            0.028476
+MULTIPLE_CONDITION_COUNT      0.014152
+MODIFIED_CONDITION_COUNT      0.013960
+PERCENT_COMMENTS              0.013268
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair                Spearman   Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME         0.5                 3
+FEAT_IMP vs SHAP         1.0                 2
+LIME vs SHAP             1.0                 2
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME   NA                        1
+FEAT_IMP vs SHAP   NA                        1
+LIME vs SHAP       NA                        1
+
+=== Top-1 Features ===
+FEAT_IMP: LOC_CODE_AND_COMMENT
+LIME: LOC_CODE_AND_COMMENT
+SHAP: LOC_CODE_AND_COMMENT
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1              Feature_2              Agreement 
+-----------------  ---------------------  ---------------------  ----------
+FEAT_IMP vs LIME   LOC_CODE_AND_COMMENT   LOC_CODE_AND_COMMENT   TRUE      
+FEAT_IMP vs SHAP   LOC_CODE_AND_COMMENT   LOC_CODE_AND_COMMENT   TRUE      
+LIME vs SHAP       LOC_CODE_AND_COMMENT   LOC_CODE_AND_COMMENT   TRUE      
+
+Agreeing pairs: 3 / 3 (100.0%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: rpart
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=pc4, Method=rpart ===
+No scaling applied for method: rpart
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature                 importance.05   importance   importance.95   permutation.error
+---------------------  --------------  -----------  --------------  ------------------
+LOC_BLANK                           1            1               1            0.122085
+BRANCH_COUNT                        1            1               1            0.122085
+CALL_PAIRS                          1            1               1            0.122085
+LOC_CODE_AND_COMMENT                1            1               1            0.122085
+LOC_COMMENTS                        1            1               1            0.122085
+
+=== LIME Rankings ===
+Error in get_lime: Response is constant across permutations. Please check your model 
+Warning messages:
+1: ESSENTIAL_COMPLEXITY does not contain enough variance to use quantile binning. Using standard binning instead. 
+2: ESSENTIAL_DENSITY does not contain enough variance to use quantile binning. Using standard binning instead. 
+
+=== SHAP (IML Shapley) Rankings ===
+
+
+Feature                  Importance
+----------------------  -----------
+BRANCH_COUNT                      0
+CALL_PAIRS                        0
+CONDITION_COUNT                   0
+CYCLOMATIC_COMPLEXITY             0
+CYCLOMATIC_DENSITY                0
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair                Spearman   Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs SHAP           1                 2
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs SHAP   NA                        0
+
+=== Top-1 Features ===
+FEAT_IMP: LOC_BLANK
+SHAP: BRANCH_COUNT
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1   Feature_2      Agreement 
+-----------------  ----------  -------------  ----------
+FEAT_IMP vs SHAP   LOC_BLANK   BRANCH_COUNT   FALSE     
+
+Agreeing pairs: 0 / 1 (0.0%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: simpls
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=pc4, Method=simpls ===
+Applying data scaling for method: simpls
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature                  importance.05   importance   importance.95   permutation.error
+----------------------  --------------  -----------  --------------  ------------------
+PARAMETER_COUNT              1.0000000     1.005525        1.005525           0.1248285
+BRANCH_COUNT                 1.0000000     1.000000        1.000000           0.1241427
+CYCLOMATIC_COMPLEXITY        1.0000000     1.000000        1.000000           0.1241427
+CYCLOMATIC_DENSITY           0.9944751     1.000000        1.000000           0.1241427
+DESIGN_COMPLEXITY            0.9955801     1.000000        1.000000           0.1241427
+
+=== LIME Rankings ===
+
+
+Feature                     Importance
+-------------------------  -----------
+LOC_CODE_AND_COMMENT         0.0424351
+DECISION_COUNT               0.0305283
+CONDITION_COUNT              0.0264258
+MULTIPLE_CONDITION_COUNT     0.0257977
+MODIFIED_CONDITION_COUNT     0.0241260
+Warning messages:
+1: ESSENTIAL_COMPLEXITY does not contain enough variance to use quantile binning. Using standard binning instead. 
+2: ESSENTIAL_DENSITY does not contain enough variance to use quantile binning. Using standard binning instead. 
+
+=== SHAP (IML Shapley) Rankings ===
+
+
+Feature                 Importance
+---------------------  -----------
+DECISION_DENSITY         0.0046318
+MAINTENANCE_SEVERITY     0.0026183
+PERCENT_COMMENTS         0.0021512
+PARAMETER_COUNT          0.0016713
+LOC_BLANK                0.0011993
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME   NA                        0
+FEAT_IMP vs SHAP   NA                        0
+LIME vs SHAP       NA                        0
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME   NA                        0
+FEAT_IMP vs SHAP   NA                        0
+LIME vs SHAP       NA                        0
+
+=== Top-1 Features ===
+FEAT_IMP: PARAMETER_COUNT
+LIME: LOC_CODE_AND_COMMENT
+SHAP: DECISION_DENSITY
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1              Feature_2              Agreement 
+-----------------  ---------------------  ---------------------  ----------
+FEAT_IMP vs LIME   PARAMETER_COUNT        LOC_CODE_AND_COMMENT   FALSE     
+FEAT_IMP vs SHAP   PARAMETER_COUNT        DECISION_DENSITY       FALSE     
+LIME vs SHAP       LOC_CODE_AND_COMMENT   DECISION_DENSITY       FALSE     
+
+Agreeing pairs: 0 / 3 (0.0%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: svmLinear
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=pc4, Method=svmLinear ===
+Applying data scaling for method: svmLinear
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature                     importance.05   importance   importance.95   permutation.error
+-------------------------  --------------  -----------  --------------  ------------------
+LOC_CODE_AND_COMMENT             1.947368     2.096491        2.112281           0.1639232
+MODIFIED_CONDITION_COUNT         1.649123     1.754386        1.868421           0.1371742
+BRANCH_COUNT                     1.614035     1.701754        1.761403           0.1330590
+LOC_TOTAL                        1.603509     1.640351        1.664912           0.1282579
+NUMBER_OF_LINES                  1.414035     1.517544        1.556140           0.1186557
+
+=== LIME Rankings ===
+Error in get_lime: Response is constant across permutations. Please check your model 
+Warning messages:
+1: ESSENTIAL_COMPLEXITY does not contain enough variance to use quantile binning. Using standard binning instead. 
+2: ESSENTIAL_DENSITY does not contain enough variance to use quantile binning. Using standard binning instead. 
+3: In method$prob(modelFit = modelFit, newdata = newdata, submodels = param) :
+  kernlab class probability calculations failed; returning NAs
+Warning messages:
+1: In method$prob(modelFit = modelFit, newdata = newdata, submodels = param) :
+  kernlab class probability calculations failed; returning NAs
+2: In method$prob(modelFit = modelFit, newdata = newdata, submodels = param) :
+  kernlab class probability calculations failed; returning NAs
+3: In method$prob(modelFit = modelFit, newdata = newdata, submodels = param) :
+  kernlab class probability calculations failed; returning NAs
+4: In method$prob(modelFit = modelFit, newdata = newdata, submodels = param) :
+  kernlab class probability calculations failed; returning NAs
+5: In method$prob(modelFit = modelFit, newdata = newdata, submodels = param) :
+  kernlab class probability calculations failed; returning NAs
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs SHAP   NA                        0
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs SHAP   NA                        0
+
+=== Top-1 Features ===
+FEAT_IMP: LOC_CODE_AND_COMMENT
+SHAP: NA
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1              Feature_2   Agreement 
+-----------------  ---------------------  ----------  ----------
+FEAT_IMP vs SHAP   LOC_CODE_AND_COMMENT   NA          FALSE     
+
+Agreeing pairs: 0 / 1 (0.0%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: svmRadial
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=pc4, Method=svmRadial ===
+Applying data scaling for method: svmRadial
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature                  importance.05   importance   importance.95   permutation.error
+----------------------  --------------  -----------  --------------  ------------------
+LOC_CODE_AND_COMMENT           1.09750      1.11875         1.16375           0.1227709
+PERCENT_COMMENTS               1.02500      1.03125         1.03125           0.1131687
+DECISION_DENSITY               1.00750      1.01875         1.02875           0.1117970
+MAINTENANCE_SEVERITY           0.99625      1.01250         1.02375           0.1111111
+CYCLOMATIC_COMPLEXITY          1.00000      1.00625         1.00625           0.1104252
+
+=== LIME Rankings ===
+Error in get_lime: Response is constant across permutations. Please check your model 
+Warning messages:
+1: ESSENTIAL_COMPLEXITY does not contain enough variance to use quantile binning. Using standard binning instead. 
+2: ESSENTIAL_DENSITY does not contain enough variance to use quantile binning. Using standard binning instead. 
+3: In method$prob(modelFit = modelFit, newdata = newdata, submodels = param) :
+  kernlab class probability calculations failed; returning NAs
+Warning messages:
+1: In method$prob(modelFit = modelFit, newdata = newdata, submodels = param) :
+  kernlab class probability calculations failed; returning NAs
+2: In method$prob(modelFit = modelFit, newdata = newdata, submodels = param) :
+  kernlab class probability calculations failed; returning NAs
+3: In method$prob(modelFit = modelFit, newdata = newdata, submodels = param) :
+  kernlab class probability calculations failed; returning NAs
+4: In method$prob(modelFit = modelFit, newdata = newdata, submodels = param) :
+  kernlab class probability calculations failed; returning NAs
+5: In method$prob(modelFit = modelFit, newdata = newdata, submodels = param) :
+  kernlab class probability calculations failed; returning NAs
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs SHAP   NA                        0
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs SHAP   NA                        0
+
+=== Top-1 Features ===
+FEAT_IMP: LOC_CODE_AND_COMMENT
+SHAP: NA
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1              Feature_2   Agreement 
+-----------------  ---------------------  ----------  ----------
+FEAT_IMP vs SHAP   LOC_CODE_AND_COMMENT   NA          FALSE     
+
+Agreeing pairs: 0 / 1 (0.0%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: rfRules
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=pc4, Method=rfRules ===
+No scaling applied for method: rfRules
+Registered S3 method overwritten by 'RRF':
+  method      from        
+  plot.margin randomForest
+1999 rules (length<=2) were extracted from the first 500 trees.
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature                 importance.05   importance   importance.95   permutation.error
+---------------------  --------------  -----------  --------------  ------------------
+LOC_CODE_AND_COMMENT         1.471724     1.489655        1.514483           0.1481481
+DESIGN_COMPLEXITY            1.008276     1.034483        1.067586           0.1028807
+PARAMETER_COUNT              1.011035     1.027586        1.040000           0.1021948
+ESSENTIAL_COMPLEXITY         1.013793     1.013793        1.026207           0.1008230
+NUM_UNIQUE_OPERANDS          1.001379     1.006897        1.012414           0.1001372
+
+=== LIME Rankings ===
+Error in get_lime: only classification models that produce probabilities are allowed 
+Warning messages:
+1: ESSENTIAL_COMPLEXITY does not contain enough variance to use quantile binning. Using standard binning instead. 
+2: ESSENTIAL_DENSITY does not contain enough variance to use quantile binning. Using standard binning instead. 
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs SHAP   NA                        0
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs SHAP   NA                        0
+
+=== Top-1 Features ===
+FEAT_IMP: LOC_CODE_AND_COMMENT
+SHAP: NA
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1              Feature_2   Agreement 
+-----------------  ---------------------  ----------  ----------
+FEAT_IMP vs SHAP   LOC_CODE_AND_COMMENT   NA          FALSE     
+
+Agreeing pairs: 0 / 1 (0.0%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: knn
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=pc4, Method=knn ===
+Applying data scaling for method: knn
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature                 importance.05   importance   importance.95   permutation.error
+---------------------  --------------  -----------  --------------  ------------------
+LOC_CODE_AND_COMMENT         1.405941     1.415842        1.504951           0.0980796
+CALL_PAIRS                   1.205941     1.257426        1.273267           0.0871056
+PERCENT_COMMENTS             1.180198     1.217822        1.273267           0.0843621
+LOC_COMMENTS                 1.093069     1.178218        1.251485           0.0816187
+DESIGN_DENSITY               1.093069     1.128713        1.186139           0.0781893
+
+=== LIME Rankings ===
+
+
+Feature                 Importance
+---------------------  -----------
+LOC_CODE_AND_COMMENT     0.2731849
+ESSENTIAL_COMPLEXITY     0.0611423
+DESIGN_COMPLEXITY        0.0503833
+NUM_UNIQUE_OPERANDS      0.0448107
+ESSENTIAL_DENSITY        0.0364920
+Warning messages:
+1: ESSENTIAL_COMPLEXITY does not contain enough variance to use quantile binning. Using standard binning instead. 
+2: ESSENTIAL_DENSITY does not contain enough variance to use quantile binning. Using standard binning instead. 
+
+=== SHAP (IML Shapley) Rankings ===
+
+
+Feature                 Importance
+---------------------  -----------
+DECISION_DENSITY         0.0405778
+MAINTENANCE_SEVERITY     0.0264000
+ESSENTIAL_DENSITY        0.0247333
+LOC_CODE_AND_COMMENT     0.0232095
+PERCENT_COMMENTS         0.0158667
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME   NA                        1
+FEAT_IMP vs SHAP   NA                        0
+LIME vs SHAP       NA                        0
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME   NA                        1
+FEAT_IMP vs SHAP   NA                        0
+LIME vs SHAP       NA                        0
+
+=== Top-1 Features ===
+FEAT_IMP: LOC_CODE_AND_COMMENT
+LIME: LOC_CODE_AND_COMMENT
+SHAP: DECISION_DENSITY
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1              Feature_2              Agreement 
+-----------------  ---------------------  ---------------------  ----------
+FEAT_IMP vs LIME   LOC_CODE_AND_COMMENT   LOC_CODE_AND_COMMENT   TRUE      
+FEAT_IMP vs SHAP   LOC_CODE_AND_COMMENT   DECISION_DENSITY       FALSE     
+LIME vs SHAP       LOC_CODE_AND_COMMENT   DECISION_DENSITY       FALSE     
+
+Agreeing pairs: 1 / 3 (33.3%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: bayesglm
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=pc4, Method=bayesglm ===
+Applying data scaling for method: bayesglm
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+Warning message:
+fitted probabilities numerically 0 or 1 occurred 
+
+=== IML Rankings ===
+
+
+feature                     importance.05   importance   importance.95   permutation.error
+-------------------------  --------------  -----------  --------------  ------------------
+MODIFIED_CONDITION_COUNT         2.358929     2.589286        2.619643           0.1989026
+BRANCH_COUNT                     2.207143     2.250000        2.282143           0.1728395
+LOC_CODE_AND_COMMENT             1.535714     1.633929        1.641071           0.1255144
+LOC_TOTAL                        1.616071     1.633929        1.737500           0.1255144
+LOC_COMMENTS                     1.350000     1.375000        1.450000           0.1056241
+
+=== LIME Rankings ===
+
+
+Feature                     Importance
+-------------------------  -----------
+MODIFIED_CONDITION_COUNT     0.5528000
+BRANCH_COUNT                 0.1355977
+DECISION_COUNT               0.1352292
+LOC_CODE_AND_COMMENT         0.1211831
+CYCLOMATIC_DENSITY           0.0969760
+Warning messages:
+1: ESSENTIAL_COMPLEXITY does not contain enough variance to use quantile binning. Using standard binning instead. 
+2: ESSENTIAL_DENSITY does not contain enough variance to use quantile binning. Using standard binning instead. 
+
+=== SHAP (IML Shapley) Rankings ===
+
+
+Feature                     Importance
+-------------------------  -----------
+MODIFIED_CONDITION_COUNT     0.1023602
+BRANCH_COUNT                 0.0647430
+MAINTENANCE_SEVERITY         0.0631806
+DECISION_DENSITY             0.0427309
+PERCENT_COMMENTS             0.0423585
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair                Spearman   Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME           1                 2
+FEAT_IMP vs SHAP           1                 2
+LIME vs SHAP               1                 2
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME   NA                        1
+FEAT_IMP vs SHAP   NA                        1
+LIME vs SHAP       NA                        1
+
+=== Top-1 Features ===
+FEAT_IMP: MODIFIED_CONDITION_COUNT
+LIME: MODIFIED_CONDITION_COUNT
+SHAP: MODIFIED_CONDITION_COUNT
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1                  Feature_2                  Agreement 
+-----------------  -------------------------  -------------------------  ----------
+FEAT_IMP vs LIME   MODIFIED_CONDITION_COUNT   MODIFIED_CONDITION_COUNT   TRUE      
+FEAT_IMP vs SHAP   MODIFIED_CONDITION_COUNT   MODIFIED_CONDITION_COUNT   TRUE      
+LIME vs SHAP       MODIFIED_CONDITION_COUNT   MODIFIED_CONDITION_COUNT   TRUE      
+
+Agreeing pairs: 3 / 3 (100.0%)
+
+=== All Results Recorded ===
+

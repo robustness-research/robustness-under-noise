@@ -1,0 +1,71 @@
+{
+  "dataset": "iris",
+  "file_path": "datasets/csv/iris.csv",
+  "n_rows": 150,
+  "n_columns": 5,
+  "n_numeric_features": 4,
+  "numeric_features": [
+    "sepallength",
+    "sepalwidth",
+    "petallength",
+    "petalwidth"
+  ],
+  "correlation_matrix_shape": [
+    4,
+    4
+  ],
+  "high_correlations": [
+    {
+      "feature1": "sepallength",
+      "feature2": "petallength",
+      "correlation": 0.8717541573048716
+    },
+    {
+      "feature1": "sepallength",
+      "feature2": "petalwidth",
+      "correlation": 0.8179536333691642
+    },
+    {
+      "feature1": "petallength",
+      "feature2": "petalwidth",
+      "correlation": 0.9627570970509662
+    }
+  ],
+  "n_high_correlations": 3,
+  "vif_mean": 147.8287426980576,
+  "vif_median": 135.5402855986003,
+  "vif_max": 264.7457109493044,
+  "vif_values": [
+    {
+      "feature": "sepallength",
+      "VIF": 264.7457109493044
+    },
+    {
+      "feature": "petallength",
+      "VIF": 173.96896536339727
+    },
+    {
+      "feature": "sepalwidth",
+      "VIF": 97.1116058338033
+    },
+    {
+      "feature": "petalwidth",
+      "VIF": 55.48868864572551
+    }
+  ],
+  "n_high_vif": 4,
+  "condition_number": 11.884822344311873,
+  "condition_number_interpretation": "Moderate - some multicollinearity",
+  "condition_index": 11.884822344311853,
+  "eigenvalues": [
+    2.9108180837520514,
+    0.9212209307072247,
+    0.14735327830509518,
+    0.020607707235625293
+  ],
+  "min_eigenvalue": 0.020607707235625293,
+  "max_eigenvalue": 2.9108180837520514,
+  "n_small_eigenvalues": 0,
+  "has_multicollinearity": true,
+  "severity_score": 7
+}

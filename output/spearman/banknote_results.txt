@@ -1,0 +1,1554 @@
+Dataset: banknote
+Generated: Mon Nov 24 10:36:01 PM CET 2025
+======================================
+
+
+========================================
+Model: C5.0
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=banknote, Method=C5.0 ===
+No scaling applied for method: C5.0
+Error: Only one model should be specified in tuneGrid with no resampling
+Execution halted
+FAILED - See error above
+
+
+========================================
+Model: ctree
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=banknote, Method=ctree ===
+No scaling applied for method: ctree
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature     importance.05   importance   importance.95   permutation.error
+---------  --------------  -----------  --------------  ------------------
+variance        26.481818    26.863636       27.227273           0.4307580
+skewness         8.490909     8.681818        9.218182           0.1392128
+curtosis         7.418182     7.772727        8.318182           0.1246356
+entropy          2.690909     2.772727        3.127273           0.0444606
+
+=== LIME Rankings ===
+
+
+Feature     Importance
+---------  -----------
+variance     0.4224288
+skewness     0.2341382
+curtosis     0.1452945
+entropy      0.0154701
+
+=== SHAP (IML Shapley) Rankings ===
+
+
+Feature     Importance
+---------  -----------
+variance     0.3181845
+skewness     0.1227095
+curtosis     0.0502634
+entropy      0.0091824
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair                Spearman   Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME           1                 3
+FEAT_IMP vs SHAP           1                 3
+LIME vs SHAP               1                 3
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME   NA                        1
+FEAT_IMP vs SHAP   NA                        1
+LIME vs SHAP       NA                        1
+
+=== Top-1 Features ===
+FEAT_IMP: variance
+LIME: variance
+SHAP: variance
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1   Feature_2   Agreement 
+-----------------  ----------  ----------  ----------
+FEAT_IMP vs LIME   variance    variance    TRUE      
+FEAT_IMP vs SHAP   variance    variance    TRUE      
+LIME vs SHAP       variance    variance    TRUE      
+
+Agreeing pairs: 3 / 3 (100.0%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: fda
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=banknote, Method=fda ===
+No scaling applied for method: fda
+Loading required package: earth
+Loading required package: Formula
+Loading required package: plotmo
+Loading required package: plotrix
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature     importance.05   importance   importance.95   permutation.error
+---------  --------------  -----------  --------------  ------------------
+variance         3.290909     3.334928        3.359809           0.5080175
+skewness         1.000000     1.000000        1.000000           0.1523324
+curtosis         1.000000     1.000000        1.000000           0.1523324
+entropy          1.000000     1.000000        1.000000           0.1523324
+
+=== LIME Rankings ===
+
+
+Feature     Importance
+---------  -----------
+variance     0.5280599
+entropy      0.0105076
+skewness     0.0083832
+curtosis     0.0049166
+
+=== SHAP (IML Shapley) Rankings ===
+
+
+Feature     Importance
+---------  -----------
+variance     0.3756954
+curtosis     0.0000000
+entropy      0.0000000
+skewness     0.0000000
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair                Spearman   Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME           1                 2
+FEAT_IMP vs SHAP           1                 2
+LIME vs SHAP               1                 2
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME   NA                        1
+FEAT_IMP vs SHAP   NA                        1
+LIME vs SHAP       NA                        1
+
+=== Top-1 Features ===
+FEAT_IMP: variance
+LIME: variance
+SHAP: variance
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1   Feature_2   Agreement 
+-----------------  ----------  ----------  ----------
+FEAT_IMP vs LIME   variance    variance    TRUE      
+FEAT_IMP vs SHAP   variance    variance    TRUE      
+LIME vs SHAP       variance    variance    TRUE      
+
+Agreeing pairs: 3 / 3 (100.0%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: gbm
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=banknote, Method=gbm ===
+No scaling applied for method: gbm
+Iter   TrainDeviance   ValidDeviance   StepSize   Improve
+     1        1.2792            -nan     0.1000    0.0476
+     2        1.2026            -nan     0.1000    0.0388
+     3        1.1360            -nan     0.1000    0.0311
+     4        1.0792            -nan     0.1000    0.0275
+     5        1.0322            -nan     0.1000    0.0227
+     6        0.9909            -nan     0.1000    0.0189
+     7        0.9539            -nan     0.1000    0.0171
+     8        0.9196            -nan     0.1000    0.0171
+     9        0.8890            -nan     0.1000    0.0135
+    10        0.8606            -nan     0.1000    0.0128
+    20        0.6664            -nan     0.1000    0.0068
+    40        0.4882            -nan     0.1000    0.0033
+    50        0.4313            -nan     0.1000    0.0019
+
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature     importance.05   importance   importance.95   permutation.error
+---------  --------------  -----------  --------------  ------------------
+variance         8.663636     9.000000        9.354546           0.4329446
+skewness         3.430303     3.621212        3.721212           0.1741983
+curtosis         1.733333     1.833333        1.881818           0.0881924
+entropy          1.000000     1.000000        1.000000           0.0481050
+
+=== LIME Rankings ===
+
+
+Feature     Importance
+---------  -----------
+variance     0.3929721
+skewness     0.1933288
+curtosis     0.0739150
+entropy      0.0072737
+
+=== SHAP (IML Shapley) Rankings ===
+
+
+Feature     Importance
+---------  -----------
+variance     0.2502435
+skewness     0.1021610
+curtosis     0.0330201
+entropy      0.0000000
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair                Spearman   Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME           1                 3
+FEAT_IMP vs SHAP           1                 3
+LIME vs SHAP               1                 3
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME   NA                        1
+FEAT_IMP vs SHAP   NA                        1
+LIME vs SHAP       NA                        1
+
+=== Top-1 Features ===
+FEAT_IMP: variance
+LIME: variance
+SHAP: variance
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1   Feature_2   Agreement 
+-----------------  ----------  ----------  ----------
+FEAT_IMP vs LIME   variance    variance    TRUE      
+FEAT_IMP vs SHAP   variance    variance    TRUE      
+LIME vs SHAP       variance    variance    TRUE      
+
+Agreeing pairs: 3 / 3 (100.0%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: gcvEarth
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=banknote, Method=gcvEarth ===
+No scaling applied for method: gcvEarth
+Loading required package: earth
+Loading required package: Formula
+Loading required package: plotmo
+Loading required package: plotrix
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+Warning message:
+glm.fit: fitted probabilities numerically 0 or 1 occurred 
+
+=== IML Rankings ===
+
+
+feature     importance.05   importance   importance.95   permutation.error
+---------  --------------  -----------  --------------  ------------------
+variance        0.3753644    0.3819242       0.3880466           0.3819242
+skewness        0.3189504    0.3228863       0.3408163           0.3228863
+curtosis        0.2295918    0.2441691       0.2523324           0.2441691
+entropy         0.0138484    0.0182216       0.0199708           0.0182216
+Warning message:
+In initialize(...) :
+  Model error is 0, switching from compare='ratio' to compare='difference'
+
+=== LIME Rankings ===
+
+
+Feature     Importance
+---------  -----------
+skewness     0.3606025
+curtosis     0.3542827
+variance     0.2828537
+entropy      0.0469217
+
+=== SHAP (IML Shapley) Rankings ===
+
+
+Feature     Importance
+---------  -----------
+variance     0.3039972
+skewness     0.2382726
+curtosis     0.2037354
+entropy      0.0356883
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair                Spearman   Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME        -0.5                 3
+FEAT_IMP vs SHAP         1.0                 3
+LIME vs SHAP            -0.5                 3
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME   NA                        0
+FEAT_IMP vs SHAP   NA                        1
+LIME vs SHAP       NA                        0
+
+=== Top-1 Features ===
+FEAT_IMP: variance
+LIME: skewness
+SHAP: variance
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1   Feature_2   Agreement 
+-----------------  ----------  ----------  ----------
+FEAT_IMP vs LIME   variance    skewness    FALSE     
+FEAT_IMP vs SHAP   variance    variance    TRUE      
+LIME vs SHAP       skewness    variance    FALSE     
+
+Agreeing pairs: 1 / 3 (33.3%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: JRip
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=banknote, Method=JRip ===
+No scaling applied for method: JRip
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature     importance.05   importance   importance.95   permutation.error
+---------  --------------  -----------  --------------  ------------------
+variance           103.96        105.0          106.16           0.3826531
+skewness            59.48         62.8           64.48           0.2288630
+curtosis            34.08         35.6           36.84           0.1297376
+entropy              6.28          6.6            8.00           0.0240525
+
+=== LIME Rankings ===
+
+
+Feature     Importance
+---------  -----------
+variance     0.4052412
+skewness     0.2804141
+curtosis     0.2346763
+entropy      0.0379316
+
+=== SHAP (IML Shapley) Rankings ===
+
+
+Feature     Importance
+---------  -----------
+variance     0.3055282
+skewness     0.1808234
+curtosis     0.1031774
+entropy      0.0060000
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair                Spearman   Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME           1                 3
+FEAT_IMP vs SHAP           1                 3
+LIME vs SHAP               1                 3
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME   NA                        1
+FEAT_IMP vs SHAP   NA                        1
+LIME vs SHAP       NA                        1
+
+=== Top-1 Features ===
+FEAT_IMP: variance
+LIME: variance
+SHAP: variance
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1   Feature_2   Agreement 
+-----------------  ----------  ----------  ----------
+FEAT_IMP vs LIME   variance    variance    TRUE      
+FEAT_IMP vs SHAP   variance    variance    TRUE      
+LIME vs SHAP       variance    variance    TRUE      
+
+Agreeing pairs: 3 / 3 (100.0%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: lvq
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=banknote, Method=lvq ===
+Applying data scaling for method: lvq
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature     importance.05   importance   importance.95   permutation.error
+---------  --------------  -----------  --------------  ------------------
+variance        3.1486631     3.229947       3.3090909           0.4402332
+skewness        1.3165775     1.390374       1.4032086           0.1895044
+entropy         1.0096257     1.026738       1.0406417           0.1399417
+curtosis        0.9550802     0.973262       0.9871658           0.1326531
+
+=== LIME Rankings ===
+Error in get_lime: only classification models that produce probabilities are allowed 
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs SHAP   NA                        0
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs SHAP   NA                        0
+
+=== Top-1 Features ===
+FEAT_IMP: variance
+SHAP: NA
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1   Feature_2   Agreement 
+-----------------  ----------  ----------  ----------
+FEAT_IMP vs SHAP   variance    NA          FALSE     
+
+Agreeing pairs: 0 / 1 (0.0%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: mlpML
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=banknote, Method=mlpML ===
+Applying data scaling for method: mlpML
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+Warning message:
+At least one layer had zero units and were removed. The new structure is 1 
+
+=== IML Rankings ===
+
+
+feature     importance.05   importance   importance.95   permutation.error
+---------  --------------  -----------  --------------  ------------------
+variance         34.74667     34.93333       35.280000           0.3819242
+skewness         30.70667     31.53333       32.040000           0.3447522
+curtosis         17.57333     18.20000       19.040000           0.1989796
+entropy           1.08000      1.20000        1.466667           0.0131195
+
+=== LIME Rankings ===
+
+
+Feature     Importance
+---------  -----------
+skewness     0.4023561
+variance     0.3019748
+curtosis     0.2529233
+entropy      0.0163748
+
+=== SHAP (IML Shapley) Rankings ===
+
+
+Feature     Importance
+---------  -----------
+skewness     0.2743119
+variance     0.2681865
+curtosis     0.1077820
+entropy      0.0082145
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair                Spearman   Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME         0.5                 3
+FEAT_IMP vs SHAP         0.5                 3
+LIME vs SHAP             1.0                 3
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME   NA                        0
+FEAT_IMP vs SHAP   NA                        0
+LIME vs SHAP       NA                        1
+
+=== Top-1 Features ===
+FEAT_IMP: variance
+LIME: skewness
+SHAP: skewness
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1   Feature_2   Agreement 
+-----------------  ----------  ----------  ----------
+FEAT_IMP vs LIME   variance    skewness    FALSE     
+FEAT_IMP vs SHAP   variance    skewness    FALSE     
+LIME vs SHAP       skewness    skewness    TRUE      
+
+Agreeing pairs: 1 / 3 (33.3%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: multinom
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=banknote, Method=multinom ===
+Applying data scaling for method: multinom
+# weights:  6 (5 variable)
+initial  value 950.997932 
+iter  10 value 47.750897
+iter  20 value 25.619616
+iter  30 value 24.945378
+final  value 24.945319 
+converged
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature     importance.05   importance   importance.95   permutation.error
+---------  --------------  -----------  --------------  ------------------
+variance        47.472727    49.090909       50.490909           0.3935860
+skewness        40.909091    41.636364       43.890909           0.3338192
+curtosis        24.036364    24.909091       25.290909           0.1997085
+entropy          1.145455     1.363636        1.509091           0.0109329
+
+=== LIME Rankings ===
+
+
+Feature     Importance
+---------  -----------
+skewness     0.4093093
+variance     0.3050105
+curtosis     0.2712722
+entropy      0.0119576
+
+=== SHAP (IML Shapley) Rankings ===
+
+
+Feature     Importance
+---------  -----------
+variance     0.3000392
+skewness     0.1858237
+curtosis     0.1175782
+entropy      0.0094118
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair                Spearman   Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME         0.5                 3
+FEAT_IMP vs SHAP         1.0                 3
+LIME vs SHAP             0.5                 3
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME   NA                        0
+FEAT_IMP vs SHAP   NA                        1
+LIME vs SHAP       NA                        0
+
+=== Top-1 Features ===
+FEAT_IMP: variance
+LIME: skewness
+SHAP: variance
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1   Feature_2   Agreement 
+-----------------  ----------  ----------  ----------
+FEAT_IMP vs LIME   variance    skewness    FALSE     
+FEAT_IMP vs SHAP   variance    variance    TRUE      
+LIME vs SHAP       skewness    variance    FALSE     
+
+Agreeing pairs: 1 / 3 (33.3%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: naive_bayes
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=banknote, Method=naive_bayes ===
+No scaling applied for method: naive_bayes
+Error: Only one model should be specified in tuneGrid with no resampling
+Execution halted
+FAILED - See error above
+
+
+========================================
+Model: PART
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=banknote, Method=PART ===
+No scaling applied for method: PART
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature     importance.05   importance   importance.95   permutation.error
+---------  --------------  -----------  --------------  ------------------
+variance        154.60000   156.000000      162.466667           0.3411079
+skewness        112.33333   119.000000      121.866667           0.2602041
+curtosis         57.93333    61.000000       66.066667           0.1333819
+entropy           6.00000     7.666667        9.533333           0.0167638
+
+=== LIME Rankings ===
+
+
+Feature     Importance
+---------  -----------
+variance     0.3668580
+skewness     0.2598506
+curtosis     0.2252117
+entropy      0.0138635
+
+=== SHAP (IML Shapley) Rankings ===
+
+
+Feature     Importance
+---------  -----------
+variance     0.2767840
+skewness     0.1382375
+curtosis     0.0493958
+entropy      0.0300546
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair                Spearman   Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME           1                 3
+FEAT_IMP vs SHAP           1                 3
+LIME vs SHAP               1                 3
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME   NA                        1
+FEAT_IMP vs SHAP   NA                        1
+LIME vs SHAP       NA                        1
+
+=== Top-1 Features ===
+FEAT_IMP: variance
+LIME: variance
+SHAP: variance
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1   Feature_2   Agreement 
+-----------------  ----------  ----------  ----------
+FEAT_IMP vs LIME   variance    variance    TRUE      
+FEAT_IMP vs SHAP   variance    variance    TRUE      
+LIME vs SHAP       variance    variance    TRUE      
+
+Agreeing pairs: 3 / 3 (100.0%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: rbfDDA
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=banknote, Method=rbfDDA ===
+Applying data scaling for method: rbfDDA
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature     importance.05   importance   importance.95   permutation.error
+---------  --------------  -----------  --------------  ------------------
+variance           61.400       63.000          64.350           0.3673469
+skewness           30.825       31.750          34.350           0.1851312
+curtosis           19.000       20.000          21.325           0.1166181
+entropy             6.100        6.625           7.050           0.0386297
+
+=== LIME Rankings ===
+
+
+Feature     Importance
+---------  -----------
+variance     11.692082
+skewness      7.627190
+entropy       6.127167
+curtosis      5.660923
+
+=== SHAP (IML Shapley) Rankings ===
+
+
+Feature     Importance
+---------  -----------
+variance     18.089834
+skewness      9.843150
+entropy       6.446067
+curtosis      5.004358
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair                Spearman   Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME           1                 2
+FEAT_IMP vs SHAP           1                 2
+LIME vs SHAP               1                 3
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME   NA                        1
+FEAT_IMP vs SHAP   NA                        1
+LIME vs SHAP       NA                        1
+
+=== Top-1 Features ===
+FEAT_IMP: variance
+LIME: variance
+SHAP: variance
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1   Feature_2   Agreement 
+-----------------  ----------  ----------  ----------
+FEAT_IMP vs LIME   variance    variance    TRUE      
+FEAT_IMP vs SHAP   variance    variance    TRUE      
+LIME vs SHAP       variance    variance    TRUE      
+
+Agreeing pairs: 3 / 3 (100.0%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: rda
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=banknote, Method=rda ===
+Applying data scaling for method: rda
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature     importance.05   importance   importance.95   permutation.error
+---------  --------------  -----------  --------------  ------------------
+variance            25.79        26.20           26.65           0.3819242
+skewness            23.50        23.70           25.11           0.3454810
+curtosis            15.71        15.95           16.96           0.2325073
+entropy              1.06         1.10            1.15           0.0160350
+
+=== LIME Rankings ===
+
+
+Feature     Importance
+---------  -----------
+skewness     0.3585405
+variance     0.2926974
+curtosis     0.2609351
+entropy      0.0171638
+
+=== SHAP (IML Shapley) Rankings ===
+
+
+Feature     Importance
+---------  -----------
+variance     0.2775041
+skewness     0.2346509
+curtosis     0.1447577
+entropy      0.0021184
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair                Spearman   Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME         0.5                 3
+FEAT_IMP vs SHAP         1.0                 3
+LIME vs SHAP             0.5                 3
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME   NA                        0
+FEAT_IMP vs SHAP   NA                        1
+LIME vs SHAP       NA                        0
+
+=== Top-1 Features ===
+FEAT_IMP: variance
+LIME: skewness
+SHAP: variance
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1   Feature_2   Agreement 
+-----------------  ----------  ----------  ----------
+FEAT_IMP vs LIME   variance    skewness    FALSE     
+FEAT_IMP vs SHAP   variance    variance    TRUE      
+LIME vs SHAP       skewness    variance    FALSE     
+
+Agreeing pairs: 1 / 3 (33.3%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: rf
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=banknote, Method=rf ===
+No scaling applied for method: rf
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature     importance.05   importance   importance.95   permutation.error
+---------  --------------  -----------  --------------  ------------------
+variance        0.3212828    0.3440233       0.3537901           0.3440233
+skewness        0.2142857    0.2288630       0.2352770           0.2288630
+curtosis        0.1023324    0.1086006       0.1141399           0.1086006
+entropy         0.0021866    0.0029155       0.0034985           0.0029155
+Warning message:
+In initialize(...) :
+  Model error is 0, switching from compare='ratio' to compare='difference'
+
+=== LIME Rankings ===
+
+
+Feature     Importance
+---------  -----------
+variance     0.3341057
+skewness     0.3042218
+curtosis     0.1612714
+entropy      0.0179462
+
+=== SHAP (IML Shapley) Rankings ===
+
+
+Feature     Importance
+---------  -----------
+variance      0.227320
+skewness      0.200800
+curtosis      0.118992
+entropy       0.017568
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair                Spearman   Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME           1                 3
+FEAT_IMP vs SHAP           1                 3
+LIME vs SHAP               1                 3
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME   NA                        1
+FEAT_IMP vs SHAP   NA                        1
+LIME vs SHAP       NA                        1
+
+=== Top-1 Features ===
+FEAT_IMP: variance
+LIME: variance
+SHAP: variance
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1   Feature_2   Agreement 
+-----------------  ----------  ----------  ----------
+FEAT_IMP vs LIME   variance    variance    TRUE      
+FEAT_IMP vs SHAP   variance    variance    TRUE      
+LIME vs SHAP       variance    variance    TRUE      
+
+Agreeing pairs: 3 / 3 (100.0%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: rpart
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=banknote, Method=rpart ===
+No scaling applied for method: rpart
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature     importance.05   importance   importance.95   permutation.error
+---------  --------------  -----------  --------------  ------------------
+variance                1            1               1           0.4446064
+skewness                1            1               1           0.4446064
+curtosis                1            1               1           0.4446064
+entropy                 1            1               1           0.4446064
+
+=== LIME Rankings ===
+Error in get_lime: Response is constant across permutations. Please check your model 
+
+=== SHAP (IML Shapley) Rankings ===
+
+
+Feature     Importance
+---------  -----------
+curtosis             0
+entropy              0
+skewness             0
+variance             0
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair                Spearman   Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs SHAP          -1                 2
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs SHAP   NA                        0
+
+=== Top-1 Features ===
+FEAT_IMP: variance
+SHAP: curtosis
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1   Feature_2   Agreement 
+-----------------  ----------  ----------  ----------
+FEAT_IMP vs SHAP   variance    curtosis    FALSE     
+
+Agreeing pairs: 0 / 1 (0.0%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: simpls
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=banknote, Method=simpls ===
+Applying data scaling for method: simpls
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature     importance.05   importance   importance.95   permutation.error
+---------  --------------  -----------  --------------  ------------------
+variance        2.6144928    2.6908213       2.7710145           0.4059767
+skewness        1.5603865    1.5700483       1.6173913           0.2368805
+entropy         0.9864734    0.9903382       0.9942029           0.1494169
+curtosis        0.8521739    0.8985507       0.9178744           0.1355685
+
+=== LIME Rankings ===
+
+
+Feature     Importance
+---------  -----------
+variance     0.1877187
+skewness     0.1302612
+curtosis     0.0347925
+entropy      0.0049987
+
+=== SHAP (IML Shapley) Rankings ===
+
+
+Feature     Importance
+---------  -----------
+variance     0.1070738
+skewness     0.0601604
+curtosis     0.0167538
+entropy      0.0013159
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair                Spearman   Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME           1                 2
+FEAT_IMP vs SHAP           1                 2
+LIME vs SHAP               1                 3
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME   NA                        1
+FEAT_IMP vs SHAP   NA                        1
+LIME vs SHAP       NA                        1
+
+=== Top-1 Features ===
+FEAT_IMP: variance
+LIME: variance
+SHAP: variance
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1   Feature_2   Agreement 
+-----------------  ----------  ----------  ----------
+FEAT_IMP vs LIME   variance    variance    TRUE      
+FEAT_IMP vs SHAP   variance    variance    TRUE      
+LIME vs SHAP       variance    variance    TRUE      
+
+Agreeing pairs: 3 / 3 (100.0%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: svmLinear
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=banknote, Method=svmLinear ===
+Applying data scaling for method: svmLinear
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature     importance.05   importance   importance.95   permutation.error
+---------  --------------  -----------  --------------  ------------------
+variance       24.6380952    24.904762        25.39048           0.3811953
+skewness       22.4476190    22.904762        24.41905           0.3505831
+curtosis       13.3428571    13.571429        14.26667           0.2077259
+entropy         0.9142857     0.952381         1.00000           0.0145773
+
+=== LIME Rankings ===
+Error in get_lime: Response is constant across permutations. Please check your model 
+Warning message:
+In method$prob(modelFit = modelFit, newdata = newdata, submodels = param) :
+  kernlab class probability calculations failed; returning NAs
+Warning messages:
+1: In method$prob(modelFit = modelFit, newdata = newdata, submodels = param) :
+  kernlab class probability calculations failed; returning NAs
+2: In method$prob(modelFit = modelFit, newdata = newdata, submodels = param) :
+  kernlab class probability calculations failed; returning NAs
+3: In method$prob(modelFit = modelFit, newdata = newdata, submodels = param) :
+  kernlab class probability calculations failed; returning NAs
+4: In method$prob(modelFit = modelFit, newdata = newdata, submodels = param) :
+  kernlab class probability calculations failed; returning NAs
+5: In method$prob(modelFit = modelFit, newdata = newdata, submodels = param) :
+  kernlab class probability calculations failed; returning NAs
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs SHAP   NA                        0
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs SHAP   NA                        0
+
+=== Top-1 Features ===
+FEAT_IMP: variance
+SHAP: NA
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1   Feature_2   Agreement 
+-----------------  ----------  ----------  ----------
+FEAT_IMP vs SHAP   variance    NA          FALSE     
+
+Agreeing pairs: 0 / 1 (0.0%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: svmRadial
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=banknote, Method=svmRadial ===
+Applying data scaling for method: svmRadial
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature     importance.05   importance   importance.95   permutation.error
+---------  --------------  -----------  --------------  ------------------
+variance            92.88         93.2           97.20           0.3396501
+skewness            79.72         84.0           85.84           0.3061224
+curtosis            47.24         48.4           48.56           0.1763848
+entropy              5.60          6.8            7.80           0.0247813
+
+=== LIME Rankings ===
+Error in get_lime: Response is constant across permutations. Please check your model 
+Warning message:
+In method$prob(modelFit = modelFit, newdata = newdata, submodels = param) :
+  kernlab class probability calculations failed; returning NAs
+Warning messages:
+1: In method$prob(modelFit = modelFit, newdata = newdata, submodels = param) :
+  kernlab class probability calculations failed; returning NAs
+2: In method$prob(modelFit = modelFit, newdata = newdata, submodels = param) :
+  kernlab class probability calculations failed; returning NAs
+3: In method$prob(modelFit = modelFit, newdata = newdata, submodels = param) :
+  kernlab class probability calculations failed; returning NAs
+4: In method$prob(modelFit = modelFit, newdata = newdata, submodels = param) :
+  kernlab class probability calculations failed; returning NAs
+5: In method$prob(modelFit = modelFit, newdata = newdata, submodels = param) :
+  kernlab class probability calculations failed; returning NAs
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs SHAP   NA                        0
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs SHAP   NA                        0
+
+=== Top-1 Features ===
+FEAT_IMP: variance
+SHAP: NA
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1   Feature_2   Agreement 
+-----------------  ----------  ----------  ----------
+FEAT_IMP vs SHAP   variance    NA          FALSE     
+
+Agreeing pairs: 0 / 1 (0.0%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: rfRules
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=banknote, Method=rfRules ===
+No scaling applied for method: rfRules
+Registered S3 method overwritten by 'RRF':
+  method      from        
+  plot.margin randomForest
+1941 rules (length<=2) were extracted from the first 500 trees.
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature     importance.05   importance   importance.95   permutation.error
+---------  --------------  -----------  --------------  ------------------
+variance           12.665       12.975          13.045           0.3782799
+skewness            6.735        6.925           7.295           0.2018950
+curtosis            2.695        2.825           2.825           0.0823615
+entropy             1.000        1.000           1.000           0.0291545
+
+=== LIME Rankings ===
+Error in get_lime: only classification models that produce probabilities are allowed 
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs SHAP   NA                        0
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs SHAP   NA                        0
+
+=== Top-1 Features ===
+FEAT_IMP: variance
+SHAP: NA
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1   Feature_2   Agreement 
+-----------------  ----------  ----------  ----------
+FEAT_IMP vs SHAP   variance    NA          FALSE     
+
+Agreeing pairs: 0 / 1 (0.0%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: knn
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=banknote, Method=knn ===
+Applying data scaling for method: knn
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature     importance.05   importance   importance.95   permutation.error
+---------  --------------  -----------  --------------  ------------------
+variance            220.0        222.5           226.2           0.3243440
+skewness            168.7        177.5           178.9           0.2587464
+curtosis             89.5         98.5            99.8           0.1435860
+entropy              16.6         18.0            21.3           0.0262391
+
+=== LIME Rankings ===
+
+
+Feature     Importance
+---------  -----------
+variance     0.3782947
+skewness     0.3307731
+curtosis     0.2192327
+entropy      0.0476573
+
+=== SHAP (IML Shapley) Rankings ===
+
+
+Feature     Importance
+---------  -----------
+variance     0.2806397
+skewness     0.2052381
+curtosis     0.1103683
+entropy      0.0465159
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair                Spearman   Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME           1                 3
+FEAT_IMP vs SHAP           1                 3
+LIME vs SHAP               1                 3
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME   NA                        1
+FEAT_IMP vs SHAP   NA                        1
+LIME vs SHAP       NA                        1
+
+=== Top-1 Features ===
+FEAT_IMP: variance
+LIME: variance
+SHAP: variance
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1   Feature_2   Agreement 
+-----------------  ----------  ----------  ----------
+FEAT_IMP vs LIME   variance    variance    TRUE      
+FEAT_IMP vs SHAP   variance    variance    TRUE      
+LIME vs SHAP       variance    variance    TRUE      
+
+Agreeing pairs: 3 / 3 (100.0%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: bayesglm
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=banknote, Method=bayesglm ===
+Applying data scaling for method: bayesglm
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+Warning message:
+fitted probabilities numerically 0 or 1 occurred 
+
+=== IML Rankings ===
+
+
+feature     importance.05   importance   importance.95   permutation.error
+---------  --------------  -----------  --------------  ------------------
+variance          32.8500      33.9375         34.6750           0.3957726
+skewness          28.0250      28.4375         30.0625           0.3316327
+curtosis          16.3625      17.1875         17.5500           0.2004373
+entropy            0.7125       0.8125          0.9375           0.0094752
+
+=== LIME Rankings ===
+
+
+Feature     Importance
+---------  -----------
+skewness     0.4102589
+variance     0.3046733
+curtosis     0.2702280
+entropy      0.0110345
+
+=== SHAP (IML Shapley) Rankings ===
+
+
+Feature     Importance
+---------  -----------
+variance     0.2944062
+skewness     0.1929085
+curtosis     0.1159677
+entropy      0.0052080
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair                Spearman   Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME         0.5                 3
+FEAT_IMP vs SHAP         1.0                 3
+LIME vs SHAP             0.5                 3
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME   NA                        0
+FEAT_IMP vs SHAP   NA                        1
+LIME vs SHAP       NA                        0
+
+=== Top-1 Features ===
+FEAT_IMP: variance
+LIME: skewness
+SHAP: variance
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1   Feature_2   Agreement 
+-----------------  ----------  ----------  ----------
+FEAT_IMP vs LIME   variance    skewness    FALSE     
+FEAT_IMP vs SHAP   variance    variance    TRUE      
+LIME vs SHAP       skewness    variance    FALSE     
+
+Agreeing pairs: 1 / 3 (33.3%)
+
+=== All Results Recorded ===
+

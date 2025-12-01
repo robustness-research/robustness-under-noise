@@ -1,0 +1,1594 @@
+Dataset: climate-model-simulation-crashes
+Generated: Mon Nov 24 10:36:01 PM CET 2025
+======================================
+
+
+========================================
+Model: C5.0
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=climate-model-simulation-crashes, Method=C5.0 ===
+No scaling applied for method: C5.0
+Error: Only one model should be specified in tuneGrid with no resampling
+Execution halted
+FAILED - See error above
+
+
+========================================
+Model: ctree
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=climate-model-simulation-crashes, Method=ctree ===
+No scaling applied for method: ctree
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature         importance.05   importance   importance.95   permutation.error
+-------------  --------------  -----------  --------------  ------------------
+vconst_2             2.011111     2.194444        2.444444           0.1462963
+vconst_corr          1.872222     2.111111        2.277778           0.1407407
+convect_corr         1.400000     1.500000        1.577778           0.1000000
+vconst_3             1.000000     1.000000        1.000000           0.0666667
+vconst_4             1.000000     1.000000        1.000000           0.0666667
+
+=== LIME Rankings ===
+
+
+Feature                 Importance
+---------------------  -----------
+vconst_corr              0.1210084
+vconst_2                 0.0971092
+convect_corr             0.0409455
+vconst_4                 0.0067171
+vertical_decay_scale     0.0066897
+
+=== SHAP (IML Shapley) Rankings ===
+
+
+Feature         Importance
+-------------  -----------
+vconst_2         0.1392563
+vconst_corr      0.0804607
+convect_corr     0.0348874
+ah_bolus         0.0000000
+ah_corr          0.0000000
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair                Spearman   Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME         0.5                 3
+FEAT_IMP vs SHAP         1.0                 3
+LIME vs SHAP             0.5                 3
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME   NA                        0
+FEAT_IMP vs SHAP   NA                        1
+LIME vs SHAP       NA                        0
+
+=== Top-1 Features ===
+FEAT_IMP: vconst_2
+LIME: vconst_corr
+SHAP: vconst_2
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1     Feature_2     Agreement 
+-----------------  ------------  ------------  ----------
+FEAT_IMP vs LIME   vconst_2      vconst_corr   FALSE     
+FEAT_IMP vs SHAP   vconst_2      vconst_2      TRUE      
+LIME vs SHAP       vconst_corr   vconst_2      FALSE     
+
+Agreeing pairs: 1 / 3 (33.3%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: fda
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=climate-model-simulation-crashes, Method=fda ===
+No scaling applied for method: fda
+Loading required package: earth
+Loading required package: Formula
+Loading required package: plotmo
+Loading required package: plotrix
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature        importance.05   importance   importance.95   permutation.error
+------------  --------------  -----------  --------------  ------------------
+vconst_corr                1            1               1           0.0851852
+vconst_2                   1            1               1           0.0851852
+vconst_3                   1            1               1           0.0851852
+vconst_4                   1            1               1           0.0851852
+vconst_5                   1            1               1           0.0851852
+
+=== LIME Rankings ===
+
+
+Feature                 Importance
+---------------------  -----------
+vconst_corr              0.1655540
+vconst_7                 0.0033194
+convect_corr             0.0032865
+bckgrnd_vdc_ban          0.0029579
+vertical_decay_scale     0.0026824
+
+=== SHAP (IML Shapley) Rankings ===
+
+
+Feature            Importance
+----------------  -----------
+vconst_corr         0.1255263
+ah_bolus            0.0000000
+ah_corr             0.0000000
+bckgrnd_vdc_ban     0.0000000
+bckgrnd_vdc_eq      0.0000000
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME   NA                        1
+FEAT_IMP vs SHAP   NA                        1
+LIME vs SHAP       NA                        1
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME   NA                        1
+FEAT_IMP vs SHAP   NA                        1
+LIME vs SHAP       NA                        1
+
+=== Top-1 Features ===
+FEAT_IMP: vconst_corr
+LIME: vconst_corr
+SHAP: vconst_corr
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1     Feature_2     Agreement 
+-----------------  ------------  ------------  ----------
+FEAT_IMP vs LIME   vconst_corr   vconst_corr   TRUE      
+FEAT_IMP vs SHAP   vconst_corr   vconst_corr   TRUE      
+LIME vs SHAP       vconst_corr   vconst_corr   TRUE      
+
+Agreeing pairs: 3 / 3 (100.0%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: gbm
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=climate-model-simulation-crashes, Method=gbm ===
+No scaling applied for method: gbm
+Iter   TrainDeviance   ValidDeviance   StepSize   Improve
+     1        0.5595            -nan     0.1000    0.0063
+     2        0.5506            -nan     0.1000   -0.0008
+     3        0.5355            -nan     0.1000    0.0078
+     4        0.5177            -nan     0.1000    0.0077
+     5        0.5041            -nan     0.1000    0.0033
+     6        0.4968            -nan     0.1000    0.0036
+     7        0.4881            -nan     0.1000    0.0011
+     8        0.4836            -nan     0.1000    0.0001
+     9        0.4726            -nan     0.1000    0.0057
+    10        0.4629            -nan     0.1000    0.0019
+    20        0.3873            -nan     0.1000    0.0029
+    40        0.2995            -nan     0.1000    0.0015
+    50        0.2780            -nan     0.1000    0.0002
+
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature            importance.05   importance   importance.95   permutation.error
+----------------  --------------  -----------  --------------  ------------------
+vconst_corr             1.571429     1.714286        1.842857           0.0888889
+vconst_2                1.614286     1.678571        1.821429           0.0870370
+convect_corr            1.214286     1.285714        1.350000           0.0666667
+bckgrnd_vdc1            1.178571     1.214286        1.250000           0.0629630
+bckgrnd_vdc_ban         1.035714     1.071429        1.071429           0.0555556
+
+=== LIME Rankings ===
+
+
+Feature         Importance
+-------------  -----------
+vconst_corr      0.0920027
+vconst_2         0.0710620
+convect_corr     0.0286377
+bckgrnd_vdc1     0.0219695
+vconst_3         0.0087429
+
+=== SHAP (IML Shapley) Rankings ===
+
+
+Feature         Importance
+-------------  -----------
+vconst_2         0.0986982
+vconst_corr      0.0877176
+convect_corr     0.0486693
+bckgrnd_vdc1     0.0151649
+vconst_4         0.0057294
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair                Spearman   Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME         1.0                 3
+FEAT_IMP vs SHAP         0.5                 3
+LIME vs SHAP             0.5                 3
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME   NA                        1
+FEAT_IMP vs SHAP   NA                        0
+LIME vs SHAP       NA                        0
+
+=== Top-1 Features ===
+FEAT_IMP: vconst_corr
+LIME: vconst_corr
+SHAP: vconst_2
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1     Feature_2     Agreement 
+-----------------  ------------  ------------  ----------
+FEAT_IMP vs LIME   vconst_corr   vconst_corr   TRUE      
+FEAT_IMP vs SHAP   vconst_corr   vconst_2      FALSE     
+LIME vs SHAP       vconst_corr   vconst_2      FALSE     
+
+Agreeing pairs: 1 / 3 (33.3%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: gcvEarth
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=climate-model-simulation-crashes, Method=gcvEarth ===
+No scaling applied for method: gcvEarth
+Loading required package: earth
+Loading required package: Formula
+Loading required package: plotmo
+Loading required package: plotrix
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature           importance.05   importance   importance.95   permutation.error
+---------------  --------------  -----------  --------------  ------------------
+vconst_corr            2.823529     3.235294        3.529412           0.1018519
+vconst_2               2.882353     3.000000        3.235294           0.0944444
+convect_corr           2.141176     2.294118        2.588235           0.0722222
+bckgrnd_vdc1           1.564706     1.764706        2.035294           0.0555556
+bckgrnd_vdc_eq         1.411765     1.470588        1.576471           0.0462963
+
+=== LIME Rankings ===
+
+
+Feature           Importance
+---------------  -----------
+vconst_corr        0.1362411
+vconst_2           0.0981744
+bckgrnd_vdc1       0.0581365
+convect_corr       0.0565494
+bckgrnd_vdc_eq     0.0169232
+
+=== SHAP (IML Shapley) Rankings ===
+
+
+Feature           Importance
+---------------  -----------
+vconst_2           0.1217725
+convect_corr       0.1189852
+vconst_corr        0.0896266
+bckgrnd_vdc1       0.0514419
+bckgrnd_vdc_eq     0.0156827
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair                Spearman   Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME         1.0                 2
+FEAT_IMP vs SHAP        -0.5                 3
+LIME vs SHAP            -1.0                 2
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME   NA                        1
+FEAT_IMP vs SHAP   NA                        0
+LIME vs SHAP       NA                        0
+
+=== Top-1 Features ===
+FEAT_IMP: vconst_corr
+LIME: vconst_corr
+SHAP: vconst_2
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1     Feature_2     Agreement 
+-----------------  ------------  ------------  ----------
+FEAT_IMP vs LIME   vconst_corr   vconst_corr   TRUE      
+FEAT_IMP vs SHAP   vconst_corr   vconst_2      FALSE     
+LIME vs SHAP       vconst_corr   vconst_2      FALSE     
+
+Agreeing pairs: 1 / 3 (33.3%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: JRip
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=climate-model-simulation-crashes, Method=JRip ===
+No scaling applied for method: JRip
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature         importance.05   importance   importance.95   permutation.error
+-------------  --------------  -----------  --------------  ------------------
+vconst_2             2.545454     2.590909        2.800000           0.1055556
+vconst_corr          2.154545     2.409091        2.836364           0.0981481
+convect_corr         1.463636     1.681818        1.763636           0.0685185
+bckgrnd_vdc1         1.409091     1.500000        1.545454           0.0611111
+vconst_3             1.000000     1.000000        1.000000           0.0407407
+
+=== LIME Rankings ===
+
+
+Feature                 Importance
+---------------------  -----------
+vconst_corr              0.0863803
+vconst_2                 0.0690373
+bckgrnd_vdc1             0.0359103
+convect_corr             0.0343937
+vertical_decay_scale     0.0060071
+
+=== SHAP (IML Shapley) Rankings ===
+
+
+Feature         Importance
+-------------  -----------
+vconst_2         0.1272133
+vconst_corr      0.0961888
+bckgrnd_vdc1     0.0426481
+convect_corr     0.0388954
+ah_bolus         0.0000000
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair                Spearman   Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME        -1.0                 2
+FEAT_IMP vs SHAP         1.0                 2
+LIME vs SHAP             0.5                 3
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME   NA                        0
+FEAT_IMP vs SHAP   NA                        1
+LIME vs SHAP       NA                        0
+
+=== Top-1 Features ===
+FEAT_IMP: vconst_2
+LIME: vconst_corr
+SHAP: vconst_2
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1     Feature_2     Agreement 
+-----------------  ------------  ------------  ----------
+FEAT_IMP vs LIME   vconst_2      vconst_corr   FALSE     
+FEAT_IMP vs SHAP   vconst_2      vconst_2      TRUE      
+LIME vs SHAP       vconst_corr   vconst_2      FALSE     
+
+Agreeing pairs: 1 / 3 (33.3%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: lvq
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=climate-model-simulation-crashes, Method=lvq ===
+Applying data scaling for method: lvq
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature         importance.05   importance   importance.95   permutation.error
+-------------  --------------  -----------  --------------  ------------------
+vconst_2             1.100000     1.166667        1.190476           0.0907407
+vconst_corr          1.100000     1.119048        1.119048           0.0870370
+bckgrnd_vdc1         1.076191     1.095238        1.161905           0.0851852
+vconst_5             1.004762     1.071429        1.114286           0.0833333
+ah_corr              1.028571     1.071429        1.071429           0.0833333
+
+=== LIME Rankings ===
+Error in get_lime: only classification models that produce probabilities are allowed 
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs SHAP   NA                        0
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs SHAP   NA                        0
+
+=== Top-1 Features ===
+FEAT_IMP: vconst_2
+SHAP: NA
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1   Feature_2   Agreement 
+-----------------  ----------  ----------  ----------
+FEAT_IMP vs SHAP   vconst_2    NA          FALSE     
+
+Agreeing pairs: 0 / 1 (0.0%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: mlpML
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=climate-model-simulation-crashes, Method=mlpML ===
+Applying data scaling for method: mlpML
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+Warning message:
+At least one layer had zero units and were removed. The new structure is 1 
+
+=== IML Rankings ===
+
+
+feature         importance.05   importance   importance.95   permutation.error
+-------------  --------------  -----------  --------------  ------------------
+vconst_corr          4.818182     4.818182        5.381818           0.0981481
+vconst_2             4.472727     4.727273        5.490909           0.0962963
+convect_corr         3.000000     3.272727        3.545454           0.0666667
+bckgrnd_vdc1         2.418182     3.000000        3.163636           0.0611111
+vconst_5             1.563636     2.090909        2.345455           0.0425926
+
+=== LIME Rankings ===
+
+
+Feature         Importance
+-------------  -----------
+vconst_corr      0.1212722
+vconst_2         0.0839436
+bckgrnd_vdc1     0.0527718
+convect_corr     0.0493204
+vconst_5         0.0246435
+
+=== SHAP (IML Shapley) Rankings ===
+
+
+Feature         Importance
+-------------  -----------
+vconst_2         0.1362066
+vconst_corr      0.0876803
+convect_corr     0.0645643
+bckgrnd_vdc1     0.0436382
+vconst_5         0.0331018
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair                Spearman   Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME         1.0                 2
+FEAT_IMP vs SHAP         0.5                 3
+LIME vs SHAP            -1.0                 2
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME   NA                        1
+FEAT_IMP vs SHAP   NA                        0
+LIME vs SHAP       NA                        0
+
+=== Top-1 Features ===
+FEAT_IMP: vconst_corr
+LIME: vconst_corr
+SHAP: vconst_2
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1     Feature_2     Agreement 
+-----------------  ------------  ------------  ----------
+FEAT_IMP vs LIME   vconst_corr   vconst_corr   TRUE      
+FEAT_IMP vs SHAP   vconst_corr   vconst_2      FALSE     
+LIME vs SHAP       vconst_corr   vconst_2      FALSE     
+
+Agreeing pairs: 1 / 3 (33.3%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: multinom
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=climate-model-simulation-crashes, Method=multinom ===
+Applying data scaling for method: multinom
+# weights:  20 (19 variable)
+initial  value 374.299478 
+iter  10 value 48.788320
+iter  20 value 48.365998
+final  value 48.344147 
+converged
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature           importance.05   importance   importance.95   permutation.error
+---------------  --------------  -----------  --------------  ------------------
+vconst_corr              3.4625       3.6875          3.7875           0.1092593
+vconst_2                 3.2750       3.3750          3.4375           0.1000000
+bckgrnd_vdc1             1.7375       2.4375          2.5500           0.0722222
+convect_corr             1.9125       2.1875          2.3750           0.0648148
+bckgrnd_vdc_eq           1.3750       1.4375          1.4875           0.0425926
+
+=== LIME Rankings ===
+
+
+Feature                 Importance
+---------------------  -----------
+vconst_corr              0.1341542
+vconst_2                 0.0944565
+bckgrnd_vdc1             0.0578881
+convect_corr             0.0525440
+vertical_decay_scale     0.0260119
+
+=== SHAP (IML Shapley) Rankings ===
+
+
+Feature         Importance
+-------------  -----------
+vconst_2         0.1428507
+vconst_corr      0.1127610
+convect_corr     0.0647863
+bckgrnd_vdc1     0.0577577
+vconst_5         0.0320122
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair                Spearman   Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME           1                 3
+FEAT_IMP vs SHAP          -1                 2
+LIME vs SHAP              -1                 2
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME   NA                        1
+FEAT_IMP vs SHAP   NA                        0
+LIME vs SHAP       NA                        0
+
+=== Top-1 Features ===
+FEAT_IMP: vconst_corr
+LIME: vconst_corr
+SHAP: vconst_2
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1     Feature_2     Agreement 
+-----------------  ------------  ------------  ----------
+FEAT_IMP vs LIME   vconst_corr   vconst_corr   TRUE      
+FEAT_IMP vs SHAP   vconst_corr   vconst_2      FALSE     
+LIME vs SHAP       vconst_corr   vconst_2      FALSE     
+
+Agreeing pairs: 1 / 3 (33.3%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: naive_bayes
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=climate-model-simulation-crashes, Method=naive_bayes ===
+No scaling applied for method: naive_bayes
+Error: Only one model should be specified in tuneGrid with no resampling
+Execution halted
+FAILED - See error above
+
+
+========================================
+Model: PART
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=climate-model-simulation-crashes, Method=PART ===
+No scaling applied for method: PART
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature         importance.05   importance   importance.95   permutation.error
+-------------  --------------  -----------  --------------  ------------------
+vconst_corr          5.422222     5.888889        6.466667           0.0981481
+vconst_2             5.244444     5.888889        6.266667           0.0981481
+bckgrnd_vdc1         2.400000     3.333333        3.711111           0.0555556
+convect_corr         2.688889     3.111111        3.377778           0.0518519
+ah_corr              1.377778     1.666667        1.888889           0.0277778
+
+=== LIME Rankings ===
+
+
+Feature         Importance
+-------------  -----------
+vconst_corr      0.1203467
+vconst_2         0.1064434
+convect_corr     0.0447751
+bckgrnd_vdc1     0.0447034
+ah_corr          0.0153176
+
+=== SHAP (IML Shapley) Rankings ===
+
+
+Feature         Importance
+-------------  -----------
+vconst_2         0.1530073
+vconst_corr      0.1073077
+convect_corr     0.0454522
+bckgrnd_vdc1     0.0445152
+ah_corr          0.0203333
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair                Spearman   Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME         1.0                 2
+FEAT_IMP vs SHAP        -1.0                 2
+LIME vs SHAP             0.5                 3
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME   NA                        1
+FEAT_IMP vs SHAP   NA                        0
+LIME vs SHAP       NA                        0
+
+=== Top-1 Features ===
+FEAT_IMP: vconst_corr
+LIME: vconst_corr
+SHAP: vconst_2
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1     Feature_2     Agreement 
+-----------------  ------------  ------------  ----------
+FEAT_IMP vs LIME   vconst_corr   vconst_corr   TRUE      
+FEAT_IMP vs SHAP   vconst_corr   vconst_2      FALSE     
+LIME vs SHAP       vconst_corr   vconst_2      FALSE     
+
+Agreeing pairs: 1 / 3 (33.3%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: rbfDDA
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=climate-model-simulation-crashes, Method=rbfDDA ===
+Applying data scaling for method: rbfDDA
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature        importance.05   importance   importance.95   permutation.error
+------------  --------------  -----------  --------------  ------------------
+vconst_corr                1            1               1           0.0851852
+vconst_2                   1            1               1           0.0851852
+vconst_3                   1            1               1           0.0851852
+vconst_4                   1            1               1           0.0851852
+vconst_5                   1            1               1           0.0851852
+
+=== LIME Rankings ===
+
+
+Feature            Importance
+----------------  -----------
+vconst_corr          1.624894
+convect_corr         1.371739
+ah_corr              1.347059
+bckgrnd_vdc_ban      1.334698
+vconst_2             1.208063
+
+=== SHAP (IML Shapley) Rankings ===
+
+
+Feature            Importance
+----------------  -----------
+vconst_corr          1.695134
+convect_corr         1.490973
+bckgrnd_vdc_ban      1.409966
+vconst_2             1.363624
+ah_corr              1.279466
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair                Spearman   Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME          NA                 1
+FEAT_IMP vs SHAP          NA                 1
+LIME vs SHAP               1                 2
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME   NA                        1
+FEAT_IMP vs SHAP   NA                        1
+LIME vs SHAP       NA                        1
+
+=== Top-1 Features ===
+FEAT_IMP: vconst_corr
+LIME: vconst_corr
+SHAP: vconst_corr
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1     Feature_2     Agreement 
+-----------------  ------------  ------------  ----------
+FEAT_IMP vs LIME   vconst_corr   vconst_corr   TRUE      
+FEAT_IMP vs SHAP   vconst_corr   vconst_corr   TRUE      
+LIME vs SHAP       vconst_corr   vconst_corr   TRUE      
+
+Agreeing pairs: 3 / 3 (100.0%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: rda
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=climate-model-simulation-crashes, Method=rda ===
+Applying data scaling for method: rda
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature         importance.05   importance   importance.95   permutation.error
+-------------  --------------  -----------  --------------  ------------------
+vconst_2             2.446154     2.769231        3.338462           0.0666667
+vconst_corr          2.123077     2.461539        2.876923           0.0592593
+bckgrnd_vdc1         2.092308     2.153846        2.400000           0.0518519
+slm_corr             1.246154     1.692308        1.692308           0.0407407
+convect_corr         1.415385     1.538461        1.861538           0.0370370
+
+=== LIME Rankings ===
+
+
+Feature         Importance
+-------------  -----------
+vconst_corr      0.0593688
+vconst_2         0.0530713
+bckgrnd_vdc1     0.0358803
+convect_corr     0.0211178
+vconst_5         0.0119581
+
+=== SHAP (IML Shapley) Rankings ===
+
+
+Feature         Importance
+-------------  -----------
+vconst_2         0.0813244
+vconst_corr      0.0539830
+bckgrnd_vdc1     0.0482553
+convect_corr     0.0330291
+vconst_5         0.0294923
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair                Spearman   Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME         0.5                 3
+FEAT_IMP vs SHAP         1.0                 3
+LIME vs SHAP             0.5                 3
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME   NA                        0
+FEAT_IMP vs SHAP   NA                        1
+LIME vs SHAP       NA                        0
+
+=== Top-1 Features ===
+FEAT_IMP: vconst_2
+LIME: vconst_corr
+SHAP: vconst_2
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1     Feature_2     Agreement 
+-----------------  ------------  ------------  ----------
+FEAT_IMP vs LIME   vconst_2      vconst_corr   FALSE     
+FEAT_IMP vs SHAP   vconst_2      vconst_2      TRUE      
+LIME vs SHAP       vconst_corr   vconst_2      FALSE     
+
+Agreeing pairs: 1 / 3 (33.3%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: rf
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=climate-model-simulation-crashes, Method=rf ===
+No scaling applied for method: rf
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature         importance.05   importance   importance.95   permutation.error
+-------------  --------------  -----------  --------------  ------------------
+vconst_corr         0.0522222    0.0574074       0.0655556           0.0574074
+vconst_2            0.0488889    0.0555556       0.0592593           0.0555556
+convect_corr        0.0122222    0.0185185       0.0251852           0.0185185
+bckgrnd_vdc1        0.0151852    0.0185185       0.0270370           0.0185185
+vconst_4            0.0037037    0.0037037       0.0037037           0.0037037
+Warning message:
+In initialize(...) :
+  Model error is 0, switching from compare='ratio' to compare='difference'
+
+=== LIME Rankings ===
+
+
+Feature          Importance
+--------------  -----------
+vconst_corr       0.0805083
+vconst_2          0.0577742
+convect_corr      0.0243557
+bckgrnd_vdc1      0.0234137
+tidal_mix_max     0.0074879
+
+=== SHAP (IML Shapley) Rankings ===
+
+
+Feature         Importance
+-------------  -----------
+vconst_2          0.073904
+vconst_corr       0.066680
+convect_corr      0.043232
+bckgrnd_vdc1      0.024528
+vconst_5          0.008924
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair                Spearman   Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME         1.0                 3
+FEAT_IMP vs SHAP         0.5                 3
+LIME vs SHAP             0.5                 3
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME   NA                        1
+FEAT_IMP vs SHAP   NA                        0
+LIME vs SHAP       NA                        0
+
+=== Top-1 Features ===
+FEAT_IMP: vconst_corr
+LIME: vconst_corr
+SHAP: vconst_2
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1     Feature_2     Agreement 
+-----------------  ------------  ------------  ----------
+FEAT_IMP vs LIME   vconst_corr   vconst_corr   TRUE      
+FEAT_IMP vs SHAP   vconst_corr   vconst_2      FALSE     
+LIME vs SHAP       vconst_corr   vconst_2      FALSE     
+
+Agreeing pairs: 1 / 3 (33.3%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: rpart
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=climate-model-simulation-crashes, Method=rpart ===
+No scaling applied for method: rpart
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature        importance.05   importance   importance.95   permutation.error
+------------  --------------  -----------  --------------  ------------------
+vconst_corr                1            1               1           0.0851852
+vconst_2                   1            1               1           0.0851852
+vconst_3                   1            1               1           0.0851852
+vconst_4                   1            1               1           0.0851852
+vconst_5                   1            1               1           0.0851852
+
+=== LIME Rankings ===
+Error in get_lime: Response is constant across permutations. Please check your model 
+
+=== SHAP (IML Shapley) Rankings ===
+
+
+Feature             Importance
+-----------------  -----------
+ah_bolus                     0
+ah_corr                      0
+bckgrnd_vdc_ban              0
+bckgrnd_vdc_eq               0
+bckgrnd_vdc_psim             0
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs SHAP   NA                        0
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs SHAP   NA                        0
+
+=== Top-1 Features ===
+FEAT_IMP: vconst_corr
+SHAP: ah_bolus
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1     Feature_2   Agreement 
+-----------------  ------------  ----------  ----------
+FEAT_IMP vs SHAP   vconst_corr   ah_bolus    FALSE     
+
+Agreeing pairs: 0 / 1 (0.0%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: simpls
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=climate-model-simulation-crashes, Method=simpls ===
+Applying data scaling for method: simpls
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature        importance.05   importance   importance.95   permutation.error
+------------  --------------  -----------  --------------  ------------------
+vconst_corr        1.0000000            1               1           0.0851852
+vconst_3           1.0000000            1               1           0.0851852
+vconst_4           0.9782609            1               1           0.0851852
+vconst_5           1.0000000            1               1           0.0851852
+vconst_7           0.9782609            1               1           0.0851852
+
+=== LIME Rankings ===
+
+
+Feature           Importance
+---------------  -----------
+vconst_corr        0.0440273
+vconst_2           0.0364341
+bckgrnd_vdc1       0.0262597
+convect_corr       0.0231242
+bckgrnd_vdc_eq     0.0074050
+
+=== SHAP (IML Shapley) Rankings ===
+
+
+Feature           Importance
+---------------  -----------
+vconst_corr        0.0324188
+vconst_2           0.0300589
+convect_corr       0.0203689
+bckgrnd_vdc1       0.0190795
+bckgrnd_vdc_eq     0.0071929
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair                Spearman   Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME          NA                 1
+FEAT_IMP vs SHAP          NA                 1
+LIME vs SHAP               1                 2
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME   NA                        1
+FEAT_IMP vs SHAP   NA                        1
+LIME vs SHAP       NA                        1
+
+=== Top-1 Features ===
+FEAT_IMP: vconst_corr
+LIME: vconst_corr
+SHAP: vconst_corr
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1     Feature_2     Agreement 
+-----------------  ------------  ------------  ----------
+FEAT_IMP vs LIME   vconst_corr   vconst_corr   TRUE      
+FEAT_IMP vs SHAP   vconst_corr   vconst_corr   TRUE      
+LIME vs SHAP       vconst_corr   vconst_corr   TRUE      
+
+Agreeing pairs: 3 / 3 (100.0%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: svmLinear
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=climate-model-simulation-crashes, Method=svmLinear ===
+Applying data scaling for method: svmLinear
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature           importance.05   importance   importance.95   permutation.error
+---------------  --------------  -----------  --------------  ------------------
+vconst_corr            2.952941     3.294118        3.517647           0.1037037
+vconst_2               2.847059     3.058823        3.164706           0.0962963
+bckgrnd_vdc1           1.670588     2.058823        2.200000           0.0648148
+convect_corr           1.717647     1.823529        2.282353           0.0574074
+bckgrnd_vdc_eq         1.176471     1.176471        1.364706           0.0370370
+
+=== LIME Rankings ===
+Error in get_lime: Response is constant across permutations. Please check your model 
+Warning message:
+In method$prob(modelFit = modelFit, newdata = newdata, submodels = param) :
+  kernlab class probability calculations failed; returning NAs
+Warning messages:
+1: In method$prob(modelFit = modelFit, newdata = newdata, submodels = param) :
+  kernlab class probability calculations failed; returning NAs
+2: In method$prob(modelFit = modelFit, newdata = newdata, submodels = param) :
+  kernlab class probability calculations failed; returning NAs
+3: In method$prob(modelFit = modelFit, newdata = newdata, submodels = param) :
+  kernlab class probability calculations failed; returning NAs
+4: In method$prob(modelFit = modelFit, newdata = newdata, submodels = param) :
+  kernlab class probability calculations failed; returning NAs
+5: In method$prob(modelFit = modelFit, newdata = newdata, submodels = param) :
+  kernlab class probability calculations failed; returning NAs
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs SHAP   NA                        0
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs SHAP   NA                        0
+
+=== Top-1 Features ===
+FEAT_IMP: vconst_corr
+SHAP: NA
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1     Feature_2   Agreement 
+-----------------  ------------  ----------  ----------
+FEAT_IMP vs SHAP   vconst_corr   NA          FALSE     
+
+Agreeing pairs: 0 / 1 (0.0%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: svmRadial
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=climate-model-simulation-crashes, Method=svmRadial ===
+Applying data scaling for method: svmRadial
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature        importance.05   importance   importance.95   permutation.error
+------------  --------------  -----------  --------------  ------------------
+vconst_corr                1            1               1           0.0851852
+vconst_2                   1            1               1           0.0851852
+vconst_3                   1            1               1           0.0851852
+vconst_4                   1            1               1           0.0851852
+vconst_5                   1            1               1           0.0851852
+
+=== LIME Rankings ===
+Error in get_lime: Response is constant across permutations. Please check your model 
+Warning message:
+In method$prob(modelFit = modelFit, newdata = newdata, submodels = param) :
+  kernlab class probability calculations failed; returning NAs
+Warning messages:
+1: In method$prob(modelFit = modelFit, newdata = newdata, submodels = param) :
+  kernlab class probability calculations failed; returning NAs
+2: In method$prob(modelFit = modelFit, newdata = newdata, submodels = param) :
+  kernlab class probability calculations failed; returning NAs
+3: In method$prob(modelFit = modelFit, newdata = newdata, submodels = param) :
+  kernlab class probability calculations failed; returning NAs
+4: In method$prob(modelFit = modelFit, newdata = newdata, submodels = param) :
+  kernlab class probability calculations failed; returning NAs
+5: In method$prob(modelFit = modelFit, newdata = newdata, submodels = param) :
+  kernlab class probability calculations failed; returning NAs
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs SHAP   NA                        0
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs SHAP   NA                        0
+
+=== Top-1 Features ===
+FEAT_IMP: vconst_corr
+SHAP: NA
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1     Feature_2   Agreement 
+-----------------  ------------  ----------  ----------
+FEAT_IMP vs SHAP   vconst_corr   NA          FALSE     
+
+Agreeing pairs: 0 / 1 (0.0%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: rfRules
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=climate-model-simulation-crashes, Method=rfRules ===
+No scaling applied for method: rfRules
+Registered S3 method overwritten by 'RRF':
+  method      from        
+  plot.margin randomForest
+1959 rules (length<=2) were extracted from the first 500 trees.
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature         importance.05   importance   importance.95   permutation.error
+-------------  --------------  -----------  --------------  ------------------
+vconst_2             1.947826     2.173913        2.208696           0.0925926
+vconst_corr          1.834783     1.913043        2.017391           0.0814815
+convect_corr         1.347826     1.391304        1.608696           0.0592593
+bckgrnd_vdc1         1.260870     1.304348        1.382609           0.0555556
+vconst_7             1.060870     1.130435        1.130435           0.0481481
+
+=== LIME Rankings ===
+Error in get_lime: only classification models that produce probabilities are allowed 
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs SHAP   NA                        0
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs SHAP   NA                        0
+
+=== Top-1 Features ===
+FEAT_IMP: vconst_2
+SHAP: NA
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1   Feature_2   Agreement 
+-----------------  ----------  ----------  ----------
+FEAT_IMP vs SHAP   vconst_2    NA          FALSE     
+
+Agreeing pairs: 0 / 1 (0.0%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: knn
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=climate-model-simulation-crashes, Method=knn ===
+Applying data scaling for method: knn
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature            importance.05   importance   importance.95   permutation.error
+----------------  --------------  -----------  --------------  ------------------
+vconst_corr            1.1818182     1.333333        1.490909           0.0814815
+vconst_2               1.1878788     1.272727        1.296970           0.0777778
+bckgrnd_vdc1           1.1272727     1.212121        1.212121           0.0740741
+convect_corr           1.0666667     1.090909        1.139394           0.0666667
+bckgrnd_vdc_ban        0.9757576     1.060606        1.084849           0.0648148
+
+=== LIME Rankings ===
+
+
+Feature         Importance
+-------------  -----------
+vconst_corr      0.0614001
+vconst_2         0.0523363
+bckgrnd_vdc1     0.0411798
+convect_corr     0.0257327
+slm_corr         0.0165151
+
+=== SHAP (IML Shapley) Rankings ===
+
+
+Feature           Importance
+---------------  -----------
+vconst_corr        0.0464000
+vconst_2           0.0419333
+bckgrnd_vdc1       0.0404000
+convect_corr       0.0242667
+bckgrnd_vdc_eq     0.0200000
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair                Spearman   Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME           1                 3
+FEAT_IMP vs SHAP           1                 3
+LIME vs SHAP               1                 3
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME   NA                        1
+FEAT_IMP vs SHAP   NA                        1
+LIME vs SHAP       NA                        1
+
+=== Top-1 Features ===
+FEAT_IMP: vconst_corr
+LIME: vconst_corr
+SHAP: vconst_corr
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1     Feature_2     Agreement 
+-----------------  ------------  ------------  ----------
+FEAT_IMP vs LIME   vconst_corr   vconst_corr   TRUE      
+FEAT_IMP vs SHAP   vconst_corr   vconst_corr   TRUE      
+LIME vs SHAP       vconst_corr   vconst_corr   TRUE      
+
+Agreeing pairs: 3 / 3 (100.0%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: bayesglm
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=climate-model-simulation-crashes, Method=bayesglm ===
+Applying data scaling for method: bayesglm
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature           importance.05   importance   importance.95   permutation.error
+---------------  --------------  -----------  --------------  ------------------
+vconst_corr            3.023529     3.235294        3.517647           0.1018519
+vconst_2               2.882353     2.941177        3.270588           0.0925926
+bckgrnd_vdc1           1.529412     2.058823        2.223529           0.0648148
+convect_corr           1.729412     1.941177        2.317647           0.0611111
+bckgrnd_vdc_eq         1.176471     1.235294        1.341176           0.0388889
+
+=== LIME Rankings ===
+
+
+Feature                 Importance
+---------------------  -----------
+vconst_corr              0.1298206
+vconst_2                 0.0918609
+bckgrnd_vdc1             0.0550728
+convect_corr             0.0502712
+vertical_decay_scale     0.0236688
+
+=== SHAP (IML Shapley) Rankings ===
+
+
+Feature         Importance
+-------------  -----------
+vconst_2         0.1385103
+vconst_corr      0.1098666
+convect_corr     0.0626251
+bckgrnd_vdc1     0.0540585
+vconst_5         0.0277664
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair                Spearman   Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME           1                 3
+FEAT_IMP vs SHAP          -1                 2
+LIME vs SHAP              -1                 2
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME   NA                        1
+FEAT_IMP vs SHAP   NA                        0
+LIME vs SHAP       NA                        0
+
+=== Top-1 Features ===
+FEAT_IMP: vconst_corr
+LIME: vconst_corr
+SHAP: vconst_2
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1     Feature_2     Agreement 
+-----------------  ------------  ------------  ----------
+FEAT_IMP vs LIME   vconst_corr   vconst_corr   TRUE      
+FEAT_IMP vs SHAP   vconst_corr   vconst_2      FALSE     
+LIME vs SHAP       vconst_corr   vconst_2      FALSE     
+
+Agreeing pairs: 1 / 3 (33.3%)
+
+=== All Results Recorded ===
+

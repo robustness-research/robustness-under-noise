@@ -1,0 +1,1630 @@
+Dataset: breast-w
+Generated: Mon Nov 24 10:36:01 PM CET 2025
+======================================
+
+
+========================================
+Model: C5.0
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=breast-w, Method=C5.0 ===
+No scaling applied for method: C5.0
+Error: Only one model should be specified in tuneGrid with no resampling
+Execution halted
+FAILED - See error above
+
+
+========================================
+Model: ctree
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=breast-w, Method=ctree ===
+No scaling applied for method: ctree
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature                  importance.05   importance   importance.95   permutation.error
+----------------------  --------------  -----------  --------------  ------------------
+Cell_Size_Uniformity          8.444444     8.722222        9.433333           0.2298682
+Bare_Nuclei                   3.933333     4.277778        4.477778           0.1127379
+Cell_Shape_Uniformity         2.177778     2.277778        2.277778           0.0600293
+Clump_Thickness               1.511111     1.555556        1.655556           0.0409956
+Marginal_Adhesion             1.000000     1.000000        1.000000           0.0263543
+
+=== LIME Rankings ===
+
+
+Feature                  Importance
+----------------------  -----------
+Cell_Shape_Uniformity     0.1106342
+Clump_Thickness           0.0754244
+Cell_Size_Uniformity      0.0633984
+Bare_Nuclei               0.0419151
+Bland_Chromatin           0.0289188
+Warning message:
+Mitoses does not contain enough variance to use quantile binning. Using standard binning instead. 
+
+=== SHAP (IML Shapley) Rankings ===
+
+
+Feature                  Importance
+----------------------  -----------
+Cell_Size_Uniformity      0.2107000
+Bare_Nuclei               0.1090606
+Cell_Shape_Uniformity     0.0965136
+Clump_Thickness           0.0538333
+Normal_Nucleoli           0.0146667
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair                Spearman   Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME          -1                 2
+FEAT_IMP vs SHAP           1                 3
+LIME vs SHAP              -1                 2
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME   NA                        0
+FEAT_IMP vs SHAP   NA                        1
+LIME vs SHAP       NA                        0
+
+=== Top-1 Features ===
+FEAT_IMP: Cell_Size_Uniformity
+LIME: Cell_Shape_Uniformity
+SHAP: Cell_Size_Uniformity
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1               Feature_2               Agreement 
+-----------------  ----------------------  ----------------------  ----------
+FEAT_IMP vs LIME   Cell_Size_Uniformity    Cell_Shape_Uniformity   FALSE     
+FEAT_IMP vs SHAP   Cell_Size_Uniformity    Cell_Size_Uniformity    TRUE      
+LIME vs SHAP       Cell_Shape_Uniformity   Cell_Size_Uniformity    FALSE     
+
+Agreeing pairs: 1 / 3 (33.3%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: fda
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=breast-w, Method=fda ===
+No scaling applied for method: fda
+Loading required package: earth
+Loading required package: Formula
+Loading required package: plotmo
+Loading required package: plotrix
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature                  importance.05   importance   importance.95   permutation.error
+----------------------  --------------  -----------  --------------  ------------------
+Cell_Size_Uniformity              6.15         6.25            6.75           0.4392387
+Clump_Thickness                   1.00         1.00            1.00           0.0702782
+Cell_Shape_Uniformity             1.00         1.00            1.00           0.0702782
+Marginal_Adhesion                 1.00         1.00            1.00           0.0702782
+Single_Epi_Cell_Size              1.00         1.00            1.00           0.0702782
+
+=== LIME Rankings ===
+
+
+Feature                 Importance
+---------------------  -----------
+Cell_Size_Uniformity     0.5079579
+Single_Epi_Cell_Size     0.0181585
+Mitoses                  0.0152805
+Bare_Nuclei              0.0145044
+Clump_Thickness          0.0121528
+Warning message:
+Mitoses does not contain enough variance to use quantile binning. Using standard binning instead. 
+
+=== SHAP (IML Shapley) Rankings ===
+
+
+Feature                  Importance
+----------------------  -----------
+Cell_Size_Uniformity      0.5268547
+Bare_Nuclei               0.0000000
+Bland_Chromatin           0.0000000
+Cell_Shape_Uniformity     0.0000000
+Clump_Thickness           0.0000000
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME   NA                        1
+FEAT_IMP vs SHAP   NA                        1
+LIME vs SHAP       NA                        1
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME   NA                        1
+FEAT_IMP vs SHAP   NA                        1
+LIME vs SHAP       NA                        1
+
+=== Top-1 Features ===
+FEAT_IMP: Cell_Size_Uniformity
+LIME: Cell_Size_Uniformity
+SHAP: Cell_Size_Uniformity
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1              Feature_2              Agreement 
+-----------------  ---------------------  ---------------------  ----------
+FEAT_IMP vs LIME   Cell_Size_Uniformity   Cell_Size_Uniformity   TRUE      
+FEAT_IMP vs SHAP   Cell_Size_Uniformity   Cell_Size_Uniformity   TRUE      
+LIME vs SHAP       Cell_Size_Uniformity   Cell_Size_Uniformity   TRUE      
+
+Agreeing pairs: 3 / 3 (100.0%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: gbm
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=breast-w, Method=gbm ===
+No scaling applied for method: gbm
+Iter   TrainDeviance   ValidDeviance   StepSize   Improve
+     1        1.1546            -nan     0.1000    0.0653
+     2        1.0459            -nan     0.1000    0.0526
+     3        0.9515            -nan     0.1000    0.0464
+     4        0.8705            -nan     0.1000    0.0376
+     5        0.8029            -nan     0.1000    0.0334
+     6        0.7404            -nan     0.1000    0.0298
+     7        0.6875            -nan     0.1000    0.0238
+     8        0.6419            -nan     0.1000    0.0232
+     9        0.5991            -nan     0.1000    0.0206
+    10        0.5632            -nan     0.1000    0.0181
+    20        0.3475            -nan     0.1000    0.0056
+    40        0.2027            -nan     0.1000    0.0009
+    50        0.1780            -nan     0.1000   -0.0001
+
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature                  importance.05   importance   importance.95   permutation.error
+----------------------  --------------  -----------  --------------  ------------------
+Bare_Nuclei                  1.3090909     1.454546        1.618182           0.0468521
+Cell_Size_Uniformity         1.2090909     1.363636        1.400000           0.0439239
+Clump_Thickness              0.9727273     1.272727        1.318182           0.0409956
+Cell_Shape_Uniformity        1.1454545     1.272727        1.345454           0.0409956
+Bland_Chromatin              1.0545455     1.136364        1.181818           0.0366032
+
+=== LIME Rankings ===
+
+
+Feature                  Importance
+----------------------  -----------
+Cell_Size_Uniformity      0.1842686
+Bare_Nuclei               0.1647818
+Cell_Shape_Uniformity     0.1121866
+Marginal_Adhesion         0.0825884
+Normal_Nucleoli           0.0746072
+Warning message:
+Mitoses does not contain enough variance to use quantile binning. Using standard binning instead. 
+
+=== SHAP (IML Shapley) Rankings ===
+
+
+Feature                  Importance
+----------------------  -----------
+Bare_Nuclei               0.1191841
+Cell_Size_Uniformity      0.1165099
+Cell_Shape_Uniformity     0.0746217
+Normal_Nucleoli           0.0273312
+Bland_Chromatin           0.0265971
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair                Spearman   Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME        -1.0                 2
+FEAT_IMP vs SHAP         1.0                 2
+LIME vs SHAP             0.5                 3
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME   NA                        0
+FEAT_IMP vs SHAP   NA                        1
+LIME vs SHAP       NA                        0
+
+=== Top-1 Features ===
+FEAT_IMP: Bare_Nuclei
+LIME: Cell_Size_Uniformity
+SHAP: Bare_Nuclei
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1              Feature_2              Agreement 
+-----------------  ---------------------  ---------------------  ----------
+FEAT_IMP vs LIME   Bare_Nuclei            Cell_Size_Uniformity   FALSE     
+FEAT_IMP vs SHAP   Bare_Nuclei            Bare_Nuclei            TRUE      
+LIME vs SHAP       Cell_Size_Uniformity   Bare_Nuclei            FALSE     
+
+Agreeing pairs: 1 / 3 (33.3%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: gcvEarth
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=breast-w, Method=gcvEarth ===
+No scaling applied for method: gcvEarth
+Loading required package: earth
+Loading required package: Formula
+Loading required package: plotmo
+Loading required package: plotrix
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature                  importance.05   importance   importance.95   permutation.error
+----------------------  --------------  -----------  --------------  ------------------
+Bare_Nuclei                   2.246154     2.461539        2.584615           0.0468521
+Clump_Thickness               2.092308     2.384615        2.753846           0.0453880
+Normal_Nucleoli               1.861538     1.923077        2.215385           0.0366032
+Cell_Shape_Uniformity         1.492308     1.692308        1.692308           0.0322108
+Bland_Chromatin               1.538461     1.615385        1.692308           0.0307467
+
+=== LIME Rankings ===
+
+
+Feature                  Importance
+----------------------  -----------
+Marginal_Adhesion         0.2169414
+Normal_Nucleoli           0.1510968
+Bare_Nuclei               0.1369414
+Cell_Shape_Uniformity     0.1247936
+Cell_Size_Uniformity      0.0920472
+Warning message:
+Mitoses does not contain enough variance to use quantile binning. Using standard binning instead. 
+
+=== SHAP (IML Shapley) Rankings ===
+
+
+Feature                  Importance
+----------------------  -----------
+Bare_Nuclei               0.1119324
+Normal_Nucleoli           0.1038233
+Cell_Shape_Uniformity     0.0730856
+Clump_Thickness           0.0709422
+Cell_Size_Uniformity      0.0585871
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair                Spearman   Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME          -1                 2
+FEAT_IMP vs SHAP           1                 2
+LIME vs SHAP              -1                 2
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME   NA                        0
+FEAT_IMP vs SHAP   NA                        1
+LIME vs SHAP       NA                        0
+
+=== Top-1 Features ===
+FEAT_IMP: Bare_Nuclei
+LIME: Marginal_Adhesion
+SHAP: Bare_Nuclei
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1           Feature_2           Agreement 
+-----------------  ------------------  ------------------  ----------
+FEAT_IMP vs LIME   Bare_Nuclei         Marginal_Adhesion   FALSE     
+FEAT_IMP vs SHAP   Bare_Nuclei         Bare_Nuclei         TRUE      
+LIME vs SHAP       Marginal_Adhesion   Bare_Nuclei         FALSE     
+
+Agreeing pairs: 1 / 3 (33.3%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: JRip
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=breast-w, Method=JRip ===
+No scaling applied for method: JRip
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature                  importance.05   importance   importance.95   permutation.error
+----------------------  --------------  -----------  --------------  ------------------
+Bare_Nuclei                   5.470588     5.705882        5.764706           0.1420205
+Cell_Shape_Uniformity         2.235294     2.235294        2.482353           0.0556369
+Single_Epi_Cell_Size          1.423529     1.529412        1.682353           0.0380673
+Clump_Thickness               1.294118     1.411765        1.411765           0.0351391
+Cell_Size_Uniformity          1.188235     1.294118        1.352941           0.0322108
+
+=== LIME Rankings ===
+
+
+Feature                  Importance
+----------------------  -----------
+Bare_Nuclei               0.2479628
+Cell_Shape_Uniformity     0.2397809
+Cell_Size_Uniformity      0.1368730
+Clump_Thickness           0.0831412
+Single_Epi_Cell_Size      0.0645432
+Warning message:
+Mitoses does not contain enough variance to use quantile binning. Using standard binning instead. 
+
+=== SHAP (IML Shapley) Rankings ===
+
+
+Feature                  Importance
+----------------------  -----------
+Bare_Nuclei               0.2242746
+Cell_Shape_Uniformity     0.1279018
+Bland_Chromatin           0.0360339
+Single_Epi_Cell_Size      0.0358974
+Cell_Size_Uniformity      0.0355828
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair                Spearman   Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME           1                 2
+FEAT_IMP vs SHAP           1                 2
+LIME vs SHAP               1                 2
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME   NA                        1
+FEAT_IMP vs SHAP   NA                        1
+LIME vs SHAP       NA                        1
+
+=== Top-1 Features ===
+FEAT_IMP: Bare_Nuclei
+LIME: Bare_Nuclei
+SHAP: Bare_Nuclei
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1     Feature_2     Agreement 
+-----------------  ------------  ------------  ----------
+FEAT_IMP vs LIME   Bare_Nuclei   Bare_Nuclei   TRUE      
+FEAT_IMP vs SHAP   Bare_Nuclei   Bare_Nuclei   TRUE      
+LIME vs SHAP       Bare_Nuclei   Bare_Nuclei   TRUE      
+
+Agreeing pairs: 3 / 3 (100.0%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: lvq
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=breast-w, Method=lvq ===
+Applying data scaling for method: lvq
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature                  importance.05   importance   importance.95   permutation.error
+----------------------  --------------  -----------  --------------  ------------------
+Bare_Nuclei                   1.521739     1.565217        1.695652           0.0527086
+Clump_Thickness               1.347826     1.347826        1.469565           0.0453880
+Cell_Size_Uniformity          1.191304     1.304348        1.347826           0.0439239
+Cell_Shape_Uniformity         1.173913     1.260870        1.260870           0.0424597
+Bland_Chromatin               1.139130     1.217391        1.426087           0.0409956
+
+=== LIME Rankings ===
+Error in get_lime: only classification models that produce probabilities are allowed 
+Warning message:
+Mitoses does not contain enough variance to use quantile binning. Using standard binning instead. 
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs SHAP   NA                        0
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs SHAP   NA                        0
+
+=== Top-1 Features ===
+FEAT_IMP: Bare_Nuclei
+SHAP: NA
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1     Feature_2   Agreement 
+-----------------  ------------  ----------  ----------
+FEAT_IMP vs SHAP   Bare_Nuclei   NA          FALSE     
+
+Agreeing pairs: 0 / 1 (0.0%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: mlpML
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=breast-w, Method=mlpML ===
+Applying data scaling for method: mlpML
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+Warning message:
+At least one layer had zero units and were removed. The new structure is 1 
+
+=== IML Rankings ===
+
+
+feature                  importance.05   importance   importance.95   permutation.error
+----------------------  --------------  -----------  --------------  ------------------
+Bare_Nuclei                   3.276923     3.538461        3.815385           0.0673499
+Cell_Size_Uniformity          2.400000     2.692308        2.815385           0.0512445
+Cell_Shape_Uniformity         1.969231     2.615385        2.753846           0.0497804
+Mitoses                       1.753846     2.076923        2.200000           0.0395315
+Clump_Thickness               1.630769     1.692308        1.769231           0.0322108
+
+=== LIME Rankings ===
+
+
+Feature                  Importance
+----------------------  -----------
+Cell_Shape_Uniformity     0.2112555
+Bare_Nuclei               0.2094388
+Cell_Size_Uniformity      0.2027040
+Mitoses                   0.1832605
+Marginal_Adhesion         0.1108517
+Warning message:
+Mitoses does not contain enough variance to use quantile binning. Using standard binning instead. 
+
+=== SHAP (IML Shapley) Rankings ===
+
+
+Feature                  Importance
+----------------------  -----------
+Bare_Nuclei               0.1725596
+Cell_Shape_Uniformity     0.0980346
+Cell_Size_Uniformity      0.0910437
+Clump_Thickness           0.0400286
+Normal_Nucleoli           0.0309508
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair                Spearman   Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME        -0.5                 3
+FEAT_IMP vs SHAP         0.5                 3
+LIME vs SHAP             0.5                 3
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME   NA                        0
+FEAT_IMP vs SHAP   NA                        1
+LIME vs SHAP       NA                        0
+
+=== Top-1 Features ===
+FEAT_IMP: Bare_Nuclei
+LIME: Cell_Shape_Uniformity
+SHAP: Bare_Nuclei
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1               Feature_2               Agreement 
+-----------------  ----------------------  ----------------------  ----------
+FEAT_IMP vs LIME   Bare_Nuclei             Cell_Shape_Uniformity   FALSE     
+FEAT_IMP vs SHAP   Bare_Nuclei             Bare_Nuclei             TRUE      
+LIME vs SHAP       Cell_Shape_Uniformity   Bare_Nuclei             FALSE     
+
+Agreeing pairs: 1 / 3 (33.3%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: multinom
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=breast-w, Method=multinom ===
+Applying data scaling for method: multinom
+# weights:  11 (10 variable)
+initial  value 473.419524 
+iter  10 value 68.739638
+iter  20 value 51.447194
+final  value 51.444095 
+converged
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature              importance.05   importance   importance.95   permutation.error
+------------------  --------------  -----------  --------------  ------------------
+Clump_Thickness           1.361905     1.571429        1.619048           0.0483163
+Bare_Nuclei               1.361905     1.476190        1.571429           0.0453880
+Bland_Chromatin           1.114286     1.285714        1.323810           0.0395315
+Mitoses                   1.190476     1.190476        1.371429           0.0366032
+Marginal_Adhesion         1.057143     1.095238        1.142857           0.0336750
+
+=== LIME Rankings ===
+
+
+Feature                  Importance
+----------------------  -----------
+Mitoses                   0.3053548
+Bare_Nuclei               0.2373121
+Marginal_Adhesion         0.2017637
+Cell_Shape_Uniformity     0.1927237
+Normal_Nucleoli           0.1316261
+Warning message:
+Mitoses does not contain enough variance to use quantile binning. Using standard binning instead. 
+
+=== SHAP (IML Shapley) Rankings ===
+
+
+Feature                  Importance
+----------------------  -----------
+Bare_Nuclei               0.1333537
+Cell_Shape_Uniformity     0.0909257
+Clump_Thickness           0.0787438
+Normal_Nucleoli           0.0489629
+Marginal_Adhesion         0.0450854
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair                Spearman   Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME          NA                 1
+FEAT_IMP vs SHAP          -1                 2
+LIME vs SHAP              NA                 1
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME   NA                        0
+FEAT_IMP vs SHAP   NA                        0
+LIME vs SHAP       NA                        0
+
+=== Top-1 Features ===
+FEAT_IMP: Clump_Thickness
+LIME: Mitoses
+SHAP: Bare_Nuclei
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1         Feature_2     Agreement 
+-----------------  ----------------  ------------  ----------
+FEAT_IMP vs LIME   Clump_Thickness   Mitoses       FALSE     
+FEAT_IMP vs SHAP   Clump_Thickness   Bare_Nuclei   FALSE     
+LIME vs SHAP       Mitoses           Bare_Nuclei   FALSE     
+
+Agreeing pairs: 0 / 3 (0.0%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: naive_bayes
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=breast-w, Method=naive_bayes ===
+No scaling applied for method: naive_bayes
+Error: Only one model should be specified in tuneGrid with no resampling
+Execution halted
+FAILED - See error above
+
+
+========================================
+Model: PART
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=breast-w, Method=PART ===
+No scaling applied for method: PART
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature                  importance.05   importance   importance.95   permutation.error
+----------------------  --------------  -----------  --------------  ------------------
+Cell_Shape_Uniformity             9.60         10.8           11.80           0.0790630
+Marginal_Adhesion                 6.68          7.6            9.72           0.0556369
+Clump_Thickness                   5.80          6.8            7.32           0.0497804
+Bare_Nuclei                       5.00          5.0            5.52           0.0366032
+Cell_Size_Uniformity              4.04          4.4            6.12           0.0322108
+
+=== LIME Rankings ===
+
+
+Feature                  Importance
+----------------------  -----------
+Cell_Size_Uniformity      0.1973860
+Cell_Shape_Uniformity     0.1265723
+Marginal_Adhesion         0.1230453
+Bare_Nuclei               0.0766155
+Clump_Thickness           0.0485343
+Warning message:
+Mitoses does not contain enough variance to use quantile binning. Using standard binning instead. 
+
+=== SHAP (IML Shapley) Rankings ===
+
+
+Feature                  Importance
+----------------------  -----------
+Cell_Shape_Uniformity     0.1089559
+Clump_Thickness           0.0941031
+Cell_Size_Uniformity      0.0865575
+Marginal_Adhesion         0.0746076
+Bare_Nuclei               0.0691789
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair                Spearman   Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME           1                 2
+FEAT_IMP vs SHAP           1                 2
+LIME vs SHAP              -1                 2
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME   NA                        0
+FEAT_IMP vs SHAP   NA                        1
+LIME vs SHAP       NA                        0
+
+=== Top-1 Features ===
+FEAT_IMP: Cell_Shape_Uniformity
+LIME: Cell_Size_Uniformity
+SHAP: Cell_Shape_Uniformity
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1               Feature_2               Agreement 
+-----------------  ----------------------  ----------------------  ----------
+FEAT_IMP vs LIME   Cell_Shape_Uniformity   Cell_Size_Uniformity    FALSE     
+FEAT_IMP vs SHAP   Cell_Shape_Uniformity   Cell_Shape_Uniformity   TRUE      
+LIME vs SHAP       Cell_Size_Uniformity    Cell_Shape_Uniformity   FALSE     
+
+Agreeing pairs: 1 / 3 (33.3%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: rbfDDA
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=breast-w, Method=rbfDDA ===
+Applying data scaling for method: rbfDDA
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature                  importance.05   importance   importance.95   permutation.error
+----------------------  --------------  -----------  --------------  ------------------
+Cell_Size_Uniformity          3.126316     3.315790        3.357895           0.0922401
+Normal_Nucleoli               3.084211     3.263158        3.568421           0.0907760
+Cell_Shape_Uniformity         2.894737     3.000000        3.484211           0.0834553
+Bare_Nuclei                   2.547368     2.736842        2.957895           0.0761347
+Mitoses                       1.378947     1.684211        1.810526           0.0468521
+
+=== LIME Rankings ===
+
+
+Feature                  Importance
+----------------------  -----------
+Bare_Nuclei                2.727394
+Cell_Size_Uniformity       2.616163
+Cell_Shape_Uniformity      2.613401
+Mitoses                    2.573918
+Marginal_Adhesion          2.546373
+Warning message:
+Mitoses does not contain enough variance to use quantile binning. Using standard binning instead. 
+
+=== SHAP (IML Shapley) Rankings ===
+
+
+Feature                  Importance
+----------------------  -----------
+Clump_Thickness           11.886075
+Bland_Chromatin           11.573643
+Marginal_Adhesion          7.238285
+Cell_Shape_Uniformity      5.527744
+Normal_Nucleoli            3.961604
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair                Spearman   Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME           1                 2
+FEAT_IMP vs SHAP          NA                 0
+LIME vs SHAP              NA                 0
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME   NA                        0
+FEAT_IMP vs SHAP   NA                        0
+LIME vs SHAP       NA                        0
+
+=== Top-1 Features ===
+FEAT_IMP: Cell_Size_Uniformity
+LIME: Bare_Nuclei
+SHAP: Clump_Thickness
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1              Feature_2         Agreement 
+-----------------  ---------------------  ----------------  ----------
+FEAT_IMP vs LIME   Cell_Size_Uniformity   Bare_Nuclei       FALSE     
+FEAT_IMP vs SHAP   Cell_Size_Uniformity   Clump_Thickness   FALSE     
+LIME vs SHAP       Bare_Nuclei            Clump_Thickness   FALSE     
+
+Agreeing pairs: 0 / 3 (0.0%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: rda
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=breast-w, Method=rda ===
+Applying data scaling for method: rda
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature                  importance.05   importance   importance.95   permutation.error
+----------------------  --------------  -----------  --------------  ------------------
+Cell_Size_Uniformity          4.471429     4.928571        5.100000           0.2020498
+Bare_Nuclei                   4.228571     4.750000        4.778571           0.1947291
+Cell_Shape_Uniformity         4.250000     4.464286        4.814286           0.1830161
+Normal_Nucleoli               3.928571     4.000000        4.221429           0.1639824
+Marginal_Adhesion             3.185714     3.392857        3.485714           0.1390922
+
+=== LIME Rankings ===
+
+
+Feature                  Importance
+----------------------  -----------
+Cell_Size_Uniformity      0.1503854
+Bare_Nuclei               0.1489349
+Cell_Shape_Uniformity     0.1416847
+Normal_Nucleoli           0.1369116
+Marginal_Adhesion         0.1322501
+Warning message:
+Mitoses does not contain enough variance to use quantile binning. Using standard binning instead. 
+
+=== SHAP (IML Shapley) Rankings ===
+
+
+Feature                  Importance
+----------------------  -----------
+Bare_Nuclei               0.1006535
+Cell_Shape_Uniformity     0.0918153
+Cell_Size_Uniformity      0.0895755
+Normal_Nucleoli           0.0867703
+Single_Epi_Cell_Size      0.0782211
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair                Spearman   Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME         1.0                 3
+FEAT_IMP vs SHAP        -0.5                 3
+LIME vs SHAP            -0.5                 3
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME   NA                        1
+FEAT_IMP vs SHAP   NA                        0
+LIME vs SHAP       NA                        0
+
+=== Top-1 Features ===
+FEAT_IMP: Cell_Size_Uniformity
+LIME: Cell_Size_Uniformity
+SHAP: Bare_Nuclei
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1              Feature_2              Agreement 
+-----------------  ---------------------  ---------------------  ----------
+FEAT_IMP vs LIME   Cell_Size_Uniformity   Cell_Size_Uniformity   TRUE      
+FEAT_IMP vs SHAP   Cell_Size_Uniformity   Bare_Nuclei            FALSE     
+LIME vs SHAP       Cell_Size_Uniformity   Bare_Nuclei            FALSE     
+
+Agreeing pairs: 1 / 3 (33.3%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: rf
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=breast-w, Method=rf ===
+No scaling applied for method: rf
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature                  importance.05   importance   importance.95   permutation.error
+----------------------  --------------  -----------  --------------  ------------------
+Bare_Nuclei                  0.0240117    0.0263543       0.0363104           0.0263543
+Cell_Shape_Uniformity        0.0108346    0.0146413       0.0172767           0.0146413
+Cell_Size_Uniformity         0.0117130    0.0131772       0.0146413           0.0131772
+Clump_Thickness              0.0064422    0.0117130       0.0143485           0.0117130
+Marginal_Adhesion            0.0046852    0.0058565       0.0105417           0.0058565
+Warning message:
+In initialize(...) :
+  Model error is 0, switching from compare='ratio' to compare='difference'
+
+=== LIME Rankings ===
+
+
+Feature                  Importance
+----------------------  -----------
+Bare_Nuclei               0.1571123
+Cell_Size_Uniformity      0.1449732
+Cell_Shape_Uniformity     0.1180305
+Normal_Nucleoli           0.0644874
+Marginal_Adhesion         0.0635592
+Warning message:
+Mitoses does not contain enough variance to use quantile binning. Using standard binning instead. 
+
+=== SHAP (IML Shapley) Rankings ===
+
+
+Feature                  Importance
+----------------------  -----------
+Bare_Nuclei                0.088520
+Cell_Size_Uniformity       0.067040
+Cell_Shape_Uniformity      0.039924
+Clump_Thickness            0.029700
+Bland_Chromatin            0.029384
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair                Spearman   Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME         0.5                 3
+FEAT_IMP vs SHAP         0.5                 3
+LIME vs SHAP             1.0                 3
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME   NA                        1
+FEAT_IMP vs SHAP   NA                        1
+LIME vs SHAP       NA                        1
+
+=== Top-1 Features ===
+FEAT_IMP: Bare_Nuclei
+LIME: Bare_Nuclei
+SHAP: Bare_Nuclei
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1     Feature_2     Agreement 
+-----------------  ------------  ------------  ----------
+FEAT_IMP vs LIME   Bare_Nuclei   Bare_Nuclei   TRUE      
+FEAT_IMP vs SHAP   Bare_Nuclei   Bare_Nuclei   TRUE      
+LIME vs SHAP       Bare_Nuclei   Bare_Nuclei   TRUE      
+
+Agreeing pairs: 3 / 3 (100.0%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: rpart
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=breast-w, Method=rpart ===
+No scaling applied for method: rpart
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature                  importance.05   importance   importance.95   permutation.error
+----------------------  --------------  -----------  --------------  ------------------
+Clump_Thickness                      1            1               1           0.3499268
+Cell_Size_Uniformity                 1            1               1           0.3499268
+Cell_Shape_Uniformity                1            1               1           0.3499268
+Marginal_Adhesion                    1            1               1           0.3499268
+Single_Epi_Cell_Size                 1            1               1           0.3499268
+
+=== LIME Rankings ===
+Error in get_lime: Response is constant across permutations. Please check your model 
+Warning message:
+Mitoses does not contain enough variance to use quantile binning. Using standard binning instead. 
+
+=== SHAP (IML Shapley) Rankings ===
+
+
+Feature                  Importance
+----------------------  -----------
+Bare_Nuclei                       0
+Bland_Chromatin                   0
+Cell_Shape_Uniformity             0
+Cell_Size_Uniformity              0
+Clump_Thickness                   0
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs SHAP   NA                        1
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs SHAP   NA                        0
+
+=== Top-1 Features ===
+FEAT_IMP: Clump_Thickness
+SHAP: Bare_Nuclei
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1         Feature_2     Agreement 
+-----------------  ----------------  ------------  ----------
+FEAT_IMP vs SHAP   Clump_Thickness   Bare_Nuclei   FALSE     
+
+Agreeing pairs: 0 / 1 (0.0%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: simpls
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=breast-w, Method=simpls ===
+Applying data scaling for method: simpls
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature                  importance.05   importance   importance.95   permutation.error
+----------------------  --------------  -----------  --------------  ------------------
+Bare_Nuclei                  1.2933333     1.400000        1.466667           0.0614934
+Clump_Thickness              1.2333333     1.266667        1.300000           0.0556369
+Bland_Chromatin              0.9800000     1.100000        1.126667           0.0483163
+Cell_Shape_Uniformity        1.0000000     1.066667        1.093333           0.0468521
+Marginal_Adhesion            0.9533333     1.066667        1.206667           0.0468521
+
+=== LIME Rankings ===
+
+
+Feature                  Importance
+----------------------  -----------
+Cell_Size_Uniformity      0.0474556
+Cell_Shape_Uniformity     0.0473788
+Mitoses                   0.0440122
+Marginal_Adhesion         0.0428008
+Normal_Nucleoli           0.0417172
+Warning message:
+Mitoses does not contain enough variance to use quantile binning. Using standard binning instead. 
+
+=== SHAP (IML Shapley) Rankings ===
+
+
+Feature                  Importance
+----------------------  -----------
+Cell_Shape_Uniformity     0.0286742
+Cell_Size_Uniformity      0.0285920
+Bare_Nuclei               0.0248941
+Normal_Nucleoli           0.0205328
+Single_Epi_Cell_Size      0.0197886
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair                Spearman   Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME          NA                 0
+FEAT_IMP vs SHAP          NA                 1
+LIME vs SHAP              -1                 2
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME   NA                        0
+FEAT_IMP vs SHAP   NA                        0
+LIME vs SHAP       NA                        0
+
+=== Top-1 Features ===
+FEAT_IMP: Bare_Nuclei
+LIME: Cell_Size_Uniformity
+SHAP: Cell_Shape_Uniformity
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1              Feature_2               Agreement 
+-----------------  ---------------------  ----------------------  ----------
+FEAT_IMP vs LIME   Bare_Nuclei            Cell_Size_Uniformity    FALSE     
+FEAT_IMP vs SHAP   Bare_Nuclei            Cell_Shape_Uniformity   FALSE     
+LIME vs SHAP       Cell_Size_Uniformity   Cell_Shape_Uniformity   FALSE     
+
+Agreeing pairs: 0 / 3 (0.0%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: svmLinear
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=breast-w, Method=svmLinear ===
+Applying data scaling for method: svmLinear
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature                  importance.05   importance   importance.95   permutation.error
+----------------------  --------------  -----------  --------------  ------------------
+Bare_Nuclei                   1.568421     1.842105        1.947368           0.0512445
+Clump_Thickness               1.400000     1.578947        1.673684           0.0439239
+Bland_Chromatin               1.010526     1.315789        1.357895           0.0366032
+Cell_Shape_Uniformity         1.063158     1.105263        1.157895           0.0307467
+Marginal_Adhesion             1.010526     1.105263        1.157895           0.0307467
+
+=== LIME Rankings ===
+Error in get_lime: Response is constant across permutations. Please check your model 
+Warning messages:
+1: Mitoses does not contain enough variance to use quantile binning. Using standard binning instead. 
+2: In method$prob(modelFit = modelFit, newdata = newdata, submodels = param) :
+  kernlab class probability calculations failed; returning NAs
+Warning messages:
+1: In method$prob(modelFit = modelFit, newdata = newdata, submodels = param) :
+  kernlab class probability calculations failed; returning NAs
+2: In method$prob(modelFit = modelFit, newdata = newdata, submodels = param) :
+  kernlab class probability calculations failed; returning NAs
+3: In method$prob(modelFit = modelFit, newdata = newdata, submodels = param) :
+  kernlab class probability calculations failed; returning NAs
+4: In method$prob(modelFit = modelFit, newdata = newdata, submodels = param) :
+  kernlab class probability calculations failed; returning NAs
+5: In method$prob(modelFit = modelFit, newdata = newdata, submodels = param) :
+  kernlab class probability calculations failed; returning NAs
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs SHAP   NA                        0
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs SHAP   NA                        0
+
+=== Top-1 Features ===
+FEAT_IMP: Bare_Nuclei
+SHAP: NA
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1     Feature_2   Agreement 
+-----------------  ------------  ----------  ----------
+FEAT_IMP vs SHAP   Bare_Nuclei   NA          FALSE     
+
+Agreeing pairs: 0 / 1 (0.0%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: svmRadial
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=breast-w, Method=svmRadial ===
+Applying data scaling for method: svmRadial
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature                  importance.05   importance   importance.95   permutation.error
+----------------------  --------------  -----------  --------------  ------------------
+Bare_Nuclei                   4.846154     5.038462        5.107692           0.1918009
+Cell_Size_Uniformity          4.507692     4.615385        4.846154           0.1756955
+Cell_Shape_Uniformity         4.076923     4.230769        4.500000           0.1610542
+Normal_Nucleoli               3.823077     4.115385        4.330769           0.1566618
+Marginal_Adhesion             3.338462     3.807692        3.961539           0.1449488
+
+=== LIME Rankings ===
+Error in get_lime: Response is constant across permutations. Please check your model 
+Warning messages:
+1: Mitoses does not contain enough variance to use quantile binning. Using standard binning instead. 
+2: In method$prob(modelFit = modelFit, newdata = newdata, submodels = param) :
+  kernlab class probability calculations failed; returning NAs
+Warning messages:
+1: In method$prob(modelFit = modelFit, newdata = newdata, submodels = param) :
+  kernlab class probability calculations failed; returning NAs
+2: In method$prob(modelFit = modelFit, newdata = newdata, submodels = param) :
+  kernlab class probability calculations failed; returning NAs
+3: In method$prob(modelFit = modelFit, newdata = newdata, submodels = param) :
+  kernlab class probability calculations failed; returning NAs
+4: In method$prob(modelFit = modelFit, newdata = newdata, submodels = param) :
+  kernlab class probability calculations failed; returning NAs
+5: In method$prob(modelFit = modelFit, newdata = newdata, submodels = param) :
+  kernlab class probability calculations failed; returning NAs
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs SHAP   NA                        0
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs SHAP   NA                        0
+
+=== Top-1 Features ===
+FEAT_IMP: Bare_Nuclei
+SHAP: NA
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1     Feature_2   Agreement 
+-----------------  ------------  ----------  ----------
+FEAT_IMP vs SHAP   Bare_Nuclei   NA          FALSE     
+
+Agreeing pairs: 0 / 1 (0.0%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: rfRules
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=breast-w, Method=rfRules ===
+No scaling applied for method: rfRules
+Registered S3 method overwritten by 'RRF':
+  method      from        
+  plot.margin randomForest
+2000 rules (length<=2) were extracted from the first 500 trees.
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature                  importance.05   importance   importance.95   permutation.error
+----------------------  --------------  -----------  --------------  ------------------
+Clump_Thickness               5.000000     5.307692        5.784615           0.1010249
+Bare_Nuclei                   4.123077     5.076923        5.738461           0.0966325
+Cell_Size_Uniformity          1.984615     2.307692        2.553846           0.0439239
+Cell_Shape_Uniformity         2.123077     2.307692        2.661538           0.0439239
+Single_Epi_Cell_Size          1.584615     1.923077        1.923077           0.0366032
+
+=== LIME Rankings ===
+Error in get_lime: only classification models that produce probabilities are allowed 
+Warning message:
+Mitoses does not contain enough variance to use quantile binning. Using standard binning instead. 
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs SHAP   NA                        0
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs SHAP   NA                        0
+
+=== Top-1 Features ===
+FEAT_IMP: Clump_Thickness
+SHAP: NA
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1         Feature_2   Agreement 
+-----------------  ----------------  ----------  ----------
+FEAT_IMP vs SHAP   Clump_Thickness   NA          FALSE     
+
+Agreeing pairs: 0 / 1 (0.0%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: knn
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=breast-w, Method=knn ===
+Applying data scaling for method: knn
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature                 importance.05   importance   importance.95   permutation.error
+---------------------  --------------  -----------  --------------  ------------------
+Bare_Nuclei                 1.9000000     2.000000        2.433333           0.0527086
+Clump_Thickness             1.5555556     1.611111        1.666667           0.0424597
+Single_Epi_Cell_Size        0.9555556     1.111111        1.166667           0.0292826
+Mitoses                     0.9222222     1.111111        1.155556           0.0292826
+Cell_Size_Uniformity        0.9111111     1.055556        1.100000           0.0278184
+
+=== LIME Rankings ===
+
+
+Feature                  Importance
+----------------------  -----------
+Bare_Nuclei               0.2866941
+Normal_Nucleoli           0.1883587
+Marginal_Adhesion         0.1838039
+Mitoses                   0.1606850
+Cell_Shape_Uniformity     0.1430547
+Warning message:
+Mitoses does not contain enough variance to use quantile binning. Using standard binning instead. 
+
+=== SHAP (IML Shapley) Rankings ===
+
+
+Feature                  Importance
+----------------------  -----------
+Bare_Nuclei               0.1016667
+Normal_Nucleoli           0.0672286
+Cell_Shape_Uniformity     0.0506667
+Cell_Size_Uniformity      0.0454381
+Marginal_Adhesion         0.0297556
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair                Spearman   Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME          NA                 1
+FEAT_IMP vs SHAP          NA                 1
+LIME vs SHAP               1                 2
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME   NA                        1
+FEAT_IMP vs SHAP   NA                        1
+LIME vs SHAP       NA                        1
+
+=== Top-1 Features ===
+FEAT_IMP: Bare_Nuclei
+LIME: Bare_Nuclei
+SHAP: Bare_Nuclei
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1     Feature_2     Agreement 
+-----------------  ------------  ------------  ----------
+FEAT_IMP vs LIME   Bare_Nuclei   Bare_Nuclei   TRUE      
+FEAT_IMP vs SHAP   Bare_Nuclei   Bare_Nuclei   TRUE      
+LIME vs SHAP       Bare_Nuclei   Bare_Nuclei   TRUE      
+
+Agreeing pairs: 3 / 3 (100.0%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: bayesglm
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=breast-w, Method=bayesglm ===
+Applying data scaling for method: bayesglm
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature                 importance.05   importance   importance.95   permutation.error
+---------------------  --------------  -----------  --------------  ------------------
+Bare_Nuclei                      1.48         1.65            1.69           0.0483163
+Clump_Thickness                  1.47         1.60            1.78           0.0468521
+Bland_Chromatin                  1.15         1.25            1.38           0.0366032
+Cell_Size_Uniformity             1.05         1.05            1.10           0.0307467
+Marginal_Adhesion                1.05         1.05            1.09           0.0307467
+
+=== LIME Rankings ===
+
+
+Feature                  Importance
+----------------------  -----------
+Mitoses                   0.2662438
+Bare_Nuclei               0.2433729
+Marginal_Adhesion         0.1875501
+Cell_Shape_Uniformity     0.1722463
+Normal_Nucleoli           0.1296781
+Warning message:
+Mitoses does not contain enough variance to use quantile binning. Using standard binning instead. 
+
+=== SHAP (IML Shapley) Rankings ===
+
+
+Feature                  Importance
+----------------------  -----------
+Bare_Nuclei               0.1345060
+Cell_Shape_Uniformity     0.0793137
+Clump_Thickness           0.0763421
+Normal_Nucleoli           0.0463495
+Marginal_Adhesion         0.0413015
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair                Spearman   Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME          NA                 1
+FEAT_IMP vs SHAP           1                 2
+LIME vs SHAP              NA                 1
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME   NA                        0
+FEAT_IMP vs SHAP   NA                        1
+LIME vs SHAP       NA                        0
+
+=== Top-1 Features ===
+FEAT_IMP: Bare_Nuclei
+LIME: Mitoses
+SHAP: Bare_Nuclei
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1     Feature_2     Agreement 
+-----------------  ------------  ------------  ----------
+FEAT_IMP vs LIME   Bare_Nuclei   Mitoses       FALSE     
+FEAT_IMP vs SHAP   Bare_Nuclei   Bare_Nuclei   TRUE      
+LIME vs SHAP       Mitoses       Bare_Nuclei   FALSE     
+
+Agreeing pairs: 1 / 3 (33.3%)
+
+=== All Results Recorded ===
+

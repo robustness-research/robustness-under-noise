@@ -1,0 +1,126 @@
+{
+  "dataset": "eucalyptus",
+  "file_path": "datasets/csv/eucalyptus.csv",
+  "n_rows": 641,
+  "n_columns": 20,
+  "n_numeric_features": 14,
+  "numeric_features": [
+    "Rep",
+    "Altitude",
+    "Rainfall",
+    "Frosts",
+    "Year",
+    "PMCno",
+    "DBH",
+    "Ht",
+    "Surv",
+    "Vig",
+    "Ins_res",
+    "Stem_Fm",
+    "Crown_Fm",
+    "Brnch_Fm"
+  ],
+  "correlation_matrix_shape": [
+    14,
+    14
+  ],
+  "high_correlations": [
+    {
+      "feature1": "Rainfall",
+      "feature2": "Year",
+      "correlation": 0.7181389335420222
+    },
+    {
+      "feature1": "Stem_Fm",
+      "feature2": "Crown_Fm",
+      "correlation": 0.7213561556340877
+    }
+  ],
+  "n_high_correlations": 2,
+  "vif_mean": 52.83440182160901,
+  "vif_median": 24.45504028847714,
+  "vif_max": 233.38054860535985,
+  "vif_values": [
+    {
+      "feature": "Year",
+      "VIF": 233.38054860535985
+    },
+    {
+      "feature": "Rainfall",
+      "VIF": 210.3966770900982
+    },
+    {
+      "feature": "Crown_Fm",
+      "VIF": 55.12558581232371
+    },
+    {
+      "feature": "Stem_Fm",
+      "VIF": 48.64257204200173
+    },
+    {
+      "feature": "Frosts",
+      "VIF": 44.79129300987004
+    },
+    {
+      "feature": "Brnch_Fm",
+      "VIF": 32.876885026944805
+    },
+    {
+      "feature": "Vig",
+      "VIF": 26.97178483564099
+    },
+    {
+      "feature": "Ins_res",
+      "VIF": 21.93829574131329
+    },
+    {
+      "feature": "Altitude",
+      "VIF": 20.28410358559554
+    },
+    {
+      "feature": "PMCno",
+      "VIF": 17.096336881321022
+    },
+    {
+      "feature": "Ht",
+      "VIF": 15.924817366090661
+    },
+    {
+      "feature": "Surv",
+      "VIF": 7.017933336079477
+    },
+    {
+      "feature": "Rep",
+      "VIF": 4.214692303497253
+    },
+    {
+      "feature": "DBH",
+      "VIF": 1.0200998663897796
+    }
+  ],
+  "n_high_vif": 11,
+  "condition_number": 4.00075108154284,
+  "condition_number_interpretation": "Low - no multicollinearity",
+  "condition_index": 4.000751081542859,
+  "eigenvalues": [
+    2.840844175509712,
+    2.4369257914491107,
+    1.9732486262553712,
+    1.199027369981233,
+    1.018775344613826,
+    0.9994469142887815,
+    0.9729203641061299,
+    0.6919958281886806,
+    0.6221686682181494,
+    0.3677403111474588,
+    0.26388299834731616,
+    0.22783675318509733,
+    0.20770075326498666,
+    0.17748610144414775
+  ],
+  "min_eigenvalue": 0.17748610144414775,
+  "max_eigenvalue": 2.840844175509712,
+  "n_small_eigenvalues": 0,
+  "has_multicollinearity": true,
+  "severity_score": 7
+}

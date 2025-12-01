@@ -1,0 +1,73 @@
+{
+  "dataset": "wilt",
+  "file_path": "datasets/csv/wilt.csv",
+  "n_rows": 4839,
+  "n_columns": 6,
+  "n_numeric_features": 6,
+  "numeric_features": [
+    "GLCM_Pan",
+    "Mean_G",
+    "Mean_R",
+    "Mean_NIR",
+    "SD_Plan",
+    "class"
+  ],
+  "correlation_matrix_shape": [
+    6,
+    6
+  ],
+  "high_correlations": [
+    {
+      "feature1": "Mean_G",
+      "feature2": "Mean_R",
+      "correlation": 0.9648494331198998
+    }
+  ],
+  "n_high_correlations": 1,
+  "vif_mean": 56.11042776200572,
+  "vif_median": 34.04169119652056,
+  "vif_max": 186.04886069450362,
+  "vif_values": [
+    {
+      "feature": "Mean_G",
+      "VIF": 186.04886069450362
+    },
+    {
+      "feature": "Mean_R",
+      "VIF": 60.173003127689256
+    },
+    {
+      "feature": "GLCM_Pan",
+      "VIF": 49.17068655009311
+    },
+    {
+      "feature": "class",
+      "VIF": 18.912695842948004
+    },
+    {
+      "feature": "Mean_NIR",
+      "VIF": 15.853085463017953
+    },
+    {
+      "feature": "SD_Plan",
+      "VIF": 6.50423489378239
+    }
+  ],
+  "n_high_vif": 5,
+  "condition_number": 9.414684388170507,
+  "condition_number_interpretation": "Low - no multicollinearity",
+  "condition_index": 9.414684388170718,
+  "eigenvalues": [
+    2.2056459257416487,
+    1.0993532179217438,
+    0.9770802593878809,
+    0.861056654437504,
+    0.8319797091841189,
+    0.024884233327103357
+  ],
+  "min_eigenvalue": 0.024884233327103357,
+  "max_eigenvalue": 2.2056459257416487,
+  "n_small_eigenvalues": 0,
+  "has_multicollinearity": true,
+  "severity_score": 6
+}

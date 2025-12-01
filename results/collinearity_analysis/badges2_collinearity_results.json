@@ -1,0 +1,122 @@
+{
+  "dataset": "badges2",
+  "file_path": "datasets/csv/badges2.csv",
+  "n_rows": 294,
+  "n_columns": 11,
+  "n_numeric_features": 11,
+  "numeric_features": [
+    "length",
+    "even_odd",
+    "first_char_vowel",
+    "second_char_vowel",
+    "vowels",
+    "consonants",
+    "vowel_consonant_ratio",
+    "spaces",
+    "dots",
+    "words",
+    "class"
+  ],
+  "correlation_matrix_shape": [
+    11,
+    11
+  ],
+  "high_correlations": [
+    {
+      "feature1": "length",
+      "feature2": "consonants",
+      "correlation": 0.8533966146513946
+    },
+    {
+      "feature1": "second_char_vowel",
+      "feature2": "class",
+      "correlation": 1.0
+    },
+    {
+      "feature1": "spaces",
+      "feature2": "dots",
+      "correlation": 0.8986510747065359
+    },
+    {
+      "feature1": "spaces",
+      "feature2": "words",
+      "correlation": 1.0000000000000002
+    },
+    {
+      "feature1": "dots",
+      "feature2": "words",
+      "correlation": 0.8986510747065357
+    }
+  ],
+  "n_high_correlations": 5,
+  "vif_mean": Infinity,
+  "vif_median": Infinity,
+  "vif_max": Infinity,
+  "vif_values": [
+    {
+      "feature": "length",
+      "VIF": Infinity
+    },
+    {
+      "feature": "vowels",
+      "VIF": Infinity
+    },
+    {
+      "feature": "second_char_vowel",
+      "VIF": Infinity
+    },
+    {
+      "feature": "class",
+      "VIF": Infinity
+    },
+    {
+      "feature": "dots",
+      "VIF": Infinity
+    },
+    {
+      "feature": "consonants",
+      "VIF": Infinity
+    },
+    {
+      "feature": "spaces",
+      "VIF": Infinity
+    },
+    {
+      "feature": "words",
+      "VIF": 738.2575287029733
+    },
+    {
+      "feature": "vowel_consonant_ratio",
+      "VIF": 9.42374916750916
+    },
+    {
+      "feature": "first_char_vowel",
+      "VIF": 1.3686132137502676
+    },
+    {
+      "feature": "even_odd",
+      "VIF": 1.0166999077263346
+    }
+  ],
+  "n_high_vif": 8,
+  "condition_number": 1.8579188658907892e+16,
+  "condition_number_interpretation": "High - strong multicollinearity",
+  "eigenvalues": [
+    3.33931662190328,
+    2.343274335014311,
+    1.9377534678188821,
+    1.6369392094734503,
+    0.985256805916957,
+    0.5863833626465491,
+    0.12718479037592523,
+    0.0438914068506493,
+    3.771869683595131e-17,
+    -2.6851012987525947e-16,
+    -5.490354183453333e-16
+  ],
+  "min_eigenvalue": -5.490354183453333e-16,
+  "max_eigenvalue": 3.33931662190328,
+  "n_small_eigenvalues": 3,
+  "has_multicollinearity": true,
+  "severity_score": 18
+}

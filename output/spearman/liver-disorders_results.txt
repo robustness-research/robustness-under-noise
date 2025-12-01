@@ -1,0 +1,1578 @@
+Dataset: liver-disorders
+Generated: Mon Nov 24 10:36:01 PM CET 2025
+======================================
+
+
+========================================
+Model: C5.0
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=liver-disorders, Method=C5.0 ===
+No scaling applied for method: C5.0
+Error: Only one model should be specified in tuneGrid with no resampling
+Execution halted
+FAILED - See error above
+
+
+========================================
+Model: ctree
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=liver-disorders, Method=ctree ===
+No scaling applied for method: ctree
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature    importance.05   importance   importance.95   permutation.error
+--------  --------------  -----------  --------------  ------------------
+mcv                    1            1               1           0.4202899
+alkphos                1            1               1           0.4202899
+sgpt                   1            1               1           0.4202899
+sgot                   1            1               1           0.4202899
+gammagt                1            1               1           0.4202899
+
+=== LIME Rankings ===
+Error in get_lime: Response is constant across permutations. Please check your model 
+
+=== SHAP (IML Shapley) Rankings ===
+
+
+Feature    Importance
+--------  -----------
+alkphos             0
+drinks              0
+gammagt             0
+mcv                 0
+sgot                0
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs SHAP   NA                        1
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs SHAP   NA                        0
+
+=== Top-1 Features ===
+FEAT_IMP: mcv
+SHAP: alkphos
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1   Feature_2   Agreement 
+-----------------  ----------  ----------  ----------
+FEAT_IMP vs SHAP   mcv         alkphos     FALSE     
+
+Agreeing pairs: 0 / 1 (0.0%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: fda
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=liver-disorders, Method=fda ===
+No scaling applied for method: fda
+Loading required package: earth
+Loading required package: Formula
+Loading required package: plotmo
+Loading required package: plotrix
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature    importance.05   importance   importance.95   permutation.error
+--------  --------------  -----------  --------------  ------------------
+gammagt         1.139394     1.166667         1.19697           0.4463768
+mcv             1.000000     1.000000         1.00000           0.3826087
+alkphos         1.000000     1.000000         1.00000           0.3826087
+sgpt            1.000000     1.000000         1.00000           0.3826087
+sgot            1.000000     1.000000         1.00000           0.3826087
+
+=== LIME Rankings ===
+
+
+Feature    Importance
+--------  -----------
+gammagt     0.1409492
+drinks      0.0033692
+mcv         0.0032139
+alkphos     0.0025755
+sgpt        0.0025314
+
+=== SHAP (IML Shapley) Rankings ===
+
+
+Feature    Importance
+--------  -----------
+gammagt      0.125673
+alkphos      0.000000
+drinks       0.000000
+mcv          0.000000
+sgot         0.000000
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair                Spearman   Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME           1                 2
+FEAT_IMP vs SHAP           1                 2
+LIME vs SHAP               1                 2
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME   NA                        1
+FEAT_IMP vs SHAP   NA                        1
+LIME vs SHAP       NA                        1
+
+=== Top-1 Features ===
+FEAT_IMP: gammagt
+LIME: gammagt
+SHAP: gammagt
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1   Feature_2   Agreement 
+-----------------  ----------  ----------  ----------
+FEAT_IMP vs LIME   gammagt     gammagt     TRUE      
+FEAT_IMP vs SHAP   gammagt     gammagt     TRUE      
+LIME vs SHAP       gammagt     gammagt     TRUE      
+
+Agreeing pairs: 3 / 3 (100.0%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: gbm
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=liver-disorders, Method=gbm ===
+No scaling applied for method: gbm
+Iter   TrainDeviance   ValidDeviance   StepSize   Improve
+     1        1.3524            -nan     0.1000   -0.0002
+     2        1.3461            -nan     0.1000    0.0003
+     3        1.3339            -nan     0.1000    0.0045
+     4        1.3236            -nan     0.1000    0.0032
+     5        1.3149            -nan     0.1000    0.0042
+     6        1.3070            -nan     0.1000    0.0005
+     7        1.2986            -nan     0.1000    0.0009
+     8        1.2895            -nan     0.1000    0.0025
+     9        1.2818            -nan     0.1000    0.0029
+    10        1.2769            -nan     0.1000    0.0001
+    20        1.2213            -nan     0.1000   -0.0003
+    40        1.1375            -nan     0.1000   -0.0005
+    50        1.1038            -nan     0.1000   -0.0029
+
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature    importance.05   importance   importance.95   permutation.error
+--------  --------------  -----------  --------------  ------------------
+gammagt         1.451163     1.534884        1.702326           0.3826087
+sgpt            1.386046     1.406977        1.458139           0.3507246
+sgot            1.100000     1.139535        1.204651           0.2840580
+alkphos         1.072093     1.116279        1.137209           0.2782609
+drinks          1.034884     1.046512        1.081395           0.2608696
+
+=== LIME Rankings ===
+
+
+Feature    Importance
+--------  -----------
+sgpt        0.1467703
+gammagt     0.1350441
+sgot        0.0754325
+alkphos     0.0576637
+mcv         0.0408347
+
+=== SHAP (IML Shapley) Rankings ===
+
+
+Feature    Importance
+--------  -----------
+sgpt        0.1210864
+gammagt     0.0953114
+alkphos     0.0510081
+mcv         0.0372754
+sgot        0.0334463
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair                Spearman   Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME         0.5                 3
+FEAT_IMP vs SHAP        -1.0                 2
+LIME vs SHAP             1.0                 2
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME   NA                        0
+FEAT_IMP vs SHAP   NA                        0
+LIME vs SHAP       NA                        1
+
+=== Top-1 Features ===
+FEAT_IMP: gammagt
+LIME: sgpt
+SHAP: sgpt
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1   Feature_2   Agreement 
+-----------------  ----------  ----------  ----------
+FEAT_IMP vs LIME   gammagt     sgpt        FALSE     
+FEAT_IMP vs SHAP   gammagt     sgpt        FALSE     
+LIME vs SHAP       sgpt        sgpt        TRUE      
+
+Agreeing pairs: 1 / 3 (33.3%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: gcvEarth
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=liver-disorders, Method=gcvEarth ===
+No scaling applied for method: gcvEarth
+Loading required package: earth
+Loading required package: Formula
+Loading required package: plotmo
+Loading required package: plotrix
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature    importance.05   importance   importance.95   permutation.error
+--------  --------------  -----------  --------------  ------------------
+gammagt        1.4740741     1.592593        1.632099           0.3739130
+sgpt           1.4419753     1.555556        1.617284           0.3652174
+sgot           1.1481481     1.234568        1.355556           0.2898551
+drinks         1.1604938     1.234568        1.266667           0.2898551
+mcv            0.9925926     1.086420        1.148148           0.2550725
+
+=== LIME Rankings ===
+
+
+Feature    Importance
+--------  -----------
+sgpt        0.2426347
+mcv         0.2086252
+sgot        0.1973845
+gammagt     0.1741044
+alkphos     0.0468364
+
+=== SHAP (IML Shapley) Rankings ===
+
+
+Feature    Importance
+--------  -----------
+sgpt        0.2783578
+gammagt     0.1632189
+sgot        0.0950241
+mcv         0.0777832
+alkphos     0.0399375
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair                Spearman   Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME         1.0                 2
+FEAT_IMP vs SHAP         0.5                 3
+LIME vs SHAP             1.0                 2
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME   NA                        0
+FEAT_IMP vs SHAP   NA                        0
+LIME vs SHAP       NA                        1
+
+=== Top-1 Features ===
+FEAT_IMP: gammagt
+LIME: sgpt
+SHAP: sgpt
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1   Feature_2   Agreement 
+-----------------  ----------  ----------  ----------
+FEAT_IMP vs LIME   gammagt     sgpt        FALSE     
+FEAT_IMP vs SHAP   gammagt     sgpt        FALSE     
+LIME vs SHAP       sgpt        sgpt        TRUE      
+
+Agreeing pairs: 1 / 3 (33.3%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: JRip
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=liver-disorders, Method=JRip ===
+No scaling applied for method: JRip
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature    importance.05   importance   importance.95   permutation.error
+--------  --------------  -----------  --------------  ------------------
+gammagt         1.651948     1.727273        1.761039           0.3855072
+sgpt            1.527273     1.558442        1.607792           0.3478261
+drinks          1.241558     1.272727        1.366234           0.2840580
+alkphos         1.132467     1.168831        1.200000           0.2608696
+sgot            1.072727     1.155844        1.179221           0.2579710
+
+=== LIME Rankings ===
+
+
+Feature    Importance
+--------  -----------
+gammagt     0.1966708
+sgpt        0.0873120
+sgot        0.0323910
+alkphos     0.0259966
+drinks      0.0195418
+
+=== SHAP (IML Shapley) Rankings ===
+
+
+Feature    Importance
+--------  -----------
+gammagt     0.1768076
+sgpt        0.1048263
+sgot        0.0330608
+drinks      0.0287205
+alkphos     0.0270093
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair                Spearman   Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME           1                 2
+FEAT_IMP vs SHAP           1                 2
+LIME vs SHAP               1                 3
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME   NA                        1
+FEAT_IMP vs SHAP   NA                        1
+LIME vs SHAP       NA                        1
+
+=== Top-1 Features ===
+FEAT_IMP: gammagt
+LIME: gammagt
+SHAP: gammagt
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1   Feature_2   Agreement 
+-----------------  ----------  ----------  ----------
+FEAT_IMP vs LIME   gammagt     gammagt     TRUE      
+FEAT_IMP vs SHAP   gammagt     gammagt     TRUE      
+LIME vs SHAP       gammagt     gammagt     TRUE      
+
+Agreeing pairs: 3 / 3 (100.0%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: lvq
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=liver-disorders, Method=lvq ===
+Applying data scaling for method: lvq
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature    importance.05   importance   importance.95   permutation.error
+--------  --------------  -----------  --------------  ------------------
+drinks         1.0331126     1.046358        1.063576           0.4579710
+mcv            0.9986755     1.039735        1.046358           0.4550725
+sgpt           1.0066225     1.013245        1.051656           0.4434783
+sgot           1.0026490     1.013245        1.019867           0.4434783
+alkphos        1.0000000     1.000000        1.027815           0.4376812
+
+=== LIME Rankings ===
+Error in get_lime: only classification models that produce probabilities are allowed 
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs SHAP   NA                        0
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs SHAP   NA                        0
+
+=== Top-1 Features ===
+FEAT_IMP: drinks
+SHAP: NA
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1   Feature_2   Agreement 
+-----------------  ----------  ----------  ----------
+FEAT_IMP vs SHAP   drinks      NA          FALSE     
+
+Agreeing pairs: 0 / 1 (0.0%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: mlpML
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=liver-disorders, Method=mlpML ===
+Applying data scaling for method: mlpML
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+Warning message:
+At least one layer had zero units and were removed. The new structure is 1 
+
+=== IML Rankings ===
+
+
+feature    importance.05   importance   importance.95   permutation.error
+--------  --------------  -----------  --------------  ------------------
+sgpt            1.432258     1.505376        1.615054           0.4057971
+gammagt         1.475269     1.483871        1.544086           0.4000000
+sgot            1.206452     1.354839        1.393548           0.3652174
+alkphos         1.075269     1.075269        1.135484           0.2898551
+mcv             1.023656     1.043011        1.068817           0.2811594
+
+=== LIME Rankings ===
+
+
+Feature    Importance
+--------  -----------
+sgpt        0.1853549
+sgot        0.1267413
+gammagt     0.1184133
+mcv         0.0463614
+alkphos     0.0325727
+
+=== SHAP (IML Shapley) Rankings ===
+
+
+Feature    Importance
+--------  -----------
+sgpt        0.2129892
+gammagt     0.0958584
+sgot        0.0617027
+alkphos     0.0244999
+drinks      0.0203627
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair                Spearman   Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME         0.5                 3
+FEAT_IMP vs SHAP         1.0                 3
+LIME vs SHAP             0.5                 3
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME   NA                        1
+FEAT_IMP vs SHAP   NA                        1
+LIME vs SHAP       NA                        1
+
+=== Top-1 Features ===
+FEAT_IMP: sgpt
+LIME: sgpt
+SHAP: sgpt
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1   Feature_2   Agreement 
+-----------------  ----------  ----------  ----------
+FEAT_IMP vs LIME   sgpt        sgpt        TRUE      
+FEAT_IMP vs SHAP   sgpt        sgpt        TRUE      
+LIME vs SHAP       sgpt        sgpt        TRUE      
+
+Agreeing pairs: 3 / 3 (100.0%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: multinom
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=liver-disorders, Method=multinom ===
+Applying data scaling for method: multinom
+# weights:  8 (7 variable)
+initial  value 239.135777 
+iter  10 value 206.169306
+final  value 205.505029 
+converged
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature    importance.05   importance   importance.95   permutation.error
+--------  --------------  -----------  --------------  ------------------
+sgpt           1.3313725     1.431372        1.474510           0.4231884
+sgot           1.3392157     1.392157        1.441177           0.4115942
+gammagt        1.2294118     1.245098        1.309804           0.3681159
+alkphos        0.9647059     1.049020        1.127451           0.3101449
+drinks         1.0313725     1.039216        1.088235           0.3072464
+
+=== LIME Rankings ===
+
+
+Feature    Importance
+--------  -----------
+sgpt        0.2518996
+sgot        0.2180237
+gammagt     0.1074736
+mcv         0.0982098
+alkphos     0.0538757
+
+=== SHAP (IML Shapley) Rankings ===
+
+
+Feature    Importance
+--------  -----------
+sgpt        0.1750914
+sgot        0.1002579
+gammagt     0.0534738
+alkphos     0.0418890
+mcv         0.0405788
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair                Spearman   Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME           1                 3
+FEAT_IMP vs SHAP           1                 3
+LIME vs SHAP               1                 3
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME   NA                        1
+FEAT_IMP vs SHAP   NA                        1
+LIME vs SHAP       NA                        1
+
+=== Top-1 Features ===
+FEAT_IMP: sgpt
+LIME: sgpt
+SHAP: sgpt
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1   Feature_2   Agreement 
+-----------------  ----------  ----------  ----------
+FEAT_IMP vs LIME   sgpt        sgpt        TRUE      
+FEAT_IMP vs SHAP   sgpt        sgpt        TRUE      
+LIME vs SHAP       sgpt        sgpt        TRUE      
+
+Agreeing pairs: 3 / 3 (100.0%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: naive_bayes
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=liver-disorders, Method=naive_bayes ===
+No scaling applied for method: naive_bayes
+Error: Only one model should be specified in tuneGrid with no resampling
+Execution halted
+FAILED - See error above
+
+
+========================================
+Model: PART
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=liver-disorders, Method=PART ===
+No scaling applied for method: PART
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature    importance.05   importance   importance.95   permutation.error
+--------  --------------  -----------  --------------  ------------------
+gammagt         2.470833     2.625000        2.683333           0.3652174
+sgpt            2.100000     2.270833        2.287500           0.3159420
+alkphos         1.566667     1.666667        1.745833           0.2318841
+mcv             1.533333     1.604167        1.783333           0.2231884
+drinks          1.325000     1.395833        1.429167           0.1942029
+
+=== LIME Rankings ===
+
+
+Feature    Importance
+--------  -----------
+gammagt     0.2039842
+sgpt        0.1920584
+mcv         0.1417372
+alkphos     0.0742305
+sgot        0.0478054
+
+=== SHAP (IML Shapley) Rankings ===
+
+
+Feature    Importance
+--------  -----------
+sgpt        0.2126039
+gammagt     0.1970289
+alkphos     0.0999507
+mcv         0.0638252
+drinks      0.0355313
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair                Spearman   Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME         1.0                 2
+FEAT_IMP vs SHAP         0.5                 3
+LIME vs SHAP            -1.0                 2
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME   NA                        1
+FEAT_IMP vs SHAP   NA                        0
+LIME vs SHAP       NA                        0
+
+=== Top-1 Features ===
+FEAT_IMP: gammagt
+LIME: gammagt
+SHAP: sgpt
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1   Feature_2   Agreement 
+-----------------  ----------  ----------  ----------
+FEAT_IMP vs LIME   gammagt     gammagt     TRUE      
+FEAT_IMP vs SHAP   gammagt     sgpt        FALSE     
+LIME vs SHAP       gammagt     sgpt        FALSE     
+
+Agreeing pairs: 1 / 3 (33.3%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: rbfDDA
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=liver-disorders, Method=rbfDDA ===
+Applying data scaling for method: rbfDDA
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature    importance.05   importance   importance.95   permutation.error
+--------  --------------  -----------  --------------  ------------------
+alkphos        11.114286    11.857143        12.82857           0.2405797
+drinks          9.057143    11.571429        12.11429           0.2347826
+sgpt           10.142857    11.000000        12.25714           0.2231884
+mcv             9.514286    10.142857        10.80000           0.2057971
+sgot            8.771429     9.142857         9.40000           0.1855072
+
+=== LIME Rankings ===
+
+
+Feature    Importance
+--------  -----------
+sgpt        0.1399171
+sgot        0.1091619
+mcv         0.1078918
+alkphos     0.0833139
+gammagt     0.0362242
+
+=== SHAP (IML Shapley) Rankings ===
+
+
+Feature    Importance
+--------  -----------
+mcv         0.2260220
+sgpt        0.2145048
+sgot        0.1388584
+gammagt     0.1269588
+alkphos     0.1159011
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair                Spearman   Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME          NA                 1
+FEAT_IMP vs SHAP          NA                 1
+LIME vs SHAP            -0.5                 3
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME   NA                        0
+FEAT_IMP vs SHAP   NA                        0
+LIME vs SHAP       NA                        0
+
+=== Top-1 Features ===
+FEAT_IMP: alkphos
+LIME: sgpt
+SHAP: mcv
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1   Feature_2   Agreement 
+-----------------  ----------  ----------  ----------
+FEAT_IMP vs LIME   alkphos     sgpt        FALSE     
+FEAT_IMP vs SHAP   alkphos     mcv         FALSE     
+LIME vs SHAP       sgpt        mcv         FALSE     
+
+Agreeing pairs: 0 / 3 (0.0%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: rda
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=liver-disorders, Method=rda ===
+Applying data scaling for method: rda
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature    importance.05   importance   importance.95   permutation.error
+--------  --------------  -----------  --------------  ------------------
+sgpt           1.1285714     1.174603        1.260317           0.4289855
+sgot           1.0126984     1.095238        1.107937           0.4000000
+gammagt        1.0523810     1.079365        1.133333           0.3942029
+drinks         1.0444444     1.063492        1.096825           0.3884058
+mcv            0.9714286     1.015873        1.074603           0.3710145
+
+=== LIME Rankings ===
+
+
+Feature    Importance
+--------  -----------
+mcv         0.2233177
+sgot        0.1528519
+sgpt        0.1199660
+gammagt     0.1156521
+alkphos     0.0371730
+
+=== SHAP (IML Shapley) Rankings ===
+
+
+Feature    Importance
+--------  -----------
+sgot        0.0823589
+sgpt        0.0705506
+gammagt     0.0511295
+mcv         0.0506108
+alkphos     0.0406872
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair                Spearman   Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME        -1.0                 2
+FEAT_IMP vs SHAP         0.5                 3
+LIME vs SHAP             1.0                 2
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME   NA                        0
+FEAT_IMP vs SHAP   NA                        0
+LIME vs SHAP       NA                        0
+
+=== Top-1 Features ===
+FEAT_IMP: sgpt
+LIME: mcv
+SHAP: sgot
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1   Feature_2   Agreement 
+-----------------  ----------  ----------  ----------
+FEAT_IMP vs LIME   sgpt        mcv         FALSE     
+FEAT_IMP vs SHAP   sgpt        sgot        FALSE     
+LIME vs SHAP       mcv         sgot        FALSE     
+
+Agreeing pairs: 0 / 3 (0.0%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: rf
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=liver-disorders, Method=rf ===
+No scaling applied for method: rf
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature    importance.05   importance   importance.95   permutation.error
+--------  --------------  -----------  --------------  ------------------
+gammagt        0.2110145    0.2260870       0.2359420           0.2260870
+sgpt           0.1976812    0.2202899       0.2318841           0.2202899
+sgot           0.1020290    0.1072464       0.1246377           0.1072464
+alkphos        0.0811594    0.0840580       0.0944928           0.0840580
+mcv            0.0620290    0.0695652       0.0898551           0.0695652
+Warning message:
+In initialize(...) :
+  Model error is 0, switching from compare='ratio' to compare='difference'
+
+=== LIME Rankings ===
+
+
+Feature    Importance
+--------  -----------
+sgpt        0.1258367
+gammagt     0.1210096
+sgot        0.1039065
+mcv         0.0928584
+alkphos     0.0502241
+
+=== SHAP (IML Shapley) Rankings ===
+
+
+Feature    Importance
+--------  -----------
+sgpt         0.132828
+gammagt      0.117844
+mcv          0.089248
+sgot         0.056676
+alkphos      0.038224
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair                Spearman   Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME         0.5                 3
+FEAT_IMP vs SHAP        -1.0                 2
+LIME vs SHAP             1.0                 2
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME   NA                        0
+FEAT_IMP vs SHAP   NA                        0
+LIME vs SHAP       NA                        1
+
+=== Top-1 Features ===
+FEAT_IMP: gammagt
+LIME: sgpt
+SHAP: sgpt
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1   Feature_2   Agreement 
+-----------------  ----------  ----------  ----------
+FEAT_IMP vs LIME   gammagt     sgpt        FALSE     
+FEAT_IMP vs SHAP   gammagt     sgpt        FALSE     
+LIME vs SHAP       sgpt        sgpt        TRUE      
+
+Agreeing pairs: 1 / 3 (33.3%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: rpart
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=liver-disorders, Method=rpart ===
+No scaling applied for method: rpart
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature    importance.05   importance   importance.95   permutation.error
+--------  --------------  -----------  --------------  ------------------
+mcv                    1            1               1           0.4202899
+alkphos                1            1               1           0.4202899
+sgpt                   1            1               1           0.4202899
+sgot                   1            1               1           0.4202899
+gammagt                1            1               1           0.4202899
+
+=== LIME Rankings ===
+Error in get_lime: Response is constant across permutations. Please check your model 
+
+=== SHAP (IML Shapley) Rankings ===
+
+
+Feature    Importance
+--------  -----------
+alkphos             0
+drinks              0
+gammagt             0
+mcv                 0
+sgot                0
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs SHAP   NA                        1
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs SHAP   NA                        0
+
+=== Top-1 Features ===
+FEAT_IMP: mcv
+SHAP: alkphos
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1   Feature_2   Agreement 
+-----------------  ----------  ----------  ----------
+FEAT_IMP vs SHAP   mcv         alkphos     FALSE     
+
+Agreeing pairs: 0 / 1 (0.0%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: simpls
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=liver-disorders, Method=simpls ===
+Applying data scaling for method: simpls
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature    importance.05   importance   importance.95   permutation.error
+--------  --------------  -----------  --------------  ------------------
+sgot           1.0196970    1.0681818       1.1075758           0.4086957
+gammagt        1.0272727    1.0606061       1.0757576           0.4057971
+alkphos        1.0075758    1.0151515       1.0848485           0.3884058
+sgpt           0.9878788    1.0075758       1.0227273           0.3855072
+drinks         0.9378788    0.9621212       0.9969697           0.3681159
+
+=== LIME Rankings ===
+
+
+Feature    Importance
+--------  -----------
+sgot        0.0746582
+mcv         0.0711579
+gammagt     0.0555571
+alkphos     0.0315767
+sgpt        0.0189599
+
+=== SHAP (IML Shapley) Rankings ===
+
+
+Feature    Importance
+--------  -----------
+mcv         0.0191881
+sgot        0.0178051
+alkphos     0.0164708
+gammagt     0.0157810
+sgpt        0.0070096
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair                Spearman   Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME           1                 2
+FEAT_IMP vs SHAP           1                 2
+LIME vs SHAP              -1                 2
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME   NA                        1
+FEAT_IMP vs SHAP   NA                        0
+LIME vs SHAP       NA                        0
+
+=== Top-1 Features ===
+FEAT_IMP: sgot
+LIME: sgot
+SHAP: mcv
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1   Feature_2   Agreement 
+-----------------  ----------  ----------  ----------
+FEAT_IMP vs LIME   sgot        sgot        TRUE      
+FEAT_IMP vs SHAP   sgot        mcv         FALSE     
+LIME vs SHAP       sgot        mcv         FALSE     
+
+Agreeing pairs: 1 / 3 (33.3%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: svmLinear
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=liver-disorders, Method=svmLinear ===
+Applying data scaling for method: svmLinear
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature    importance.05   importance   importance.95   permutation.error
+--------  --------------  -----------  --------------  ------------------
+sgpt            1.344898     1.459184        1.512245           0.4144928
+sgot            1.400000     1.438775        1.524490           0.4086957
+gammagt         1.228571     1.255102        1.332653           0.3565217
+drinks          1.057143     1.091837        1.100000           0.3101449
+mcv             1.042857     1.071429        1.148980           0.3043478
+
+=== LIME Rankings ===
+Error in get_lime: Response is constant across permutations. Please check your model 
+Warning message:
+In method$prob(modelFit = modelFit, newdata = newdata, submodels = param) :
+  kernlab class probability calculations failed; returning NAs
+Warning messages:
+1: In method$prob(modelFit = modelFit, newdata = newdata, submodels = param) :
+  kernlab class probability calculations failed; returning NAs
+2: In method$prob(modelFit = modelFit, newdata = newdata, submodels = param) :
+  kernlab class probability calculations failed; returning NAs
+3: In method$prob(modelFit = modelFit, newdata = newdata, submodels = param) :
+  kernlab class probability calculations failed; returning NAs
+4: In method$prob(modelFit = modelFit, newdata = newdata, submodels = param) :
+  kernlab class probability calculations failed; returning NAs
+5: In method$prob(modelFit = modelFit, newdata = newdata, submodels = param) :
+  kernlab class probability calculations failed; returning NAs
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs SHAP   NA                        0
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs SHAP   NA                        0
+
+=== Top-1 Features ===
+FEAT_IMP: sgpt
+SHAP: NA
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1   Feature_2   Agreement 
+-----------------  ----------  ----------  ----------
+FEAT_IMP vs SHAP   sgpt        NA          FALSE     
+
+Agreeing pairs: 0 / 1 (0.0%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: svmRadial
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=liver-disorders, Method=svmRadial ===
+Applying data scaling for method: svmRadial
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature    importance.05   importance   importance.95   permutation.error
+--------  --------------  -----------  --------------  ------------------
+gammagt         1.126415     1.169811        1.277359           0.3594203
+alkphos         1.101887     1.150943        1.198113           0.3536232
+mcv             1.043396     1.141509        1.160377           0.3507246
+sgot            1.122642     1.141509        1.160377           0.3507246
+sgpt            1.116981     1.132076        1.226415           0.3478261
+
+=== LIME Rankings ===
+Error in get_lime: Response is constant across permutations. Please check your model 
+Warning message:
+In method$prob(modelFit = modelFit, newdata = newdata, submodels = param) :
+  kernlab class probability calculations failed; returning NAs
+Warning messages:
+1: In method$prob(modelFit = modelFit, newdata = newdata, submodels = param) :
+  kernlab class probability calculations failed; returning NAs
+2: In method$prob(modelFit = modelFit, newdata = newdata, submodels = param) :
+  kernlab class probability calculations failed; returning NAs
+3: In method$prob(modelFit = modelFit, newdata = newdata, submodels = param) :
+  kernlab class probability calculations failed; returning NAs
+4: In method$prob(modelFit = modelFit, newdata = newdata, submodels = param) :
+  kernlab class probability calculations failed; returning NAs
+5: In method$prob(modelFit = modelFit, newdata = newdata, submodels = param) :
+  kernlab class probability calculations failed; returning NAs
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs SHAP   NA                        0
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs SHAP   NA                        0
+
+=== Top-1 Features ===
+FEAT_IMP: gammagt
+SHAP: NA
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1   Feature_2   Agreement 
+-----------------  ----------  ----------  ----------
+FEAT_IMP vs SHAP   gammagt     NA          FALSE     
+
+Agreeing pairs: 0 / 1 (0.0%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: rfRules
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=liver-disorders, Method=rfRules ===
+No scaling applied for method: rfRules
+Registered S3 method overwritten by 'RRF':
+  method      from        
+  plot.margin randomForest
+1967 rules (length<=2) were extracted from the first 500 trees.
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature    importance.05   importance   importance.95   permutation.error
+--------  --------------  -----------  --------------  ------------------
+sgpt            1.903704     2.222222        2.325926           0.3478261
+sgot            1.700000     1.814815        1.829630           0.2840580
+gammagt         1.674074     1.740741        1.862963           0.2724638
+alkphos         1.396296     1.537037        1.555556           0.2405797
+mcv             1.422222     1.500000        1.566667           0.2347826
+
+=== LIME Rankings ===
+Error in get_lime: only classification models that produce probabilities are allowed 
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs SHAP   NA                        0
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs SHAP   NA                        0
+
+=== Top-1 Features ===
+FEAT_IMP: sgpt
+SHAP: NA
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1   Feature_2   Agreement 
+-----------------  ----------  ----------  ----------
+FEAT_IMP vs SHAP   sgpt        NA          FALSE     
+
+Agreeing pairs: 0 / 1 (0.0%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: knn
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=liver-disorders, Method=knn ===
+Applying data scaling for method: knn
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature    importance.05   importance   importance.95   permutation.error
+--------  --------------  -----------  --------------  ------------------
+drinks          1.400000     1.550725        1.565217           0.3101449
+sgpt            1.318841     1.478261        1.501449           0.2956522
+mcv             1.353623     1.449275        1.571014           0.2898551
+alkphos         1.434783     1.449275        1.614493           0.2898551
+sgot            1.220290     1.376812        1.402899           0.2753623
+
+=== LIME Rankings ===
+
+
+Feature    Importance
+--------  -----------
+sgot        0.1245973
+mcv         0.1066120
+sgpt        0.0875493
+gammagt     0.0689439
+drinks      0.0374245
+
+=== SHAP (IML Shapley) Rankings ===
+
+
+Feature    Importance
+--------  -----------
+sgpt        0.1166667
+mcv         0.0965333
+gammagt     0.0886000
+sgot        0.0817333
+alkphos     0.0699333
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair                Spearman   Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME          -1                 2
+FEAT_IMP vs SHAP           1                 2
+LIME vs SHAP              -1                 2
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME   NA                        0
+FEAT_IMP vs SHAP   NA                        0
+LIME vs SHAP       NA                        0
+
+=== Top-1 Features ===
+FEAT_IMP: drinks
+LIME: sgot
+SHAP: sgpt
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1   Feature_2   Agreement 
+-----------------  ----------  ----------  ----------
+FEAT_IMP vs LIME   drinks      sgot        FALSE     
+FEAT_IMP vs SHAP   drinks      sgpt        FALSE     
+LIME vs SHAP       sgot        sgpt        FALSE     
+
+Agreeing pairs: 0 / 3 (0.0%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: bayesglm
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=liver-disorders, Method=bayesglm ===
+Applying data scaling for method: bayesglm
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature    importance.05   importance   importance.95   permutation.error
+--------  --------------  -----------  --------------  ------------------
+sgpt           1.3254902     1.431372        1.480392           0.4231884
+sgot           1.3392157     1.372549        1.449020           0.4057971
+gammagt        1.2313725     1.254902        1.303922           0.3710145
+alkphos        0.9705882     1.078431        1.119608           0.3188406
+drinks         1.0254902     1.058823        1.088235           0.3130435
+
+=== LIME Rankings ===
+
+
+Feature    Importance
+--------  -----------
+sgpt        0.2480571
+sgot        0.2135603
+gammagt     0.1055410
+mcv         0.0988103
+alkphos     0.0533304
+
+=== SHAP (IML Shapley) Rankings ===
+
+
+Feature    Importance
+--------  -----------
+sgpt        0.1650753
+sgot        0.0960629
+gammagt     0.0507283
+alkphos     0.0408653
+mcv         0.0402497
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair                Spearman   Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME           1                 3
+FEAT_IMP vs SHAP           1                 3
+LIME vs SHAP               1                 3
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME   NA                        1
+FEAT_IMP vs SHAP   NA                        1
+LIME vs SHAP       NA                        1
+
+=== Top-1 Features ===
+FEAT_IMP: sgpt
+LIME: sgpt
+SHAP: sgpt
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1   Feature_2   Agreement 
+-----------------  ----------  ----------  ----------
+FEAT_IMP vs LIME   sgpt        sgpt        TRUE      
+FEAT_IMP vs SHAP   sgpt        sgpt        TRUE      
+LIME vs SHAP       sgpt        sgpt        TRUE      
+
+Agreeing pairs: 3 / 3 (100.0%)
+
+=== All Results Recorded ===
+

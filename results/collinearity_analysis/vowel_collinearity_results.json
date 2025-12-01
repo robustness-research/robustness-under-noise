@@ -1,0 +1,91 @@
+{
+  "dataset": "vowel",
+  "file_path": "datasets/csv/vowel.csv",
+  "n_rows": 990,
+  "n_columns": 11,
+  "n_numeric_features": 10,
+  "numeric_features": [
+    "Feature_0",
+    "Feature_1",
+    "Feature_2",
+    "Feature_3",
+    "Feature_4",
+    "Feature_5",
+    "Feature_6",
+    "Feature_7",
+    "Feature_8",
+    "Feature_9"
+  ],
+  "correlation_matrix_shape": [
+    10,
+    10
+  ],
+  "high_correlations": [],
+  "n_high_correlations": 0,
+  "vif_mean": 5.80797886139356,
+  "vif_median": 2.9970191019778105,
+  "vif_max": 20.39740128873258,
+  "vif_values": [
+    {
+      "feature": "Feature_0",
+      "VIF": 20.39740128873258
+    },
+    {
+      "feature": "Feature_1",
+      "VIF": 15.587226782030205
+    },
+    {
+      "feature": "Feature_5",
+      "VIF": 4.1479226610604165
+    },
+    {
+      "feature": "Feature_3",
+      "VIF": 4.089819015242463
+    },
+    {
+      "feature": "Feature_4",
+      "VIF": 3.0514747710459793
+    },
+    {
+      "feature": "Feature_2",
+      "VIF": 2.9425634329096417
+    },
+    {
+      "feature": "Feature_7",
+      "VIF": 2.2353490155564306
+    },
+    {
+      "feature": "Feature_8",
+      "VIF": 2.044577985181755
+    },
+    {
+      "feature": "Feature_6",
+      "VIF": 1.8932535507641808
+    },
+    {
+      "feature": "Feature_9",
+      "VIF": 1.6902001114119438
+    }
+  ],
+  "n_high_vif": 2,
+  "condition_number": 5.446452021548671,
+  "condition_number_interpretation": "Low - no multicollinearity",
+  "condition_index": 5.446452021548662,
+  "eigenvalues": [
+    2.520395546844874,
+    2.109005406445379,
+    1.677942839528596,
+    1.0035524748884725,
+    0.7314550686715285,
+    0.649766092429538,
+    0.515694670849926,
+    0.4115486893150821,
+    0.29567396111714417,
+    0.08496524990945528
+  ],
+  "min_eigenvalue": 0.08496524990945528,
+  "max_eigenvalue": 2.520395546844874,
+  "n_small_eigenvalues": 0,
+  "has_multicollinearity": true,
+  "severity_score": 2
+}

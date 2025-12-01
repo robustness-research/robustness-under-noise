@@ -1,0 +1,131 @@
+{
+  "dataset": "breast-w",
+  "file_path": "datasets/csv/breast-w.csv",
+  "n_rows": 683,
+  "n_columns": 10,
+  "n_numeric_features": 9,
+  "numeric_features": [
+    "Clump_Thickness",
+    "Cell_Size_Uniformity",
+    "Cell_Shape_Uniformity",
+    "Marginal_Adhesion",
+    "Single_Epi_Cell_Size",
+    "Bare_Nuclei",
+    "Bland_Chromatin",
+    "Normal_Nucleoli",
+    "Mitoses"
+  ],
+  "correlation_matrix_shape": [
+    9,
+    9
+  ],
+  "high_correlations": [
+    {
+      "feature1": "Cell_Size_Uniformity",
+      "feature2": "Cell_Shape_Uniformity",
+      "correlation": 0.9072282331914424
+    },
+    {
+      "feature1": "Cell_Size_Uniformity",
+      "feature2": "Marginal_Adhesion",
+      "correlation": 0.7069769501294827
+    },
+    {
+      "feature1": "Cell_Size_Uniformity",
+      "feature2": "Single_Epi_Cell_Size",
+      "correlation": 0.7535440193661502
+    },
+    {
+      "feature1": "Cell_Size_Uniformity",
+      "feature2": "Bland_Chromatin",
+      "correlation": 0.755559163986822
+    },
+    {
+      "feature1": "Cell_Size_Uniformity",
+      "feature2": "Normal_Nucleoli",
+      "correlation": 0.7193460366364216
+    },
+    {
+      "feature1": "Cell_Shape_Uniformity",
+      "feature2": "Single_Epi_Cell_Size",
+      "correlation": 0.722462414180965
+    },
+    {
+      "feature1": "Cell_Shape_Uniformity",
+      "feature2": "Bare_Nuclei",
+      "correlation": 0.7138775473793957
+    },
+    {
+      "feature1": "Cell_Shape_Uniformity",
+      "feature2": "Bland_Chromatin",
+      "correlation": 0.7353435006210447
+    },
+    {
+      "feature1": "Cell_Shape_Uniformity",
+      "feature2": "Normal_Nucleoli",
+      "correlation": 0.7179634141270744
+    }
+  ],
+  "n_high_correlations": 9,
+  "vif_mean": 7.1863163517147335,
+  "vif_median": 5.194379675336059,
+  "vif_max": 14.131730173723444,
+  "vif_values": [
+    {
+      "feature": "Cell_Shape_Uniformity",
+      "VIF": 14.131730173723444
+    },
+    {
+      "feature": "Cell_Size_Uniformity",
+      "VIF": 13.991155941871884
+    },
+    {
+      "feature": "Bland_Chromatin",
+      "VIF": 7.526238422158306
+    },
+    {
+      "feature": "Single_Epi_Cell_Size",
+      "VIF": 6.879036790199698
+    },
+    {
+      "feature": "Clump_Thickness",
+      "VIF": 5.194379675336059
+    },
+    {
+      "feature": "Bare_Nuclei",
+      "VIF": 4.98446963355025
+    },
+    {
+      "feature": "Marginal_Adhesion",
+      "VIF": 4.8744319948240005
+    },
+    {
+      "feature": "Normal_Nucleoli",
+      "VIF": 4.534766061309264
+    },
+    {
+      "feature": "Mitoses",
+      "VIF": 2.5606384724597033
+    }
+  ],
+  "n_high_vif": 2,
+  "condition_number": 8.170011543478768,
+  "condition_number_interpretation": "Low - no multicollinearity",
+  "condition_index": 8.170011543478811,
+  "eigenvalues": [
+    5.899499349413539,
+    0.7759468851350517,
+    0.5392522396378933,
+    0.45962745438395897,
+    0.38027582871000837,
+    0.30187645092629145,
+    0.2944027147008952,
+    0.2607358576157951,
+    0.08838321947657089
+  ],
+  "min_eigenvalue": 0.08838321947657089,
+  "max_eigenvalue": 5.899499349413539,
+  "n_small_eigenvalues": 0,
+  "has_multicollinearity": true,
+  "severity_score": 7
+}

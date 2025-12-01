@@ -1,0 +1,37 @@
+====================================================================================================
+SUMMARY BY MODEL: Average Results Across All Datasets
+====================================================================================================
+
+Model                Success  Fail   Top-3 Spearman   Top-1 Spearman   Top-1 Agreement % 
+----------------------------------------------------------------------------------------------------
+C5.0                 0        26     N/A              N/A              N/A               
+JRip                 26       0      0.615            N/A              70.5%             
+PART                 26       0      0.353            N/A              53.8%             
+bayesglm             26       0      0.574            N/A              55.1%             
+ctree                26       0      0.452            N/A              66.7%             
+fda                  22       4      0.920            N/A              93.9%             
+gbm                  26       0      0.560            N/A              67.9%             
+gcvEarth             26       0      0.326            N/A              56.4%             
+knn                  26       0      0.284            N/A              37.2%             
+lvq                  26       0      N/A              N/A              0.0%              
+mlpML                26       0      0.546            N/A              55.1%             
+multinom             26       0      0.432            N/A              44.9%             
+naive_bayes          0        26     N/A              N/A              N/A               
+rbfDDA               26       0      0.569            N/A              28.2%             
+rda                  26       0      0.558            N/A              43.6%             
+rf                   26       0      0.592            N/A              55.1%             
+rfRules              26       0      N/A              N/A              0.0%              
+rpart                26       0      0.500            N/A              53.8%             
+simpls               26       0      0.489            N/A              39.7%             
+svmLinear            26       0      N/A              N/A              0.0%              
+svmRadial            26       0      N/A              N/A              0.0%              
+====================================================================================================
+
+NOTES:
+- Success/Fail: Number of datasets that succeeded/failed for this model
+- Top-3 Spearman: Average Spearman correlation on top-3 features (all method pairs, all datasets)
+  Values range from -1 (complete disagreement) to +1 (perfect agreement)
+- Top-1 Spearman: Average Spearman correlation on top-1 feature (all method pairs, all datasets)
+  (Often N/A as Spearman on single point cannot be calculated)
+- Top-1 Agreement %: Average percentage of method pairs agreeing on #1 feature
+  (100% = all 3 methods agree, 66.7% = 2 methods agree, 0% = all disagree)

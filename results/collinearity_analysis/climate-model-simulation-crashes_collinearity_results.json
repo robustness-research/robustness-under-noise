@@ -1,0 +1,145 @@
+{
+  "dataset": "climate-model-simulation-crashes",
+  "file_path": "datasets/csv/climate-model-simulation-crashes.csv",
+  "n_rows": 540,
+  "n_columns": 19,
+  "n_numeric_features": 19,
+  "numeric_features": [
+    "vconst_corr",
+    "vconst_2",
+    "vconst_3",
+    "vconst_4",
+    "vconst_5",
+    "vconst_7",
+    "ah_corr",
+    "ah_bolus",
+    "slm_corr",
+    "efficiency_factor",
+    "tidal_mix_max",
+    "vertical_decay_scale",
+    "convect_corr",
+    "bckgrnd_vdc1",
+    "bckgrnd_vdc_ban",
+    "bckgrnd_vdc_eq",
+    "bckgrnd_vdc_psim",
+    "Prandtl",
+    "class"
+  ],
+  "correlation_matrix_shape": [
+    19,
+    19
+  ],
+  "high_correlations": [],
+  "n_high_correlations": 0,
+  "vif_mean": 4.298621285097408,
+  "vif_median": 3.8908686411575366,
+  "vif_max": 11.630038284948805,
+  "vif_values": [
+    {
+      "feature": "class",
+      "VIF": 11.630038284948805
+    },
+    {
+      "feature": "bckgrnd_vdc1",
+      "VIF": 4.139531570492075
+    },
+    {
+      "feature": "bckgrnd_vdc_eq",
+      "VIF": 3.9746446539896936
+    },
+    {
+      "feature": "vconst_5",
+      "VIF": 3.9474703171981758
+    },
+    {
+      "feature": "vconst_4",
+      "VIF": 3.9361464491353533
+    },
+    {
+      "feature": "bckgrnd_vdc_psim",
+      "VIF": 3.920949276624811
+    },
+    {
+      "feature": "vconst_corr",
+      "VIF": 3.908050825095017
+    },
+    {
+      "feature": "vconst_7",
+      "VIF": 3.906970343907096
+    },
+    {
+      "feature": "slm_corr",
+      "VIF": 3.9032532704533844
+    },
+    {
+      "feature": "vconst_2",
+      "VIF": 3.8908686411575366
+    },
+    {
+      "feature": "ah_corr",
+      "VIF": 3.8700737284739852
+    },
+    {
+      "feature": "ah_bolus",
+      "VIF": 3.850869117542326
+    },
+    {
+      "feature": "efficiency_factor",
+      "VIF": 3.8435857121086245
+    },
+    {
+      "feature": "vconst_3",
+      "VIF": 3.8416826416154892
+    },
+    {
+      "feature": "tidal_mix_max",
+      "VIF": 3.841348561505378
+    },
+    {
+      "feature": "Prandtl",
+      "VIF": 3.8380654815860105
+    },
+    {
+      "feature": "bckgrnd_vdc_ban",
+      "VIF": 3.8232772592078974
+    },
+    {
+      "feature": "vertical_decay_scale",
+      "VIF": 3.8110399488622106
+    },
+    {
+      "feature": "convect_corr",
+      "VIF": 3.7959383329468546
+    }
+  ],
+  "n_high_vif": 1,
+  "condition_number": 1.7997876143628944,
+  "condition_number_interpretation": "Low - no multicollinearity",
+  "condition_index": 1.7997876143628937,
+  "eigenvalues": [
+    1.543259202718966,
+    1.0793592553295932,
+    1.0729677206434627,
+    1.054276274745083,
+    1.0471057766163654,
+    1.02717074549677,
+    1.0189060606590519,
+    1.0155603584934476,
+    1.0126625981324677,
+    1.0057802069812039,
+    1.0034617104326182,
+    0.9778424569450509,
+    0.9725615602754902,
+    0.9560110082441459,
+    0.9467858375541285,
+    0.936540375433942,
+    0.9301348637643597,
+    0.9231869962595558,
+    0.47642699127430094
+  ],
+  "min_eigenvalue": 0.47642699127430094,
+  "max_eigenvalue": 1.543259202718966,
+  "n_small_eigenvalues": 0,
+  "has_multicollinearity": true,
+  "severity_score": 1
+}

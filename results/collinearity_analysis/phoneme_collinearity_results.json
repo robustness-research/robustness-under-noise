@@ -1,0 +1,67 @@
+{
+  "dataset": "phoneme",
+  "file_path": "datasets/csv/phoneme.csv",
+  "n_rows": 3172,
+  "n_columns": 6,
+  "n_numeric_features": 6,
+  "numeric_features": [
+    "V1",
+    "V2",
+    "V3",
+    "V4",
+    "V5",
+    "class"
+  ],
+  "correlation_matrix_shape": [
+    6,
+    6
+  ],
+  "high_correlations": [],
+  "n_high_correlations": 0,
+  "vif_mean": 1.1494131964146876,
+  "vif_median": 1.1695589246330704,
+  "vif_max": 1.1967462643981257,
+  "vif_values": [
+    {
+      "feature": "V1",
+      "VIF": 1.1967462643981257
+    },
+    {
+      "feature": "V3",
+      "VIF": 1.1944529974229177
+    },
+    {
+      "feature": "class",
+      "VIF": 1.170333525706945
+    },
+    {
+      "feature": "V4",
+      "VIF": 1.1687843235591957
+    },
+    {
+      "feature": "V2",
+      "VIF": 1.140156153796445
+    },
+    {
+      "feature": "V5",
+      "VIF": 1.0260059136044968
+    }
+  ],
+  "n_high_vif": 0,
+  "condition_number": 1.97714745490819,
+  "condition_number_interpretation": "Low - no multicollinearity",
+  "condition_index": 1.9771474549081898,
+  "eigenvalues": [
+    1.9513033198945557,
+    1.0519882441678163,
+    1.0024660498088984,
+    0.9151553864848918,
+    0.5799190835753752,
+    0.49916791606846383
+  ],
+  "min_eigenvalue": 0.49916791606846383,
+  "max_eigenvalue": 1.9513033198945557,
+  "n_small_eigenvalues": 0,
+  "has_multicollinearity": false,
+  "severity_score": 0
+}

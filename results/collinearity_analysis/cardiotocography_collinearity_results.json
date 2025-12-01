@@ -1,0 +1,317 @@
+{
+  "dataset": "cardiotocography",
+  "file_path": "datasets/csv/cardiotocography.csv",
+  "n_rows": 2126,
+  "n_columns": 36,
+  "n_numeric_features": 36,
+  "numeric_features": [
+    "V1",
+    "V2",
+    "V3",
+    "V4",
+    "V5",
+    "V6",
+    "V7",
+    "V8",
+    "V9",
+    "V10",
+    "V11",
+    "V12",
+    "V13",
+    "V14",
+    "V15",
+    "V16",
+    "V17",
+    "V18",
+    "V19",
+    "V20",
+    "V21",
+    "V22",
+    "V23",
+    "V24",
+    "V25",
+    "V26",
+    "V27",
+    "V28",
+    "V29",
+    "V30",
+    "V31",
+    "V32",
+    "V33",
+    "V34",
+    "V35",
+    "class"
+  ],
+  "correlation_matrix_shape": [
+    36,
+    36
+  ],
+  "high_correlations": [
+    {
+      "feature1": "V2",
+      "feature2": "V3",
+      "correlation": 0.9449123427630681
+    },
+    {
+      "feature1": "V4",
+      "feature2": "V5",
+      "correlation": 1.0
+    },
+    {
+      "feature1": "V4",
+      "feature2": "V21",
+      "correlation": 0.7089925001119627
+    },
+    {
+      "feature1": "V4",
+      "feature2": "V22",
+      "correlation": 0.7231210383374249
+    },
+    {
+      "feature1": "V4",
+      "feature2": "V23",
+      "correlation": 0.7892464071560361
+    },
+    {
+      "feature1": "V5",
+      "feature2": "V21",
+      "correlation": 0.7089925001119627
+    },
+    {
+      "feature1": "V5",
+      "feature2": "V22",
+      "correlation": 0.7231210383374249
+    },
+    {
+      "feature1": "V5",
+      "feature2": "V23",
+      "correlation": 0.7892464071560361
+    },
+    {
+      "feature1": "V15",
+      "feature2": "V33",
+      "correlation": 0.7577662756421346
+    },
+    {
+      "feature1": "V16",
+      "feature2": "V17",
+      "correlation": -0.8985189643113362
+    },
+    {
+      "feature1": "V16",
+      "feature2": "V19",
+      "correlation": 0.747070939952509
+    },
+    {
+      "feature1": "V21",
+      "feature2": "V22",
+      "correlation": 0.8934123838327097
+    },
+    {
+      "feature1": "V21",
+      "feature2": "V23",
+      "correlation": 0.9333991564866512
+    },
+    {
+      "feature1": "V22",
+      "feature2": "V23",
+      "correlation": 0.9482513380408178
+    }
+  ],
+  "n_high_correlations": 14,
+  "vif_mean": Infinity,
+  "vif_median": 21.182494253052447,
+  "vif_max": Infinity,
+  "vif_values": [
+    {
+      "feature": "V4",
+      "VIF": Infinity
+    },
+    {
+      "feature": "V17",
+      "VIF": Infinity
+    },
+    {
+      "feature": "V18",
+      "VIF": Infinity
+    },
+    {
+      "feature": "V5",
+      "VIF": Infinity
+    },
+    {
+      "feature": "V29",
+      "VIF": Infinity
+    },
+    {
+      "feature": "V30",
+      "VIF": Infinity
+    },
+    {
+      "feature": "V31",
+      "VIF": Infinity
+    },
+    {
+      "feature": "V16",
+      "VIF": Infinity
+    },
+    {
+      "feature": "V33",
+      "VIF": Infinity
+    },
+    {
+      "feature": "class",
+      "VIF": Infinity
+    },
+    {
+      "feature": "V34",
+      "VIF": Infinity
+    },
+    {
+      "feature": "V35",
+      "VIF": Infinity
+    },
+    {
+      "feature": "V28",
+      "VIF": Infinity
+    },
+    {
+      "feature": "V26",
+      "VIF": Infinity
+    },
+    {
+      "feature": "V27",
+      "VIF": Infinity
+    },
+    {
+      "feature": "V32",
+      "VIF": Infinity
+    },
+    {
+      "feature": "V23",
+      "VIF": 28.206959764797986
+    },
+    {
+      "feature": "V22",
+      "VIF": 22.5558430549042
+    },
+    {
+      "feature": "V3",
+      "VIF": 19.80914545120069
+    },
+    {
+      "feature": "V2",
+      "VIF": 18.48049299757553
+    },
+    {
+      "feature": "V21",
+      "VIF": 9.694819630423954
+    },
+    {
+      "feature": "V13",
+      "VIF": 4.182968504142414
+    },
+    {
+      "feature": "V6",
+      "VIF": 3.6755999092675515
+    },
+    {
+      "feature": "V15",
+      "VIF": 3.2999997310541103
+    },
+    {
+      "feature": "V10",
+      "VIF": 3.065225705284012
+    },
+    {
+      "feature": "V25",
+      "VIF": 2.9344569157363556
+    },
+    {
+      "feature": "V11",
+      "VIF": 2.597565639272144
+    },
+    {
+      "feature": "V24",
+      "VIF": 2.5843259345304777
+    },
+    {
+      "feature": "V19",
+      "VIF": 2.422204085501813
+    },
+    {
+      "feature": "V9",
+      "VIF": 2.352536796753766
+    },
+    {
+      "feature": "V12",
+      "VIF": 2.0449383754501613
+    },
+    {
+      "feature": "V8",
+      "VIF": 1.9056996187255635
+    },
+    {
+      "feature": "V20",
+      "VIF": 1.2115958611971704
+    },
+    {
+      "feature": "V1",
+      "VIF": 1.200459421982041
+    },
+    {
+      "feature": "V7",
+      "VIF": 1.199818475431032
+    },
+    {
+      "feature": "V14",
+      "VIF": 1.167676280075039
+    }
+  ],
+  "n_high_vif": 20,
+  "condition_number": 1.2481498695877512e+16,
+  "condition_number_interpretation": "High - strong multicollinearity",
+  "eigenvalues": [
+    7.174611684913466,
+    4.21077133988661,
+    3.358081103284595,
+    2.4141444426657563,
+    1.988573385846134,
+    1.622263644639728,
+    1.3213388203047802,
+    1.2257734212695464,
+    1.1555154496519997,
+    1.1297488886971914,
+    1.0812891956412098,
+    1.0361024883847534,
+    1.0000702369914132,
+    0.9178584873506771,
+    0.8981524377294666,
+    0.8088972085926449,
+    0.7268746916182489,
+    0.6604936992598349,
+    0.6039686245940731,
+    0.45192310464393043,
+    0.3731035978396576,
+    0.3485757999975804,
+    0.27480875532858934,
+    0.26247804658796287,
+    0.23953903115281613,
+    0.21206712585273035,
+    0.15858852540434495,
+    0.13344327762159514,
+    0.11327720007816465,
+    0.046554668835128335,
+    0.02592297658330141,
+    0.02518863875209224,
+    2.2423259296261103e-16,
+    1.3875453543437618e-16,
+    -4.263690069761174e-17,
+    -2.7028662637918153e-15
+  ],
+  "min_eigenvalue": -2.7028662637918153e-15,
+  "max_eigenvalue": 7.174611684913466,
+  "n_small_eigenvalues": 4,
+  "has_multicollinearity": true,
+  "severity_score": 19
+}

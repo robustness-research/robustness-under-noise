@@ -1,0 +1,73 @@
+{
+  "dataset": "credit-g",
+  "file_path": "datasets/csv/credit-g.csv",
+  "n_rows": 1000,
+  "n_columns": 21,
+  "n_numeric_features": 7,
+  "numeric_features": [
+    "duration",
+    "credit_amount",
+    "installment_commitment",
+    "residence_since",
+    "age",
+    "existing_credits",
+    "num_dependents"
+  ],
+  "correlation_matrix_shape": [
+    7,
+    7
+  ],
+  "high_correlations": [],
+  "n_high_correlations": 0,
+  "vif_mean": 7.71774287661096,
+  "vif_median": 7.735368072657898,
+  "vif_max": 10.92570242531686,
+  "vif_values": [
+    {
+      "feature": "age",
+      "VIF": 10.92570242531686
+    },
+    {
+      "feature": "num_dependents",
+      "VIF": 8.790638963813672
+    },
+    {
+      "feature": "installment_commitment",
+      "VIF": 7.958660397214798
+    },
+    {
+      "feature": "residence_since",
+      "VIF": 7.735368072657898
+    },
+    {
+      "feature": "duration",
+      "VIF": 7.358755481167998
+    },
+    {
+      "feature": "existing_credits",
+      "VIF": 6.67931714304903
+    },
+    {
+      "feature": "credit_amount",
+      "VIF": 4.575757653056459
+    }
+  ],
+  "n_high_vif": 1,
+  "condition_number": 2.423323176947145,
+  "condition_number_interpretation": "Low - no multicollinearity",
+  "condition_index": 2.423323176947148,
+  "eigenvalues": [
+    1.6588027928489555,
+    1.4125515888588738,
+    1.1181823294198174,
+    0.9391248666333333,
+    0.868206656170722,
+    0.7206619247613932,
+    0.28246984130690345
+  ],
+  "min_eigenvalue": 0.28246984130690345,
+  "max_eigenvalue": 1.6588027928489555,
+  "n_small_eigenvalues": 0,
+  "has_multicollinearity": true,
+  "severity_score": 1
+}

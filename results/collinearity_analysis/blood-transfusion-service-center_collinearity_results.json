@@ -1,0 +1,67 @@
+{
+  "dataset": "blood-transfusion-service-center",
+  "file_path": "datasets/csv/blood-transfusion-service-center.csv",
+  "n_rows": 748,
+  "n_columns": 5,
+  "n_numeric_features": 5,
+  "numeric_features": [
+    "V1",
+    "V2",
+    "V3",
+    "V4",
+    "class"
+  ],
+  "correlation_matrix_shape": [
+    5,
+    5
+  ],
+  "high_correlations": [
+    {
+      "feature1": "V2",
+      "feature2": "V3",
+      "correlation": 0.9999999999999999
+    }
+  ],
+  "n_high_correlations": 1,
+  "vif_mean": Infinity,
+  "vif_median": 5.43414420317894,
+  "vif_max": Infinity,
+  "vif_values": [
+    {
+      "feature": "V2",
+      "VIF": Infinity
+    },
+    {
+      "feature": "V3",
+      "VIF": Infinity
+    },
+    {
+      "feature": "V4",
+      "VIF": 5.43414420317894
+    },
+    {
+      "feature": "class",
+      "VIF": 2.9187079792581323
+    },
+    {
+      "feature": "V1",
+      "VIF": 2.4109231543583576
+    }
+  ],
+  "n_high_vif": 2,
+  "condition_number": 2031604978842297.5,
+  "condition_number_interpretation": "High - strong multicollinearity",
+  "condition_index": 123130279.56815632,
+  "eigenvalues": [
+    2.5908878572106335,
+    1.3389205976743965,
+    0.7223654974563753,
+    0.3478260476585925,
+    1.7089087934357293e-16
+  ],
+  "min_eigenvalue": 1.7089087934357293e-16,
+  "max_eigenvalue": 2.5908878572106335,
+  "n_small_eigenvalues": 1,
+  "has_multicollinearity": true,
+  "severity_score": 9
+}

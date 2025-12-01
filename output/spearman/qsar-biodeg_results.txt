@@ -1,0 +1,1567 @@
+Dataset: qsar-biodeg
+Generated: Mon Nov 24 10:36:01 PM CET 2025
+======================================
+
+
+========================================
+Model: C5.0
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=qsar-biodeg, Method=C5.0 ===
+No scaling applied for method: C5.0
+Error: Only one model should be specified in tuneGrid with no resampling
+Execution halted
+FAILED - See error above
+
+
+========================================
+Model: ctree
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=qsar-biodeg, Method=ctree ===
+No scaling applied for method: ctree
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature    importance.05   importance   importance.95   permutation.error
+--------  --------------  -----------  --------------  ------------------
+V1              1.602367     1.698225        1.715976           0.2720379
+V10             1.530177     1.585799        1.652071           0.2540284
+V38             1.280473     1.349112        1.389349           0.2161137
+V3              1.240237     1.272189        1.313610           0.2037915
+V13             1.166864     1.195266        1.211834           0.1914692
+
+=== LIME Rankings ===
+
+
+Feature    Importance
+--------  -----------
+V1          0.1921281
+V39         0.1543290
+V26         0.0286948
+V21         0.0212672
+V6          0.0210061
+There were 12 warnings (use warnings() to see them)
+
+=== SHAP (IML Shapley) Rankings ===
+
+
+Feature    Importance
+--------  -----------
+V1          0.2297347
+V10         0.1622780
+V38         0.0798762
+V3          0.0471526
+V17         0.0442271
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair                Spearman   Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME          NA                 1
+FEAT_IMP vs SHAP           1                 3
+LIME vs SHAP              NA                 1
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME   NA                        1
+FEAT_IMP vs SHAP   NA                        1
+LIME vs SHAP       NA                        1
+
+=== Top-1 Features ===
+FEAT_IMP: V1
+LIME: V1
+SHAP: V1
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1   Feature_2   Agreement 
+-----------------  ----------  ----------  ----------
+FEAT_IMP vs LIME   V1          V1          TRUE      
+FEAT_IMP vs SHAP   V1          V1          TRUE      
+LIME vs SHAP       V1          V1          TRUE      
+
+Agreeing pairs: 3 / 3 (100.0%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: fda
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=qsar-biodeg, Method=fda ===
+No scaling applied for method: fda
+Loading required package: earth
+Loading required package: Formula
+Loading required package: plotmo
+Loading required package: plotrix
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature    importance.05   importance   importance.95   permutation.error
+--------  --------------  -----------  --------------  ------------------
+V36             1.535252     1.568345        1.634532           0.4132701
+V1              1.000000     1.000000        1.000000           0.2635071
+V2              1.000000     1.000000        1.000000           0.2635071
+V3              1.000000     1.000000        1.000000           0.2635071
+V4              1.000000     1.000000        1.000000           0.2635071
+
+=== LIME Rankings ===
+
+
+Feature    Importance
+--------  -----------
+V36         0.6372180
+V19         0.0270049
+V29         0.0150470
+V41         0.0142550
+V6          0.0102131
+There were 12 warnings (use warnings() to see them)
+
+=== SHAP (IML Shapley) Rankings ===
+
+
+Feature    Importance
+--------  -----------
+V36          0.412461
+V1           0.000000
+V10          0.000000
+V11          0.000000
+V12          0.000000
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair                Spearman   Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME          NA                 1
+FEAT_IMP vs SHAP           1                 2
+LIME vs SHAP              NA                 1
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME   NA                        1
+FEAT_IMP vs SHAP   NA                        1
+LIME vs SHAP       NA                        1
+
+=== Top-1 Features ===
+FEAT_IMP: V36
+LIME: V36
+SHAP: V36
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1   Feature_2   Agreement 
+-----------------  ----------  ----------  ----------
+FEAT_IMP vs LIME   V36         V36         TRUE      
+FEAT_IMP vs SHAP   V36         V36         TRUE      
+LIME vs SHAP       V36         V36         TRUE      
+
+Agreeing pairs: 3 / 3 (100.0%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: gbm
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=qsar-biodeg, Method=gbm ===
+No scaling applied for method: gbm
+Iter   TrainDeviance   ValidDeviance   StepSize   Improve
+     1        1.2347            -nan     0.1000    0.0190
+     2        1.1954            -nan     0.1000    0.0179
+     3        1.1682            -nan     0.1000    0.0123
+     4        1.1424            -nan     0.1000    0.0121
+     5        1.1176            -nan     0.1000    0.0120
+     6        1.0973            -nan     0.1000    0.0095
+     7        1.0828            -nan     0.1000    0.0054
+     8        1.0670            -nan     0.1000    0.0070
+     9        1.0497            -nan     0.1000    0.0087
+    10        1.0333            -nan     0.1000    0.0064
+    20        0.9236            -nan     0.1000    0.0025
+    40        0.8025            -nan     0.1000    0.0024
+    50        0.7606            -nan     0.1000    0.0012
+
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature    importance.05   importance   importance.95   permutation.error
+--------  --------------  -----------  --------------  ------------------
+V36             1.173034     1.280899        1.328090           0.2161137
+V30             1.048315     1.106742        1.120225           0.1867299
+V12             1.046067     1.061798        1.066292           0.1791469
+V38             1.030337     1.061798        1.088764           0.1791469
+V1              1.044944     1.056180        1.131461           0.1781991
+
+=== LIME Rankings ===
+
+
+Feature    Importance
+--------  -----------
+V36         0.2145277
+V38         0.1095710
+V1          0.0906903
+V12         0.0731720
+V22         0.0687517
+There were 12 warnings (use warnings() to see them)
+
+=== SHAP (IML Shapley) Rankings ===
+
+
+Feature    Importance
+--------  -----------
+V36         0.1624954
+V1          0.0640011
+V22         0.0586477
+V30         0.0517940
+V38         0.0485191
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair                Spearman   Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME          NA                 1
+FEAT_IMP vs SHAP          NA                 1
+LIME vs SHAP               1                 2
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME   NA                        1
+FEAT_IMP vs SHAP   NA                        1
+LIME vs SHAP       NA                        1
+
+=== Top-1 Features ===
+FEAT_IMP: V36
+LIME: V36
+SHAP: V36
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1   Feature_2   Agreement 
+-----------------  ----------  ----------  ----------
+FEAT_IMP vs LIME   V36         V36         TRUE      
+FEAT_IMP vs SHAP   V36         V36         TRUE      
+LIME vs SHAP       V36         V36         TRUE      
+
+Agreeing pairs: 3 / 3 (100.0%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: gcvEarth
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=qsar-biodeg, Method=gcvEarth ===
+No scaling applied for method: gcvEarth
+Loading required package: earth
+Loading required package: Formula
+Loading required package: plotmo
+Loading required package: plotrix
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature    importance.05   importance   importance.95   permutation.error
+--------  --------------  -----------  --------------  ------------------
+V38             1.737143     1.842857        1.898571           0.2445498
+V1              1.404286     1.464286        1.547143           0.1943128
+V41             1.287143     1.335714        1.398571           0.1772512
+V37             1.294286     1.328571        1.350000           0.1763033
+V36             1.167143     1.207143        1.284286           0.1601896
+
+=== LIME Rankings ===
+
+
+Feature    Importance
+--------  -----------
+V36         0.1490992
+V41         0.1484190
+V1          0.1480949
+V38         0.1409247
+V11         0.1118105
+There were 12 warnings (use warnings() to see them)
+
+=== SHAP (IML Shapley) Rankings ===
+
+
+Feature    Importance
+--------  -----------
+V1          0.1692024
+V38         0.1649400
+V36         0.1291705
+V37         0.1149875
+V41         0.0747637
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair                Spearman   Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME          -1                 2
+FEAT_IMP vs SHAP          -1                 2
+LIME vs SHAP              -1                 2
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME   NA                        0
+FEAT_IMP vs SHAP   NA                        0
+LIME vs SHAP       NA                        0
+
+=== Top-1 Features ===
+FEAT_IMP: V38
+LIME: V36
+SHAP: V1
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1   Feature_2   Agreement 
+-----------------  ----------  ----------  ----------
+FEAT_IMP vs LIME   V38         V36         FALSE     
+FEAT_IMP vs SHAP   V38         V1          FALSE     
+LIME vs SHAP       V36         V1          FALSE     
+
+Agreeing pairs: 0 / 3 (0.0%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: JRip
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=qsar-biodeg, Method=JRip ===
+No scaling applied for method: JRip
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature    importance.05   importance   importance.95   permutation.error
+--------  --------------  -----------  --------------  ------------------
+V36             1.866187     2.000000        2.073381           0.2635071
+V1              1.369784     1.446043        1.474820           0.1905213
+V12             1.231655     1.258993        1.289209           0.1658768
+V38             1.182734     1.208633        1.241727           0.1592417
+V8              1.168345     1.201439        1.220144           0.1582938
+
+=== LIME Rankings ===
+
+
+Feature    Importance
+--------  -----------
+V1          0.1843513
+V36         0.1270254
+V38         0.0535057
+V8          0.0525708
+V27         0.0514311
+There were 12 warnings (use warnings() to see them)
+
+=== SHAP (IML Shapley) Rankings ===
+
+
+Feature    Importance
+--------  -----------
+V36         0.2122330
+V1          0.1537854
+V38         0.0845934
+V30         0.0704927
+V27         0.0607195
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair                Spearman   Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME        -1.0                 2
+FEAT_IMP vs SHAP         1.0                 2
+LIME vs SHAP             0.5                 3
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME   NA                        0
+FEAT_IMP vs SHAP   NA                        1
+LIME vs SHAP       NA                        0
+
+=== Top-1 Features ===
+FEAT_IMP: V36
+LIME: V1
+SHAP: V36
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1   Feature_2   Agreement 
+-----------------  ----------  ----------  ----------
+FEAT_IMP vs LIME   V36         V1          FALSE     
+FEAT_IMP vs SHAP   V36         V36         TRUE      
+LIME vs SHAP       V1          V36         FALSE     
+
+Agreeing pairs: 1 / 3 (33.3%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: lvq
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=qsar-biodeg, Method=lvq ===
+Applying data scaling for method: lvq
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature    importance.05   importance   importance.95   permutation.error
+--------  --------------  -----------  --------------  ------------------
+V34             1.063584     1.092485        1.107514           0.1791469
+V25             1.041619     1.086705        1.114451           0.1781991
+V20             1.045087     1.063584        1.068208           0.1744076
+V1              1.034682     1.046243        1.110983           0.1715640
+V9              1.035838     1.046243        1.084393           0.1715640
+
+=== LIME Rankings ===
+Error in get_lime: only classification models that produce probabilities are allowed 
+There were 12 warnings (use warnings() to see them)
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs SHAP   NA                        0
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs SHAP   NA                        0
+
+=== Top-1 Features ===
+FEAT_IMP: V34
+SHAP: NA
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1   Feature_2   Agreement 
+-----------------  ----------  ----------  ----------
+FEAT_IMP vs SHAP   V34         NA          FALSE     
+
+Agreeing pairs: 0 / 1 (0.0%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: mlpML
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=qsar-biodeg, Method=mlpML ===
+Applying data scaling for method: mlpML
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+Warning message:
+At least one layer had zero units and were removed. The new structure is 1 
+
+=== IML Rankings ===
+
+
+feature    importance.05   importance   importance.95   permutation.error
+--------  --------------  -----------  --------------  ------------------
+V13             2.222680     2.309278        2.435052           0.2123223
+V30             1.711340     1.886598        1.962887           0.1734597
+V10             1.758763     1.783505        1.841237           0.1639810
+V16             1.688660     1.773196        1.903093           0.1630332
+V8              1.684536     1.731959        1.857732           0.1592417
+
+=== LIME Rankings ===
+
+
+Feature    Importance
+--------  -----------
+V30         0.1219829
+V10         0.1014226
+V3          0.1000910
+V5          0.0911955
+V26         0.0839348
+There were 12 warnings (use warnings() to see them)
+
+=== SHAP (IML Shapley) Rankings ===
+
+
+Feature    Importance
+--------  -----------
+V13         0.1361021
+V14         0.0956960
+V8          0.0758944
+V3          0.0727947
+V16         0.0722040
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair                Spearman   Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME           1                 2
+FEAT_IMP vs SHAP          NA                 1
+LIME vs SHAP              NA                 0
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME   NA                        0
+FEAT_IMP vs SHAP   NA                        1
+LIME vs SHAP       NA                        0
+
+=== Top-1 Features ===
+FEAT_IMP: V13
+LIME: V30
+SHAP: V13
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1   Feature_2   Agreement 
+-----------------  ----------  ----------  ----------
+FEAT_IMP vs LIME   V13         V30         FALSE     
+FEAT_IMP vs SHAP   V13         V13         TRUE      
+LIME vs SHAP       V30         V13         FALSE     
+
+Agreeing pairs: 1 / 3 (33.3%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: multinom
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=qsar-biodeg, Method=multinom ===
+Applying data scaling for method: multinom
+# weights:  43 (42 variable)
+initial  value 731.270275 
+iter  10 value 369.002381
+iter  20 value 305.817903
+iter  30 value 300.129800
+iter  40 value 297.826693
+iter  50 value 297.245256
+iter  60 value 297.207895
+iter  70 value 297.207165
+iter  70 value 297.207163
+iter  70 value 297.207163
+final  value 297.207163 
+converged
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature    importance.05   importance   importance.95   permutation.error
+--------  --------------  -----------  --------------  ------------------
+V13             1.906452     2.040323        2.087097           0.2398104
+V7              1.950000     2.016129        2.091935           0.2369668
+V15             1.903226     1.975807        2.125806           0.2322275
+V39             1.708065     1.814516        1.846774           0.2132701
+V1              1.564516     1.637097        1.683871           0.1924171
+
+=== LIME Rankings ===
+
+
+Feature    Importance
+--------  -----------
+V1          0.0344355
+V15         0.0341105
+V19         0.0285569
+V6          0.0276680
+V39         0.0253018
+There were 12 warnings (use warnings() to see them)
+
+=== SHAP (IML Shapley) Rankings ===
+
+
+Feature    Importance
+--------  -----------
+V15         0.2425547
+V1          0.1911979
+V13         0.1520098
+V39         0.1370074
+V7          0.1213814
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair                Spearman   Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME          NA                 1
+FEAT_IMP vs SHAP          -1                 2
+LIME vs SHAP              -1                 2
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME   NA                        0
+FEAT_IMP vs SHAP   NA                        0
+LIME vs SHAP       NA                        0
+
+=== Top-1 Features ===
+FEAT_IMP: V13
+LIME: V1
+SHAP: V15
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1   Feature_2   Agreement 
+-----------------  ----------  ----------  ----------
+FEAT_IMP vs LIME   V13         V1          FALSE     
+FEAT_IMP vs SHAP   V13         V15         FALSE     
+LIME vs SHAP       V1          V15         FALSE     
+
+Agreeing pairs: 0 / 3 (0.0%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: naive_bayes
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=qsar-biodeg, Method=naive_bayes ===
+No scaling applied for method: naive_bayes
+Error: Only one model should be specified in tuneGrid with no resampling
+Execution halted
+FAILED - See error above
+
+
+========================================
+Model: PART
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=qsar-biodeg, Method=PART ===
+No scaling applied for method: PART
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature    importance.05   importance   importance.95   permutation.error
+--------  --------------  -----------  --------------  ------------------
+V38             4.841667     4.958333        5.183333           0.1127962
+V34             4.591667     4.875000        5.316667           0.1109005
+V3              4.391667     4.500000        4.500000           0.1023697
+V7              3.325000     3.625000        3.941667           0.0824645
+V35             2.983333     3.250000        3.541667           0.0739336
+
+=== LIME Rankings ===
+
+
+Feature    Importance
+--------  -----------
+V37         0.0458059
+V12         0.0402604
+V36         0.0393325
+V28         0.0280045
+V7          0.0279177
+There were 12 warnings (use warnings() to see them)
+
+=== SHAP (IML Shapley) Rankings ===
+
+
+Feature    Importance
+--------  -----------
+V38         0.0925817
+V28         0.0893629
+V36         0.0748105
+V30         0.0727649
+V22         0.0593761
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME   NA                        0
+FEAT_IMP vs SHAP   NA                        1
+LIME vs SHAP       NA                        1
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME   NA                        0
+FEAT_IMP vs SHAP   NA                        1
+LIME vs SHAP       NA                        0
+
+=== Top-1 Features ===
+FEAT_IMP: V38
+LIME: V37
+SHAP: V38
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1   Feature_2   Agreement 
+-----------------  ----------  ----------  ----------
+FEAT_IMP vs LIME   V38         V37         FALSE     
+FEAT_IMP vs SHAP   V38         V38         TRUE      
+LIME vs SHAP       V37         V38         FALSE     
+
+Agreeing pairs: 1 / 3 (33.3%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: rbfDDA
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=qsar-biodeg, Method=rbfDDA ===
+Applying data scaling for method: rbfDDA
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature    importance.05   importance   importance.95   permutation.error
+--------  --------------  -----------  --------------  ------------------
+V27             1.435979     1.481481        1.507937           0.2654028
+V13             1.420106     1.449735        1.489947           0.2597156
+V1              1.440212     1.444444        1.458201           0.2587678
+V22             1.367196     1.417989        1.442328           0.2540284
+V15             1.407407     1.412698        1.438095           0.2530806
+
+=== LIME Rankings ===
+
+
+Feature    Importance
+--------  -----------
+V23         0.0800454
+V11         0.0682844
+V5          0.0674208
+V26         0.0597439
+V15         0.0478753
+There were 12 warnings (use warnings() to see them)
+
+=== SHAP (IML Shapley) Rankings ===
+
+
+Feature    Importance
+--------  -----------
+V1          0.2118353
+V27         0.2024155
+V14         0.1760221
+V22         0.1661797
+V15         0.1598896
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair                Spearman   Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME          NA                 0
+FEAT_IMP vs SHAP          -1                 2
+LIME vs SHAP              NA                 0
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME   NA                        0
+FEAT_IMP vs SHAP   NA                        0
+LIME vs SHAP       NA                        0
+
+=== Top-1 Features ===
+FEAT_IMP: V27
+LIME: V23
+SHAP: V1
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1   Feature_2   Agreement 
+-----------------  ----------  ----------  ----------
+FEAT_IMP vs LIME   V27         V23         FALSE     
+FEAT_IMP vs SHAP   V27         V1          FALSE     
+LIME vs SHAP       V23         V1          FALSE     
+
+Agreeing pairs: 0 / 3 (0.0%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: rda
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=qsar-biodeg, Method=rda ===
+Applying data scaling for method: rda
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+Error in get_featimp: Lapack routine dgesv: system is exactly singular: U[19,19] = 0 
+
+=== LIME Rankings ===
+Error in get_lime: Lapack routine dgesv: system is exactly singular: U[19,19] = 0 
+There were 12 warnings (use warnings() to see them)
+
+=== SHAP (IML Shapley) Rankings ===
+Error in get_shap: Lapack routine dgesv: system is exactly singular: U[19,19] = 0 
+
+=== Top-3 Spearman ===
+Not enough valid rankings (need at least 2, got 0 )
+
+=== Top-1 Spearman ===
+Not enough valid rankings (need at least 2, got 0 )
+
+=== Top-1 Feature Agreement Count ===
+Not enough valid rankings (need at least 2, got 0 )
+
+=== All Results Recorded ===
+
+
+========================================
+Model: rf
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=qsar-biodeg, Method=rf ===
+No scaling applied for method: rf
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature    importance.05   importance   importance.95   permutation.error
+--------  --------------  -----------  --------------  ------------------
+V36            0.0053081    0.0075829       0.0102370           0.0075829
+V39            0.0039810    0.0066351       0.0066351           0.0066351
+V1             0.0028436    0.0047393       0.0056872           0.0047393
+V12            0.0047393    0.0047393       0.0056872           0.0047393
+V22            0.0039810    0.0047393       0.0064455           0.0047393
+Warning message:
+In initialize(...) :
+  Model error is 0, switching from compare='ratio' to compare='difference'
+
+=== LIME Rankings ===
+
+
+Feature    Importance
+--------  -----------
+V36         0.0496236
+V39         0.0449890
+V1          0.0317435
+V12         0.0267548
+V22         0.0257681
+There were 12 warnings (use warnings() to see them)
+
+=== SHAP (IML Shapley) Rankings ===
+
+
+Feature    Importance
+--------  -----------
+V36          0.083740
+V1           0.061180
+V22          0.050564
+V39          0.050468
+V27          0.042180
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair                Spearman   Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME           1                 3
+FEAT_IMP vs SHAP           1                 2
+LIME vs SHAP               1                 2
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME   NA                        1
+FEAT_IMP vs SHAP   NA                        1
+LIME vs SHAP       NA                        1
+
+=== Top-1 Features ===
+FEAT_IMP: V36
+LIME: V36
+SHAP: V36
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1   Feature_2   Agreement 
+-----------------  ----------  ----------  ----------
+FEAT_IMP vs LIME   V36         V36         TRUE      
+FEAT_IMP vs SHAP   V36         V36         TRUE      
+LIME vs SHAP       V36         V36         TRUE      
+
+Agreeing pairs: 3 / 3 (100.0%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: rpart
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=qsar-biodeg, Method=rpart ===
+No scaling applied for method: rpart
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature    importance.05   importance   importance.95   permutation.error
+--------  --------------  -----------  --------------  ------------------
+V1                     1            1               1           0.3374408
+V2                     1            1               1           0.3374408
+V3                     1            1               1           0.3374408
+V4                     1            1               1           0.3374408
+V5                     1            1               1           0.3374408
+
+=== LIME Rankings ===
+Error in get_lime: Response is constant across permutations. Please check your model 
+There were 12 warnings (use warnings() to see them)
+
+=== SHAP (IML Shapley) Rankings ===
+
+
+Feature    Importance
+--------  -----------
+V1                  0
+V10                 0
+V11                 0
+V12                 0
+V13                 0
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs SHAP   NA                        1
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs SHAP   NA                        1
+
+=== Top-1 Features ===
+FEAT_IMP: V1
+SHAP: V1
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1   Feature_2   Agreement 
+-----------------  ----------  ----------  ----------
+FEAT_IMP vs SHAP   V1          V1          TRUE      
+
+Agreeing pairs: 1 / 1 (100.0%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: simpls
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=qsar-biodeg, Method=simpls ===
+Applying data scaling for method: simpls
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature    importance.05   importance   importance.95   permutation.error
+--------  --------------  -----------  --------------  ------------------
+V14             1.032143     1.049107        1.064286           0.2227488
+V10             1.027679     1.035714        1.058036           0.2199052
+V11             1.008929     1.031250        1.039286           0.2189573
+V38             1.019643     1.031250        1.043750           0.2189573
+V5              1.000893     1.026786        1.034821           0.2180095
+
+=== LIME Rankings ===
+
+
+Feature    Importance
+--------  -----------
+V5          0.0547032
+V11         0.0521263
+V15         0.0444798
+V1          0.0431698
+V27         0.0374624
+There were 12 warnings (use warnings() to see them)
+
+=== SHAP (IML Shapley) Rankings ===
+
+
+Feature    Importance
+--------  -----------
+V1          0.0221882
+V27         0.0185268
+V22         0.0170569
+V15         0.0158149
+V39         0.0115903
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME   NA                        1
+FEAT_IMP vs SHAP   NA                        0
+LIME vs SHAP       NA                        0
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME   NA                        0
+FEAT_IMP vs SHAP   NA                        0
+LIME vs SHAP       NA                        0
+
+=== Top-1 Features ===
+FEAT_IMP: V14
+LIME: V5
+SHAP: V1
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1   Feature_2   Agreement 
+-----------------  ----------  ----------  ----------
+FEAT_IMP vs LIME   V14         V5          FALSE     
+FEAT_IMP vs SHAP   V14         V1          FALSE     
+LIME vs SHAP       V5          V1          FALSE     
+
+Agreeing pairs: 0 / 3 (0.0%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: svmLinear
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=qsar-biodeg, Method=svmLinear ===
+Applying data scaling for method: svmLinear
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature    importance.05   importance   importance.95   permutation.error
+--------  --------------  -----------  --------------  ------------------
+V13             2.050000     2.112069        2.162069           0.2322275
+V7              1.703448     1.870690        1.877586           0.2056872
+V15             1.627586     1.672414        1.839655           0.1838863
+V14             1.444828     1.525862        1.606897           0.1677725
+V8              1.451724     1.500000        1.515517           0.1649289
+
+=== LIME Rankings ===
+Error in get_lime: Response is constant across permutations. Please check your model 
+There were 13 warnings (use warnings() to see them)
+Warning messages:
+1: In method$prob(modelFit = modelFit, newdata = newdata, submodels = param) :
+  kernlab class probability calculations failed; returning NAs
+2: In method$prob(modelFit = modelFit, newdata = newdata, submodels = param) :
+  kernlab class probability calculations failed; returning NAs
+3: In method$prob(modelFit = modelFit, newdata = newdata, submodels = param) :
+  kernlab class probability calculations failed; returning NAs
+4: In method$prob(modelFit = modelFit, newdata = newdata, submodels = param) :
+  kernlab class probability calculations failed; returning NAs
+5: In method$prob(modelFit = modelFit, newdata = newdata, submodels = param) :
+  kernlab class probability calculations failed; returning NAs
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs SHAP   NA                        0
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs SHAP   NA                        0
+
+=== Top-1 Features ===
+FEAT_IMP: V13
+SHAP: NA
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1   Feature_2   Agreement 
+-----------------  ----------  ----------  ----------
+FEAT_IMP vs SHAP   V13         NA          FALSE     
+
+Agreeing pairs: 0 / 1 (0.0%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: svmRadial
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=qsar-biodeg, Method=svmRadial ===
+Applying data scaling for method: svmRadial
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature    importance.05   importance   importance.95   permutation.error
+--------  --------------  -----------  --------------  ------------------
+V37             1.068702     1.129771        1.163359           0.1402844
+V8              1.045802     1.114504        1.126718           0.1383886
+V38             1.106870     1.114504        1.175572           0.1383886
+V13             1.027481     1.099237        1.155725           0.1364929
+V1              1.001527     1.091603        1.149618           0.1355450
+
+=== LIME Rankings ===
+Error in get_lime: Response is constant across permutations. Please check your model 
+There were 13 warnings (use warnings() to see them)
+Warning messages:
+1: In method$prob(modelFit = modelFit, newdata = newdata, submodels = param) :
+  kernlab class probability calculations failed; returning NAs
+2: In method$prob(modelFit = modelFit, newdata = newdata, submodels = param) :
+  kernlab class probability calculations failed; returning NAs
+3: In method$prob(modelFit = modelFit, newdata = newdata, submodels = param) :
+  kernlab class probability calculations failed; returning NAs
+4: In method$prob(modelFit = modelFit, newdata = newdata, submodels = param) :
+  kernlab class probability calculations failed; returning NAs
+5: In method$prob(modelFit = modelFit, newdata = newdata, submodels = param) :
+  kernlab class probability calculations failed; returning NAs
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs SHAP   NA                        0
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs SHAP   NA                        0
+
+=== Top-1 Features ===
+FEAT_IMP: V37
+SHAP: NA
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1   Feature_2   Agreement 
+-----------------  ----------  ----------  ----------
+FEAT_IMP vs SHAP   V37         NA          FALSE     
+
+Agreeing pairs: 0 / 1 (0.0%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: rfRules
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=qsar-biodeg, Method=rfRules ===
+No scaling applied for method: rfRules
+Registered S3 method overwritten by 'RRF':
+  method      from        
+  plot.margin randomForest
+2000 rules (length<=2) were extracted from the first 500 trees.
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature    importance.05   importance   importance.95   permutation.error
+--------  --------------  -----------  --------------  ------------------
+V1              1.655474     1.737226        1.837956           0.2255924
+V16             1.308029     1.350365        1.382482           0.1753555
+V13             1.264234     1.277372        1.321168           0.1658768
+V36             1.214598     1.255475        1.284671           0.1630332
+V34             1.186861     1.226277        1.258394           0.1592417
+
+=== LIME Rankings ===
+Error in get_lime: only classification models that produce probabilities are allowed 
+There were 12 warnings (use warnings() to see them)
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs SHAP   NA                        0
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs SHAP   NA                        0
+
+=== Top-1 Features ===
+FEAT_IMP: V1
+SHAP: NA
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1   Feature_2   Agreement 
+-----------------  ----------  ----------  ----------
+FEAT_IMP vs SHAP   V1          NA          FALSE     
+
+Agreeing pairs: 0 / 1 (0.0%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: knn
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=qsar-biodeg, Method=knn ===
+Applying data scaling for method: knn
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature    importance.05   importance   importance.95   permutation.error
+--------  --------------  -----------  --------------  ------------------
+V20             1.119231     1.173077        1.173077           0.1156398
+V25             1.107692     1.125000        1.150000           0.1109005
+V40             1.101923     1.125000        1.150000           0.1109005
+V9              1.046154     1.096154        1.144231           0.1080569
+V38             1.096154     1.096154        1.142308           0.1080569
+
+=== LIME Rankings ===
+
+
+Feature    Importance
+--------  -----------
+V40         0.2199813
+V5          0.1575650
+V11         0.1397532
+V21         0.1135246
+V3          0.1085923
+There were 12 warnings (use warnings() to see them)
+
+=== SHAP (IML Shapley) Rankings ===
+
+
+Feature    Importance
+--------  -----------
+V1          0.0534667
+V22         0.0507333
+V37         0.0374000
+V14         0.0316667
+V10         0.0307333
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME   NA                        1
+FEAT_IMP vs SHAP   NA                        0
+LIME vs SHAP       NA                        0
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME   NA                        0
+FEAT_IMP vs SHAP   NA                        0
+LIME vs SHAP       NA                        0
+
+=== Top-1 Features ===
+FEAT_IMP: V20
+LIME: V40
+SHAP: V1
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1   Feature_2   Agreement 
+-----------------  ----------  ----------  ----------
+FEAT_IMP vs LIME   V20         V40         FALSE     
+FEAT_IMP vs SHAP   V20         V1          FALSE     
+LIME vs SHAP       V40         V1          FALSE     
+
+Agreeing pairs: 0 / 3 (0.0%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: bayesglm
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=qsar-biodeg, Method=bayesglm ===
+Applying data scaling for method: bayesglm
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+Warning message:
+fitted probabilities numerically 0 or 1 occurred 
+
+=== IML Rankings ===
+
+
+feature    importance.05   importance   importance.95   permutation.error
+--------  --------------  -----------  --------------  ------------------
+V7                1.8496        1.928          1.9984           0.2284360
+V13               1.7296        1.824          1.8544           0.2161137
+V15               1.4560        1.504          1.6320           0.1781991
+V8                1.3504        1.376          1.4032           0.1630332
+V6                1.2416        1.280          1.3440           0.1516588
+
+=== LIME Rankings ===
+
+
+Feature    Importance
+--------  -----------
+V15         0.0949976
+V6          0.0853486
+V32         0.0693489
+V11         0.0690207
+V1          0.0642724
+There were 12 warnings (use warnings() to see them)
+
+=== SHAP (IML Shapley) Rankings ===
+
+
+Feature    Importance
+--------  -----------
+V15         0.1565506
+V13         0.1436087
+V7          0.1335835
+V37         0.1170197
+V1          0.1074542
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair                Spearman   Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME          NA                 1
+FEAT_IMP vs SHAP          -1                 3
+LIME vs SHAP              NA                 1
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME   NA                        0
+FEAT_IMP vs SHAP   NA                        0
+LIME vs SHAP       NA                        1
+
+=== Top-1 Features ===
+FEAT_IMP: V7
+LIME: V15
+SHAP: V15
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1   Feature_2   Agreement 
+-----------------  ----------  ----------  ----------
+FEAT_IMP vs LIME   V7          V15         FALSE     
+FEAT_IMP vs SHAP   V7          V15         FALSE     
+LIME vs SHAP       V15         V15         TRUE      
+
+Agreeing pairs: 1 / 3 (33.3%)
+
+=== All Results Recorded ===
+

@@ -1,0 +1,85 @@
+{
+  "dataset": "cmc",
+  "file_path": "datasets/csv/cmc.csv",
+  "n_rows": 1473,
+  "n_columns": 10,
+  "n_numeric_features": 9,
+  "numeric_features": [
+    "Wifes_age",
+    "Wifes_education",
+    "Husbands_education",
+    "Number_of_children_ever_born",
+    "Wifes_religion",
+    "Wifes_now_working",
+    "Husbands_occupation",
+    "Standard_of_living_index",
+    "Media_exposure"
+  ],
+  "correlation_matrix_shape": [
+    9,
+    9
+  ],
+  "high_correlations": [],
+  "n_high_correlations": 0,
+  "vif_mean": 11.130022109119372,
+  "vif_median": 5.941644490938213,
+  "vif_max": 27.848779946170804,
+  "vif_values": [
+    {
+      "feature": "Husbands_education",
+      "VIF": 27.848779946170804
+    },
+    {
+      "feature": "Wifes_age",
+      "VIF": 20.003097671749963
+    },
+    {
+      "feature": "Wifes_education",
+      "VIF": 16.83932622444447
+    },
+    {
+      "feature": "Standard_of_living_index",
+      "VIF": 14.171015098981233
+    },
+    {
+      "feature": "Wifes_religion",
+      "VIF": 5.941644490938213
+    },
+    {
+      "feature": "Husbands_occupation",
+      "VIF": 5.744493942443963
+    },
+    {
+      "feature": "Number_of_children_ever_born",
+      "VIF": 4.4391324720297245
+    },
+    {
+      "feature": "Wifes_now_working",
+      "VIF": 3.943737296196709
+    },
+    {
+      "feature": "Media_exposure",
+      "VIF": 1.238971839119252
+    }
+  ],
+  "n_high_vif": 4,
+  "condition_number": 2.64627933002279,
+  "condition_number_interpretation": "Low - no multicollinearity",
+  "condition_index": 2.6462793300227943,
+  "eigenvalues": [
+    2.5197780327440453,
+    1.669745313850063,
+    1.0657717059376286,
+    0.9049552694392679,
+    0.8469453659730235,
+    0.6444538981579039,
+    0.5973401815435588,
+    0.391185578438769,
+    0.35982465391573926
+  ],
+  "min_eigenvalue": 0.35982465391573926,
+  "max_eigenvalue": 2.5197780327440453,
+  "n_small_eigenvalues": 0,
+  "has_multicollinearity": true,
+  "severity_score": 4
+}

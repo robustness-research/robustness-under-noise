@@ -1,0 +1,598 @@
+{
+  "dataset": "pc4",
+  "file_path": "datasets/csv/pc4.csv",
+  "n_rows": 1458,
+  "n_columns": 38,
+  "n_numeric_features": 37,
+  "numeric_features": [
+    "LOC_BLANK",
+    "BRANCH_COUNT",
+    "CALL_PAIRS",
+    "LOC_CODE_AND_COMMENT",
+    "LOC_COMMENTS",
+    "CONDITION_COUNT",
+    "CYCLOMATIC_COMPLEXITY",
+    "CYCLOMATIC_DENSITY",
+    "DECISION_COUNT",
+    "DECISION_DENSITY",
+    "DESIGN_COMPLEXITY",
+    "DESIGN_DENSITY",
+    "EDGE_COUNT",
+    "ESSENTIAL_COMPLEXITY",
+    "ESSENTIAL_DENSITY",
+    "LOC_EXECUTABLE",
+    "PARAMETER_COUNT",
+    "HALSTEAD_CONTENT",
+    "HALSTEAD_DIFFICULTY",
+    "HALSTEAD_EFFORT",
+    "HALSTEAD_ERROR_EST",
+    "HALSTEAD_LENGTH",
+    "HALSTEAD_LEVEL",
+    "HALSTEAD_PROG_TIME",
+    "HALSTEAD_VOLUME",
+    "MAINTENANCE_SEVERITY",
+    "MODIFIED_CONDITION_COUNT",
+    "MULTIPLE_CONDITION_COUNT",
+    "NODE_COUNT",
+    "NORMALIZED_CYLOMATIC_COMPLEXITY",
+    "NUM_OPERANDS",
+    "NUM_OPERATORS",
+    "NUM_UNIQUE_OPERANDS",
+    "NUM_UNIQUE_OPERATORS",
+    "NUMBER_OF_LINES",
+    "PERCENT_COMMENTS",
+    "LOC_TOTAL"
+  ],
+  "correlation_matrix_shape": [
+    37,
+    37
+  ],
+  "high_correlations": [
+    {
+      "feature1": "LOC_BLANK",
+      "feature2": "LOC_COMMENTS",
+      "correlation": 0.7259039559155812
+    },
+    {
+      "feature1": "LOC_BLANK",
+      "feature2": "NUMBER_OF_LINES",
+      "correlation": 0.739095178960417
+    },
+    {
+      "feature1": "BRANCH_COUNT",
+      "feature2": "CYCLOMATIC_COMPLEXITY",
+      "correlation": 0.9857522271046957
+    },
+    {
+      "feature1": "BRANCH_COUNT",
+      "feature2": "DESIGN_COMPLEXITY",
+      "correlation": 0.7645826914924431
+    },
+    {
+      "feature1": "BRANCH_COUNT",
+      "feature2": "EDGE_COUNT",
+      "correlation": 0.9493984622703016
+    },
+    {
+      "feature1": "BRANCH_COUNT",
+      "feature2": "ESSENTIAL_COMPLEXITY",
+      "correlation": 0.7298990215108823
+    },
+    {
+      "feature1": "BRANCH_COUNT",
+      "feature2": "NODE_COUNT",
+      "correlation": 0.9162439076297466
+    },
+    {
+      "feature1": "CONDITION_COUNT",
+      "feature2": "DECISION_COUNT",
+      "correlation": 0.9914954536647275
+    },
+    {
+      "feature1": "CONDITION_COUNT",
+      "feature2": "MODIFIED_CONDITION_COUNT",
+      "correlation": 0.9938204309299441
+    },
+    {
+      "feature1": "CONDITION_COUNT",
+      "feature2": "MULTIPLE_CONDITION_COUNT",
+      "correlation": 0.9845141132833106
+    },
+    {
+      "feature1": "CYCLOMATIC_COMPLEXITY",
+      "feature2": "DESIGN_COMPLEXITY",
+      "correlation": 0.7930357654051757
+    },
+    {
+      "feature1": "CYCLOMATIC_COMPLEXITY",
+      "feature2": "EDGE_COUNT",
+      "correlation": 0.9415507754614499
+    },
+    {
+      "feature1": "CYCLOMATIC_COMPLEXITY",
+      "feature2": "ESSENTIAL_COMPLEXITY",
+      "correlation": 0.7145767460604767
+    },
+    {
+      "feature1": "CYCLOMATIC_COMPLEXITY",
+      "feature2": "NODE_COUNT",
+      "correlation": 0.9057303675694136
+    },
+    {
+      "feature1": "DECISION_COUNT",
+      "feature2": "MODIFIED_CONDITION_COUNT",
+      "correlation": 0.9709227802579494
+    },
+    {
+      "feature1": "DECISION_COUNT",
+      "feature2": "MULTIPLE_CONDITION_COUNT",
+      "correlation": 0.9672890211977997
+    },
+    {
+      "feature1": "DESIGN_COMPLEXITY",
+      "feature2": "EDGE_COUNT",
+      "correlation": 0.7855007113722098
+    },
+    {
+      "feature1": "DESIGN_COMPLEXITY",
+      "feature2": "NODE_COUNT",
+      "correlation": 0.7685729388852386
+    },
+    {
+      "feature1": "EDGE_COUNT",
+      "feature2": "NODE_COUNT",
+      "correlation": 0.995142013284508
+    },
+    {
+      "feature1": "LOC_EXECUTABLE",
+      "feature2": "HALSTEAD_DIFFICULTY",
+      "correlation": 0.7379370608416146
+    },
+    {
+      "feature1": "LOC_EXECUTABLE",
+      "feature2": "HALSTEAD_EFFORT",
+      "correlation": 0.7154535933560718
+    },
+    {
+      "feature1": "LOC_EXECUTABLE",
+      "feature2": "HALSTEAD_ERROR_EST",
+      "correlation": 0.7522238197704846
+    },
+    {
+      "feature1": "LOC_EXECUTABLE",
+      "feature2": "HALSTEAD_LENGTH",
+      "correlation": 0.8021671668640892
+    },
+    {
+      "feature1": "LOC_EXECUTABLE",
+      "feature2": "HALSTEAD_PROG_TIME",
+      "correlation": 0.7154535793660456
+    },
+    {
+      "feature1": "LOC_EXECUTABLE",
+      "feature2": "HALSTEAD_VOLUME",
+      "correlation": 0.7523942709004606
+    },
+    {
+      "feature1": "LOC_EXECUTABLE",
+      "feature2": "NUM_OPERANDS",
+      "correlation": 0.7847764837409643
+    },
+    {
+      "feature1": "LOC_EXECUTABLE",
+      "feature2": "NUM_OPERATORS",
+      "correlation": 0.7824378638844564
+    },
+    {
+      "feature1": "LOC_EXECUTABLE",
+      "feature2": "NUM_UNIQUE_OPERATORS",
+      "correlation": 0.7192187124836282
+    },
+    {
+      "feature1": "LOC_EXECUTABLE",
+      "feature2": "LOC_TOTAL",
+      "correlation": 0.9824057407752345
+    },
+    {
+      "feature1": "HALSTEAD_CONTENT",
+      "feature2": "HALSTEAD_ERROR_EST",
+      "correlation": 0.770045851524248
+    },
+    {
+      "feature1": "HALSTEAD_CONTENT",
+      "feature2": "HALSTEAD_VOLUME",
+      "correlation": 0.7700095688390373
+    },
+    {
+      "feature1": "HALSTEAD_CONTENT",
+      "feature2": "NUM_UNIQUE_OPERANDS",
+      "correlation": 0.8991190018957418
+    },
+    {
+      "feature1": "HALSTEAD_DIFFICULTY",
+      "feature2": "NUM_UNIQUE_OPERATORS",
+      "correlation": 0.7681435520439194
+    },
+    {
+      "feature1": "HALSTEAD_DIFFICULTY",
+      "feature2": "LOC_TOTAL",
+      "correlation": 0.7482287988932999
+    },
+    {
+      "feature1": "HALSTEAD_EFFORT",
+      "feature2": "HALSTEAD_ERROR_EST",
+      "correlation": 0.8054583462037457
+    },
+    {
+      "feature1": "HALSTEAD_EFFORT",
+      "feature2": "HALSTEAD_LENGTH",
+      "correlation": 0.8552803555236907
+    },
+    {
+      "feature1": "HALSTEAD_EFFORT",
+      "feature2": "HALSTEAD_PROG_TIME",
+      "correlation": 0.9999999999996442
+    },
+    {
+      "feature1": "HALSTEAD_EFFORT",
+      "feature2": "HALSTEAD_VOLUME",
+      "correlation": 0.8054557173956182
+    },
+    {
+      "feature1": "HALSTEAD_EFFORT",
+      "feature2": "NUM_OPERANDS",
+      "correlation": 0.8471702135449992
+    },
+    {
+      "feature1": "HALSTEAD_EFFORT",
+      "feature2": "NUM_OPERATORS",
+      "correlation": 0.827078055839348
+    },
+    {
+      "feature1": "HALSTEAD_EFFORT",
+      "feature2": "LOC_TOTAL",
+      "correlation": 0.7484963448197545
+    },
+    {
+      "feature1": "HALSTEAD_ERROR_EST",
+      "feature2": "HALSTEAD_LENGTH",
+      "correlation": 0.9798761269023426
+    },
+    {
+      "feature1": "HALSTEAD_ERROR_EST",
+      "feature2": "HALSTEAD_PROG_TIME",
+      "correlation": 0.8054583525687411
+    },
+    {
+      "feature1": "HALSTEAD_ERROR_EST",
+      "feature2": "HALSTEAD_VOLUME",
+      "correlation": 0.9999752777570156
+    },
+    {
+      "feature1": "HALSTEAD_ERROR_EST",
+      "feature2": "NUM_OPERANDS",
+      "correlation": 0.9741773571320412
+    },
+    {
+      "feature1": "HALSTEAD_ERROR_EST",
+      "feature2": "NUM_OPERATORS",
+      "correlation": 0.9450971212289224
+    },
+    {
+      "feature1": "HALSTEAD_ERROR_EST",
+      "feature2": "NUM_UNIQUE_OPERANDS",
+      "correlation": 0.8710781667039512
+    },
+    {
+      "feature1": "HALSTEAD_ERROR_EST",
+      "feature2": "LOC_TOTAL",
+      "correlation": 0.7851623511406356
+    },
+    {
+      "feature1": "HALSTEAD_LENGTH",
+      "feature2": "HALSTEAD_PROG_TIME",
+      "correlation": 0.8552803569974283
+    },
+    {
+      "feature1": "HALSTEAD_LENGTH",
+      "feature2": "HALSTEAD_VOLUME",
+      "correlation": 0.9799087909520905
+    },
+    {
+      "feature1": "HALSTEAD_LENGTH",
+      "feature2": "NUM_OPERANDS",
+      "correlation": 0.9657991699856541
+    },
+    {
+      "feature1": "HALSTEAD_LENGTH",
+      "feature2": "NUM_OPERATORS",
+      "correlation": 0.9840069261307944
+    },
+    {
+      "feature1": "HALSTEAD_LENGTH",
+      "feature2": "NUM_UNIQUE_OPERANDS",
+      "correlation": 0.7936771393196084
+    },
+    {
+      "feature1": "HALSTEAD_LENGTH",
+      "feature2": "LOC_TOTAL",
+      "correlation": 0.8324302565551489
+    },
+    {
+      "feature1": "HALSTEAD_PROG_TIME",
+      "feature2": "HALSTEAD_VOLUME",
+      "correlation": 0.8054557237452572
+    },
+    {
+      "feature1": "HALSTEAD_PROG_TIME",
+      "feature2": "NUM_OPERANDS",
+      "correlation": 0.8471702155042493
+    },
+    {
+      "feature1": "HALSTEAD_PROG_TIME",
+      "feature2": "NUM_OPERATORS",
+      "correlation": 0.8270780569213488
+    },
+    {
+      "feature1": "HALSTEAD_PROG_TIME",
+      "feature2": "LOC_TOTAL",
+      "correlation": 0.7484963334079785
+    },
+    {
+      "feature1": "HALSTEAD_VOLUME",
+      "feature2": "NUM_OPERANDS",
+      "correlation": 0.9742064203945267
+    },
+    {
+      "feature1": "HALSTEAD_VOLUME",
+      "feature2": "NUM_OPERATORS",
+      "correlation": 0.9451309691196398
+    },
+    {
+      "feature1": "HALSTEAD_VOLUME",
+      "feature2": "NUM_UNIQUE_OPERANDS",
+      "correlation": 0.8711508686744824
+    },
+    {
+      "feature1": "HALSTEAD_VOLUME",
+      "feature2": "LOC_TOTAL",
+      "correlation": 0.7853224438474157
+    },
+    {
+      "feature1": "MODIFIED_CONDITION_COUNT",
+      "feature2": "MULTIPLE_CONDITION_COUNT",
+      "correlation": 0.9859804735006112
+    },
+    {
+      "feature1": "NUM_OPERANDS",
+      "feature2": "NUM_OPERATORS",
+      "correlation": 0.9041654656877576
+    },
+    {
+      "feature1": "NUM_OPERANDS",
+      "feature2": "NUM_UNIQUE_OPERANDS",
+      "correlation": 0.8434633977901527
+    },
+    {
+      "feature1": "NUM_OPERANDS",
+      "feature2": "LOC_TOTAL",
+      "correlation": 0.8186004013683225
+    },
+    {
+      "feature1": "NUM_OPERATORS",
+      "feature2": "NUM_UNIQUE_OPERANDS",
+      "correlation": 0.728133288601013
+    },
+    {
+      "feature1": "NUM_OPERATORS",
+      "feature2": "LOC_TOTAL",
+      "correlation": 0.8090596557004913
+    },
+    {
+      "feature1": "NUM_UNIQUE_OPERATORS",
+      "feature2": "LOC_TOTAL",
+      "correlation": 0.7129905155683702
+    }
+  ],
+  "n_high_correlations": 69,
+  "vif_mean": Infinity,
+  "vif_median": 52.277991745027826,
+  "vif_max": Infinity,
+  "vif_values": [
+    {
+      "feature": "LOC_CODE_AND_COMMENT",
+      "VIF": Infinity
+    },
+    {
+      "feature": "LOC_TOTAL",
+      "VIF": Infinity
+    },
+    {
+      "feature": "LOC_EXECUTABLE",
+      "VIF": Infinity
+    },
+    {
+      "feature": "DECISION_COUNT",
+      "VIF": Infinity
+    },
+    {
+      "feature": "CONDITION_COUNT",
+      "VIF": Infinity
+    },
+    {
+      "feature": "NUM_OPERANDS",
+      "VIF": Infinity
+    },
+    {
+      "feature": "NUM_OPERATORS",
+      "VIF": Infinity
+    },
+    {
+      "feature": "MODIFIED_CONDITION_COUNT",
+      "VIF": Infinity
+    },
+    {
+      "feature": "HALSTEAD_LENGTH",
+      "VIF": Infinity
+    },
+    {
+      "feature": "HALSTEAD_PROG_TIME",
+      "VIF": 1603275054243.6797
+    },
+    {
+      "feature": "HALSTEAD_EFFORT",
+      "VIF": 1603275054243.6797
+    },
+    {
+      "feature": "HALSTEAD_VOLUME",
+      "VIF": 25231.623071560945
+    },
+    {
+      "feature": "HALSTEAD_ERROR_EST",
+      "VIF": 24970.71278087141
+    },
+    {
+      "feature": "EDGE_COUNT",
+      "VIF": 3902.81424149326
+    },
+    {
+      "feature": "NODE_COUNT",
+      "VIF": 2442.177451143968
+    },
+    {
+      "feature": "BRANCH_COUNT",
+      "VIF": 191.70395405919223
+    },
+    {
+      "feature": "CYCLOMATIC_COMPLEXITY",
+      "VIF": 140.01618823538917
+    },
+    {
+      "feature": "NUM_UNIQUE_OPERANDS",
+      "VIF": 103.02850102652556
+    },
+    {
+      "feature": "HALSTEAD_CONTENT",
+      "VIF": 52.277991745027826
+    },
+    {
+      "feature": "MULTIPLE_CONDITION_COUNT",
+      "VIF": 48.548199921195064
+    },
+    {
+      "feature": "NUM_UNIQUE_OPERATORS",
+      "VIF": 27.899322954643253
+    },
+    {
+      "feature": "DESIGN_DENSITY",
+      "VIF": 20.70234589970158
+    },
+    {
+      "feature": "HALSTEAD_DIFFICULTY",
+      "VIF": 17.02273211830846
+    },
+    {
+      "feature": "MAINTENANCE_SEVERITY",
+      "VIF": 13.741470962083106
+    },
+    {
+      "feature": "DESIGN_COMPLEXITY",
+      "VIF": 13.248522463573753
+    },
+    {
+      "feature": "CYCLOMATIC_DENSITY",
+      "VIF": 9.824806627954594
+    },
+    {
+      "feature": "ESSENTIAL_COMPLEXITY",
+      "VIF": 9.622912005083405
+    },
+    {
+      "feature": "LOC_BLANK",
+      "VIF": 6.148833093322989
+    },
+    {
+      "feature": "NUMBER_OF_LINES",
+      "VIF": 5.725602254630848
+    },
+    {
+      "feature": "CALL_PAIRS",
+      "VIF": 5.234901097649693
+    },
+    {
+      "feature": "NORMALIZED_CYLOMATIC_COMPLEXITY",
+      "VIF": 4.479581179751597
+    },
+    {
+      "feature": "LOC_COMMENTS",
+      "VIF": 4.455034955558152
+    },
+    {
+      "feature": "PERCENT_COMMENTS",
+      "VIF": 4.445256021585146
+    },
+    {
+      "feature": "DECISION_DENSITY",
+      "VIF": 3.5378508113845912
+    },
+    {
+      "feature": "HALSTEAD_LEVEL",
+      "VIF": 3.1038122746597745
+    },
+    {
+      "feature": "PARAMETER_COUNT",
+      "VIF": 1.7954219387964419
+    },
+    {
+      "feature": "ESSENTIAL_DENSITY",
+      "VIF": 1.5997853939951039
+    }
+  ],
+  "n_high_vif": 25,
+  "condition_number": 1.9426127290707796e+16,
+  "condition_number_interpretation": "High - strong multicollinearity",
+  "eigenvalues": [
+    15.248699353828712,
+    4.29460633950002,
+    3.505020491150892,
+    2.3813717405289854,
+    1.803414835782937,
+    1.5346867318342037,
+    1.281009955108442,
+    0.976571275125833,
+    0.9377713154420505,
+    0.7150528470951689,
+    0.6509544275483475,
+    0.5315619561086143,
+    0.489371664909998,
+    0.4720800978847808,
+    0.4493180874544046,
+    0.3419077434077332,
+    0.2530516426653902,
+    0.21308643239988764,
+    0.183968936514376,
+    0.17221917295949235,
+    0.1399208803851825,
+    0.11688329426622708,
+    0.09500590935712405,
+    0.08640448478903857,
+    0.03949645490820303,
+    0.03168950320499821,
+    0.025124948550655196,
+    0.011933580418568762,
+    0.007506337343876134,
+    0.006282308484245952,
+    0.0038381755586370443,
+    0.0001649571292127247,
+    2.4118353491753157e-05,
+    3.441557662576611e-13,
+    -6.349694404949934e-16,
+    -1.5934804447572518e-15,
+    -3.0254850955661764e-15
+  ],
+  "min_eigenvalue": -3.0254850955661764e-15,
+  "max_eigenvalue": 15.248699353828712,
+  "n_small_eigenvalues": 9,
+  "has_multicollinearity": true,
+  "severity_score": 24
+}

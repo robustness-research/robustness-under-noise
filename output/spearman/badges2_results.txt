@@ -1,0 +1,1653 @@
+Dataset: badges2
+Generated: Mon Nov 24 10:36:01 PM CET 2025
+======================================
+
+
+========================================
+Model: C5.0
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=badges2, Method=C5.0 ===
+No scaling applied for method: C5.0
+Error: Only one model should be specified in tuneGrid with no resampling
+Execution halted
+FAILED - See error above
+
+
+========================================
+Model: ctree
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=badges2, Method=ctree ===
+No scaling applied for method: ctree
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature              importance.05   importance   importance.95   permutation.error
+------------------  --------------  -----------  --------------  ------------------
+second_char_vowel        0.3918367    0.4217687       0.4353741           0.4217687
+length                   0.0000000    0.0000000       0.0000000           0.0000000
+even_odd                 0.0000000    0.0000000       0.0000000           0.0000000
+first_char_vowel         0.0000000    0.0000000       0.0000000           0.0000000
+vowels                   0.0000000    0.0000000       0.0000000           0.0000000
+Warning message:
+In initialize(...) :
+  Model error is 0, switching from compare='ratio' to compare='difference'
+
+=== LIME Rankings ===
+
+
+Feature                  Importance
+----------------------  -----------
+second_char_vowel         0.9991261
+spaces                    0.0000189
+vowel_consonant_ratio     0.0000130
+even_odd                  0.0000124
+consonants                0.0000124
+Warning messages:
+1: spaces does not contain enough variance to use quantile binning. Using standard binning instead. 
+2: dots does not contain enough variance to use quantile binning. Using standard binning instead. 
+3: words does not contain enough variance to use quantile binning. Using standard binning instead. 
+
+=== SHAP (IML Shapley) Rankings ===
+
+
+Feature              Importance
+------------------  -----------
+second_char_vowel         0.676
+consonants                0.000
+dots                      0.000
+even_odd                  0.000
+first_char_vowel          0.000
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME   NA                        1
+FEAT_IMP vs SHAP   NA                        1
+LIME vs SHAP       NA                        1
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME   NA                        1
+FEAT_IMP vs SHAP   NA                        1
+LIME vs SHAP       NA                        1
+
+=== Top-1 Features ===
+FEAT_IMP: second_char_vowel
+LIME: second_char_vowel
+SHAP: second_char_vowel
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1           Feature_2           Agreement 
+-----------------  ------------------  ------------------  ----------
+FEAT_IMP vs LIME   second_char_vowel   second_char_vowel   TRUE      
+FEAT_IMP vs SHAP   second_char_vowel   second_char_vowel   TRUE      
+LIME vs SHAP       second_char_vowel   second_char_vowel   TRUE      
+
+Agreeing pairs: 3 / 3 (100.0%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: fda
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=badges2, Method=fda ===
+No scaling applied for method: fda
+Loading required package: earth
+Loading required package: Formula
+Loading required package: plotmo
+Loading required package: plotrix
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature              importance.05   importance   importance.95   permutation.error
+------------------  --------------  -----------  --------------  ------------------
+second_char_vowel        0.3918367    0.4217687       0.4353741           0.4217687
+length                   0.0000000    0.0000000       0.0000000           0.0000000
+even_odd                 0.0000000    0.0000000       0.0000000           0.0000000
+first_char_vowel         0.0000000    0.0000000       0.0000000           0.0000000
+vowels                   0.0000000    0.0000000       0.0000000           0.0000000
+Warning message:
+In initialize(...) :
+  Model error is 0, switching from compare='ratio' to compare='difference'
+
+=== LIME Rankings ===
+
+
+Feature                  Importance
+----------------------  -----------
+second_char_vowel         0.9991261
+spaces                    0.0000189
+vowel_consonant_ratio     0.0000130
+even_odd                  0.0000124
+consonants                0.0000124
+Warning messages:
+1: spaces does not contain enough variance to use quantile binning. Using standard binning instead. 
+2: dots does not contain enough variance to use quantile binning. Using standard binning instead. 
+3: words does not contain enough variance to use quantile binning. Using standard binning instead. 
+
+=== SHAP (IML Shapley) Rankings ===
+
+
+Feature              Importance
+------------------  -----------
+second_char_vowel         0.676
+consonants                0.000
+dots                      0.000
+even_odd                  0.000
+first_char_vowel          0.000
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME   NA                        1
+FEAT_IMP vs SHAP   NA                        1
+LIME vs SHAP       NA                        1
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME   NA                        1
+FEAT_IMP vs SHAP   NA                        1
+LIME vs SHAP       NA                        1
+
+=== Top-1 Features ===
+FEAT_IMP: second_char_vowel
+LIME: second_char_vowel
+SHAP: second_char_vowel
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1           Feature_2           Agreement 
+-----------------  ------------------  ------------------  ----------
+FEAT_IMP vs LIME   second_char_vowel   second_char_vowel   TRUE      
+FEAT_IMP vs SHAP   second_char_vowel   second_char_vowel   TRUE      
+LIME vs SHAP       second_char_vowel   second_char_vowel   TRUE      
+
+Agreeing pairs: 3 / 3 (100.0%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: gbm
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=badges2, Method=gbm ===
+No scaling applied for method: gbm
+Iter   TrainDeviance   ValidDeviance   StepSize   Improve
+     1        1.0068            -nan     0.1000    0.0949
+     2        0.8640            -nan     0.1000    0.0705
+     3        0.7502            -nan     0.1000    0.0549
+     4        0.6565            -nan     0.1000    0.0479
+     5        0.5778            -nan     0.1000    0.0385
+     6        0.5108            -nan     0.1000    0.0322
+     7        0.4530            -nan     0.1000    0.0300
+     8        0.4029            -nan     0.1000    0.0253
+     9        0.3592            -nan     0.1000    0.0217
+    10        0.3208            -nan     0.1000    0.0195
+    20        0.1099            -nan     0.1000    0.0056
+    40        0.0144            -nan     0.1000    0.0008
+    50        0.0053            -nan     0.1000    0.0003
+
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature              importance.05   importance   importance.95   permutation.error
+------------------  --------------  -----------  --------------  ------------------
+second_char_vowel        0.3863946     0.414966       0.4272109            0.414966
+length                   0.0000000     0.000000       0.0000000            0.000000
+even_odd                 0.0000000     0.000000       0.0000000            0.000000
+first_char_vowel         0.0000000     0.000000       0.0000000            0.000000
+vowels                   0.0000000     0.000000       0.0000000            0.000000
+Warning message:
+In initialize(...) :
+  Model error is 0, switching from compare='ratio' to compare='difference'
+
+=== LIME Rankings ===
+
+
+Feature              Importance
+------------------  -----------
+second_char_vowel     0.9927291
+consonants            0.0000132
+first_char_vowel      0.0000124
+even_odd              0.0000123
+vowels                0.0000118
+Warning messages:
+1: spaces does not contain enough variance to use quantile binning. Using standard binning instead. 
+2: dots does not contain enough variance to use quantile binning. Using standard binning instead. 
+3: words does not contain enough variance to use quantile binning. Using standard binning instead. 
+
+=== SHAP (IML Shapley) Rankings ===
+
+
+Feature              Importance
+------------------  -----------
+second_char_vowel     0.6359051
+consonants            0.0000000
+dots                  0.0000000
+even_odd              0.0000000
+first_char_vowel      0.0000000
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair                Spearman   Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME          NA                 1
+FEAT_IMP vs SHAP          NA                 1
+LIME vs SHAP               1                 2
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME   NA                        1
+FEAT_IMP vs SHAP   NA                        1
+LIME vs SHAP       NA                        1
+
+=== Top-1 Features ===
+FEAT_IMP: second_char_vowel
+LIME: second_char_vowel
+SHAP: second_char_vowel
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1           Feature_2           Agreement 
+-----------------  ------------------  ------------------  ----------
+FEAT_IMP vs LIME   second_char_vowel   second_char_vowel   TRUE      
+FEAT_IMP vs SHAP   second_char_vowel   second_char_vowel   TRUE      
+LIME vs SHAP       second_char_vowel   second_char_vowel   TRUE      
+
+Agreeing pairs: 3 / 3 (100.0%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: gcvEarth
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=badges2, Method=gcvEarth ===
+No scaling applied for method: gcvEarth
+Loading required package: earth
+Loading required package: Formula
+Loading required package: plotmo
+Loading required package: plotrix
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature              importance.05   importance   importance.95   permutation.error
+------------------  --------------  -----------  --------------  ------------------
+second_char_vowel        0.3918367    0.4217687       0.4353741           0.4217687
+length                   0.0000000    0.0000000       0.0000000           0.0000000
+even_odd                 0.0000000    0.0000000       0.0000000           0.0000000
+first_char_vowel         0.0000000    0.0000000       0.0000000           0.0000000
+vowels                   0.0000000    0.0000000       0.0000000           0.0000000
+Warning message:
+In initialize(...) :
+  Model error is 0, switching from compare='ratio' to compare='difference'
+
+=== LIME Rankings ===
+
+
+Feature                  Importance
+----------------------  -----------
+second_char_vowel         0.9991261
+spaces                    0.0000189
+vowel_consonant_ratio     0.0000130
+even_odd                  0.0000124
+consonants                0.0000124
+Warning messages:
+1: spaces does not contain enough variance to use quantile binning. Using standard binning instead. 
+2: dots does not contain enough variance to use quantile binning. Using standard binning instead. 
+3: words does not contain enough variance to use quantile binning. Using standard binning instead. 
+
+=== SHAP (IML Shapley) Rankings ===
+
+
+Feature              Importance
+------------------  -----------
+second_char_vowel         0.676
+consonants                0.000
+dots                      0.000
+even_odd                  0.000
+first_char_vowel          0.000
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME   NA                        1
+FEAT_IMP vs SHAP   NA                        1
+LIME vs SHAP       NA                        1
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME   NA                        1
+FEAT_IMP vs SHAP   NA                        1
+LIME vs SHAP       NA                        1
+
+=== Top-1 Features ===
+FEAT_IMP: second_char_vowel
+LIME: second_char_vowel
+SHAP: second_char_vowel
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1           Feature_2           Agreement 
+-----------------  ------------------  ------------------  ----------
+FEAT_IMP vs LIME   second_char_vowel   second_char_vowel   TRUE      
+FEAT_IMP vs SHAP   second_char_vowel   second_char_vowel   TRUE      
+LIME vs SHAP       second_char_vowel   second_char_vowel   TRUE      
+
+Agreeing pairs: 3 / 3 (100.0%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: JRip
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=badges2, Method=JRip ===
+No scaling applied for method: JRip
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature              importance.05   importance   importance.95   permutation.error
+------------------  --------------  -----------  --------------  ------------------
+second_char_vowel        0.3918367    0.4217687       0.4353741           0.4217687
+length                   0.0000000    0.0000000       0.0000000           0.0000000
+even_odd                 0.0000000    0.0000000       0.0000000           0.0000000
+first_char_vowel         0.0000000    0.0000000       0.0000000           0.0000000
+vowels                   0.0000000    0.0000000       0.0000000           0.0000000
+Warning message:
+In initialize(...) :
+  Model error is 0, switching from compare='ratio' to compare='difference'
+
+=== LIME Rankings ===
+
+
+Feature                  Importance
+----------------------  -----------
+second_char_vowel         0.9991261
+spaces                    0.0000189
+vowel_consonant_ratio     0.0000130
+even_odd                  0.0000124
+consonants                0.0000124
+Warning messages:
+1: spaces does not contain enough variance to use quantile binning. Using standard binning instead. 
+2: dots does not contain enough variance to use quantile binning. Using standard binning instead. 
+3: words does not contain enough variance to use quantile binning. Using standard binning instead. 
+
+=== SHAP (IML Shapley) Rankings ===
+
+
+Feature              Importance
+------------------  -----------
+second_char_vowel         0.676
+consonants                0.000
+dots                      0.000
+even_odd                  0.000
+first_char_vowel          0.000
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME   NA                        1
+FEAT_IMP vs SHAP   NA                        1
+LIME vs SHAP       NA                        1
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME   NA                        1
+FEAT_IMP vs SHAP   NA                        1
+LIME vs SHAP       NA                        1
+
+=== Top-1 Features ===
+FEAT_IMP: second_char_vowel
+LIME: second_char_vowel
+SHAP: second_char_vowel
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1           Feature_2           Agreement 
+-----------------  ------------------  ------------------  ----------
+FEAT_IMP vs LIME   second_char_vowel   second_char_vowel   TRUE      
+FEAT_IMP vs SHAP   second_char_vowel   second_char_vowel   TRUE      
+LIME vs SHAP       second_char_vowel   second_char_vowel   TRUE      
+
+Agreeing pairs: 3 / 3 (100.0%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: lvq
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=badges2, Method=lvq ===
+Applying data scaling for method: lvq
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature              importance.05   importance   importance.95   permutation.error
+------------------  --------------  -----------  --------------  ------------------
+second_char_vowel        2.7176471     2.764706        2.958823           0.3197279
+first_char_vowel         1.1588235     1.235294        1.288235           0.1428571
+words                    0.9823529     1.058823        1.105882           0.1224490
+even_odd                 1.0058824     1.029412        1.082353           0.1190476
+spaces                   1.0294118     1.029412        1.058823           0.1190476
+
+=== LIME Rankings ===
+Error in get_lime: only classification models that produce probabilities are allowed 
+Warning messages:
+1: spaces does not contain enough variance to use quantile binning. Using standard binning instead. 
+2: dots does not contain enough variance to use quantile binning. Using standard binning instead. 
+3: words does not contain enough variance to use quantile binning. Using standard binning instead. 
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs SHAP   NA                        0
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs SHAP   NA                        0
+
+=== Top-1 Features ===
+FEAT_IMP: second_char_vowel
+SHAP: NA
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1           Feature_2   Agreement 
+-----------------  ------------------  ----------  ----------
+FEAT_IMP vs SHAP   second_char_vowel   NA          FALSE     
+
+Agreeing pairs: 0 / 1 (0.0%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: mlpML
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=badges2, Method=mlpML ===
+Applying data scaling for method: mlpML
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+Warning message:
+At least one layer had zero units and were removed. The new structure is 1 
+
+=== IML Rankings ===
+
+
+feature              importance.05   importance   importance.95   permutation.error
+------------------  --------------  -----------  --------------  ------------------
+second_char_vowel        0.3945578    0.4013605       0.4081633           0.4013605
+length                   0.0000000    0.0000000       0.0000000           0.0000000
+even_odd                 0.0000000    0.0000000       0.0000000           0.0000000
+first_char_vowel         0.0000000    0.0000000       0.0000000           0.0000000
+vowels                   0.0000000    0.0000000       0.0000000           0.0000000
+Warning message:
+In initialize(...) :
+  Model error is 0, switching from compare='ratio' to compare='difference'
+
+=== LIME Rankings ===
+
+
+Feature                  Importance
+----------------------  -----------
+second_char_vowel         0.9500013
+first_char_vowel          0.0051986
+vowel_consonant_ratio     0.0006111
+length                    0.0002716
+even_odd                  0.0002234
+Warning messages:
+1: spaces does not contain enough variance to use quantile binning. Using standard binning instead. 
+2: dots does not contain enough variance to use quantile binning. Using standard binning instead. 
+3: words does not contain enough variance to use quantile binning. Using standard binning instead. 
+
+=== SHAP (IML Shapley) Rankings ===
+
+
+Feature                  Importance
+----------------------  -----------
+second_char_vowel         0.5976333
+first_char_vowel          0.0035725
+vowel_consonant_ratio     0.0006963
+length                    0.0002083
+even_odd                  0.0001288
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair                Spearman   Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME          NA                 1
+FEAT_IMP vs SHAP          NA                 1
+LIME vs SHAP               1                 3
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME   NA                        1
+FEAT_IMP vs SHAP   NA                        1
+LIME vs SHAP       NA                        1
+
+=== Top-1 Features ===
+FEAT_IMP: second_char_vowel
+LIME: second_char_vowel
+SHAP: second_char_vowel
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1           Feature_2           Agreement 
+-----------------  ------------------  ------------------  ----------
+FEAT_IMP vs LIME   second_char_vowel   second_char_vowel   TRUE      
+FEAT_IMP vs SHAP   second_char_vowel   second_char_vowel   TRUE      
+LIME vs SHAP       second_char_vowel   second_char_vowel   TRUE      
+
+Agreeing pairs: 3 / 3 (100.0%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: multinom
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=badges2, Method=multinom ===
+Applying data scaling for method: multinom
+# weights:  12 (11 variable)
+initial  value 203.785271 
+final  value 0.000047 
+converged
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature              importance.05   importance   importance.95   permutation.error
+------------------  --------------  -----------  --------------  ------------------
+second_char_vowel        0.3918367    0.4217687       0.4353741           0.4217687
+length                   0.0000000    0.0000000       0.0000000           0.0000000
+even_odd                 0.0000000    0.0000000       0.0000000           0.0000000
+first_char_vowel         0.0000000    0.0000000       0.0027211           0.0000000
+vowels                   0.0000000    0.0000000       0.0000000           0.0000000
+Warning message:
+In initialize(...) :
+  Model error is 0, switching from compare='ratio' to compare='difference'
+
+=== LIME Rankings ===
+
+
+Feature                  Importance
+----------------------  -----------
+second_char_vowel         0.9940673
+first_char_vowel          0.0222836
+consonants                0.0063195
+vowel_consonant_ratio     0.0030785
+words                     0.0021066
+Warning messages:
+1: spaces does not contain enough variance to use quantile binning. Using standard binning instead. 
+2: dots does not contain enough variance to use quantile binning. Using standard binning instead. 
+3: words does not contain enough variance to use quantile binning. Using standard binning instead. 
+
+=== SHAP (IML Shapley) Rankings ===
+
+
+Feature                  Importance
+----------------------  -----------
+second_char_vowel         0.6754117
+first_char_vowel          0.0032577
+vowel_consonant_ratio     0.0023864
+dots                      0.0014146
+spaces                    0.0013507
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair                Spearman   Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME          NA                 1
+FEAT_IMP vs SHAP          NA                 1
+LIME vs SHAP               1                 2
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME   NA                        1
+FEAT_IMP vs SHAP   NA                        1
+LIME vs SHAP       NA                        1
+
+=== Top-1 Features ===
+FEAT_IMP: second_char_vowel
+LIME: second_char_vowel
+SHAP: second_char_vowel
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1           Feature_2           Agreement 
+-----------------  ------------------  ------------------  ----------
+FEAT_IMP vs LIME   second_char_vowel   second_char_vowel   TRUE      
+FEAT_IMP vs SHAP   second_char_vowel   second_char_vowel   TRUE      
+LIME vs SHAP       second_char_vowel   second_char_vowel   TRUE      
+
+Agreeing pairs: 3 / 3 (100.0%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: naive_bayes
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=badges2, Method=naive_bayes ===
+No scaling applied for method: naive_bayes
+Error: Only one model should be specified in tuneGrid with no resampling
+Execution halted
+FAILED - See error above
+
+
+========================================
+Model: PART
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=badges2, Method=PART ===
+No scaling applied for method: PART
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature              importance.05   importance   importance.95   permutation.error
+------------------  --------------  -----------  --------------  ------------------
+second_char_vowel        0.3918367    0.4217687       0.4353741           0.4217687
+length                   0.0000000    0.0000000       0.0000000           0.0000000
+even_odd                 0.0000000    0.0000000       0.0000000           0.0000000
+first_char_vowel         0.0000000    0.0000000       0.0000000           0.0000000
+vowels                   0.0000000    0.0000000       0.0000000           0.0000000
+Warning message:
+In initialize(...) :
+  Model error is 0, switching from compare='ratio' to compare='difference'
+
+=== LIME Rankings ===
+
+
+Feature                  Importance
+----------------------  -----------
+second_char_vowel         0.9991261
+spaces                    0.0000189
+vowel_consonant_ratio     0.0000130
+even_odd                  0.0000124
+consonants                0.0000124
+Warning messages:
+1: spaces does not contain enough variance to use quantile binning. Using standard binning instead. 
+2: dots does not contain enough variance to use quantile binning. Using standard binning instead. 
+3: words does not contain enough variance to use quantile binning. Using standard binning instead. 
+
+=== SHAP (IML Shapley) Rankings ===
+
+
+Feature              Importance
+------------------  -----------
+second_char_vowel         0.676
+consonants                0.000
+dots                      0.000
+even_odd                  0.000
+first_char_vowel          0.000
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME   NA                        1
+FEAT_IMP vs SHAP   NA                        1
+LIME vs SHAP       NA                        1
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME   NA                        1
+FEAT_IMP vs SHAP   NA                        1
+LIME vs SHAP       NA                        1
+
+=== Top-1 Features ===
+FEAT_IMP: second_char_vowel
+LIME: second_char_vowel
+SHAP: second_char_vowel
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1           Feature_2           Agreement 
+-----------------  ------------------  ------------------  ----------
+FEAT_IMP vs LIME   second_char_vowel   second_char_vowel   TRUE      
+FEAT_IMP vs SHAP   second_char_vowel   second_char_vowel   TRUE      
+LIME vs SHAP       second_char_vowel   second_char_vowel   TRUE      
+
+Agreeing pairs: 3 / 3 (100.0%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: rbfDDA
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=badges2, Method=rbfDDA ===
+Applying data scaling for method: rbfDDA
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature                  importance.05   importance   importance.95   permutation.error
+----------------------  --------------  -----------  --------------  ------------------
+second_char_vowel                 38.9         45.0            49.5           0.3061224
+first_char_vowel                  13.1         14.5            16.1           0.0986395
+consonants                         2.7          3.5             4.0           0.0238095
+vowel_consonant_ratio              2.6          3.5             4.0           0.0238095
+length                             2.0          2.5             3.0           0.0170068
+
+=== LIME Rankings ===
+
+
+Feature                  Importance
+----------------------  -----------
+first_char_vowel          1.3134369
+second_char_vowel         1.1775798
+vowel_consonant_ratio     0.4250128
+vowels                    0.3887826
+dots                      0.3369976
+Warning messages:
+1: spaces does not contain enough variance to use quantile binning. Using standard binning instead. 
+2: dots does not contain enough variance to use quantile binning. Using standard binning instead. 
+3: words does not contain enough variance to use quantile binning. Using standard binning instead. 
+
+=== SHAP (IML Shapley) Rankings ===
+
+
+Feature                  Importance
+----------------------  -----------
+second_char_vowel         1.4908302
+vowel_consonant_ratio     0.9996553
+first_char_vowel          0.7745460
+vowels                    0.4828882
+dots                      0.4743421
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair                Spearman   Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME        -1.0                 2
+FEAT_IMP vs SHAP         1.0                 2
+LIME vs SHAP            -0.5                 3
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME   NA                        0
+FEAT_IMP vs SHAP   NA                        1
+LIME vs SHAP       NA                        0
+
+=== Top-1 Features ===
+FEAT_IMP: second_char_vowel
+LIME: first_char_vowel
+SHAP: second_char_vowel
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1           Feature_2           Agreement 
+-----------------  ------------------  ------------------  ----------
+FEAT_IMP vs LIME   second_char_vowel   first_char_vowel    FALSE     
+FEAT_IMP vs SHAP   second_char_vowel   second_char_vowel   TRUE      
+LIME vs SHAP       first_char_vowel    second_char_vowel   FALSE     
+
+Agreeing pairs: 1 / 3 (33.3%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: rda
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=badges2, Method=rda ===
+Applying data scaling for method: rda
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+Error in get_featimp: Lapack routine dgesv: system is exactly singular: U[4,4] = 0 
+
+=== LIME Rankings ===
+Error in get_lime: Lapack routine dgesv: system is exactly singular: U[4,4] = 0 
+Warning messages:
+1: spaces does not contain enough variance to use quantile binning. Using standard binning instead. 
+2: dots does not contain enough variance to use quantile binning. Using standard binning instead. 
+3: words does not contain enough variance to use quantile binning. Using standard binning instead. 
+
+=== SHAP (IML Shapley) Rankings ===
+Error in get_shap: Lapack routine dgesv: system is exactly singular: U[4,4] = 0 
+
+=== Top-3 Spearman ===
+Not enough valid rankings (need at least 2, got 0 )
+
+=== Top-1 Spearman ===
+Not enough valid rankings (need at least 2, got 0 )
+
+=== Top-1 Feature Agreement Count ===
+Not enough valid rankings (need at least 2, got 0 )
+
+=== All Results Recorded ===
+
+
+========================================
+Model: rf
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=badges2, Method=rf ===
+No scaling applied for method: rf
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature              importance.05   importance   importance.95   permutation.error
+------------------  --------------  -----------  --------------  ------------------
+second_char_vowel        0.3755102    0.3945578       0.4136054           0.3945578
+length                   0.0000000    0.0000000       0.0000000           0.0000000
+even_odd                 0.0000000    0.0000000       0.0000000           0.0000000
+first_char_vowel         0.0000000    0.0000000       0.0000000           0.0000000
+vowels                   0.0000000    0.0000000       0.0000000           0.0000000
+Warning message:
+In initialize(...) :
+  Model error is 0, switching from compare='ratio' to compare='difference'
+
+=== LIME Rankings ===
+
+
+Feature                  Importance
+----------------------  -----------
+second_char_vowel         0.8557649
+first_char_vowel          0.1486997
+consonants                0.0159629
+length                    0.0128966
+vowel_consonant_ratio     0.0108384
+Warning messages:
+1: spaces does not contain enough variance to use quantile binning. Using standard binning instead. 
+2: dots does not contain enough variance to use quantile binning. Using standard binning instead. 
+3: words does not contain enough variance to use quantile binning. Using standard binning instead. 
+
+=== SHAP (IML Shapley) Rankings ===
+
+
+Feature                  Importance
+----------------------  -----------
+second_char_vowel          0.499600
+first_char_vowel           0.098612
+vowel_consonant_ratio      0.013500
+vowels                     0.010916
+length                     0.006772
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair                Spearman   Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME          NA                 1
+FEAT_IMP vs SHAP          NA                 1
+LIME vs SHAP               1                 2
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME   NA                        1
+FEAT_IMP vs SHAP   NA                        1
+LIME vs SHAP       NA                        1
+
+=== Top-1 Features ===
+FEAT_IMP: second_char_vowel
+LIME: second_char_vowel
+SHAP: second_char_vowel
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1           Feature_2           Agreement 
+-----------------  ------------------  ------------------  ----------
+FEAT_IMP vs LIME   second_char_vowel   second_char_vowel   TRUE      
+FEAT_IMP vs SHAP   second_char_vowel   second_char_vowel   TRUE      
+LIME vs SHAP       second_char_vowel   second_char_vowel   TRUE      
+
+Agreeing pairs: 3 / 3 (100.0%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: rpart
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=badges2, Method=rpart ===
+No scaling applied for method: rpart
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature              importance.05   importance   importance.95   permutation.error
+------------------  --------------  -----------  --------------  ------------------
+length                           1            1               1           0.2857143
+even_odd                         1            1               1           0.2857143
+first_char_vowel                 1            1               1           0.2857143
+second_char_vowel                1            1               1           0.2857143
+vowels                           1            1               1           0.2857143
+
+=== LIME Rankings ===
+Error in get_lime: Response is constant across permutations. Please check your model 
+Warning messages:
+1: spaces does not contain enough variance to use quantile binning. Using standard binning instead. 
+2: dots does not contain enough variance to use quantile binning. Using standard binning instead. 
+3: words does not contain enough variance to use quantile binning. Using standard binning instead. 
+
+=== SHAP (IML Shapley) Rankings ===
+
+
+Feature             Importance
+-----------------  -----------
+consonants                   0
+dots                         0
+even_odd                     0
+first_char_vowel             0
+length                       0
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs SHAP   NA                        1
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs SHAP   NA                        0
+
+=== Top-1 Features ===
+FEAT_IMP: length
+SHAP: consonants
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1   Feature_2    Agreement 
+-----------------  ----------  -----------  ----------
+FEAT_IMP vs SHAP   length      consonants   FALSE     
+
+Agreeing pairs: 0 / 1 (0.0%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: simpls
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=badges2, Method=simpls ===
+Applying data scaling for method: simpls
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature                  importance.05   importance   importance.95   permutation.error
+----------------------  --------------  -----------  --------------  ------------------
+second_char_vowel                110.2          117           122.8           0.3979592
+first_char_vowel                   7.2            9            11.0           0.0306122
+vowel_consonant_ratio              1.0            2             2.0           0.0068027
+length                             1.0            1             1.8           0.0034014
+even_odd                           1.0            1             1.0           0.0034014
+
+=== LIME Rankings ===
+
+
+Feature                  Importance
+----------------------  -----------
+second_char_vowel         0.3222773
+first_char_vowel          0.2043118
+consonants                0.0542815
+length                    0.0320896
+vowel_consonant_ratio     0.0154395
+Warning messages:
+1: spaces does not contain enough variance to use quantile binning. Using standard binning instead. 
+2: dots does not contain enough variance to use quantile binning. Using standard binning instead. 
+3: words does not contain enough variance to use quantile binning. Using standard binning instead. 
+
+=== SHAP (IML Shapley) Rankings ===
+
+
+Feature                  Importance
+----------------------  -----------
+second_char_vowel         0.2109925
+first_char_vowel          0.1809905
+consonants                0.0228796
+length                    0.0158861
+vowel_consonant_ratio     0.0123426
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair                Spearman   Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME           1                 2
+FEAT_IMP vs SHAP           1                 2
+LIME vs SHAP               1                 3
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME   NA                        1
+FEAT_IMP vs SHAP   NA                        1
+LIME vs SHAP       NA                        1
+
+=== Top-1 Features ===
+FEAT_IMP: second_char_vowel
+LIME: second_char_vowel
+SHAP: second_char_vowel
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1           Feature_2           Agreement 
+-----------------  ------------------  ------------------  ----------
+FEAT_IMP vs LIME   second_char_vowel   second_char_vowel   TRUE      
+FEAT_IMP vs SHAP   second_char_vowel   second_char_vowel   TRUE      
+LIME vs SHAP       second_char_vowel   second_char_vowel   TRUE      
+
+Agreeing pairs: 3 / 3 (100.0%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: svmLinear
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=badges2, Method=svmLinear ===
+Applying data scaling for method: svmLinear
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature              importance.05   importance   importance.95   permutation.error
+------------------  --------------  -----------  --------------  ------------------
+second_char_vowel        0.3918367    0.4217687       0.4353741           0.4217687
+length                   0.0000000    0.0000000       0.0000000           0.0000000
+even_odd                 0.0000000    0.0000000       0.0000000           0.0000000
+first_char_vowel         0.0000000    0.0000000       0.0000000           0.0000000
+vowels                   0.0000000    0.0000000       0.0000000           0.0000000
+Warning message:
+In initialize(...) :
+  Model error is 0, switching from compare='ratio' to compare='difference'
+
+=== LIME Rankings ===
+Error in get_lime: Response is constant across permutations. Please check your model 
+Warning messages:
+1: spaces does not contain enough variance to use quantile binning. Using standard binning instead. 
+2: dots does not contain enough variance to use quantile binning. Using standard binning instead. 
+3: words does not contain enough variance to use quantile binning. Using standard binning instead. 
+4: In method$prob(modelFit = modelFit, newdata = newdata, submodels = param) :
+  kernlab class probability calculations failed; returning NAs
+Warning messages:
+1: In method$prob(modelFit = modelFit, newdata = newdata, submodels = param) :
+  kernlab class probability calculations failed; returning NAs
+2: In method$prob(modelFit = modelFit, newdata = newdata, submodels = param) :
+  kernlab class probability calculations failed; returning NAs
+3: In method$prob(modelFit = modelFit, newdata = newdata, submodels = param) :
+  kernlab class probability calculations failed; returning NAs
+4: In method$prob(modelFit = modelFit, newdata = newdata, submodels = param) :
+  kernlab class probability calculations failed; returning NAs
+5: In method$prob(modelFit = modelFit, newdata = newdata, submodels = param) :
+  kernlab class probability calculations failed; returning NAs
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs SHAP   NA                        0
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs SHAP   NA                        0
+
+=== Top-1 Features ===
+FEAT_IMP: second_char_vowel
+SHAP: NA
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1           Feature_2   Agreement 
+-----------------  ------------------  ----------  ----------
+FEAT_IMP vs SHAP   second_char_vowel   NA          FALSE     
+
+Agreeing pairs: 0 / 1 (0.0%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: svmRadial
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=badges2, Method=svmRadial ===
+Applying data scaling for method: svmRadial
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature                  importance.05   importance   importance.95   permutation.error
+----------------------  --------------  -----------  --------------  ------------------
+second_char_vowel            0.3265306    0.3435374       0.3605442           0.3435374
+first_char_vowel             0.0326531    0.0408163       0.0523810           0.0408163
+vowel_consonant_ratio        0.0034014    0.0068027       0.0095238           0.0068027
+length                       0.0000000    0.0000000       0.0000000           0.0000000
+even_odd                     0.0000000    0.0000000       0.0000000           0.0000000
+Warning message:
+In initialize(...) :
+  Model error is 0, switching from compare='ratio' to compare='difference'
+
+=== LIME Rankings ===
+Error in get_lime: Response is constant across permutations. Please check your model 
+Warning messages:
+1: spaces does not contain enough variance to use quantile binning. Using standard binning instead. 
+2: dots does not contain enough variance to use quantile binning. Using standard binning instead. 
+3: words does not contain enough variance to use quantile binning. Using standard binning instead. 
+4: In method$prob(modelFit = modelFit, newdata = newdata, submodels = param) :
+  kernlab class probability calculations failed; returning NAs
+Warning messages:
+1: In method$prob(modelFit = modelFit, newdata = newdata, submodels = param) :
+  kernlab class probability calculations failed; returning NAs
+2: In method$prob(modelFit = modelFit, newdata = newdata, submodels = param) :
+  kernlab class probability calculations failed; returning NAs
+3: In method$prob(modelFit = modelFit, newdata = newdata, submodels = param) :
+  kernlab class probability calculations failed; returning NAs
+4: In method$prob(modelFit = modelFit, newdata = newdata, submodels = param) :
+  kernlab class probability calculations failed; returning NAs
+5: In method$prob(modelFit = modelFit, newdata = newdata, submodels = param) :
+  kernlab class probability calculations failed; returning NAs
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs SHAP   NA                        0
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs SHAP   NA                        0
+
+=== Top-1 Features ===
+FEAT_IMP: second_char_vowel
+SHAP: NA
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1           Feature_2   Agreement 
+-----------------  ------------------  ----------  ----------
+FEAT_IMP vs SHAP   second_char_vowel   NA          FALSE     
+
+Agreeing pairs: 0 / 1 (0.0%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: rfRules
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=badges2, Method=rfRules ===
+No scaling applied for method: rfRules
+Registered S3 method overwritten by 'RRF':
+  method      from        
+  plot.margin randomForest
+1684 rules (length<=2) were extracted from the first 500 trees.
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature              importance.05   importance   importance.95   permutation.error
+------------------  --------------  -----------  --------------  ------------------
+second_char_vowel        0.3659864     0.414966       0.4380952            0.414966
+length                   0.0000000     0.000000       0.0000000            0.000000
+even_odd                 0.0000000     0.000000       0.0000000            0.000000
+first_char_vowel         0.0000000     0.000000       0.0000000            0.000000
+vowels                   0.0000000     0.000000       0.0000000            0.000000
+Warning message:
+In initialize(...) :
+  Model error is 0, switching from compare='ratio' to compare='difference'
+
+=== LIME Rankings ===
+Error in get_lime: only classification models that produce probabilities are allowed 
+Warning messages:
+1: spaces does not contain enough variance to use quantile binning. Using standard binning instead. 
+2: dots does not contain enough variance to use quantile binning. Using standard binning instead. 
+3: words does not contain enough variance to use quantile binning. Using standard binning instead. 
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs SHAP   NA                        0
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs SHAP   NA                        0
+
+=== Top-1 Features ===
+FEAT_IMP: second_char_vowel
+SHAP: NA
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1           Feature_2   Agreement 
+-----------------  ------------------  ----------  ----------
+FEAT_IMP vs SHAP   second_char_vowel   NA          FALSE     
+
+Agreeing pairs: 0 / 1 (0.0%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: knn
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=badges2, Method=knn ===
+Applying data scaling for method: knn
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature              importance.05   importance   importance.95   permutation.error
+------------------  --------------  -----------  --------------  ------------------
+second_char_vowel             48.5         51.0            55.3           0.3469388
+first_char_vowel               6.7          9.0             9.9           0.0612245
+length                         1.0          1.5             1.5           0.0102041
+consonants                     1.0          1.5             2.0           0.0102041
+even_odd                       1.0          1.0             1.4           0.0068027
+
+=== LIME Rankings ===
+
+
+Feature                  Importance
+----------------------  -----------
+second_char_vowel         0.8062219
+first_char_vowel          0.5864260
+vowel_consonant_ratio     0.0666858
+vowels                    0.0171739
+consonants                0.0132463
+Warning messages:
+1: spaces does not contain enough variance to use quantile binning. Using standard binning instead. 
+2: dots does not contain enough variance to use quantile binning. Using standard binning instead. 
+3: words does not contain enough variance to use quantile binning. Using standard binning instead. 
+
+=== SHAP (IML Shapley) Rankings ===
+
+
+Feature                  Importance
+----------------------  -----------
+first_char_vowel          0.3604571
+second_char_vowel         0.3558262
+vowel_consonant_ratio     0.0653071
+vowels                    0.0157262
+consonants                0.0121299
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair                Spearman   Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME         1.0                 2
+FEAT_IMP vs SHAP        -1.0                 2
+LIME vs SHAP             0.5                 3
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME   NA                        1
+FEAT_IMP vs SHAP   NA                        0
+LIME vs SHAP       NA                        0
+
+=== Top-1 Features ===
+FEAT_IMP: second_char_vowel
+LIME: second_char_vowel
+SHAP: first_char_vowel
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1           Feature_2           Agreement 
+-----------------  ------------------  ------------------  ----------
+FEAT_IMP vs LIME   second_char_vowel   second_char_vowel   TRUE      
+FEAT_IMP vs SHAP   second_char_vowel   first_char_vowel    FALSE     
+LIME vs SHAP       second_char_vowel   first_char_vowel    FALSE     
+
+Agreeing pairs: 1 / 3 (33.3%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: bayesglm
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=badges2, Method=bayesglm ===
+Applying data scaling for method: bayesglm
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature              importance.05   importance   importance.95   permutation.error
+------------------  --------------  -----------  --------------  ------------------
+second_char_vowel        0.3918367    0.4217687       0.4353741           0.4217687
+length                   0.0000000    0.0000000       0.0000000           0.0000000
+even_odd                 0.0000000    0.0000000       0.0000000           0.0000000
+first_char_vowel         0.0000000    0.0000000       0.0000000           0.0000000
+vowels                   0.0000000    0.0000000       0.0000000           0.0000000
+Warning message:
+In initialize(...) :
+  Model error is 0, switching from compare='ratio' to compare='difference'
+
+=== LIME Rankings ===
+
+
+Feature                  Importance
+----------------------  -----------
+second_char_vowel         0.9967942
+first_char_vowel          0.0002060
+consonants                0.0001038
+length                    0.0000488
+vowel_consonant_ratio     0.0000367
+Warning messages:
+1: spaces does not contain enough variance to use quantile binning. Using standard binning instead. 
+2: dots does not contain enough variance to use quantile binning. Using standard binning instead. 
+3: words does not contain enough variance to use quantile binning. Using standard binning instead. 
+
+=== SHAP (IML Shapley) Rankings ===
+
+
+Feature                  Importance
+----------------------  -----------
+second_char_vowel         0.6744465
+first_char_vowel          0.0001976
+consonants                0.0000512
+length                    0.0000311
+vowel_consonant_ratio     0.0000301
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair                Spearman   Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME          NA                 1
+FEAT_IMP vs SHAP          NA                 1
+LIME vs SHAP               1                 3
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME   NA                        1
+FEAT_IMP vs SHAP   NA                        1
+LIME vs SHAP       NA                        1
+
+=== Top-1 Features ===
+FEAT_IMP: second_char_vowel
+LIME: second_char_vowel
+SHAP: second_char_vowel
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1           Feature_2           Agreement 
+-----------------  ------------------  ------------------  ----------
+FEAT_IMP vs LIME   second_char_vowel   second_char_vowel   TRUE      
+FEAT_IMP vs SHAP   second_char_vowel   second_char_vowel   TRUE      
+LIME vs SHAP       second_char_vowel   second_char_vowel   TRUE      
+
+Agreeing pairs: 3 / 3 (100.0%)
+
+=== All Results Recorded ===
+

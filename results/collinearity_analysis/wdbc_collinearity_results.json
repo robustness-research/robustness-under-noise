@@ -1,0 +1,608 @@
+{
+  "dataset": "wdbc",
+  "file_path": "datasets/csv/wdbc.csv",
+  "n_rows": 569,
+  "n_columns": 31,
+  "n_numeric_features": 31,
+  "numeric_features": [
+    "V1",
+    "V2",
+    "V3",
+    "V4",
+    "V5",
+    "V6",
+    "V7",
+    "V8",
+    "V9",
+    "V10",
+    "V11",
+    "V12",
+    "V13",
+    "V14",
+    "V15",
+    "V16",
+    "V17",
+    "V18",
+    "V19",
+    "V20",
+    "V21",
+    "V22",
+    "V23",
+    "V24",
+    "V25",
+    "V26",
+    "V27",
+    "V28",
+    "V29",
+    "V30",
+    "class"
+  ],
+  "correlation_matrix_shape": [
+    31,
+    31
+  ],
+  "high_correlations": [
+    {
+      "feature1": "V1",
+      "feature2": "V3",
+      "correlation": 0.9978552814938109
+    },
+    {
+      "feature1": "V1",
+      "feature2": "V4",
+      "correlation": 0.9873571700566127
+    },
+    {
+      "feature1": "V1",
+      "feature2": "V8",
+      "correlation": 0.8225285223871786
+    },
+    {
+      "feature1": "V1",
+      "feature2": "V14",
+      "correlation": 0.7358636632128178
+    },
+    {
+      "feature1": "V1",
+      "feature2": "V21",
+      "correlation": 0.9695389726112055
+    },
+    {
+      "feature1": "V1",
+      "feature2": "V23",
+      "correlation": 0.9651365139559871
+    },
+    {
+      "feature1": "V1",
+      "feature2": "V24",
+      "correlation": 0.9410824595860461
+    },
+    {
+      "feature1": "V1",
+      "feature2": "V28",
+      "correlation": 0.7442141978674661
+    },
+    {
+      "feature1": "V1",
+      "feature2": "class",
+      "correlation": 0.7300285113754559
+    },
+    {
+      "feature1": "V2",
+      "feature2": "V22",
+      "correlation": 0.912044588840421
+    },
+    {
+      "feature1": "V3",
+      "feature2": "V4",
+      "correlation": 0.9865068039913907
+    },
+    {
+      "feature1": "V3",
+      "feature2": "V7",
+      "correlation": 0.7161356497306797
+    },
+    {
+      "feature1": "V3",
+      "feature2": "V8",
+      "correlation": 0.8509770412528191
+    },
+    {
+      "feature1": "V3",
+      "feature2": "V14",
+      "correlation": 0.7449826941190683
+    },
+    {
+      "feature1": "V3",
+      "feature2": "V21",
+      "correlation": 0.9694763634663146
+    },
+    {
+      "feature1": "V3",
+      "feature2": "V23",
+      "correlation": 0.9703868870426394
+    },
+    {
+      "feature1": "V3",
+      "feature2": "V24",
+      "correlation": 0.9415498080023068
+    },
+    {
+      "feature1": "V3",
+      "feature2": "V28",
+      "correlation": 0.7712407893605497
+    },
+    {
+      "feature1": "V3",
+      "feature2": "class",
+      "correlation": 0.7426355297258335
+    },
+    {
+      "feature1": "V4",
+      "feature2": "V8",
+      "correlation": 0.8232688686524342
+    },
+    {
+      "feature1": "V4",
+      "feature2": "V11",
+      "correlation": 0.7325622269972968
+    },
+    {
+      "feature1": "V4",
+      "feature2": "V13",
+      "correlation": 0.7266283277906844
+    },
+    {
+      "feature1": "V4",
+      "feature2": "V14",
+      "correlation": 0.8000859212343201
+    },
+    {
+      "feature1": "V4",
+      "feature2": "V21",
+      "correlation": 0.9627460860470841
+    },
+    {
+      "feature1": "V4",
+      "feature2": "V23",
+      "correlation": 0.9591195743552645
+    },
+    {
+      "feature1": "V4",
+      "feature2": "V24",
+      "correlation": 0.9592133256498998
+    },
+    {
+      "feature1": "V4",
+      "feature2": "V28",
+      "correlation": 0.7220166262603579
+    },
+    {
+      "feature1": "V4",
+      "feature2": "class",
+      "correlation": 0.7089838365853903
+    },
+    {
+      "feature1": "V5",
+      "feature2": "V25",
+      "correlation": 0.8053241954943627
+    },
+    {
+      "feature1": "V6",
+      "feature2": "V7",
+      "correlation": 0.8831206691261446
+    },
+    {
+      "feature1": "V6",
+      "feature2": "V8",
+      "correlation": 0.831135043133698
+    },
+    {
+      "feature1": "V6",
+      "feature2": "V16",
+      "correlation": 0.7387217896603929
+    },
+    {
+      "feature1": "V6",
+      "feature2": "V26",
+      "correlation": 0.8658090398022629
+    },
+    {
+      "feature1": "V6",
+      "feature2": "V27",
+      "correlation": 0.8162752498000281
+    },
+    {
+      "feature1": "V6",
+      "feature2": "V28",
+      "correlation": 0.8155732235690644
+    },
+    {
+      "feature1": "V7",
+      "feature2": "V8",
+      "correlation": 0.9213910252536055
+    },
+    {
+      "feature1": "V7",
+      "feature2": "V23",
+      "correlation": 0.7295649168733588
+    },
+    {
+      "feature1": "V7",
+      "feature2": "V26",
+      "correlation": 0.7549680148341508
+    },
+    {
+      "feature1": "V7",
+      "feature2": "V27",
+      "correlation": 0.8841026370787098
+    },
+    {
+      "feature1": "V7",
+      "feature2": "V28",
+      "correlation": 0.8613230300534898
+    },
+    {
+      "feature1": "V8",
+      "feature2": "V13",
+      "correlation": 0.710649871613898
+    },
+    {
+      "feature1": "V8",
+      "feature2": "V21",
+      "correlation": 0.8303176311186159
+    },
+    {
+      "feature1": "V8",
+      "feature2": "V23",
+      "correlation": 0.8559231281343119
+    },
+    {
+      "feature1": "V8",
+      "feature2": "V24",
+      "correlation": 0.809629619909618
+    },
+    {
+      "feature1": "V8",
+      "feature2": "V27",
+      "correlation": 0.7523994975749643
+    },
+    {
+      "feature1": "V8",
+      "feature2": "V28",
+      "correlation": 0.9101553142985918
+    },
+    {
+      "feature1": "V8",
+      "feature2": "class",
+      "correlation": 0.7766138400204369
+    },
+    {
+      "feature1": "V10",
+      "feature2": "V30",
+      "correlation": 0.7672967792384361
+    },
+    {
+      "feature1": "V11",
+      "feature2": "V13",
+      "correlation": 0.9727936770160764
+    },
+    {
+      "feature1": "V11",
+      "feature2": "V14",
+      "correlation": 0.951830112110991
+    },
+    {
+      "feature1": "V11",
+      "feature2": "V21",
+      "correlation": 0.715065195135185
+    },
+    {
+      "feature1": "V11",
+      "feature2": "V23",
+      "correlation": 0.7196838036650044
+    },
+    {
+      "feature1": "V11",
+      "feature2": "V24",
+      "correlation": 0.7515484761266196
+    },
+    {
+      "feature1": "V13",
+      "feature2": "V14",
+      "correlation": 0.9376554069544157
+    },
+    {
+      "feature1": "V13",
+      "feature2": "V23",
+      "correlation": 0.7210313099890175
+    },
+    {
+      "feature1": "V13",
+      "feature2": "V24",
+      "correlation": 0.7307129731302829
+    },
+    {
+      "feature1": "V14",
+      "feature2": "V21",
+      "correlation": 0.7573731889240164
+    },
+    {
+      "feature1": "V14",
+      "feature2": "V23",
+      "correlation": 0.7612126360687592
+    },
+    {
+      "feature1": "V14",
+      "feature2": "V24",
+      "correlation": 0.8114079609317274
+    },
+    {
+      "feature1": "V16",
+      "feature2": "V17",
+      "correlation": 0.801268337211751
+    },
+    {
+      "feature1": "V16",
+      "feature2": "V18",
+      "correlation": 0.7440826676953253
+    },
+    {
+      "feature1": "V16",
+      "feature2": "V20",
+      "correlation": 0.8032689093733462
+    },
+    {
+      "feature1": "V17",
+      "feature2": "V18",
+      "correlation": 0.7718039805525471
+    },
+    {
+      "feature1": "V17",
+      "feature2": "V20",
+      "correlation": 0.7273722048223362
+    },
+    {
+      "feature1": "V21",
+      "feature2": "V23",
+      "correlation": 0.993707916102949
+    },
+    {
+      "feature1": "V21",
+      "feature2": "V24",
+      "correlation": 0.9840145644590742
+    },
+    {
+      "feature1": "V21",
+      "feature2": "V28",
+      "correlation": 0.7874238517122407
+    },
+    {
+      "feature1": "V21",
+      "feature2": "class",
+      "correlation": 0.7764537785950398
+    },
+    {
+      "feature1": "V23",
+      "feature2": "V24",
+      "correlation": 0.9775780914063871
+    },
+    {
+      "feature1": "V23",
+      "feature2": "V28",
+      "correlation": 0.8163221016875439
+    },
+    {
+      "feature1": "V23",
+      "feature2": "class",
+      "correlation": 0.7829141371737591
+    },
+    {
+      "feature1": "V24",
+      "feature2": "V28",
+      "correlation": 0.7474188023228167
+    },
+    {
+      "feature1": "V24",
+      "feature2": "class",
+      "correlation": 0.7338250349210501
+    },
+    {
+      "feature1": "V26",
+      "feature2": "V27",
+      "correlation": 0.8922608987764685
+    },
+    {
+      "feature1": "V26",
+      "feature2": "V28",
+      "correlation": 0.8010803646352528
+    },
+    {
+      "feature1": "V26",
+      "feature2": "V30",
+      "correlation": 0.8104548563116117
+    },
+    {
+      "feature1": "V27",
+      "feature2": "V28",
+      "correlation": 0.8554338603439982
+    },
+    {
+      "feature1": "V28",
+      "feature2": "class",
+      "correlation": 0.7935660171412696
+    }
+  ],
+  "n_high_correlations": 78,
+  "vif_mean": 4620.907039625281,
+  "vif_median": 203.04247260866725,
+  "vif_max": 63631.78672340169,
+  "vif_values": [
+    {
+      "feature": "V1",
+      "VIF": 63631.78672340169
+    },
+    {
+      "feature": "V3",
+      "VIF": 58219.70531477412
+    },
+    {
+      "feature": "V21",
+      "VIF": 9923.57250683876
+    },
+    {
+      "feature": "V23",
+      "VIF": 4491.464581805834
+    },
+    {
+      "feature": "V4",
+      "VIF": 1294.5397335075163
+    },
+    {
+      "feature": "V24",
+      "VIF": 1162.3110409723915
+    },
+    {
+      "feature": "V10",
+      "VIF": 636.2876580641255
+    },
+    {
+      "feature": "V30",
+      "VIF": 426.62069361992025
+    },
+    {
+      "feature": "V5",
+      "VIF": 393.4035865954259
+    },
+    {
+      "feature": "V25",
+      "VIF": 375.6155789657211
+    },
+    {
+      "feature": "V22",
+      "VIF": 343.594731492657
+    },
+    {
+      "feature": "V2",
+      "VIF": 251.1582408310471
+    },
+    {
+      "feature": "V11",
+      "VIF": 237.44452263460548
+    },
+    {
+      "feature": "V29",
+      "VIF": 219.5094705657679
+    },
+    {
+      "feature": "V13",
+      "VIF": 211.46553385200616
+    },
+    {
+      "feature": "V6",
+      "VIF": 203.04247260866725
+    },
+    {
+      "feature": "V9",
+      "VIF": 184.4445342006466
+    },
+    {
+      "feature": "V7",
+      "VIF": 158.24764560091185
+    },
+    {
+      "feature": "V8",
+      "VIF": 154.7313675360551
+    },
+    {
+      "feature": "V28",
+      "VIF": 148.75576640204122
+    },
+    {
+      "feature": "V26",
+      "VIF": 132.88435485617407
+    },
+    {
+      "feature": "V27",
+      "VIF": 86.68124360643026
+    },
+    {
+      "feature": "V14",
+      "VIF": 72.58983522893602
+    },
+    {
+      "feature": "V18",
+      "VIF": 54.07663985577034
+    },
+    {
+      "feature": "V16",
+      "VIF": 44.934289622902156
+    },
+    {
+      "feature": "class",
+      "VIF": 39.722303591451805
+    },
+    {
+      "feature": "V19",
+      "VIF": 37.19891626981957
+    },
+    {
+      "feature": "V17",
+      "VIF": 33.696785206849896
+    },
+    {
+      "feature": "V20",
+      "VIF": 27.532696476639444
+    },
+    {
+      "feature": "V15",
+      "VIF": 26.423617953859846
+    },
+    {
+      "feature": "V12",
+      "VIF": 24.675841444947356
+    }
+  ],
+  "n_high_vif": 31,
+  "condition_number": 323.93380168154414,
+  "condition_number_interpretation": "High - strong multicollinearity",
+  "condition_index": 323.93380168149037,
+  "eigenvalues": [
+    13.917771101110372,
+    5.726352269948956,
+    2.846849400098543,
+    1.9983631516619957,
+    1.6590784223056936,
+    1.2075079188481004,
+    0.6847191027713161,
+    0.4848554339049189,
+    0.4168948184441495,
+    0.3508936184743293,
+    0.30485541193725263,
+    0.2909858501206937,
+    0.26101036540272715,
+    0.21227561516620638,
+    0.14857618642614812,
+    0.08816257051005226,
+    0.07986016972005677,
+    0.059035327528706036,
+    0.0514619105323176,
+    0.04821595460649199,
+    0.030706273480955292,
+    0.029526648381264238,
+    0.027344689942247067,
+    0.02428358349129655,
+    0.01755221290644397,
+    0.015473335428267955,
+    0.008056144446670495,
+    0.00686973171688897,
+    0.001588467207293223,
+    0.0007416787814315802,
+    0.00013263469826997853
+  ],
+  "min_eigenvalue": 0.00013263469826997853,
+  "max_eigenvalue": 13.917771101110372,
+  "n_small_eigenvalues": 5,
+  "has_multicollinearity": true,
+  "severity_score": 20
+}

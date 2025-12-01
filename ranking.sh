@@ -13,8 +13,8 @@ arguments=("qsar-biodeg" "tic-tac-toe" "vowel" "waveform-5000" "wdbc" "wilt") #d
 arguments2=("C5.0" "ctree" "fda" "gbm" "gcvEarth" "JRip" "lvq" "mlpML" "multinom" "naive_bayes" "PART" "rbfDDA" "rda" "rf" "rpart" "simpls" "svmLinear" "svmRadial" "rfRules" "knn" "bayesglm") # ML techniques
 
 for dataset in "${arguments[@]}"; do
-    nohup Rscript markdown/Feature_Colinearity.R "$dataset" > output/rankings/"colinearity_output_${dataset}.log" 2>&1 &
+    #nohup Rscript Feature_Colinearity.R "$dataset" > output/rankings/"colinearity_output_${dataset}.log" 2>&1 &
     for method in "${arguments2[@]}"; do
-        nohup Rscript markdown/Feature_Ranking.R "$dataset" "$method" > output/rankings/"ranking_output_${dataset}_${method}.log" 2>&1 &
+        nohup Rscript Feature_Ranking.R "$dataset" "$method" > output/rankings/"ranking_output_${dataset}_${method}.log" 2>&1 &
     done
 done

@@ -1,0 +1,1593 @@
+Dataset: diabetes
+Generated: Mon Nov 24 10:36:01 PM CET 2025
+======================================
+
+
+========================================
+Model: C5.0
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=diabetes, Method=C5.0 ===
+No scaling applied for method: C5.0
+Error: Only one model should be specified in tuneGrid with no resampling
+Execution halted
+FAILED - See error above
+
+
+========================================
+Model: ctree
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=diabetes, Method=ctree ===
+No scaling applied for method: ctree
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature    importance.05   importance   importance.95   permutation.error
+--------  --------------  -----------  --------------  ------------------
+plas            1.744186     1.825581        1.918605           0.4088542
+mass            1.090698     1.145349        1.183721           0.2565104
+preg            1.000000     1.000000        1.000000           0.2239583
+pres            1.000000     1.000000        1.000000           0.2239583
+skin            1.000000     1.000000        1.000000           0.2239583
+
+=== LIME Rankings ===
+
+
+Feature    Importance
+--------  -----------
+plas        0.2704681
+age         0.0866180
+mass        0.0646323
+preg        0.0113283
+pres        0.0085861
+
+=== SHAP (IML Shapley) Rankings ===
+
+
+Feature    Importance
+--------  -----------
+plas        0.1704621
+mass        0.0699377
+age         0.0606565
+preg        0.0059802
+insu        0.0000000
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair                Spearman   Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME         1.0                 2
+FEAT_IMP vs SHAP         1.0                 2
+LIME vs SHAP             0.5                 3
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME   NA                        1
+FEAT_IMP vs SHAP   NA                        1
+LIME vs SHAP       NA                        1
+
+=== Top-1 Features ===
+FEAT_IMP: plas
+LIME: plas
+SHAP: plas
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1   Feature_2   Agreement 
+-----------------  ----------  ----------  ----------
+FEAT_IMP vs LIME   plas        plas        TRUE      
+FEAT_IMP vs SHAP   plas        plas        TRUE      
+LIME vs SHAP       plas        plas        TRUE      
+
+Agreeing pairs: 3 / 3 (100.0%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: fda
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=diabetes, Method=fda ===
+No scaling applied for method: fda
+Loading required package: earth
+Loading required package: Formula
+Loading required package: plotmo
+Loading required package: plotrix
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature    importance.05   importance   importance.95   permutation.error
+--------  --------------  -----------  --------------  ------------------
+plas            1.612245     1.663265        1.726531           0.4244792
+preg            1.000000     1.000000        1.000000           0.2552083
+pres            1.000000     1.000000        1.000000           0.2552083
+skin            1.000000     1.000000        1.000000           0.2552083
+insu            1.000000     1.000000        1.000000           0.2552083
+
+=== LIME Rankings ===
+
+
+Feature    Importance
+--------  -----------
+plas        0.3773215
+mass        0.0098284
+pres        0.0071245
+age         0.0067168
+insu        0.0061016
+
+=== SHAP (IML Shapley) Rankings ===
+
+
+Feature    Importance
+--------  -----------
+plas        0.2706972
+age         0.0000000
+insu        0.0000000
+mass        0.0000000
+pedi        0.0000000
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair                Spearman   Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME           1                 2
+FEAT_IMP vs SHAP          NA                 1
+LIME vs SHAP              NA                 1
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME   NA                        1
+FEAT_IMP vs SHAP   NA                        1
+LIME vs SHAP       NA                        1
+
+=== Top-1 Features ===
+FEAT_IMP: plas
+LIME: plas
+SHAP: plas
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1   Feature_2   Agreement 
+-----------------  ----------  ----------  ----------
+FEAT_IMP vs LIME   plas        plas        TRUE      
+FEAT_IMP vs SHAP   plas        plas        TRUE      
+LIME vs SHAP       plas        plas        TRUE      
+
+Agreeing pairs: 3 / 3 (100.0%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: gbm
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=diabetes, Method=gbm ===
+No scaling applied for method: gbm
+Iter   TrainDeviance   ValidDeviance   StepSize   Improve
+     1        1.2603            -nan     0.1000    0.0162
+     2        1.2317            -nan     0.1000    0.0137
+     3        1.2106            -nan     0.1000    0.0099
+     4        1.1868            -nan     0.1000    0.0091
+     5        1.1697            -nan     0.1000    0.0079
+     6        1.1531            -nan     0.1000    0.0071
+     7        1.1342            -nan     0.1000    0.0074
+     8        1.1184            -nan     0.1000    0.0059
+     9        1.1042            -nan     0.1000    0.0049
+    10        1.0934            -nan     0.1000    0.0045
+    20        1.0082            -nan     0.1000    0.0015
+    40        0.9243            -nan     0.1000   -0.0004
+    50        0.9002            -nan     0.1000   -0.0011
+
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature    importance.05   importance   importance.95   permutation.error
+--------  --------------  -----------  --------------  ------------------
+plas           1.5903614     1.632530        1.742169           0.3528646
+mass           1.0963855     1.102410        1.126506           0.2382812
+age            1.0204819     1.036145        1.078313           0.2239583
+pres           1.0072289     1.018072        1.022892           0.2200521
+pedi           0.9975904     1.018072        1.030120           0.2200521
+
+=== LIME Rankings ===
+
+
+Feature    Importance
+--------  -----------
+plas        0.2363647
+mass        0.1250706
+age         0.0664718
+pedi        0.0527925
+preg        0.0263341
+
+=== SHAP (IML Shapley) Rankings ===
+
+
+Feature    Importance
+--------  -----------
+plas        0.1704086
+mass        0.1016986
+age         0.0501174
+pedi        0.0216772
+preg        0.0206101
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair                Spearman   Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME           1                 3
+FEAT_IMP vs SHAP           1                 3
+LIME vs SHAP               1                 3
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME   NA                        1
+FEAT_IMP vs SHAP   NA                        1
+LIME vs SHAP       NA                        1
+
+=== Top-1 Features ===
+FEAT_IMP: plas
+LIME: plas
+SHAP: plas
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1   Feature_2   Agreement 
+-----------------  ----------  ----------  ----------
+FEAT_IMP vs LIME   plas        plas        TRUE      
+FEAT_IMP vs SHAP   plas        plas        TRUE      
+LIME vs SHAP       plas        plas        TRUE      
+
+Agreeing pairs: 3 / 3 (100.0%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: gcvEarth
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=diabetes, Method=gcvEarth ===
+No scaling applied for method: gcvEarth
+Loading required package: earth
+Loading required package: Formula
+Loading required package: plotmo
+Loading required package: plotrix
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature    importance.05   importance   importance.95   permutation.error
+--------  --------------  -----------  --------------  ------------------
+plas            1.625641     1.705128        1.723077           0.3463542
+age             1.152564     1.185897        1.223077           0.2408854
+mass            1.121795     1.166667        1.173077           0.2369792
+pres            1.051282     1.057692        1.080769           0.2148438
+pedi            1.020513     1.057692        1.094872           0.2148438
+
+=== LIME Rankings ===
+
+
+Feature    Importance
+--------  -----------
+plas        0.2259953
+mass        0.1890134
+age         0.1025695
+pedi        0.0310703
+pres        0.0301286
+
+=== SHAP (IML Shapley) Rankings ===
+
+
+Feature    Importance
+--------  -----------
+plas        0.1949765
+mass        0.1124732
+pedi        0.0806397
+age         0.0802216
+pres        0.0262911
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair                Spearman   Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME         0.5                 3
+FEAT_IMP vs SHAP         1.0                 2
+LIME vs SHAP             1.0                 2
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME   NA                        1
+FEAT_IMP vs SHAP   NA                        1
+LIME vs SHAP       NA                        1
+
+=== Top-1 Features ===
+FEAT_IMP: plas
+LIME: plas
+SHAP: plas
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1   Feature_2   Agreement 
+-----------------  ----------  ----------  ----------
+FEAT_IMP vs LIME   plas        plas        TRUE      
+FEAT_IMP vs SHAP   plas        plas        TRUE      
+LIME vs SHAP       plas        plas        TRUE      
+
+Agreeing pairs: 3 / 3 (100.0%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: JRip
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=diabetes, Method=JRip ===
+No scaling applied for method: JRip
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature    importance.05   importance   importance.95   permutation.error
+--------  --------------  -----------  --------------  ------------------
+plas            1.722424     1.745454        1.786667           0.3750000
+age             1.129697     1.157576        1.207273           0.2486979
+mass            1.115152     1.133333        1.150303           0.2434896
+preg            1.000000     1.000000        1.000000           0.2148438
+pres            1.000000     1.000000        1.000000           0.2148438
+
+=== LIME Rankings ===
+
+
+Feature    Importance
+--------  -----------
+plas        0.2646950
+age         0.0576966
+mass        0.0346225
+pres        0.0080502
+skin        0.0060115
+
+=== SHAP (IML Shapley) Rankings ===
+
+
+Feature    Importance
+--------  -----------
+plas        0.1499643
+age         0.0793165
+mass        0.0498034
+insu        0.0000000
+pedi        0.0000000
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair                Spearman   Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME           1                 3
+FEAT_IMP vs SHAP           1                 3
+LIME vs SHAP               1                 3
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME   NA                        1
+FEAT_IMP vs SHAP   NA                        1
+LIME vs SHAP       NA                        1
+
+=== Top-1 Features ===
+FEAT_IMP: plas
+LIME: plas
+SHAP: plas
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1   Feature_2   Agreement 
+-----------------  ----------  ----------  ----------
+FEAT_IMP vs LIME   plas        plas        TRUE      
+FEAT_IMP vs SHAP   plas        plas        TRUE      
+LIME vs SHAP       plas        plas        TRUE      
+
+Agreeing pairs: 3 / 3 (100.0%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: lvq
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=diabetes, Method=lvq ===
+Applying data scaling for method: lvq
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature    importance.05   importance   importance.95   permutation.error
+--------  --------------  -----------  --------------  ------------------
+plas            1.165258     1.187793        1.215024           0.3294271
+insu            1.033803     1.056338        1.069484           0.2929688
+mass            1.015024     1.042253        1.046948           0.2890625
+pedi            1.024413     1.032864        1.061972           0.2864583
+skin            1.004695     1.014085        1.066667           0.2812500
+
+=== LIME Rankings ===
+Error in get_lime: only classification models that produce probabilities are allowed 
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs SHAP   NA                        0
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs SHAP   NA                        0
+
+=== Top-1 Features ===
+FEAT_IMP: plas
+SHAP: NA
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1   Feature_2   Agreement 
+-----------------  ----------  ----------  ----------
+FEAT_IMP vs SHAP   plas        NA          FALSE     
+
+Agreeing pairs: 0 / 1 (0.0%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: mlpML
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=diabetes, Method=mlpML ===
+Applying data scaling for method: mlpML
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+Warning message:
+At least one layer had zero units and were removed. The new structure is 1 
+
+=== IML Rankings ===
+
+
+feature    importance.05   importance   importance.95   permutation.error
+--------  --------------  -----------  --------------  ------------------
+plas            1.677457     1.687861        1.716763           0.3802083
+mass            1.164162     1.225434        1.248555           0.2760417
+preg            1.026590     1.104046        1.136416           0.2486979
+pedi            1.018497     1.052023        1.052023           0.2369792
+pres            1.009249     1.046243        1.084393           0.2356771
+
+=== LIME Rankings ===
+
+
+Feature    Importance
+--------  -----------
+plas        0.2532096
+mass        0.1547879
+pedi        0.1040125
+preg        0.0898950
+skin        0.0512121
+
+=== SHAP (IML Shapley) Rankings ===
+
+
+Feature    Importance
+--------  -----------
+plas        0.1860184
+mass        0.0656942
+pedi        0.0493675
+preg        0.0468338
+skin        0.0179773
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair                Spearman   Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME           1                 2
+FEAT_IMP vs SHAP           1                 2
+LIME vs SHAP               1                 3
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME   NA                        1
+FEAT_IMP vs SHAP   NA                        1
+LIME vs SHAP       NA                        1
+
+=== Top-1 Features ===
+FEAT_IMP: plas
+LIME: plas
+SHAP: plas
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1   Feature_2   Agreement 
+-----------------  ----------  ----------  ----------
+FEAT_IMP vs LIME   plas        plas        TRUE      
+FEAT_IMP vs SHAP   plas        plas        TRUE      
+LIME vs SHAP       plas        plas        TRUE      
+
+Agreeing pairs: 3 / 3 (100.0%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: multinom
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=diabetes, Method=multinom ===
+Applying data scaling for method: multinom
+# weights:  10 (9 variable)
+initial  value 532.337035 
+iter  10 value 369.653338
+final  value 361.722689 
+converged
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature    importance.05   importance   importance.95   permutation.error
+--------  --------------  -----------  --------------  ------------------
+plas           1.5928144     1.688623        1.724551           0.3671875
+mass           1.1005988     1.149701        1.216767           0.2500000
+preg           0.9964072     1.095808        1.135329           0.2382812
+pedi           1.0479042     1.053892        1.105389           0.2291667
+insu           1.0203593     1.035928        1.045509           0.2252604
+
+=== LIME Rankings ===
+
+
+Feature    Importance
+--------  -----------
+plas        0.3021436
+mass        0.1909504
+pedi        0.1190626
+preg        0.0866278
+insu        0.0394844
+
+=== SHAP (IML Shapley) Rankings ===
+
+
+Feature    Importance
+--------  -----------
+plas        0.2078496
+mass        0.0863646
+pedi        0.0820407
+preg        0.0522890
+pres        0.0191624
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair                Spearman   Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME           1                 2
+FEAT_IMP vs SHAP           1                 2
+LIME vs SHAP               1                 3
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME   NA                        1
+FEAT_IMP vs SHAP   NA                        1
+LIME vs SHAP       NA                        1
+
+=== Top-1 Features ===
+FEAT_IMP: plas
+LIME: plas
+SHAP: plas
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1   Feature_2   Agreement 
+-----------------  ----------  ----------  ----------
+FEAT_IMP vs LIME   plas        plas        TRUE      
+FEAT_IMP vs SHAP   plas        plas        TRUE      
+LIME vs SHAP       plas        plas        TRUE      
+
+Agreeing pairs: 3 / 3 (100.0%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: naive_bayes
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=diabetes, Method=naive_bayes ===
+No scaling applied for method: naive_bayes
+Error: Only one model should be specified in tuneGrid with no resampling
+Execution halted
+FAILED - See error above
+
+
+========================================
+Model: PART
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=diabetes, Method=PART ===
+No scaling applied for method: PART
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature    importance.05   importance   importance.95   permutation.error
+--------  --------------  -----------  --------------  ------------------
+plas            1.891667     1.944444        2.031944           0.3645833
+age             1.454167     1.486111        1.529167           0.2786458
+mass            1.216667     1.256944        1.304167           0.2356771
+preg            1.115278     1.159722        1.191667           0.2174479
+pres            1.098611     1.125000        1.159722           0.2109375
+
+=== LIME Rankings ===
+
+
+Feature    Importance
+--------  -----------
+plas        0.3067462
+age         0.1331982
+mass        0.1302790
+pres        0.0317419
+pedi        0.0160239
+
+=== SHAP (IML Shapley) Rankings ===
+
+
+Feature    Importance
+--------  -----------
+plas        0.2211734
+mass        0.0684644
+age         0.0667913
+pres        0.0622338
+pedi        0.0116375
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair                Spearman   Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME         1.0                 3
+FEAT_IMP vs SHAP         0.5                 3
+LIME vs SHAP             0.5                 3
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME   NA                        1
+FEAT_IMP vs SHAP   NA                        1
+LIME vs SHAP       NA                        1
+
+=== Top-1 Features ===
+FEAT_IMP: plas
+LIME: plas
+SHAP: plas
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1   Feature_2   Agreement 
+-----------------  ----------  ----------  ----------
+FEAT_IMP vs LIME   plas        plas        TRUE      
+FEAT_IMP vs SHAP   plas        plas        TRUE      
+LIME vs SHAP       plas        plas        TRUE      
+
+Agreeing pairs: 3 / 3 (100.0%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: rbfDDA
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=diabetes, Method=rbfDDA ===
+Applying data scaling for method: rbfDDA
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature    importance.05   importance   importance.95   permutation.error
+--------  --------------  -----------  --------------  ------------------
+plas            4.195238     4.404762        4.676190           0.2408854
+preg            2.971429     3.047619        3.152381           0.1666667
+mass            2.895238     3.047619        3.228571           0.1666667
+age             2.733333     2.833333        2.928571           0.1549479
+pedi            2.595238     2.785714        2.900000           0.1523438
+
+=== LIME Rankings ===
+
+
+Feature    Importance
+--------  -----------
+mass        0.1512090
+pres        0.1346135
+age         0.1169106
+pedi        0.1102357
+skin        0.1025655
+
+=== SHAP (IML Shapley) Rankings ===
+
+
+Feature    Importance
+--------  -----------
+plas        0.6551184
+preg        0.4839885
+mass        0.4387105
+age         0.3640713
+pres        0.3487228
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair                Spearman   Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME          NA                 1
+FEAT_IMP vs SHAP           1                 3
+LIME vs SHAP              NA                 1
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME   NA                        0
+FEAT_IMP vs SHAP   NA                        1
+LIME vs SHAP       NA                        0
+
+=== Top-1 Features ===
+FEAT_IMP: plas
+LIME: mass
+SHAP: plas
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1   Feature_2   Agreement 
+-----------------  ----------  ----------  ----------
+FEAT_IMP vs LIME   plas        mass        FALSE     
+FEAT_IMP vs SHAP   plas        plas        TRUE      
+LIME vs SHAP       mass        plas        FALSE     
+
+Agreeing pairs: 1 / 3 (33.3%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: rda
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=diabetes, Method=rda ===
+Applying data scaling for method: rda
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature    importance.05   importance   importance.95   permutation.error
+--------  --------------  -----------  --------------  ------------------
+plas            1.446409     1.469613        1.509392           0.3463542
+preg            1.113812     1.132597        1.160221           0.2669271
+mass            1.080663     1.104972        1.135912           0.2604167
+pedi            1.038674     1.071823        1.076243           0.2526042
+pres            1.030939     1.055249        1.091713           0.2486979
+
+=== LIME Rankings ===
+
+
+Feature    Importance
+--------  -----------
+pedi        0.1844751
+insu        0.1655620
+plas        0.1459787
+mass        0.1160468
+preg        0.1064163
+
+=== SHAP (IML Shapley) Rankings ===
+
+
+Feature    Importance
+--------  -----------
+plas        0.1933812
+pedi        0.1321188
+mass        0.0528182
+preg        0.0428515
+pres        0.0268080
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair                Spearman   Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME          NA                 1
+FEAT_IMP vs SHAP           1                 2
+LIME vs SHAP              -1                 2
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME   NA                        0
+FEAT_IMP vs SHAP   NA                        1
+LIME vs SHAP       NA                        0
+
+=== Top-1 Features ===
+FEAT_IMP: plas
+LIME: pedi
+SHAP: plas
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1   Feature_2   Agreement 
+-----------------  ----------  ----------  ----------
+FEAT_IMP vs LIME   plas        pedi        FALSE     
+FEAT_IMP vs SHAP   plas        plas        TRUE      
+LIME vs SHAP       pedi        plas        FALSE     
+
+Agreeing pairs: 1 / 3 (33.3%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: rf
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=diabetes, Method=rf ===
+No scaling applied for method: rf
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature    importance.05   importance   importance.95   permutation.error
+--------  --------------  -----------  --------------  ------------------
+plas           0.1822917    0.1992188       0.2111979           0.1992188
+mass           0.0851562    0.0950521       0.0994792           0.0950521
+age            0.0760417    0.0820312       0.0934896           0.0820312
+pedi           0.0552083    0.0677083       0.0713542           0.0677083
+preg           0.0270833    0.0312500       0.0453125           0.0312500
+Warning message:
+In initialize(...) :
+  Model error is 0, switching from compare='ratio' to compare='difference'
+
+=== LIME Rankings ===
+
+
+Feature    Importance
+--------  -----------
+plas        0.1729826
+mass        0.1137977
+age         0.0640701
+pedi        0.0634150
+preg        0.0385464
+
+=== SHAP (IML Shapley) Rankings ===
+
+
+Feature    Importance
+--------  -----------
+plas         0.195568
+mass         0.087432
+age          0.075564
+pedi         0.048308
+preg         0.033856
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair                Spearman   Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME           1                 3
+FEAT_IMP vs SHAP           1                 3
+LIME vs SHAP               1                 3
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME   NA                        1
+FEAT_IMP vs SHAP   NA                        1
+LIME vs SHAP       NA                        1
+
+=== Top-1 Features ===
+FEAT_IMP: plas
+LIME: plas
+SHAP: plas
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1   Feature_2   Agreement 
+-----------------  ----------  ----------  ----------
+FEAT_IMP vs LIME   plas        plas        TRUE      
+FEAT_IMP vs SHAP   plas        plas        TRUE      
+LIME vs SHAP       plas        plas        TRUE      
+
+Agreeing pairs: 3 / 3 (100.0%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: rpart
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=diabetes, Method=rpart ===
+No scaling applied for method: rpart
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature    importance.05   importance   importance.95   permutation.error
+--------  --------------  -----------  --------------  ------------------
+preg                   1            1               1           0.3489583
+plas                   1            1               1           0.3489583
+pres                   1            1               1           0.3489583
+skin                   1            1               1           0.3489583
+insu                   1            1               1           0.3489583
+
+=== LIME Rankings ===
+Error in get_lime: Response is constant across permutations. Please check your model 
+
+=== SHAP (IML Shapley) Rankings ===
+
+
+Feature    Importance
+--------  -----------
+age                 0
+insu                0
+mass                0
+pedi                0
+plas                0
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs SHAP   NA                        0
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs SHAP   NA                        0
+
+=== Top-1 Features ===
+FEAT_IMP: preg
+SHAP: age
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1   Feature_2   Agreement 
+-----------------  ----------  ----------  ----------
+FEAT_IMP vs SHAP   preg        age         FALSE     
+
+Agreeing pairs: 0 / 1 (0.0%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: simpls
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=diabetes, Method=simpls ===
+Applying data scaling for method: simpls
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature    importance.05   importance   importance.95   permutation.error
+--------  --------------  -----------  --------------  ------------------
+plas           1.2482051    1.2717949       1.2851282           0.3229167
+pedi           0.9682051    1.0102564       1.0328205           0.2565104
+preg           0.9753846    1.0051282       1.0420513           0.2552083
+mass           0.9907692    1.0000000       1.0789744           0.2539062
+pres           0.9620513    0.9846154       0.9887179           0.2500000
+
+=== LIME Rankings ===
+
+
+Feature    Importance
+--------  -----------
+plas        0.1197859
+mass        0.0730346
+pedi        0.0588838
+preg        0.0429030
+insu        0.0359661
+
+=== SHAP (IML Shapley) Rankings ===
+
+
+Feature    Importance
+--------  -----------
+plas        0.0632152
+pedi        0.0346398
+mass        0.0314570
+preg        0.0235575
+age         0.0156678
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair                Spearman   Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME         1.0                 2
+FEAT_IMP vs SHAP         1.0                 2
+LIME vs SHAP             0.5                 3
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME   NA                        1
+FEAT_IMP vs SHAP   NA                        1
+LIME vs SHAP       NA                        1
+
+=== Top-1 Features ===
+FEAT_IMP: plas
+LIME: plas
+SHAP: plas
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1   Feature_2   Agreement 
+-----------------  ----------  ----------  ----------
+FEAT_IMP vs LIME   plas        plas        TRUE      
+FEAT_IMP vs SHAP   plas        plas        TRUE      
+LIME vs SHAP       plas        plas        TRUE      
+
+Agreeing pairs: 3 / 3 (100.0%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: svmLinear
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=diabetes, Method=svmLinear ===
+Applying data scaling for method: svmLinear
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature    importance.05   importance   importance.95   permutation.error
+--------  --------------  -----------  --------------  ------------------
+plas           1.5528736    1.6436782       1.6689655           0.3723958
+mass           1.0494253    1.0804598       1.1781609           0.2447917
+preg           0.9724138    1.0459770       1.0632184           0.2369792
+pedi           1.0011494    1.0172414       1.0264368           0.2304688
+insu           0.9827586    0.9885057       0.9977011           0.2239583
+
+=== LIME Rankings ===
+Error in get_lime: Response is constant across permutations. Please check your model 
+Warning message:
+In method$prob(modelFit = modelFit, newdata = newdata, submodels = param) :
+  kernlab class probability calculations failed; returning NAs
+Warning messages:
+1: In method$prob(modelFit = modelFit, newdata = newdata, submodels = param) :
+  kernlab class probability calculations failed; returning NAs
+2: In method$prob(modelFit = modelFit, newdata = newdata, submodels = param) :
+  kernlab class probability calculations failed; returning NAs
+3: In method$prob(modelFit = modelFit, newdata = newdata, submodels = param) :
+  kernlab class probability calculations failed; returning NAs
+4: In method$prob(modelFit = modelFit, newdata = newdata, submodels = param) :
+  kernlab class probability calculations failed; returning NAs
+5: In method$prob(modelFit = modelFit, newdata = newdata, submodels = param) :
+  kernlab class probability calculations failed; returning NAs
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs SHAP   NA                        0
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs SHAP   NA                        0
+
+=== Top-1 Features ===
+FEAT_IMP: plas
+SHAP: NA
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1   Feature_2   Agreement 
+-----------------  ----------  ----------  ----------
+FEAT_IMP vs SHAP   plas        NA          FALSE     
+
+Agreeing pairs: 0 / 1 (0.0%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: svmRadial
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=diabetes, Method=svmRadial ===
+Applying data scaling for method: svmRadial
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature    importance.05   importance   importance.95   permutation.error
+--------  --------------  -----------  --------------  ------------------
+plas            1.619048     1.687075        1.794558           0.3229167
+mass            1.050340     1.156463        1.214966           0.2213542
+pedi            1.117007     1.122449        1.161905           0.2148438
+age             1.072109     1.122449        1.134694           0.2148438
+insu            1.081633     1.095238        1.107483           0.2096354
+
+=== LIME Rankings ===
+Error in get_lime: Response is constant across permutations. Please check your model 
+Warning message:
+In method$prob(modelFit = modelFit, newdata = newdata, submodels = param) :
+  kernlab class probability calculations failed; returning NAs
+Warning messages:
+1: In method$prob(modelFit = modelFit, newdata = newdata, submodels = param) :
+  kernlab class probability calculations failed; returning NAs
+2: In method$prob(modelFit = modelFit, newdata = newdata, submodels = param) :
+  kernlab class probability calculations failed; returning NAs
+3: In method$prob(modelFit = modelFit, newdata = newdata, submodels = param) :
+  kernlab class probability calculations failed; returning NAs
+4: In method$prob(modelFit = modelFit, newdata = newdata, submodels = param) :
+  kernlab class probability calculations failed; returning NAs
+5: In method$prob(modelFit = modelFit, newdata = newdata, submodels = param) :
+  kernlab class probability calculations failed; returning NAs
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs SHAP   NA                        0
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs SHAP   NA                        0
+
+=== Top-1 Features ===
+FEAT_IMP: plas
+SHAP: NA
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1   Feature_2   Agreement 
+-----------------  ----------  ----------  ----------
+FEAT_IMP vs SHAP   plas        NA          FALSE     
+
+Agreeing pairs: 0 / 1 (0.0%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: rfRules
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=diabetes, Method=rfRules ===
+No scaling applied for method: rfRules
+Registered S3 method overwritten by 'RRF':
+  method      from        
+  plot.margin randomForest
+2000 rules (length<=2) were extracted from the first 500 trees.
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature    importance.05   importance   importance.95   permutation.error
+--------  --------------  -----------  --------------  ------------------
+plas            1.359006     1.453416        1.493168           0.3046875
+mass            1.203727     1.254658        1.326708           0.2630208
+age             1.111801     1.136646        1.212422           0.2382812
+preg            1.057143     1.093168        1.109317           0.2291667
+pedi            1.026087     1.093168        1.114286           0.2291667
+
+=== LIME Rankings ===
+Error in get_lime: only classification models that produce probabilities are allowed 
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs SHAP   NA                        0
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs SHAP   NA                        0
+
+=== Top-1 Features ===
+FEAT_IMP: plas
+SHAP: NA
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1   Feature_2   Agreement 
+-----------------  ----------  ----------  ----------
+FEAT_IMP vs SHAP   plas        NA          FALSE     
+
+Agreeing pairs: 0 / 1 (0.0%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: knn
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=diabetes, Method=knn ===
+Applying data scaling for method: knn
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature    importance.05   importance   importance.95   permutation.error
+--------  --------------  -----------  --------------  ------------------
+plas            1.539535     1.666667        1.744186           0.2799479
+mass            1.234109     1.325581        1.358140           0.2226562
+preg            1.246512     1.317829        1.382946           0.2213542
+age             1.217054     1.271318        1.310078           0.2135417
+skin            1.144186     1.217054        1.237209           0.2044271
+
+=== LIME Rankings ===
+
+
+Feature    Importance
+--------  -----------
+plas        0.1971152
+mass        0.1185871
+preg        0.0745583
+pedi        0.0700059
+insu        0.0575682
+
+=== SHAP (IML Shapley) Rankings ===
+
+
+Feature    Importance
+--------  -----------
+plas        0.1437333
+pedi        0.0676667
+age         0.0513333
+mass        0.0492000
+preg        0.0372000
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair                Spearman   Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME           1                 3
+FEAT_IMP vs SHAP          NA                 1
+LIME vs SHAP              NA                 1
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME   NA                        1
+FEAT_IMP vs SHAP   NA                        1
+LIME vs SHAP       NA                        1
+
+=== Top-1 Features ===
+FEAT_IMP: plas
+LIME: plas
+SHAP: plas
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1   Feature_2   Agreement 
+-----------------  ----------  ----------  ----------
+FEAT_IMP vs LIME   plas        plas        TRUE      
+FEAT_IMP vs SHAP   plas        plas        TRUE      
+LIME vs SHAP       plas        plas        TRUE      
+
+Agreeing pairs: 3 / 3 (100.0%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: bayesglm
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=diabetes, Method=bayesglm ===
+Applying data scaling for method: bayesglm
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature    importance.05   importance   importance.95   permutation.error
+--------  --------------  -----------  --------------  ------------------
+plas            1.602410     1.692771        1.732530           0.3658854
+mass            1.106024     1.156627        1.226506           0.2500000
+preg            1.003615     1.102410        1.142169           0.2382812
+pedi            1.055422     1.066265        1.113253           0.2304688
+insu            1.026506     1.036145        1.051807           0.2239583
+
+=== LIME Rankings ===
+
+
+Feature    Importance
+--------  -----------
+plas        0.3013503
+mass        0.1896582
+pedi        0.1182758
+preg        0.0860640
+insu        0.0382474
+
+=== SHAP (IML Shapley) Rankings ===
+
+
+Feature    Importance
+--------  -----------
+plas        0.2066139
+mass        0.0859728
+pedi        0.0814308
+preg        0.0519076
+pres        0.0188681
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair                Spearman   Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME           1                 2
+FEAT_IMP vs SHAP           1                 2
+LIME vs SHAP               1                 3
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME   NA                        1
+FEAT_IMP vs SHAP   NA                        1
+LIME vs SHAP       NA                        1
+
+=== Top-1 Features ===
+FEAT_IMP: plas
+LIME: plas
+SHAP: plas
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1   Feature_2   Agreement 
+-----------------  ----------  ----------  ----------
+FEAT_IMP vs LIME   plas        plas        TRUE      
+FEAT_IMP vs SHAP   plas        plas        TRUE      
+LIME vs SHAP       plas        plas        TRUE      
+
+Agreeing pairs: 3 / 3 (100.0%)
+
+=== All Results Recorded ===
+

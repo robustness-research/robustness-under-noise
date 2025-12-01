@@ -1,0 +1,833 @@
+{
+  "dataset": "kc1",
+  "file_path": "datasets/csv/kc1.csv",
+  "n_rows": 2109,
+  "n_columns": 22,
+  "n_numeric_features": 21,
+  "numeric_features": [
+    "loc",
+    "v_g",
+    "ev_g",
+    "iv_g",
+    "n",
+    "v",
+    "l",
+    "d",
+    "i",
+    "e",
+    "b",
+    "t",
+    "lOCode",
+    "lOComment",
+    "lOBlank",
+    "locCodeAndComment",
+    "uniq_Op",
+    "uniq_Opnd",
+    "total_Op",
+    "total_Opnd",
+    "branchCount"
+  ],
+  "correlation_matrix_shape": [
+    21,
+    21
+  ],
+  "high_correlations": [
+    {
+      "feature1": "loc",
+      "feature2": "v_g",
+      "correlation": 0.9026191882612447
+    },
+    {
+      "feature1": "loc",
+      "feature2": "ev_g",
+      "correlation": 0.7188332565811526
+    },
+    {
+      "feature1": "loc",
+      "feature2": "iv_g",
+      "correlation": 0.8951670385378584
+    },
+    {
+      "feature1": "loc",
+      "feature2": "n",
+      "correlation": 0.9485097366979287
+    },
+    {
+      "feature1": "loc",
+      "feature2": "v",
+      "correlation": 0.9385155991758563
+    },
+    {
+      "feature1": "loc",
+      "feature2": "d",
+      "correlation": 0.8468442794841167
+    },
+    {
+      "feature1": "loc",
+      "feature2": "i",
+      "correlation": 0.8028324780382047
+    },
+    {
+      "feature1": "loc",
+      "feature2": "e",
+      "correlation": 0.8213379311680375
+    },
+    {
+      "feature1": "loc",
+      "feature2": "b",
+      "correlation": 0.9183587369955305
+    },
+    {
+      "feature1": "loc",
+      "feature2": "t",
+      "correlation": 0.8213373246849156
+    },
+    {
+      "feature1": "loc",
+      "feature2": "lOCode",
+      "correlation": 0.9854910962489218
+    },
+    {
+      "feature1": "loc",
+      "feature2": "lOBlank",
+      "correlation": 0.8244268954304187
+    },
+    {
+      "feature1": "loc",
+      "feature2": "uniq_Op",
+      "correlation": 0.7834900789535345
+    },
+    {
+      "feature1": "loc",
+      "feature2": "uniq_Opnd",
+      "correlation": 0.9157151901497586
+    },
+    {
+      "feature1": "loc",
+      "feature2": "total_Op",
+      "correlation": 0.9465971243822046
+    },
+    {
+      "feature1": "loc",
+      "feature2": "total_Opnd",
+      "correlation": 0.9441668016903477
+    },
+    {
+      "feature1": "loc",
+      "feature2": "branchCount",
+      "correlation": 0.9011075032726361
+    },
+    {
+      "feature1": "v_g",
+      "feature2": "ev_g",
+      "correlation": 0.819964614206839
+    },
+    {
+      "feature1": "v_g",
+      "feature2": "iv_g",
+      "correlation": 0.9656894444920697
+    },
+    {
+      "feature1": "v_g",
+      "feature2": "n",
+      "correlation": 0.9225107241357683
+    },
+    {
+      "feature1": "v_g",
+      "feature2": "v",
+      "correlation": 0.9155561421994258
+    },
+    {
+      "feature1": "v_g",
+      "feature2": "d",
+      "correlation": 0.8683409733691261
+    },
+    {
+      "feature1": "v_g",
+      "feature2": "e",
+      "correlation": 0.862413005898803
+    },
+    {
+      "feature1": "v_g",
+      "feature2": "b",
+      "correlation": 0.8968670580556232
+    },
+    {
+      "feature1": "v_g",
+      "feature2": "t",
+      "correlation": 0.8624127693192397
+    },
+    {
+      "feature1": "v_g",
+      "feature2": "lOCode",
+      "correlation": 0.9185195501370794
+    },
+    {
+      "feature1": "v_g",
+      "feature2": "lOBlank",
+      "correlation": 0.7314364741093067
+    },
+    {
+      "feature1": "v_g",
+      "feature2": "uniq_Op",
+      "correlation": 0.7686207625071552
+    },
+    {
+      "feature1": "v_g",
+      "feature2": "uniq_Opnd",
+      "correlation": 0.8279062364708005
+    },
+    {
+      "feature1": "v_g",
+      "feature2": "total_Op",
+      "correlation": 0.9251758078482835
+    },
+    {
+      "feature1": "v_g",
+      "feature2": "total_Opnd",
+      "correlation": 0.9109885660417374
+    },
+    {
+      "feature1": "v_g",
+      "feature2": "branchCount",
+      "correlation": 0.9986080128863948
+    },
+    {
+      "feature1": "ev_g",
+      "feature2": "iv_g",
+      "correlation": 0.7757398988237435
+    },
+    {
+      "feature1": "ev_g",
+      "feature2": "n",
+      "correlation": 0.7462532643590796
+    },
+    {
+      "feature1": "ev_g",
+      "feature2": "v",
+      "correlation": 0.7535686475272889
+    },
+    {
+      "feature1": "ev_g",
+      "feature2": "e",
+      "correlation": 0.7388638192554297
+    },
+    {
+      "feature1": "ev_g",
+      "feature2": "b",
+      "correlation": 0.7388531461745508
+    },
+    {
+      "feature1": "ev_g",
+      "feature2": "t",
+      "correlation": 0.7388638341153965
+    },
+    {
+      "feature1": "ev_g",
+      "feature2": "lOCode",
+      "correlation": 0.7232550373936716
+    },
+    {
+      "feature1": "ev_g",
+      "feature2": "total_Op",
+      "correlation": 0.7478245481324253
+    },
+    {
+      "feature1": "ev_g",
+      "feature2": "total_Opnd",
+      "correlation": 0.7378801817901558
+    },
+    {
+      "feature1": "ev_g",
+      "feature2": "branchCount",
+      "correlation": 0.8197910059587662
+    },
+    {
+      "feature1": "iv_g",
+      "feature2": "n",
+      "correlation": 0.8937677776074509
+    },
+    {
+      "feature1": "iv_g",
+      "feature2": "v",
+      "correlation": 0.8849204524069575
+    },
+    {
+      "feature1": "iv_g",
+      "feature2": "d",
+      "correlation": 0.8153579021305749
+    },
+    {
+      "feature1": "iv_g",
+      "feature2": "e",
+      "correlation": 0.8072867692462626
+    },
+    {
+      "feature1": "iv_g",
+      "feature2": "b",
+      "correlation": 0.8669886686303081
+    },
+    {
+      "feature1": "iv_g",
+      "feature2": "t",
+      "correlation": 0.8072865262182561
+    },
+    {
+      "feature1": "iv_g",
+      "feature2": "lOCode",
+      "correlation": 0.9169197863979813
+    },
+    {
+      "feature1": "iv_g",
+      "feature2": "uniq_Op",
+      "correlation": 0.7297528247017212
+    },
+    {
+      "feature1": "iv_g",
+      "feature2": "uniq_Opnd",
+      "correlation": 0.8034060602403621
+    },
+    {
+      "feature1": "iv_g",
+      "feature2": "total_Op",
+      "correlation": 0.9017516963961052
+    },
+    {
+      "feature1": "iv_g",
+      "feature2": "total_Opnd",
+      "correlation": 0.873884916939941
+    },
+    {
+      "feature1": "iv_g",
+      "feature2": "branchCount",
+      "correlation": 0.9647333260566909
+    },
+    {
+      "feature1": "n",
+      "feature2": "v",
+      "correlation": 0.9949563978400988
+    },
+    {
+      "feature1": "n",
+      "feature2": "d",
+      "correlation": 0.8915855427243818
+    },
+    {
+      "feature1": "n",
+      "feature2": "i",
+      "correlation": 0.8267826474913037
+    },
+    {
+      "feature1": "n",
+      "feature2": "e",
+      "correlation": 0.9082114176043458
+    },
+    {
+      "feature1": "n",
+      "feature2": "b",
+      "correlation": 0.9737113509539094
+    },
+    {
+      "feature1": "n",
+      "feature2": "t",
+      "correlation": 0.9082109775258391
+    },
+    {
+      "feature1": "n",
+      "feature2": "lOCode",
+      "correlation": 0.9610503083214567
+    },
+    {
+      "feature1": "n",
+      "feature2": "lOBlank",
+      "correlation": 0.7775792195276084
+    },
+    {
+      "feature1": "n",
+      "feature2": "uniq_Op",
+      "correlation": 0.8094956804594511
+    },
+    {
+      "feature1": "n",
+      "feature2": "uniq_Opnd",
+      "correlation": 0.9458798648533894
+    },
+    {
+      "feature1": "n",
+      "feature2": "total_Op",
+      "correlation": 0.9981462393504876
+    },
+    {
+      "feature1": "n",
+      "feature2": "total_Opnd",
+      "correlation": 0.9951618820839006
+    },
+    {
+      "feature1": "n",
+      "feature2": "branchCount",
+      "correlation": 0.9238688579855724
+    },
+    {
+      "feature1": "v",
+      "feature2": "d",
+      "correlation": 0.8601607283927905
+    },
+    {
+      "feature1": "v",
+      "feature2": "i",
+      "correlation": 0.7998573058363158
+    },
+    {
+      "feature1": "v",
+      "feature2": "e",
+      "correlation": 0.9349303991510066
+    },
+    {
+      "feature1": "v",
+      "feature2": "b",
+      "correlation": 0.9789578561559846
+    },
+    {
+      "feature1": "v",
+      "feature2": "t",
+      "correlation": 0.9349300842204556
+    },
+    {
+      "feature1": "v",
+      "feature2": "lOCode",
+      "correlation": 0.9496836233397625
+    },
+    {
+      "feature1": "v",
+      "feature2": "lOBlank",
+      "correlation": 0.7721015684968122
+    },
+    {
+      "feature1": "v",
+      "feature2": "uniq_Op",
+      "correlation": 0.7711585960223524
+    },
+    {
+      "feature1": "v",
+      "feature2": "uniq_Opnd",
+      "correlation": 0.931094151177157
+    },
+    {
+      "feature1": "v",
+      "feature2": "total_Op",
+      "correlation": 0.9920459440136783
+    },
+    {
+      "feature1": "v",
+      "feature2": "total_Opnd",
+      "correlation": 0.9918660389637683
+    },
+    {
+      "feature1": "v",
+      "feature2": "branchCount",
+      "correlation": 0.9173833344565938
+    },
+    {
+      "feature1": "d",
+      "feature2": "e",
+      "correlation": 0.7789985603126065
+    },
+    {
+      "feature1": "d",
+      "feature2": "b",
+      "correlation": 0.8410168395288526
+    },
+    {
+      "feature1": "d",
+      "feature2": "t",
+      "correlation": 0.778997869435021
+    },
+    {
+      "feature1": "d",
+      "feature2": "lOCode",
+      "correlation": 0.8586353507002304
+    },
+    {
+      "feature1": "d",
+      "feature2": "lOBlank",
+      "correlation": 0.7325242125824254
+    },
+    {
+      "feature1": "d",
+      "feature2": "uniq_Op",
+      "correlation": 0.932446723858637
+    },
+    {
+      "feature1": "d",
+      "feature2": "uniq_Opnd",
+      "correlation": 0.8440607118746566
+    },
+    {
+      "feature1": "d",
+      "feature2": "total_Op",
+      "correlation": 0.8896219725509302
+    },
+    {
+      "feature1": "d",
+      "feature2": "total_Opnd",
+      "correlation": 0.8877675776434187
+    },
+    {
+      "feature1": "d",
+      "feature2": "branchCount",
+      "correlation": 0.8696585376359754
+    },
+    {
+      "feature1": "i",
+      "feature2": "b",
+      "correlation": 0.7809462904668159
+    },
+    {
+      "feature1": "i",
+      "feature2": "lOCode",
+      "correlation": 0.8142573093170993
+    },
+    {
+      "feature1": "i",
+      "feature2": "uniq_Op",
+      "correlation": 0.7163861022440746
+    },
+    {
+      "feature1": "i",
+      "feature2": "uniq_Opnd",
+      "correlation": 0.9250887949395447
+    },
+    {
+      "feature1": "i",
+      "feature2": "total_Op",
+      "correlation": 0.8240815024752801
+    },
+    {
+      "feature1": "i",
+      "feature2": "total_Opnd",
+      "correlation": 0.82465474458338
+    },
+    {
+      "feature1": "e",
+      "feature2": "b",
+      "correlation": 0.9155762907003696
+    },
+    {
+      "feature1": "e",
+      "feature2": "t",
+      "correlation": 0.9999999993905164
+    },
+    {
+      "feature1": "e",
+      "feature2": "lOCode",
+      "correlation": 0.833694672474052
+    },
+    {
+      "feature1": "e",
+      "feature2": "uniq_Opnd",
+      "correlation": 0.7713661062550179
+    },
+    {
+      "feature1": "e",
+      "feature2": "total_Op",
+      "correlation": 0.9035759948201815
+    },
+    {
+      "feature1": "e",
+      "feature2": "total_Opnd",
+      "correlation": 0.9085894406327966
+    },
+    {
+      "feature1": "e",
+      "feature2": "branchCount",
+      "correlation": 0.8661952987545026
+    },
+    {
+      "feature1": "b",
+      "feature2": "t",
+      "correlation": 0.9155830493936649
+    },
+    {
+      "feature1": "b",
+      "feature2": "lOCode",
+      "correlation": 0.9299659300999846
+    },
+    {
+      "feature1": "b",
+      "feature2": "lOBlank",
+      "correlation": 0.758482246734725
+    },
+    {
+      "feature1": "b",
+      "feature2": "uniq_Op",
+      "correlation": 0.751686442269481
+    },
+    {
+      "feature1": "b",
+      "feature2": "uniq_Opnd",
+      "correlation": 0.9109054544079218
+    },
+    {
+      "feature1": "b",
+      "feature2": "total_Op",
+      "correlation": 0.9708872457655388
+    },
+    {
+      "feature1": "b",
+      "feature2": "total_Opnd",
+      "correlation": 0.9708525008339055
+    },
+    {
+      "feature1": "b",
+      "feature2": "branchCount",
+      "correlation": 0.8984448853395115
+    },
+    {
+      "feature1": "t",
+      "feature2": "lOCode",
+      "correlation": 0.8336942301876537
+    },
+    {
+      "feature1": "t",
+      "feature2": "uniq_Opnd",
+      "correlation": 0.7713654289082628
+    },
+    {
+      "feature1": "t",
+      "feature2": "total_Op",
+      "correlation": 0.9035755563833332
+    },
+    {
+      "feature1": "t",
+      "feature2": "total_Opnd",
+      "correlation": 0.9085890363174874
+    },
+    {
+      "feature1": "t",
+      "feature2": "branchCount",
+      "correlation": 0.866195040360815
+    },
+    {
+      "feature1": "lOCode",
+      "feature2": "lOBlank",
+      "correlation": 0.7700391508228496
+    },
+    {
+      "feature1": "lOCode",
+      "feature2": "uniq_Op",
+      "correlation": 0.7939773200783049
+    },
+    {
+      "feature1": "lOCode",
+      "feature2": "uniq_Opnd",
+      "correlation": 0.9192568122660022
+    },
+    {
+      "feature1": "lOCode",
+      "feature2": "total_Op",
+      "correlation": 0.9611871834361685
+    },
+    {
+      "feature1": "lOCode",
+      "feature2": "total_Opnd",
+      "correlation": 0.9533044904189532
+    },
+    {
+      "feature1": "lOCode",
+      "feature2": "branchCount",
+      "correlation": 0.9168748586221327
+    },
+    {
+      "feature1": "lOBlank",
+      "feature2": "uniq_Opnd",
+      "correlation": 0.7705919703962973
+    },
+    {
+      "feature1": "lOBlank",
+      "feature2": "total_Op",
+      "correlation": 0.7684399707074061
+    },
+    {
+      "feature1": "lOBlank",
+      "feature2": "total_Opnd",
+      "correlation": 0.7862555301496476
+    },
+    {
+      "feature1": "lOBlank",
+      "feature2": "branchCount",
+      "correlation": 0.7296414229733476
+    },
+    {
+      "feature1": "uniq_Op",
+      "feature2": "uniq_Opnd",
+      "correlation": 0.8492272561048155
+    },
+    {
+      "feature1": "uniq_Op",
+      "feature2": "total_Op",
+      "correlation": 0.8093065011284706
+    },
+    {
+      "feature1": "uniq_Op",
+      "feature2": "total_Opnd",
+      "correlation": 0.8034415289520408
+    },
+    {
+      "feature1": "uniq_Op",
+      "feature2": "branchCount",
+      "correlation": 0.769750837673077
+    },
+    {
+      "feature1": "uniq_Opnd",
+      "feature2": "total_Op",
+      "correlation": 0.93720739465012
+    },
+    {
+      "feature1": "uniq_Opnd",
+      "feature2": "total_Opnd",
+      "correlation": 0.9524682590790727
+    },
+    {
+      "feature1": "uniq_Opnd",
+      "feature2": "branchCount",
+      "correlation": 0.8293438259388646
+    },
+    {
+      "feature1": "total_Op",
+      "feature2": "total_Opnd",
+      "correlation": 0.987337865626014
+    },
+    {
+      "feature1": "total_Op",
+      "feature2": "branchCount",
+      "correlation": 0.9264244796802205
+    },
+    {
+      "feature1": "total_Opnd",
+      "feature2": "branchCount",
+      "correlation": 0.9125119782260717
+    }
+  ],
+  "n_high_correlations": 135,
+  "vif_mean": 7606526744.04868,
+  "vif_median": 119.11194413678186,
+  "vif_max": 79120872574.38876,
+  "vif_values": [
+    {
+      "feature": "t",
+      "VIF": 79120872574.38876
+    },
+    {
+      "feature": "e",
+      "VIF": 79120872574.38876
+    },
+    {
+      "feature": "n",
+      "VIF": 976933963.2132349
+    },
+    {
+      "feature": "total_Op",
+      "VIF": 375866932.89356685
+    },
+    {
+      "feature": "total_Opnd",
+      "VIF": 142506844.4290817
+    },
+    {
+      "feature": "v",
+      "VIF": 4133.892754625461
+    },
+    {
+      "feature": "b",
+      "VIF": 3076.029388033803
+    },
+    {
+      "feature": "v_g",
+      "VIF": 464.62597799073006
+    },
+    {
+      "feature": "branchCount",
+      "VIF": 398.59529032686777
+    },
+    {
+      "feature": "uniq_Opnd",
+      "VIF": 203.935128452989
+    },
+    {
+      "feature": "loc",
+      "VIF": 119.11194413678186
+    },
+    {
+      "feature": "lOCode",
+      "VIF": 97.1535149425331
+    },
+    {
+      "feature": "d",
+      "VIF": 81.50051501344099
+    },
+    {
+      "feature": "uniq_Op",
+      "VIF": 58.45771429786991
+    },
+    {
+      "feature": "i",
+      "VIF": 49.89811177045417
+    },
+    {
+      "feature": "iv_g",
+      "VIF": 34.70132627891394
+    },
+    {
+      "feature": "ev_g",
+      "VIF": 5.434524505462121
+    },
+    {
+      "feature": "lOBlank",
+      "VIF": 5.35452926013472
+    },
+    {
+      "feature": "lOComment",
+      "VIF": 3.1884777698218962
+    },
+    {
+      "feature": "l",
+      "VIF": 2.508066718893646
+    },
+    {
+      "feature": "locCodeAndComment",
+      "VIF": 1.3216123177516348
+    }
+  ],
+  "n_high_vif": 16,
+  "condition_number": 1528661.4764603216,
+  "condition_number_interpretation": "High - strong multicollinearity",
+  "condition_index": 1528363.7773571326,
+  "eigenvalues": [
+    15.993976264767571,
+    1.1391104051279726,
+    0.904893070048784,
+    0.7818027211669187,
+    0.6243864026475875,
+    0.4144865993070564,
+    0.372123917536048,
+    0.29165664937913727,
+    0.22807643670676597,
+    0.07274410947085884,
+    0.04830470997063106,
+    0.044624449894459975,
+    0.031910441933595934,
+    0.02492478868474277,
+    0.015827047153323927,
+    0.006059890800918062,
+    0.003054243680944814,
+    0.0012735079288024287,
+    0.0007643426185336597,
+    1.1685074758154441e-09,
+    6.847041729645196e-12
+  ],
+  "min_eigenvalue": 6.847041729645196e-12,
+  "max_eigenvalue": 15.993976264767571,
+  "n_small_eigenvalues": 6,
+  "has_multicollinearity": true,
+  "severity_score": 21
+}

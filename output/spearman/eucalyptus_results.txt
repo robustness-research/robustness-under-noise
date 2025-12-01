@@ -1,0 +1,1618 @@
+Dataset: eucalyptus
+Generated: Mon Nov 24 10:36:01 PM CET 2025
+======================================
+
+
+========================================
+Model: C5.0
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=eucalyptus, Method=C5.0 ===
+No scaling applied for method: C5.0
+Error: Only one model should be specified in tuneGrid with no resampling
+Execution halted
+FAILED - See error above
+
+
+========================================
+Model: ctree
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=eucalyptus, Method=ctree ===
+No scaling applied for method: ctree
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature     importance.05   importance   importance.95   permutation.error
+---------  --------------  -----------  --------------  ------------------
+Abbrev                  1            1               1           0.3166927
+Rep                     1            1               1           0.3166927
+Locality                1            1               1           0.3166927
+Map_Ref                 1            1               1           0.3166927
+Latitude                1            1               1           0.3166927
+
+=== LIME Rankings ===
+
+
+Feature     Importance
+---------  -----------
+Vig          0.2327345
+Frosts       0.0152877
+Sp           0.0105594
+Abbrev       0.0091842
+Latitude     0.0071781
+Warning message:
+Frosts does not contain enough variance to use quantile binning. Using standard binning instead. 
+
+=== SHAP (IML Shapley) Rankings ===
+
+
+Feature     Importance
+---------  -----------
+Vig          0.1626114
+Abbrev       0.0000000
+Altitude     0.0000000
+Brnch_Fm     0.0000000
+Crown_Fm     0.0000000
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME   NA                        0
+FEAT_IMP vs SHAP   NA                        1
+LIME vs SHAP       NA                        1
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME   NA                        0
+FEAT_IMP vs SHAP   NA                        0
+LIME vs SHAP       NA                        1
+
+=== Top-1 Features ===
+FEAT_IMP: Abbrev
+LIME: Vig
+SHAP: Vig
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1   Feature_2   Agreement 
+-----------------  ----------  ----------  ----------
+FEAT_IMP vs LIME   Abbrev      Vig         FALSE     
+FEAT_IMP vs SHAP   Abbrev      Vig         FALSE     
+LIME vs SHAP       Vig         Vig         TRUE      
+
+Agreeing pairs: 1 / 3 (33.3%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: fda
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=eucalyptus, Method=fda ===
+No scaling applied for method: fda
+Loading required package: earth
+Loading required package: Formula
+Loading required package: plotmo
+Loading required package: plotrix
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature     importance.05   importance   importance.95   permutation.error
+---------  --------------  -----------  --------------  ------------------
+Vig              1.031628     1.074419        1.096744           0.3603744
+Abbrev           1.000000     1.000000        1.000000           0.3354134
+Rep              1.000000     1.000000        1.000000           0.3354134
+Locality         1.000000     1.000000        1.000000           0.3354134
+Map_Ref          1.000000     1.000000        1.000000           0.3354134
+
+=== LIME Rankings ===
+
+
+Feature     Importance
+---------  -----------
+Vig          0.1456086
+Frosts       0.0601574
+Sp           0.0085766
+Locality     0.0066511
+Abbrev       0.0066107
+Warning message:
+Frosts does not contain enough variance to use quantile binning. Using standard binning instead. 
+
+=== SHAP (IML Shapley) Rankings ===
+
+
+Feature     Importance
+---------  -----------
+Vig          0.1703784
+Abbrev       0.0000000
+Altitude     0.0000000
+Brnch_Fm     0.0000000
+Crown_Fm     0.0000000
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair                Spearman   Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME          NA                 1
+FEAT_IMP vs SHAP           1                 2
+LIME vs SHAP              NA                 1
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME   NA                        1
+FEAT_IMP vs SHAP   NA                        1
+LIME vs SHAP       NA                        1
+
+=== Top-1 Features ===
+FEAT_IMP: Vig
+LIME: Vig
+SHAP: Vig
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1   Feature_2   Agreement 
+-----------------  ----------  ----------  ----------
+FEAT_IMP vs LIME   Vig         Vig         TRUE      
+FEAT_IMP vs SHAP   Vig         Vig         TRUE      
+LIME vs SHAP       Vig         Vig         TRUE      
+
+Agreeing pairs: 3 / 3 (100.0%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: gbm
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=eucalyptus, Method=gbm ===
+No scaling applied for method: gbm
+Iter   TrainDeviance   ValidDeviance   StepSize   Improve
+     1        1.2173            -nan     0.1000    0.0163
+     2        1.1868            -nan     0.1000    0.0131
+     3        1.1656            -nan     0.1000    0.0086
+     4        1.1442            -nan     0.1000    0.0088
+     5        1.1216            -nan     0.1000    0.0100
+     6        1.1053            -nan     0.1000    0.0082
+     7        1.0925            -nan     0.1000    0.0060
+     8        1.0829            -nan     0.1000    0.0021
+     9        1.0694            -nan     0.1000    0.0068
+    10        1.0580            -nan     0.1000    0.0051
+    20        0.9988            -nan     0.1000    0.0014
+    40        0.9355            -nan     0.1000    0.0005
+    50        0.9095            -nan     0.1000   -0.0003
+
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+There were 13 warnings (use warnings() to see them)
+
+=== IML Rankings ===
+
+
+feature    importance.05   importance   importance.95   permutation.error
+--------  --------------  -----------  --------------  ------------------
+Vig             1.094118     1.202614        1.240523           0.2870515
+DBH             1.052288     1.091503        1.115033           0.2605304
+Ht              1.013072     1.078431        1.122876           0.2574103
+Sp              1.039216     1.045752        1.045752           0.2496100
+Surv            1.033987     1.045752        1.092810           0.2496100
+
+=== LIME Rankings ===
+
+
+Feature    Importance
+--------  -----------
+Vig         0.1898530
+Frosts      0.0765402
+Ht          0.0511034
+Sp          0.0304670
+Surv        0.0214746
+Warning message:
+Frosts does not contain enough variance to use quantile binning. Using standard binning instead. 
+
+=== SHAP (IML Shapley) Rankings ===
+
+
+Feature    Importance
+--------  -----------
+Vig         0.1439586
+Ht          0.0507063
+DBH         0.0275061
+Sp          0.0235606
+Surv        0.0207918
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair                Spearman   Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME         1.0                 2
+FEAT_IMP vs SHAP         0.5                 3
+LIME vs SHAP             1.0                 2
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME   NA                        1
+FEAT_IMP vs SHAP   NA                        1
+LIME vs SHAP       NA                        1
+
+=== Top-1 Features ===
+FEAT_IMP: Vig
+LIME: Vig
+SHAP: Vig
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1   Feature_2   Agreement 
+-----------------  ----------  ----------  ----------
+FEAT_IMP vs LIME   Vig         Vig         TRUE      
+FEAT_IMP vs SHAP   Vig         Vig         TRUE      
+LIME vs SHAP       Vig         Vig         TRUE      
+
+Agreeing pairs: 3 / 3 (100.0%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: gcvEarth
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=eucalyptus, Method=gcvEarth ===
+No scaling applied for method: gcvEarth
+Loading required package: earth
+Loading required package: Formula
+Loading required package: plotmo
+Loading required package: plotrix
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+Warning message:
+glm.fit: fitted probabilities numerically 0 or 1 occurred 
+
+=== IML Rankings ===
+
+
+feature    importance.05   importance   importance.95   permutation.error
+--------  --------------  -----------  --------------  ------------------
+Vig             1.264463     1.314050        1.322314           0.2480499
+Year            1.244628     1.297521        1.312397           0.2449298
+Ht              1.117355     1.181818        1.249587           0.2230889
+Sp              1.125620     1.165289        1.180165           0.2199688
+PMCno           1.052893     1.115703        1.143802           0.2106084
+
+=== LIME Rankings ===
+
+
+Feature     Importance
+---------  -----------
+Frosts       0.2687388
+Vig          0.1521195
+Rainfall     0.1084579
+DBH          0.0808759
+Year         0.0605180
+Warning message:
+Frosts does not contain enough variance to use quantile binning. Using standard binning instead. 
+
+=== SHAP (IML Shapley) Rankings ===
+
+
+Feature     Importance
+---------  -----------
+Year         0.2642124
+Rainfall     0.2426863
+Vig          0.1444013
+Ht           0.1137412
+Stem_Fm      0.0664814
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair                Spearman   Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME          NA                 1
+FEAT_IMP vs SHAP          -1                 2
+LIME vs SHAP              -1                 2
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME   NA                        0
+FEAT_IMP vs SHAP   NA                        0
+LIME vs SHAP       NA                        0
+
+=== Top-1 Features ===
+FEAT_IMP: Vig
+LIME: Frosts
+SHAP: Year
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1   Feature_2   Agreement 
+-----------------  ----------  ----------  ----------
+FEAT_IMP vs LIME   Vig         Frosts      FALSE     
+FEAT_IMP vs SHAP   Vig         Year        FALSE     
+LIME vs SHAP       Frosts      Year        FALSE     
+
+Agreeing pairs: 0 / 3 (0.0%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: JRip
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=eucalyptus, Method=JRip ===
+No scaling applied for method: JRip
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature     importance.05   importance   importance.95   permutation.error
+---------  --------------  -----------  --------------  ------------------
+Vig              1.529730     1.587838        1.666216           0.3666147
+Crown_Fm         1.091892     1.155405        1.214865           0.2667707
+Ht               1.054054     1.067568        1.100000           0.2464899
+Stem_Fm          1.024324     1.060811        1.083784           0.2449298
+DBH              1.000000     1.020270        1.048649           0.2355694
+
+=== LIME Rankings ===
+
+
+Feature     Importance
+---------  -----------
+Frosts       0.2464805
+Vig          0.0886265
+Ht           0.0405448
+Stem_Fm      0.0186898
+Crown_Fm     0.0169192
+Warning message:
+Frosts does not contain enough variance to use quantile binning. Using standard binning instead. 
+
+=== SHAP (IML Shapley) Rankings ===
+
+
+Feature     Importance
+---------  -----------
+Vig          0.1980683
+Ht           0.0645887
+Crown_Fm     0.0436633
+Stem_Fm      0.0332646
+DBH          0.0219785
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair                Spearman   Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME         1.0                 2
+FEAT_IMP vs SHAP         0.5                 3
+LIME vs SHAP             1.0                 2
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME   NA                        0
+FEAT_IMP vs SHAP   NA                        1
+LIME vs SHAP       NA                        0
+
+=== Top-1 Features ===
+FEAT_IMP: Vig
+LIME: Frosts
+SHAP: Vig
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1   Feature_2   Agreement 
+-----------------  ----------  ----------  ----------
+FEAT_IMP vs LIME   Vig         Frosts      FALSE     
+FEAT_IMP vs SHAP   Vig         Vig         TRUE      
+LIME vs SHAP       Frosts      Vig         FALSE     
+
+Agreeing pairs: 1 / 3 (33.3%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: lvq
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=eucalyptus, Method=lvq ===
+Applying data scaling for method: lvq
+Warning in preProcess.default(method = c("center", "scale"), x = c(0, 0,  :
+  These variables have zero variances: AbbrevCly, AbbrevMor, AbbrevWen, LocalityNorthern_Hawkes_Bay, LocalityCentral_Poverty_Bay, Map_RefN116_848/985, Map_RefN141_295/063, Map_RefN98_539/567, Latitude39__00, Latitude39__43, Latitude82__32, Spra, Spte
+Warning in preProcess.default(thresh = 0.95, k = 5, freqCut = 19, uniqueCut = 10,  :
+  These variables have zero variances: AbbrevCly, AbbrevMor, AbbrevWen, LocalityNorthern_Hawkes_Bay, LocalityCentral_Poverty_Bay, Map_RefN116_848/985, Map_RefN141_295/063, Map_RefN98_539/567, Latitude39__00, Latitude39__43, Latitude82__32, Spra, Spte
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature     importance.05   importance   importance.95   permutation.error
+---------  --------------  -----------  --------------  ------------------
+Sp               1.112048     1.150602        1.177108           0.2979719
+Abbrev           1.018072     1.024096        1.030120           0.2652106
+Latitude         1.013253     1.024096        1.030120           0.2652106
+Vig              1.012048     1.018072        1.024096           0.2636505
+Rep              1.006024     1.012048        1.018072           0.2620905
+
+=== LIME Rankings ===
+Error in get_lime: only classification models that produce probabilities are allowed 
+Warning message:
+Frosts does not contain enough variance to use quantile binning. Using standard binning instead. 
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs SHAP   NA                        0
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs SHAP   NA                        0
+
+=== Top-1 Features ===
+FEAT_IMP: Sp
+SHAP: NA
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1   Feature_2   Agreement 
+-----------------  ----------  ----------  ----------
+FEAT_IMP vs SHAP   Sp          NA          FALSE     
+
+Agreeing pairs: 0 / 1 (0.0%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: mlpML
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=eucalyptus, Method=mlpML ===
+Applying data scaling for method: mlpML
+Warning in preProcess.default(method = c("center", "scale"), x = c(0, 0,  :
+  These variables have zero variances: AbbrevCly, AbbrevMor, AbbrevWen, LocalityNorthern_Hawkes_Bay, LocalityCentral_Poverty_Bay, Map_RefN116_848/985, Map_RefN141_295/063, Map_RefN98_539/567, Latitude39__00, Latitude39__43, Latitude82__32, Spra, Spte
+Warning in preProcess.default(thresh = 0.95, k = 5, freqCut = 19, uniqueCut = 10,  :
+  These variables have zero variances: AbbrevCly, AbbrevMor, AbbrevWen, LocalityNorthern_Hawkes_Bay, LocalityCentral_Poverty_Bay, Map_RefN116_848/985, Map_RefN141_295/063, Map_RefN98_539/567, Latitude39__00, Latitude39__43, Latitude82__32, Spra, Spte
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+Warning message:
+At least one layer had zero units and were removed. The new structure is 1 
+
+=== IML Rankings ===
+
+
+feature     importance.05   importance   importance.95   permutation.error
+---------  --------------  -----------  --------------  ------------------
+Vig              1.595238     1.619048        1.619048           0.3182527
+Ht               1.384127     1.444444        1.512698           0.2839314
+Surv             1.330159     1.349206        1.452381           0.2652106
+Crown_Fm         1.255556     1.349206        1.403175           0.2652106
+Sp               1.269841     1.317460        1.369841           0.2589704
+
+=== LIME Rankings ===
+
+
+Feature     Importance
+---------  -----------
+Crown_Fm     0.1532422
+Vig          0.1331180
+Frosts       0.1314518
+Sp           0.0575188
+Surv         0.0460073
+Warning message:
+Frosts does not contain enough variance to use quantile binning. Using standard binning instead. 
+
+=== SHAP (IML Shapley) Rankings ===
+
+
+Feature     Importance
+---------  -----------
+Vig          0.1316982
+Sp           0.0441464
+Surv         0.0382276
+Ht           0.0341711
+Crown_Fm     0.0284707
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair                Spearman   Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME          NA                 1
+FEAT_IMP vs SHAP           1                 2
+LIME vs SHAP              NA                 1
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME   NA                        0
+FEAT_IMP vs SHAP   NA                        1
+LIME vs SHAP       NA                        0
+
+=== Top-1 Features ===
+FEAT_IMP: Vig
+LIME: Crown_Fm
+SHAP: Vig
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1   Feature_2   Agreement 
+-----------------  ----------  ----------  ----------
+FEAT_IMP vs LIME   Vig         Crown_Fm    FALSE     
+FEAT_IMP vs SHAP   Vig         Vig         TRUE      
+LIME vs SHAP       Crown_Fm    Vig         FALSE     
+
+Agreeing pairs: 1 / 3 (33.3%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: multinom
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=eucalyptus, Method=multinom ===
+Applying data scaling for method: multinom
+Warning in preProcess.default(thresh = 0.95, k = 5, freqCut = 19, uniqueCut = 10,  :
+  These variables have zero variances: AbbrevCly, AbbrevMor, AbbrevWen, LocalityNorthern_Hawkes_Bay, LocalityCentral_Poverty_Bay, Map_RefN116_848/985, Map_RefN141_295/063, Map_RefN98_539/567, Latitude39__00, Latitude39__43, Latitude82__32, Spra, Spte
+# weights:  88 (87 variable)
+initial  value 444.307343 
+iter  10 value 305.440834
+iter  20 value 282.252245
+iter  30 value 273.415253
+iter  40 value 271.399630
+iter  50 value 270.358776
+iter  60 value 270.038791
+final  value 268.593092 
+converged
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature    importance.05   importance   importance.95   permutation.error
+--------  --------------  -----------  --------------  ------------------
+Sp              1.130201     1.167785        1.253691           0.2714509
+Surv            1.060403     1.120805        1.131544           0.2605304
+Ht              1.041611     1.073826        1.153020           0.2496100
+Vig             1.033557     1.067114        1.106040           0.2480499
+DBH             0.957047     1.040269        1.085906           0.2418097
+
+=== LIME Rankings ===
+
+
+Feature     Importance
+---------  -----------
+Frosts       0.1955936
+Sp           0.1052596
+Vig          0.0868524
+Crown_Fm     0.0744754
+Surv         0.0483640
+Warning message:
+Frosts does not contain enough variance to use quantile binning. Using standard binning instead. 
+
+=== SHAP (IML Shapley) Rankings ===
+
+
+Feature     Importance
+---------  -----------
+Sp           0.1588994
+Vig          0.1033408
+Surv         0.0647648
+Crown_Fm     0.0318740
+DBH          0.0207887
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair                Spearman   Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME          NA                 1
+FEAT_IMP vs SHAP           1                 2
+LIME vs SHAP               1                 2
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME   NA                        0
+FEAT_IMP vs SHAP   NA                        1
+LIME vs SHAP       NA                        0
+
+=== Top-1 Features ===
+FEAT_IMP: Sp
+LIME: Frosts
+SHAP: Sp
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1   Feature_2   Agreement 
+-----------------  ----------  ----------  ----------
+FEAT_IMP vs LIME   Sp          Frosts      FALSE     
+FEAT_IMP vs SHAP   Sp          Sp          TRUE      
+LIME vs SHAP       Frosts      Sp          FALSE     
+
+Agreeing pairs: 1 / 3 (33.3%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: naive_bayes
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=eucalyptus, Method=naive_bayes ===
+No scaling applied for method: naive_bayes
+Error: Only one model should be specified in tuneGrid with no resampling
+Execution halted
+FAILED - See error above
+
+
+========================================
+Model: PART
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=eucalyptus, Method=PART ===
+No scaling applied for method: PART
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature    importance.05   importance   importance.95   permutation.error
+--------  --------------  -----------  --------------  ------------------
+Sp              4.310345     4.689655        5.172414           0.2121685
+Vig             4.627586     4.689655        5.082759           0.2121685
+Abbrev          4.041379     4.172414        4.400000           0.1887676
+PMCno           2.455172     2.482759        2.655172           0.1123245
+Stem_Fm         2.103448     2.137931        2.331034           0.0967239
+
+=== LIME Rankings ===
+
+
+Feature    Importance
+--------  -----------
+Frosts      0.4110708
+Vig         0.1709538
+PMCno       0.0821516
+Sp          0.0760251
+Stem_Fm     0.0662125
+Warning message:
+Frosts does not contain enough variance to use quantile binning. Using standard binning instead. 
+
+=== SHAP (IML Shapley) Rankings ===
+
+
+Feature    Importance
+--------  -----------
+Vig         0.2711593
+Stem_Fm     0.1103104
+Sp          0.0741815
+PMCno       0.0568778
+Abbrev      0.0562750
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair                Spearman   Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME          NA                 1
+FEAT_IMP vs SHAP          -1                 2
+LIME vs SHAP              NA                 1
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME   NA                        0
+FEAT_IMP vs SHAP   NA                        0
+LIME vs SHAP       NA                        0
+
+=== Top-1 Features ===
+FEAT_IMP: Sp
+LIME: Frosts
+SHAP: Vig
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1   Feature_2   Agreement 
+-----------------  ----------  ----------  ----------
+FEAT_IMP vs LIME   Sp          Frosts      FALSE     
+FEAT_IMP vs SHAP   Sp          Vig         FALSE     
+LIME vs SHAP       Frosts      Vig         FALSE     
+
+Agreeing pairs: 0 / 3 (0.0%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: rbfDDA
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=eucalyptus, Method=rbfDDA ===
+Applying data scaling for method: rbfDDA
+Warning in preProcess.default(thresh = 0.95, k = 5, freqCut = 19, uniqueCut = 10,  :
+  These variables have zero variances: AbbrevCly, AbbrevMor, AbbrevWen, LocalityNorthern_Hawkes_Bay, LocalityCentral_Poverty_Bay, Map_RefN116_848/985, Map_RefN141_295/063, Map_RefN98_539/567, Latitude39__00, Latitude39__43, Latitude82__32, Spra, Spte
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature     importance.05   importance   importance.95   permutation.error
+---------  --------------  -----------  --------------  ------------------
+Sp               1.618803     1.658120        1.716239           0.3026521
+Abbrev           1.629060     1.649573        1.664957           0.3010920
+Map_Ref          1.598291     1.615385        1.654701           0.2948518
+Latitude         1.586325     1.615385        1.630769           0.2948518
+Locality         1.447863     1.504274        1.547009           0.2745710
+
+=== LIME Rankings ===
+
+
+Feature     Importance
+---------  -----------
+Frosts       0.7849649
+Abbrev       0.3467082
+Map_Ref      0.2844616
+DBH          0.2837642
+Latitude     0.1973732
+Warning message:
+Frosts does not contain enough variance to use quantile binning. Using standard binning instead. 
+
+=== SHAP (IML Shapley) Rankings ===
+
+
+Feature     Importance
+---------  -----------
+Sp           0.7383978
+Abbrev       0.2329148
+Rainfall     0.2285001
+Frosts       0.1975559
+Vig          0.1351001
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair                Spearman   Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME           1                 2
+FEAT_IMP vs SHAP           1                 2
+LIME vs SHAP              NA                 1
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME   NA                        0
+FEAT_IMP vs SHAP   NA                        1
+LIME vs SHAP       NA                        0
+
+=== Top-1 Features ===
+FEAT_IMP: Sp
+LIME: Frosts
+SHAP: Sp
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1   Feature_2   Agreement 
+-----------------  ----------  ----------  ----------
+FEAT_IMP vs LIME   Sp          Frosts      FALSE     
+FEAT_IMP vs SHAP   Sp          Sp          TRUE      
+LIME vs SHAP       Frosts      Sp          FALSE     
+
+Agreeing pairs: 1 / 3 (33.3%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: rda
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=eucalyptus, Method=rda ===
+Applying data scaling for method: rda
+Warning in preProcess.default(method = c("center", "scale"), x = c(0, 0,  :
+  These variables have zero variances: AbbrevCly, AbbrevMor, AbbrevWen, LocalityNorthern_Hawkes_Bay, LocalityCentral_Poverty_Bay, Map_RefN116_848/985, Map_RefN141_295/063, Map_RefN98_539/567, Latitude39__00, Latitude39__43, Latitude82__32, Spra, Spte
+Warning in preProcess.default(thresh = 0.95, k = 5, freqCut = 19, uniqueCut = 10,  :
+  These variables have zero variances: AbbrevCly, AbbrevMor, AbbrevWen, LocalityNorthern_Hawkes_Bay, LocalityCentral_Poverty_Bay, Map_RefN116_848/985, Map_RefN141_295/063, Map_RefN98_539/567, Latitude39__00, Latitude39__43, Latitude82__32, Spra, Spte
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+Error in get_featimp: Lapack routine dgesv: system is exactly singular: U[1,1] = 0 
+
+=== LIME Rankings ===
+Error in get_lime: Lapack routine dgesv: system is exactly singular: U[1,1] = 0 
+Warning message:
+Frosts does not contain enough variance to use quantile binning. Using standard binning instead. 
+
+=== SHAP (IML Shapley) Rankings ===
+Error in get_shap: Lapack routine dgesv: system is exactly singular: U[1,1] = 0 
+
+=== Top-3 Spearman ===
+Not enough valid rankings (need at least 2, got 0 )
+
+=== Top-1 Spearman ===
+Not enough valid rankings (need at least 2, got 0 )
+
+=== Top-1 Feature Agreement Count ===
+Not enough valid rankings (need at least 2, got 0 )
+
+=== All Results Recorded ===
+
+
+========================================
+Model: rf
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=eucalyptus, Method=rf ===
+No scaling applied for method: rf
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature    importance.05   importance   importance.95   permutation.error
+--------  --------------  -----------  --------------  ------------------
+Vig                 26.1         27.0            31.7           0.0842434
+Ht                  15.7         16.5            21.0           0.0514821
+DBH                  9.0         11.0            12.3           0.0343214
+Sp                   8.5         10.0            12.3           0.0312012
+Surv                10.0         10.0            13.3           0.0312012
+
+=== LIME Rankings ===
+
+
+Feature     Importance
+---------  -----------
+Frosts       0.2850023
+Vig          0.1089574
+Ht           0.0510404
+PMCno        0.0338684
+Crown_Fm     0.0274619
+Warning message:
+Frosts does not contain enough variance to use quantile binning. Using standard binning instead. 
+
+=== SHAP (IML Shapley) Rankings ===
+
+
+Feature    Importance
+--------  -----------
+Vig          0.099972
+Ht           0.067420
+DBH          0.034780
+Stem_Fm      0.028664
+PMCno        0.024620
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair                Spearman   Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME           1                 2
+FEAT_IMP vs SHAP           1                 3
+LIME vs SHAP               1                 2
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME   NA                        0
+FEAT_IMP vs SHAP   NA                        1
+LIME vs SHAP       NA                        0
+
+=== Top-1 Features ===
+FEAT_IMP: Vig
+LIME: Frosts
+SHAP: Vig
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1   Feature_2   Agreement 
+-----------------  ----------  ----------  ----------
+FEAT_IMP vs LIME   Vig         Frosts      FALSE     
+FEAT_IMP vs SHAP   Vig         Vig         TRUE      
+LIME vs SHAP       Frosts      Vig         FALSE     
+
+Agreeing pairs: 1 / 3 (33.3%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: rpart
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=eucalyptus, Method=rpart ===
+No scaling applied for method: rpart
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature     importance.05   importance   importance.95   permutation.error
+---------  --------------  -----------  --------------  ------------------
+Abbrev                  1            1               1           0.3166927
+Rep                     1            1               1           0.3166927
+Locality                1            1               1           0.3166927
+Map_Ref                 1            1               1           0.3166927
+Latitude                1            1               1           0.3166927
+
+=== LIME Rankings ===
+Error in get_lime: Response is constant across permutations. Please check your model 
+Warning message:
+Frosts does not contain enough variance to use quantile binning. Using standard binning instead. 
+
+=== SHAP (IML Shapley) Rankings ===
+
+
+Feature     Importance
+---------  -----------
+Abbrev               0
+Altitude             0
+Brnch_Fm             0
+Crown_Fm             0
+DBH                  0
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs SHAP   NA                        1
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs SHAP   NA                        1
+
+=== Top-1 Features ===
+FEAT_IMP: Abbrev
+SHAP: Abbrev
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1   Feature_2   Agreement 
+-----------------  ----------  ----------  ----------
+FEAT_IMP vs SHAP   Abbrev      Abbrev      TRUE      
+
+Agreeing pairs: 1 / 1 (100.0%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: simpls
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=eucalyptus, Method=simpls ===
+Applying data scaling for method: simpls
+Warning in preProcess.default(thresh = 0.95, k = 5, freqCut = 19, uniqueCut = 10,  :
+  These variables have zero variances: AbbrevCly, AbbrevMor, AbbrevWen, LocalityNorthern_Hawkes_Bay, LocalityCentral_Poverty_Bay, Map_RefN116_848/985, Map_RefN141_295/063, Map_RefN98_539/567, Latitude39__00, Latitude39__43, Latitude82__32, Spra, Spte
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature     importance.05   importance   importance.95   permutation.error
+---------  --------------  -----------  --------------  ------------------
+Vig              1.013415     1.024390        1.047561           0.2620905
+Sp               1.007317     1.018293        1.035366           0.2605304
+Altitude         1.000000     1.006098        1.006098           0.2574103
+Rainfall         0.995122     1.006098        1.018293           0.2574103
+PMCno            1.001219     1.006098        1.010976           0.2574103
+
+=== LIME Rankings ===
+
+
+Feature     Importance
+---------  -----------
+Frosts       0.0263969
+Sp           0.0244467
+Vig          0.0221175
+Crown_Fm     0.0164252
+PMCno        0.0098973
+Warning message:
+Frosts does not contain enough variance to use quantile binning. Using standard binning instead. 
+
+=== SHAP (IML Shapley) Rankings ===
+
+
+Feature     Importance
+---------  -----------
+Sp           0.0228402
+Vig          0.0175320
+Rainfall     0.0118346
+Year         0.0116874
+Frosts       0.0082577
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair                Spearman   Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME          -1                 2
+FEAT_IMP vs SHAP          -1                 2
+LIME vs SHAP               1                 2
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME   NA                        0
+FEAT_IMP vs SHAP   NA                        0
+LIME vs SHAP       NA                        0
+
+=== Top-1 Features ===
+FEAT_IMP: Vig
+LIME: Frosts
+SHAP: Sp
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1   Feature_2   Agreement 
+-----------------  ----------  ----------  ----------
+FEAT_IMP vs LIME   Vig         Frosts      FALSE     
+FEAT_IMP vs SHAP   Vig         Sp          FALSE     
+LIME vs SHAP       Frosts      Sp          FALSE     
+
+Agreeing pairs: 0 / 3 (0.0%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: svmLinear
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=eucalyptus, Method=svmLinear ===
+Applying data scaling for method: svmLinear
+Warning in preProcess.default(thresh = 0.95, k = 5, freqCut = 19, uniqueCut = 10,  :
+  These variables have zero variances: AbbrevCly, AbbrevMor, AbbrevWen, LocalityNorthern_Hawkes_Bay, LocalityCentral_Poverty_Bay, Map_RefN116_848/985, Map_RefN141_295/063, Map_RefN98_539/567, Latitude39__00, Latitude39__43, Latitude82__32, Spra, Spte
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+Warning message:
+In .local(x, ...) : Variable(s) `' constant. Cannot scale data.
+
+=== IML Rankings ===
+
+
+feature    importance.05   importance   importance.95   permutation.error
+--------  --------------  -----------  --------------  ------------------
+Sp              1.168345     1.194245        1.237410           0.2589704
+Surv            1.096403     1.165468        1.184173           0.2527301
+Vig             1.046043     1.100719        1.158273           0.2386895
+Ht              1.073381     1.079137        1.136691           0.2340094
+Map_Ref         1.011511     1.064748        1.077698           0.2308892
+
+=== LIME Rankings ===
+Error in get_lime: Response is constant across permutations. Please check your model 
+Warning messages:
+1: Frosts does not contain enough variance to use quantile binning. Using standard binning instead. 
+2: In method$prob(modelFit = modelFit, newdata = newdata, submodels = param) :
+  kernlab class probability calculations failed; returning NAs
+Warning messages:
+1: In method$prob(modelFit = modelFit, newdata = newdata, submodels = param) :
+  kernlab class probability calculations failed; returning NAs
+2: In method$prob(modelFit = modelFit, newdata = newdata, submodels = param) :
+  kernlab class probability calculations failed; returning NAs
+3: In method$prob(modelFit = modelFit, newdata = newdata, submodels = param) :
+  kernlab class probability calculations failed; returning NAs
+4: In method$prob(modelFit = modelFit, newdata = newdata, submodels = param) :
+  kernlab class probability calculations failed; returning NAs
+5: In method$prob(modelFit = modelFit, newdata = newdata, submodels = param) :
+  kernlab class probability calculations failed; returning NAs
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs SHAP   NA                        0
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs SHAP   NA                        0
+
+=== Top-1 Features ===
+FEAT_IMP: Sp
+SHAP: NA
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1   Feature_2   Agreement 
+-----------------  ----------  ----------  ----------
+FEAT_IMP vs SHAP   Sp          NA          FALSE     
+
+Agreeing pairs: 0 / 1 (0.0%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: svmRadial
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=eucalyptus, Method=svmRadial ===
+Applying data scaling for method: svmRadial
+Warning in preProcess.default(method = c("center", "scale"), x = c(0, 0,  :
+  These variables have zero variances: AbbrevCly, AbbrevMor, AbbrevWen, LocalityNorthern_Hawkes_Bay, LocalityCentral_Poverty_Bay, Map_RefN116_848/985, Map_RefN141_295/063, Map_RefN98_539/567, Latitude39__00, Latitude39__43, Latitude82__32, Spra, Spte
+Warning in preProcess.default(thresh = 0.95, k = 5, freqCut = 19, uniqueCut = 10,  :
+  These variables have zero variances: AbbrevCly, AbbrevMor, AbbrevWen, LocalityNorthern_Hawkes_Bay, LocalityCentral_Poverty_Bay, Map_RefN116_848/985, Map_RefN141_295/063, Map_RefN98_539/567, Latitude39__00, Latitude39__43, Latitude82__32, Spra, Spte
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+Warning messages:
+1: In .local(x, ...) : Variable(s) `' constant. Cannot scale data.
+2: In .local(x, ...) : Variable(s) `' constant. Cannot scale data.
+
+=== IML Rankings ===
+
+
+feature     importance.05   importance   importance.95   permutation.error
+---------  --------------  -----------  --------------  ------------------
+Sp               1.083544     1.177215        1.212658           0.2901716
+Abbrev           1.065823     1.107595        1.118987           0.2730109
+Map_Ref          1.089873     1.094937        1.120253           0.2698908
+Latitude         1.069620     1.075949        1.097468           0.2652106
+Vig              1.031646     1.044304        1.050633           0.2574103
+
+=== LIME Rankings ===
+Error in get_lime: Response is constant across permutations. Please check your model 
+Warning messages:
+1: Frosts does not contain enough variance to use quantile binning. Using standard binning instead. 
+2: In method$prob(modelFit = modelFit, newdata = newdata, submodels = param) :
+  kernlab class probability calculations failed; returning NAs
+Warning messages:
+1: In method$prob(modelFit = modelFit, newdata = newdata, submodels = param) :
+  kernlab class probability calculations failed; returning NAs
+2: In method$prob(modelFit = modelFit, newdata = newdata, submodels = param) :
+  kernlab class probability calculations failed; returning NAs
+3: In method$prob(modelFit = modelFit, newdata = newdata, submodels = param) :
+  kernlab class probability calculations failed; returning NAs
+4: In method$prob(modelFit = modelFit, newdata = newdata, submodels = param) :
+  kernlab class probability calculations failed; returning NAs
+5: In method$prob(modelFit = modelFit, newdata = newdata, submodels = param) :
+  kernlab class probability calculations failed; returning NAs
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs SHAP   NA                        0
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs SHAP   NA                        0
+
+=== Top-1 Features ===
+FEAT_IMP: Sp
+SHAP: NA
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1   Feature_2   Agreement 
+-----------------  ----------  ----------  ----------
+FEAT_IMP vs SHAP   Sp          NA          FALSE     
+
+Agreeing pairs: 0 / 1 (0.0%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: rfRules
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=eucalyptus, Method=rfRules ===
+No scaling applied for method: rfRules
+Registered S3 method overwritten by 'RRF':
+  method      from        
+  plot.margin randomForest
+1984 rules (length<=2) were extracted from the first 500 trees.
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature     importance.05   importance   importance.95   permutation.error
+---------  --------------  -----------  --------------  ------------------
+Vig              1.192647     1.213235        1.289706           0.2574103
+Ht               1.129412     1.205882        1.277941           0.2558502
+Altitude         1.108823     1.169118        1.202941           0.2480499
+Stem_Fm          1.104412     1.139706        1.147059           0.2418097
+Frosts           1.083824     1.110294        1.138235           0.2355694
+
+=== LIME Rankings ===
+Error in get_lime: only classification models that produce probabilities are allowed 
+Warning message:
+Frosts does not contain enough variance to use quantile binning. Using standard binning instead. 
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs SHAP   NA                        0
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs SHAP   NA                        0
+
+=== Top-1 Features ===
+FEAT_IMP: Vig
+SHAP: NA
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1   Feature_2   Agreement 
+-----------------  ----------  ----------  ----------
+FEAT_IMP vs SHAP   Vig         NA          FALSE     
+
+Agreeing pairs: 0 / 1 (0.0%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: knn
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=eucalyptus, Method=knn ===
+Applying data scaling for method: knn
+Warning in preProcess.default(thresh = 0.95, k = 5, freqCut = 19, uniqueCut = 10,  :
+  These variables have zero variances: AbbrevCly, AbbrevMor, AbbrevWen, LocalityNorthern_Hawkes_Bay, LocalityCentral_Poverty_Bay, Map_RefN116_848/985, Map_RefN141_295/063, Map_RefN98_539/567, Latitude39__00, Latitude39__43, Latitude82__32, Spra, Spte
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature    importance.05   importance   importance.95   permutation.error
+--------  --------------  -----------  --------------  ------------------
+Sp              1.637931     1.655172        1.760345           0.2995320
+Abbrev          1.046552     1.060345        1.091379           0.1918877
+PMCno           1.037931     1.060345        1.120690           0.1918877
+Rep             1.027586     1.051724        1.079310           0.1903276
+Ht              1.027586     1.043103        1.065517           0.1887676
+
+=== LIME Rankings ===
+
+
+Feature     Importance
+---------  -----------
+Sp           0.1582783
+Frosts       0.1257554
+Vig          0.0411165
+Crown_Fm     0.0349933
+Locality     0.0161622
+Warning message:
+Frosts does not contain enough variance to use quantile binning. Using standard binning instead. 
+
+=== SHAP (IML Shapley) Rankings ===
+
+
+Feature    Importance
+--------  -----------
+Sp          0.1463333
+Vig         0.0208000
+Rep         0.0159333
+Abbrev      0.0151333
+Map_Ref     0.0149333
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair                Spearman   Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME          NA                 1
+FEAT_IMP vs SHAP          NA                 1
+LIME vs SHAP               1                 2
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME   NA                        1
+FEAT_IMP vs SHAP   NA                        1
+LIME vs SHAP       NA                        1
+
+=== Top-1 Features ===
+FEAT_IMP: Sp
+LIME: Sp
+SHAP: Sp
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1   Feature_2   Agreement 
+-----------------  ----------  ----------  ----------
+FEAT_IMP vs LIME   Sp          Sp          TRUE      
+FEAT_IMP vs SHAP   Sp          Sp          TRUE      
+LIME vs SHAP       Sp          Sp          TRUE      
+
+Agreeing pairs: 3 / 3 (100.0%)
+
+=== All Results Recorded ===
+
+
+========================================
+Model: bayesglm
+========================================
+Loading required package: ggplot2
+Loading required package: lattice
+
+
+=== Processing: Dataset=eucalyptus, Method=bayesglm ===
+Applying data scaling for method: bayesglm
+Warning in preProcess.default(thresh = 0.95, k = 5, freqCut = 19, uniqueCut = 10,  :
+  These variables have zero variances: AbbrevCly, AbbrevMor, AbbrevWen, LocalityNorthern_Hawkes_Bay, LocalityCentral_Poverty_Bay, Map_RefN116_848/985, Map_RefN141_295/063, Map_RefN98_539/567, Latitude39__00, Latitude39__43, Latitude82__32, Spra, Spte
+
+
+=== Trained model ===
+Model class: train
+Is trained_model NULL?: FALSE 
+
+=== IML Rankings ===
+
+
+feature     importance.05   importance   importance.95   permutation.error
+---------  --------------  -----------  --------------  ------------------
+Sp              1.1245033     1.172185        1.184106           0.2761310
+Surv            1.0503311     1.119205        1.132450           0.2636505
+Vig             1.0198675     1.039735        1.094040           0.2449298
+Abbrev          0.9933775     1.026490        1.054305           0.2418097
+Locality        0.9907285     1.019867        1.052980           0.2402496
+
+=== LIME Rankings ===
+
+
+Feature     Importance
+---------  -----------
+Frosts       0.1838951
+Vig          0.0826389
+Sp           0.0797107
+Crown_Fm     0.0730947
+Surv         0.0581588
+Warning message:
+Frosts does not contain enough variance to use quantile binning. Using standard binning instead. 
+
+=== SHAP (IML Shapley) Rankings ===
+
+
+Feature     Importance
+---------  -----------
+Sp           0.1279010
+Vig          0.0986639
+Surv         0.0729004
+Crown_Fm     0.0313300
+Rep          0.0144858
+
+=== Top-3 Spearman (on common top-3 features only) ===
+
+
+Pair                Spearman   Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME        -1.0                 2
+FEAT_IMP vs SHAP         0.5                 3
+LIME vs SHAP            -1.0                 2
+
+=== Top-1 Spearman (on common top-1 features only) ===
+
+
+Pair               Spearman    Common_Features
+-----------------  ---------  ----------------
+FEAT_IMP vs LIME   NA                        0
+FEAT_IMP vs SHAP   NA                        1
+LIME vs SHAP       NA                        0
+
+=== Top-1 Features ===
+FEAT_IMP: Sp
+LIME: Frosts
+SHAP: Sp
+
+=== Top-1 Feature Agreement (pairwise) ===
+
+
+Pair               Feature_1   Feature_2   Agreement 
+-----------------  ----------  ----------  ----------
+FEAT_IMP vs LIME   Sp          Frosts      FALSE     
+FEAT_IMP vs SHAP   Sp          Sp          TRUE      
+LIME vs SHAP       Frosts      Sp          FALSE     
+
+Agreeing pairs: 1 / 3 (33.3%)
+
+=== All Results Recorded ===
+
